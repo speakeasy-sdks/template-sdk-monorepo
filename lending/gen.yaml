@@ -6,7 +6,7 @@ management:
   generationVersion: 2.166.0
 generation:
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
-  sdkClassName: SDK
+  sdkClassName: lending
   singleTagPerOp: false
 features:
   typescript:
@@ -26,6 +26,6 @@ typescript:
   flattenGlobalSecurity: true
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
   maxMethodParams: 4
-  packageName: openapi
+  packageName: lending
   published: true
   repoSubDirectory: lending
