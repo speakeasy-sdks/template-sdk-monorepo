@@ -32,7 +32,7 @@ This structure can be extrapoloated to N number of SDKs.
 
 ### Creating a Monorepo of SDKs
 
-1. To get started, simply clone the repository by clicking on the "Use template" button and give it a name.
+1. To get started, simply clone the repository by clicking on the "Use template" button and give it a name. You may also copy all the files over manually. 
    
 ![Screenshot 2023-10-20 at 07 09 51](https://github.com/speakeasy-sdks/template-sdk-monorepo/assets/68016351/3c35d14b-d8a9-4cbb-a864-0cbd173ea258)
 
