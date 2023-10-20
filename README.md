@@ -1,1 +1,1 @@
-# template-sdk-monorep
+# template-sdk-monorepo
