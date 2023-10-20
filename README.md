@@ -6,10 +6,31 @@
 
 ## How to use this repository
 
-**👀** This template repository is designed to bootstrap a [Speakeasy managed SDK repository](https://speakeasyapi.dev/docs/create-client-sdks/) using Github's repository clone feature. Once this repository is setup it will automatically keep your SDK up to date and published to a package manager. 
+> :warning: This is an advanced setup process. For most cases we reccomend using the single sdk per github repository approach. Please see this [repo](https://github.com/speakeasy-sdks/template-sdk) for the corresponding template.
 
+**👀** This template repository is designed to bootstrap a monorepo version of a [Speakeasy managed SDK repository](https://speakeasyapi.dev/docs/create-client-sdks/) using Github's repository clone feature. Once this repository is setup it will automatically keep your SDKs up to date and published to a package manager.
 
-### Creating an SDK
+## What is a SDK monorepo ?
+
+A SDK monorepo is a single github repository that houses multiple SDKs. Each SDK corresponds to a single OpenAPI specification. This is a style of SDK popularised by AWS that enables discovery of all available SDKs in one repo but requires download of individual SDKs corresponding to API/business groups.
+
+Each SDK is housed in its own subfolders and have independent github workflows that manage re-generation and release of code. In this example we have two SDKs: Accounting and Lending that can be found in their own sub folders. The general structure is as follows:
+
+```yaml
+.github/workflows/ #This is standards github notation for storing workflow files
+ - accounting_generate.yaml #This file controls generation of the accounting SDK
+ - accounting_release.yaml #This file controls release and publishing of the accounting SDK
+ - lending_generate.yaml #This file controls generation of the lending SDK
+ - lending_release.yaml #This file controls release and publishing of the lending SDK
+ accounting # This folder houses the accounting SDK
+ - gen.yaml # Generation config for the accounting SDK
+ lending # This folder houses the lending SDK
+ - gen.yaml # Generation config for the lending SDK
+```
+
+This structure can be extrapoloated to N number of SDKs.
+
+### Creating a Monorepo of SDKs
 
 1. To get started, simply clone the repository by clicking on the "Use template" button and give it a name.
    
