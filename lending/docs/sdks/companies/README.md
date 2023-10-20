@@ -1,0 +1,222 @@
+# Companies
+(*companies*)
+
+## Overview
+
+Create and manage your Codat companies.
+
+### Available Operations
+
+* [create](#create) - Create company
+* [delete](#delete) - Delete a company
+* [get](#get) - Get company
+* [list](#list) - List companies
+* [update](#update) - Update company
+
+## create
+
+﻿Creates a new company that can be used to assign connections to. 
+
+If forbidden characters (see `name` pattern) are present in the request, a company will be created with the forbidden characters removed. For example, `Company (Codat[1])` with be created as `Company Codat1`.
+
+
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+
+(async() => {
+  const sdk = new SDK({
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  });
+
+  const res = await sdk.companies.create({
+    description: "Requested early access to the new financing scheme.",
+    name: "Bank of Dave",
+  });
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `request`                                                              | [shared.CompanyRequestBody](../../models/shared/companyrequestbody.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
+| `retries`                                                              | [utils.RetryConfig](../../models/utils/retryconfig.md)                 | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |
+
+
+### Response
+
+**Promise<[operations.CreateCompanyResponse](../../models/operations/createcompanyresponse.md)>**
+
+
+## delete
+
+﻿
+Permanently deletes a company, its connections and any cached data. This operation is irreversible. If the company ID does not exist an error is returned.
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { DeleteCompanyRequest } from "openapi/dist/sdk/models/operations";
+
+(async() => {
+  const sdk = new SDK({
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  });
+const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
+
+  const res = await sdk.companies.delete(companyId);
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
+| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
+
+
+### Response
+
+**Promise<[operations.DeleteCompanyResponse](../../models/operations/deletecompanyresponse.md)>**
+
+
+## get
+
+﻿Returns the company for a valid identifier. If the identifier is for a deleted company, a not found response is returned.
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { GetCompanyRequest } from "openapi/dist/sdk/models/operations";
+
+(async() => {
+  const sdk = new SDK({
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  });
+const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
+
+  const res = await sdk.companies.get(companyId);
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
+| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
+
+
+### Response
+
+**Promise<[operations.GetCompanyResponse](../../models/operations/getcompanyresponse.md)>**
+
+
+## list
+
+﻿Returns a list of your companies. The company schema contains a list of [connections](https://docs.codat.io/lending-api#/schemas/Connection) related to the company.
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { ListCompaniesRequest } from "openapi/dist/sdk/models/operations";
+
+(async() => {
+  const sdk = new SDK({
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  });
+const orderBy: string = "-modifiedDate";
+const page: number = 1;
+const pageSize: number = 100;
+const query: string = "Bicycle";
+
+  const res = await sdk.companies.list(orderBy, page, pageSize, query);
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     | Example                                                                                         |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `orderBy`                                                                                       | *string*                                                                                        | :heavy_minus_sign:                                                                              | Field to order results by. [Read more](https://docs.codat.io/using-the-api/ordering-results).   | -modifiedDate                                                                                   |
+| `page`                                                                                          | *number*                                                                                        | :heavy_minus_sign:                                                                              | Page number. [Read more](https://docs.codat.io/using-the-api/paging).                           | 1                                                                                               |
+| `pageSize`                                                                                      | *number*                                                                                        | :heavy_minus_sign:                                                                              | Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging). | 100                                                                                             |
+| `query`                                                                                         | *string*                                                                                        | :heavy_minus_sign:                                                                              | Codat query string. [Read more](https://docs.codat.io/using-the-api/querying).                  |                                                                                                 |
+| `retries`                                                                                       | [utils.RetryConfig](../../models/utils/retryconfig.md)                                          | :heavy_minus_sign:                                                                              | Configuration to override the default retry behavior of the client.                             |                                                                                                 |
+| `config`                                                                                        | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                    | :heavy_minus_sign:                                                                              | Available config options for making requests.                                                   |                                                                                                 |
+
+
+### Response
+
+**Promise<[operations.ListCompaniesResponse](../../models/operations/listcompaniesresponse.md)>**
+
+
+## update
+
+﻿Updates both the name and description of the company.
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { UpdateCompanyRequest } from "openapi/dist/sdk/models/operations";
+import { CompanyRequestBody } from "openapi/dist/sdk/models/shared";
+
+(async() => {
+  const sdk = new SDK({
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  });
+const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
+const companyRequestBody: CompanyRequestBody = {
+  description: "Requested early access to the new financing scheme.",
+  name: "Bank of Dave",
+};
+
+  const res = await sdk.companies.update(companyId, companyRequestBody);
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `companyId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a company.                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                   |
+| `companyRequestBody`                                                   | [shared.CompanyRequestBody](../../models/shared/companyrequestbody.md) | :heavy_minus_sign:                                                     | N/A                                                                    |                                                                        |
+| `retries`                                                              | [utils.RetryConfig](../../models/utils/retryconfig.md)                 | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |                                                                        |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |                                                                        |
+
+
+### Response
+
+**Promise<[operations.UpdateCompanyResponse](../../models/operations/updatecompanyresponse.md)>**
+
