@@ -75,14 +75,14 @@ const journalEntry: JournalEntry = {
   sourceModifiedDate: "2022-10-23T00:00:00.000Z",
   supplementalData: {
     content: {
-      "blue": {
-        "shred": "abnormally",
+      "key": {
+        "key": "string",
       },
     },
   },
   updatedOn: "2022-10-23T00:00:00.000Z",
 };
-const timeoutInMinutes: number = 169727;
+const timeoutInMinutes: number = 69025;
 
   const res = await sdk.journalEntries.create(companyId, connectionId, journalEntry, timeoutInMinutes);
 
@@ -157,7 +157,7 @@ import { DeleteJournalEntryRequest } from "@speakeasy-sdks/accounting/dist/sdk/m
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const journalEntryId: string = "program";
+const journalEntryId: string = "string";
 
   const res = await sdk.journalEntries.delete(companyId, connectionId, journalEntryId);
 
@@ -205,7 +205,7 @@ import { GetJournalEntryRequest } from "@speakeasy-sdks/accounting/dist/sdk/mode
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const journalEntryId: string = "female";
+const journalEntryId: string = "string";
 
   const res = await sdk.journalEntries.get(companyId, journalEntryId);
 

@@ -80,13 +80,13 @@ const customer: Customer = {
   status: CustomerStatus.Archived,
   supplementalData: {
     content: {
-      "grey": {
-        "technology": "East",
+      "key": {
+        "key": "string",
       },
     },
   },
 };
-const timeoutInMinutes: number = 169727;
+const timeoutInMinutes: number = 796474;
 
   const res = await sdk.customers.create(companyId, connectionId, customer, timeoutInMinutes);
 
@@ -135,7 +135,7 @@ import { DownloadCustomerAttachmentRequest } from "@speakeasy-sdks/accounting/di
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const customerId: string = "complex";
+const customerId: string = "string";
 
   const res = await sdk.customers.downloadAttachment(attachmentId, companyId, connectionId, customerId);
 
@@ -184,7 +184,7 @@ import { GetCustomerRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/o
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const customerId: string = "female";
+const customerId: string = "string";
 
   const res = await sdk.customers.get(companyId, customerId);
 
@@ -231,7 +231,7 @@ import { GetCustomerAttachmentRequest } from "@speakeasy-sdks/accounting/dist/sd
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const customerId: string = "provided";
+const customerId: string = "string";
 
   const res = await sdk.customers.getAttachment(attachmentId, companyId, connectionId, customerId);
 
@@ -374,7 +374,7 @@ import { ListCustomerAttachmentsRequest } from "@speakeasy-sdks/accounting/dist/
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const customerId: string = "behind";
+const customerId: string = "string";
 
   const res = await sdk.customers.listAttachments(companyId, connectionId, customerId);
 
@@ -453,15 +453,15 @@ import { AccountingAddressType, CustomerStatus, PhoneNumberType } from "@speakea
       status: CustomerStatus.Archived,
       supplementalData: {
         content: {
-          "redundant": {
-            "cheater": "Islands",
+          "key": {
+            "key": "string",
           },
         },
       },
     },
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    customerId: "online",
+    customerId: "string",
   });
 
   if (res.statusCode == 200) {

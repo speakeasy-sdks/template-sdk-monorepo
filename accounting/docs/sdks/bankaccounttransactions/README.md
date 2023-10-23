@@ -43,7 +43,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
         },
       ],
     },
-    accountId: "Configuration",
+    accountId: "string",
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
@@ -91,7 +91,7 @@ import { GetCreateBankTransactionsModelRequest } from "@speakeasy-sdks/accountin
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const accountId: string = "North";
+const accountId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
@@ -141,7 +141,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
   });
 
   const res = await sdk.bankAccountTransactions.list({
-    accountId: "Bicycle",
+    accountId: "string",
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     orderBy: "-modifiedDate",

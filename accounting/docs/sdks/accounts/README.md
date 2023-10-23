@@ -60,8 +60,8 @@ const account: Account = {
   status: AccountStatus.Active,
   supplementalData: {
     content: {
-      "Money": {
-        "blue": "shred",
+      "key": {
+        "key": "string",
       },
     },
   },
@@ -69,12 +69,12 @@ const account: Account = {
   validDatatypeLinks: [
     {
       links: [
-        "abnormally",
+        "string",
       ],
     },
   ],
 };
-const timeoutInMinutes: number = 455222;
+const timeoutInMinutes: number = 417458;
 
   const res = await sdk.accounts.create(companyId, connectionId, account, timeoutInMinutes);
 
@@ -122,7 +122,7 @@ import { GetAccountRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/op
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const accountId: string = "female";
+const accountId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.accounts.get(accountId, companyId);

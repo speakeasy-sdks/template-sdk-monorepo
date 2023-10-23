@@ -65,14 +65,14 @@ const item: Item = {
   sourceModifiedDate: "2022-10-23T00:00:00.000Z",
   supplementalData: {
     content: {
-      "Extended": {
-        "South": "shred",
+      "key": {
+        "key": "string",
       },
     },
   },
-  type: ItemType.Inventory,
+  type: ItemType.Service,
 };
-const timeoutInMinutes: number = 951062;
+const timeoutInMinutes: number = 417458;
 
   const res = await sdk.items.create(companyId, connectionId, item, timeoutInMinutes);
 
@@ -121,7 +121,7 @@ import { GetItemRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/opera
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const itemId: string = "female";
+const itemId: string = "string";
 
   const res = await sdk.items.get(companyId, itemId);
 

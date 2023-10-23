@@ -74,13 +74,13 @@ const payment: Payment = {
   sourceModifiedDate: "2022-10-23T00:00:00.000Z",
   supplementalData: {
     content: {
-      "blue": {
-        "shred": "abnormally",
+      "key": {
+        "key": "string",
       },
     },
   },
 };
-const timeoutInMinutes: number = 455222;
+const timeoutInMinutes: number = 786546;
 
   const res = await sdk.payments.create(companyId, connectionId, payment, timeoutInMinutes);
 
@@ -129,7 +129,7 @@ import { GetPaymentRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/op
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const paymentId: string = "female";
+const paymentId: string = "string";
 
   const res = await sdk.payments.get(companyId, paymentId);
 

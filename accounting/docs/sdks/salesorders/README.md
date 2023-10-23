@@ -32,7 +32,7 @@ import { GetSalesOrderRequest } from "@speakeasy-sdks/accounting/dist/sdk/models
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const salesOrderId: string = "female";
+const salesOrderId: string = "string";
 
   const res = await sdk.salesOrders.get(companyId, salesOrderId);
 
