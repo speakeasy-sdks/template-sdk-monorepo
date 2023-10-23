@@ -22,11 +22,11 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DataType } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { DataType } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -51,14 +51,14 @@ import { DataType } from "openapi/dist/sdk/models/shared";
       sourceModifiedDate: "2022-10-23T00:00:00.000Z",
       supplementalData: {
         content: {
-          "innovative": {
-            "blue": "shred",
+          "key": {
+            "key": "string",
           },
         },
       },
       to: {
         accountRef: {},
-        currency: "USD",
+        currency: "GBP",
       },
       trackingCategoryRefs: [
         {
@@ -106,11 +106,11 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetCreateTransfersModelRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetCreateTransfersModelRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";

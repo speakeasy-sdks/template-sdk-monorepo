@@ -22,12 +22,12 @@ You can [learn more](https://docs.codat.io/lending/excel/overview) about valid E
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DownloadExcelReportRequest } from "openapi/dist/sdk/models/operations";
-import { ExcelReportTypes } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { DownloadExcelReportRequest } from "lending/dist/sdk/models/operations";
+import { ExcelReportTypes } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -79,12 +79,12 @@ In response, the endpoint returns the [status](https://docs.codat.io/lending-api
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GenerateExcelReportRequest } from "openapi/dist/sdk/models/operations";
-import { ExcelReportTypes } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { GenerateExcelReportRequest } from "lending/dist/sdk/models/operations";
+import { ExcelReportTypes } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -124,12 +124,12 @@ When the report generation completes successfully, the `inProgress` property wil
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetExcelReportGenerationStatusRequest } from "openapi/dist/sdk/models/operations";
-import { ExcelReportTypes } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { GetExcelReportGenerationStatusRequest } from "lending/dist/sdk/models/operations";
+import { ExcelReportTypes } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";

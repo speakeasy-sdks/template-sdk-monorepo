@@ -17,11 +17,11 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { RefreshAllDataTypesRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { RefreshAllDataTypesRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -57,12 +57,12 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { RefreshDataTypeRequest } from "openapi/dist/sdk/models/operations";
-import { DataType } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { RefreshDataTypeRequest } from "lending/dist/sdk/models/operations";
+import { DataType } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";

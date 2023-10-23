@@ -23,17 +23,17 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DownloadAccountingInvoiceAttachmentRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { DownloadAccountingInvoiceAttachmentRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "complex";
+const invoiceId: string = "string";
 
   const res = await sdk.accountsReceivable.invoices.downloadAttachment(attachmentId, companyId, connectionId, invoiceId);
 
@@ -67,15 +67,15 @@ const invoiceId: string = "complex";
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DownloadAccountingInvoicePdfRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { DownloadAccountingInvoicePdfRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const invoiceId: string = "Island";
+const invoiceId: string = "string";
 
   const res = await sdk.accountsReceivable.invoices.downloadPdf(companyId, invoiceId);
 
@@ -113,15 +113,15 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetAccountingInvoiceRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetAccountingInvoiceRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const invoiceId: string = "female";
+const invoiceId: string = "string";
 
   const res = await sdk.accountsReceivable.invoices.get(companyId, invoiceId);
 
@@ -158,17 +158,17 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetAccountingInvoiceAttachmentRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetAccountingInvoiceAttachmentRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "provided";
+const invoiceId: string = "string";
 
   const res = await sdk.accountsReceivable.invoices.getAttachment(attachmentId, companyId, connectionId, invoiceId);
 
@@ -213,10 +213,10 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { Lending } from "lending";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -259,16 +259,16 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { ListAccountingInvoiceAttachmentsRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { ListAccountingInvoiceAttachmentsRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "behind";
+const invoiceId: string = "string";
 
   const res = await sdk.accountsReceivable.invoices.listAttachments(companyId, connectionId, invoiceId);
 
@@ -301,17 +301,17 @@ Gets a list of invoices linked to the corresponding banking transaction
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { ListReconciledInvoicesRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { ListReconciledInvoicesRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const page: number = 1;
 const pageSize: number = 100;
-const query: string = "Kids";
+const query: string = "string";
 
   const res = await sdk.accountsReceivable.invoices.listReconciled(companyId, page, pageSize, query);
 

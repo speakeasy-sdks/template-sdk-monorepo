@@ -20,11 +20,11 @@ The [details](https://docs.codat.io/lending-api#/schemas/DataIntegrityDetails) a
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DataIntegrityDataType } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { DataIntegrityDataType } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -70,12 +70,12 @@ The response tells you:
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetDataIntegrityStatusRequest } from "openapi/dist/sdk/models/operations";
-import { DataIntegrityDataType } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { GetDataIntegrityStatusRequest } from "lending/dist/sdk/models/operations";
+import { DataIntegrityDataType } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -115,17 +115,17 @@ The endpoint response includes only the summary results, not transactions. To vi
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetDataIntegritySummariesRequest } from "openapi/dist/sdk/models/operations";
-import { DataIntegrityDataType } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { GetDataIntegritySummariesRequest } from "lending/dist/sdk/models/operations";
+import { DataIntegrityDataType } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const dataType: DataIntegrityDataType = DataIntegrityDataType.BankingAccounts;
-const query: string = "Country";
+const query: string = "string";
 
   const res = await sdk.dataIntegrity.summaries(companyId, dataType, query);
 

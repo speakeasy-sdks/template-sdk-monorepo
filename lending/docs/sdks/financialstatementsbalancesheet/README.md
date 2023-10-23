@@ -13,11 +13,11 @@ Gets the latest balance sheet for a company.
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetAccountingBalanceSheetRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetAccountingBalanceSheetRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -59,11 +59,11 @@ Codat suggests a category for each account automatically, but you can [change it
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetCategorizedBalanceSheetStatementRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetCategorizedBalanceSheetStatementRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";

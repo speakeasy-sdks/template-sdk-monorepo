@@ -13,11 +13,11 @@ Retrieve create operation.
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetCreateOperationRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetCreateOperationRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -53,10 +53,10 @@ List create operations.
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { Lending } from "lending";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 

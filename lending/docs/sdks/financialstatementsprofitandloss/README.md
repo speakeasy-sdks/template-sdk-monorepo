@@ -13,11 +13,11 @@ Gets the latest profit and loss for a company.
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetAccountingProfitAndLossRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetAccountingProfitAndLossRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -59,11 +59,11 @@ Codat suggests a category for each account automatically, but you can [change it
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetCategorizedProfitAndLossStatementRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetCategorizedProfitAndLossStatementRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";

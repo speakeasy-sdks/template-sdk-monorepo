@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 16f8bd19314fa53f4f3584f48ff81f1d
   docVersion: 3.0.0
-  speakeasyVersion: 1.102.0
-  generationVersion: 2.166.0
+  speakeasyVersion: 1.104.0
+  generationVersion: 2.169.0
 generation:
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   sdkClassName: lending
@@ -11,7 +11,7 @@ generation:
 features:
   typescript:
     acceptHeaders: 2.81.1
-    core: 2.92.4
+    core: 2.93.0
     deprecations: 2.81.1
     examples: 2.81.3
     flattening: 2.81.1
@@ -21,7 +21,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.1
 typescript:
-  version: 0.1.0
+  version: 0.2.0
   author: Speakeasy
   flattenGlobalSecurity: true
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending

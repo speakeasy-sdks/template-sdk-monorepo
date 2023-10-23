@@ -22,11 +22,11 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DataType } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { DataType } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -83,13 +83,13 @@ import { DataType } from "openapi/dist/sdk/models/shared";
       subTotal: 9510.62,
       supplementalData: {
         content: {
-          "abnormally": {
-            "deposit": "evolve",
+          "key": {
+            "key": "string",
           },
         },
       },
-      taxAmount: 7150.4,
-      totalAmount: 7926.2,
+      taxAmount: 8915.1,
+      totalAmount: 0.86,
     },
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -131,11 +131,11 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetCreateDirectCostsModelRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetCreateDirectCostsModelRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";

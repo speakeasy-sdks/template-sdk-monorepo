@@ -36,11 +36,11 @@ The report data then combines multiple reporting dimensions and measures and out
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { PeriodUnit } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { PeriodUnit } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -104,11 +104,11 @@ The report data then combines multiple reporting dimensions and measures and out
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { PeriodUnit } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { PeriodUnit } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 

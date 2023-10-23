@@ -15,12 +15,12 @@ Returns aged creditors report for company that shows the total balance owed by a
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetAccountingAgedCreditorsReportRequest } from "openapi/dist/sdk/models/operations";
-import { RFCDate } from "openapi/dist/sdk/types";
+import { Lending } from "lending";
+import { GetAccountingAgedCreditorsReportRequest } from "lending/dist/sdk/models/operations";
+import { RFCDate } from "lending/dist/sdk/types";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -60,12 +60,12 @@ Returns aged debtors report for company that shows the total outstanding balance
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetAccountingAgedDebtorsReportRequest } from "openapi/dist/sdk/models/operations";
-import { RFCDate } from "openapi/dist/sdk/types";
+import { Lending } from "lending";
+import { GetAccountingAgedDebtorsReportRequest } from "lending/dist/sdk/models/operations";
+import { RFCDate } from "lending/dist/sdk/types";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -105,11 +105,11 @@ Indicates whether the aged creditor report is available for the company.
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { IsAgedCreditorsReportAvailableRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { IsAgedCreditorsReportAvailableRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -143,11 +143,11 @@ Indicates whether the aged debtors report is available for the company.
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { IsAgedDebtorsReportAvailableRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { IsAgedDebtorsReportAvailableRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";

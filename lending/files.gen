@@ -1055,7 +1055,7 @@ docs/models/shared/clientratelimitresetwebhookdata.md
 docs/models/webhooks/accountcategoriesupdatedresponse.md
 docs/models/webhooks/clientratelimitreachedresponse.md
 docs/models/webhooks/clientratelimitresetresponse.md
-docs/sdks/sdk/README.md
+docs/sdks/lending/README.md
 docs/models/utils/retryconfig.md
 docs/sdks/accountingbankdata/README.md
 docs/sdks/accountingbankdataaccounts/README.md

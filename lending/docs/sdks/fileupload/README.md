@@ -18,11 +18,11 @@ The *Download files* endpoint downloads all files that have  been uploaded by to
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DownloadFilesRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { DownloadFilesRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -58,11 +58,11 @@ const date: string = "2022-10-23T00:00:00.000Z";
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { ListFilesRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { ListFilesRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -102,18 +102,18 @@ Uploaded files must meet the following requirements:
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { UploadFilesRequest, UploadFilesRequestBody } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { UploadFilesRequest, UploadFilesRequestBody } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const requestBody: UploadFilesRequestBody = {
   content: "F?SRSKG@^n" as bytes <<<>>>,
-  requestBody: "incubate",
+  requestBody: "string",
 };
 
   const res = await sdk.fileUpload.upload(companyId, connectionId, requestBody);

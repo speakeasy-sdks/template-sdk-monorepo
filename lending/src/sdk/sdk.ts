@@ -66,9 +66,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "3.0.0";
-    sdkVersion = "0.1.0";
-    genVersion = "2.166.0";
-    userAgent = "speakeasy-sdk/typescript 0.1.0 2.166.0 3.0.0 openapi";
+    sdkVersion = "0.2.0";
+    genVersion = "2.169.0";
+    userAgent = "speakeasy-sdk/typescript 0.2.0 2.169.0 3.0.0 lending";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -106,7 +106,7 @@ export class SDKConfiguration {
  * | Manage data          | Control how data is retrieved from an integration.                                                         |
  * | File upload          | Endpoints to manage uploaded files.                                                                        |
  */
-export class SDK {
+export class Lending {
     /**
      * Access bank transactions from an accounting platform.
      */
