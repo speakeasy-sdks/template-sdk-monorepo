@@ -35,6 +35,7 @@ const directCostId: string = "string";
 
   const res = await sdk.transactions.directCosts.downloadAttachment(attachmentId, companyId, connectionId, directCostId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -85,6 +86,7 @@ const directCostId: string = "string";
 
   const res = await sdk.transactions.directCosts.get(companyId, connectionId, directCostId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -132,6 +134,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const directCostId: string = "string";
 
   const res = await sdk.transactions.directCosts.getAttachment(attachmentId, companyId, connectionId, directCostId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -183,6 +186,7 @@ import { Lending } from "lending";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -227,6 +231,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const directCostId: string = "string";
 
   const res = await sdk.transactions.directCosts.listAttachments(companyId, connectionId, directCostId);
+
 
   if (res.statusCode == 200) {
     // handle response

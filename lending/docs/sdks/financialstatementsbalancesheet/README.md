@@ -27,6 +27,7 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
 
   const res = await sdk.financialStatements.balanceSheet.get(companyId, periodLength, periodsToCompare, startMonth);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -71,6 +72,7 @@ const reportDate: string = "29-09-2020";
 const numberOfPeriods: number = 258121;
 
   const res = await sdk.financialStatements.balanceSheet.getCategorizedAccounts(companyId, reportDate, numberOfPeriods);
+
 
   if (res.statusCode == 200) {
     // handle response

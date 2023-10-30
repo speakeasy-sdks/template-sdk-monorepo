@@ -37,6 +37,7 @@ const invoiceId: string = "string";
 
   const res = await sdk.accountsReceivable.invoices.downloadAttachment(attachmentId, companyId, connectionId, invoiceId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -78,6 +79,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const invoiceId: string = "string";
 
   const res = await sdk.accountsReceivable.invoices.downloadPdf(companyId, invoiceId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -125,6 +127,7 @@ const invoiceId: string = "string";
 
   const res = await sdk.accountsReceivable.invoices.get(companyId, invoiceId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -171,6 +174,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const invoiceId: string = "string";
 
   const res = await sdk.accountsReceivable.invoices.getAttachment(attachmentId, companyId, connectionId, invoiceId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -227,6 +231,7 @@ import { Lending } from "lending";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -272,6 +277,7 @@ const invoiceId: string = "string";
 
   const res = await sdk.accountsReceivable.invoices.listAttachments(companyId, connectionId, invoiceId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -314,6 +320,7 @@ const pageSize: number = 100;
 const query: string = "string";
 
   const res = await sdk.accountsReceivable.invoices.listReconciled(companyId, page, pageSize, query);
+
 
   if (res.statusCode == 200) {
     // handle response

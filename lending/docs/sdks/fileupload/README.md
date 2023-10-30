@@ -30,6 +30,7 @@ const date: string = "2022-10-23T00:00:00.000Z";
 
   const res = await sdk.fileUpload.download(companyId, date);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -68,6 +69,7 @@ import { ListFilesRequest } from "lending/dist/sdk/models/operations";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.fileUpload.listUploaded(companyId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -117,6 +119,7 @@ const requestBody: UploadFilesRequestBody = {
 };
 
   const res = await sdk.fileUpload.upload(companyId, connectionId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

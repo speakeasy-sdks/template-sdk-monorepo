@@ -35,6 +35,7 @@ const customerId: string = "string";
 
   const res = await sdk.accountsReceivable.customers.downloadAttachment(attachmentId, companyId, connectionId, customerId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -84,6 +85,7 @@ const customerId: string = "string";
 
   const res = await sdk.accountsReceivable.customers.get(companyId, customerId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -130,6 +132,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const customerId: string = "string";
 
   const res = await sdk.accountsReceivable.customers.getAttachment(attachmentId, companyId, connectionId, customerId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -180,6 +183,7 @@ import { Lending } from "lending";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -224,6 +228,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const customerId: string = "string";
 
   const res = await sdk.accountsReceivable.customers.listAttachments(companyId, connectionId, customerId);
+
 
   if (res.statusCode == 200) {
     // handle response

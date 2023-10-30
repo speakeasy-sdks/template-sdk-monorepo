@@ -32,6 +32,7 @@ const journalId: string = "string";
 
   const res = await sdk.transactions.journals.get(companyId, journalId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -78,6 +79,7 @@ import { Lending } from "lending";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

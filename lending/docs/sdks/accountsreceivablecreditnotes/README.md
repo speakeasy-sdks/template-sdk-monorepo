@@ -32,6 +32,7 @@ const creditNoteId: string = "string";
 
   const res = await sdk.accountsReceivable.creditNotes.get(companyId, creditNoteId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -78,6 +79,7 @@ import { Lending } from "lending";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

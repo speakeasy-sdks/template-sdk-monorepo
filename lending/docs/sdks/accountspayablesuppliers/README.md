@@ -35,6 +35,7 @@ const supplierId: string = "string";
 
   const res = await sdk.accountsPayable.suppliers.downloadAttachment(attachmentId, companyId, connectionId, supplierId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -84,6 +85,7 @@ const supplierId: string = "string";
 
   const res = await sdk.accountsPayable.suppliers.get(companyId, supplierId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -130,6 +132,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const supplierId: string = "string";
 
   const res = await sdk.accountsPayable.suppliers.getAttachment(attachmentId, companyId, connectionId, supplierId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -180,6 +183,7 @@ import { Lending } from "lending";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -224,6 +228,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const supplierId: string = "string";
 
   const res = await sdk.accountsPayable.suppliers.listAttachments(companyId, connectionId, supplierId);
+
 
   if (res.statusCode == 200) {
     // handle response

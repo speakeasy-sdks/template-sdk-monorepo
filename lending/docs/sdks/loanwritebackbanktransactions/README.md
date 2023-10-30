@@ -43,6 +43,7 @@ import { Lending } from "lending";
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -91,6 +92,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.loanWriteback.bankTransactions.getCreateModel(accountId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response

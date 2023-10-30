@@ -35,6 +35,7 @@ const reportType: ExcelReportTypes = ExcelReportTypes.EnhancedFinancials;
 
   const res = await sdk.excelReports.download(companyId, reportType);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -92,6 +93,7 @@ const reportType: ExcelReportTypes = ExcelReportTypes.EnhancedInvoices;
 
   const res = await sdk.excelReports.generate(companyId, reportType);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -136,6 +138,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const reportType: ExcelReportTypes = ExcelReportTypes.EnhancedCashFlow;
 
   const res = await sdk.excelReports.getStatus(companyId, reportType);
+
 
   if (res.statusCode == 200) {
     // handle response

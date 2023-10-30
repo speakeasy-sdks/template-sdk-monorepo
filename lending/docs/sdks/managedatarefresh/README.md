@@ -28,6 +28,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.manageData.refresh.allDataTypes(companyId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -70,6 +71,7 @@ const dataType: DataType = DataType.Invoices;
 const connectionId: string = "34f47fda-384b-4d2f-a80b-311909008b33";
 
   const res = await sdk.manageData.refresh.dataType(companyId, dataType, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response

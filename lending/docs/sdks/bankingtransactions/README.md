@@ -33,6 +33,7 @@ const transactionId: string = "string";
 
   const res = await sdk.banking.transactions.get(companyId, connectionId, transactionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -81,6 +82,7 @@ import { Lending } from "lending";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

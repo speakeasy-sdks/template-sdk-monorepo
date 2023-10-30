@@ -30,6 +30,7 @@ const query: string = "string";
 
   const res = await sdk.banking.categorizedStatement.get(companyId, page, pageSize, query);
 
+
   if (res.statusCode == 200) {
     // handle response
   }

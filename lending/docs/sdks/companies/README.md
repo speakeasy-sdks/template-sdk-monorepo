@@ -36,6 +36,7 @@ import { Lending } from "lending";
     name: "Bank of Dave",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -75,6 +76,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.companies.delete(companyId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -112,6 +114,7 @@ import { GetCompanyRequest } from "lending/dist/sdk/models/operations";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.companies.get(companyId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -153,6 +156,7 @@ const pageSize: number = 100;
 const query: string = "string";
 
   const res = await sdk.companies.list(orderBy, page, pageSize, query);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -199,6 +203,7 @@ const companyRequestBody: CompanyRequestBody = {
 };
 
   const res = await sdk.companies.update(companyId, companyRequestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

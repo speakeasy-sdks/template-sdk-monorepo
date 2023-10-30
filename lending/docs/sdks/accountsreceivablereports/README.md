@@ -30,6 +30,7 @@ const reportDate: RFCDate = new RFCDate("2022-12-31");
 
   const res = await sdk.accountsReceivable.reports.getAgedCreditors(companyId, numberOfPeriods, periodLengthDays, reportDate);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -75,6 +76,7 @@ const reportDate: RFCDate = new RFCDate("2022-12-31");
 
   const res = await sdk.accountsReceivable.reports.getAgedDebtors(companyId, numberOfPeriods, periodLengthDays, reportDate);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -116,6 +118,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.accountsReceivable.reports.isAgedCreditorsAvailable(companyId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -153,6 +156,7 @@ import { IsAgedDebtorsReportAvailableRequest } from "lending/dist/sdk/models/ope
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.accountsReceivable.reports.isAgedDebtorsAvailable(companyId);
+
 
   if (res.statusCode == 200) {
     // handle response

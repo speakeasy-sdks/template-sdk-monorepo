@@ -33,6 +33,7 @@ const customerId: string = "string";
 
   const res = await sdk.sales.customers.get(companyId, connectionId, customerId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -81,6 +82,7 @@ import { Lending } from "lending";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

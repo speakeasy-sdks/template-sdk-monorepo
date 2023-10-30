@@ -25,6 +25,7 @@ const pushOperationKey: string = "b18d8d81-fd7b-4764-a31e-475cb1f36591";
 
   const res = await sdk.loanWriteback.createOperations.get(companyId, pushOperationKey);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -66,6 +67,7 @@ import { Lending } from "lending";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

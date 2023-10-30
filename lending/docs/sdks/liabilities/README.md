@@ -36,6 +36,7 @@ const sourceType: GenerateLoanSummarySourceType = GenerateLoanSummarySourceType.
 
   const res = await sdk.liabilities.generateLoanSummary(companyId, sourceType);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -80,6 +81,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const sourceType: GenerateLoanTransactionsSourceType = GenerateLoanTransactionsSourceType.Accounting;
 
   const res = await sdk.liabilities.generateLoanTransactions(companyId, sourceType);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -126,6 +128,7 @@ const sourceType: GetLoanSummarySourceType = GetLoanSummarySourceType.Banking;
 
   const res = await sdk.liabilities.getLoanSummary(companyId, sourceType);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -170,6 +173,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const sourceType: ListLoanTransactionsSourceType = ListLoanTransactionsSourceType.Commerce;
 
   const res = await sdk.liabilities.listLoanTransactions(companyId, sourceType);
+
 
   if (res.statusCode == 200) {
     // handle response

@@ -36,6 +36,7 @@ import { DataIntegrityDataType } from "lending/dist/sdk/models/shared";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -83,6 +84,7 @@ const dataType: DataIntegrityDataType = DataIntegrityDataType.BankingAccounts;
 
   const res = await sdk.dataIntegrity.status(companyId, dataType);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -128,6 +130,7 @@ const dataType: DataIntegrityDataType = DataIntegrityDataType.BankingAccounts;
 const query: string = "string";
 
   const res = await sdk.dataIntegrity.summaries(companyId, dataType, query);
+
 
   if (res.statusCode == 200) {
     // handle response

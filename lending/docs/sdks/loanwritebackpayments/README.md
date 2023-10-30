@@ -67,6 +67,7 @@ import { PaymentLinkType } from "lending/dist/sdk/models/shared";
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -104,7 +105,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Lending } from "lending";
-import { GetCreatePaymentsModelRequest } from "lending/dist/sdk/models/operations";
+import { GetCreatePaymentModelRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new Lending({
@@ -114,6 +115,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.loanWriteback.payments.getCreateModel(companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -133,5 +135,5 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
 ### Response
 
-**Promise<[operations.GetCreatePaymentsModelResponse](../../models/operations/getcreatepaymentsmodelresponse.md)>**
+**Promise<[operations.GetCreatePaymentModelResponse](../../models/operations/getcreatepaymentmodelresponse.md)>**
 

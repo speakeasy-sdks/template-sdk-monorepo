@@ -35,6 +35,7 @@ const directIncomeId: string = "string";
 
   const res = await sdk.accountsReceivable.directIncomes.downloadAttachment(attachmentId, companyId, connectionId, directIncomeId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -85,6 +86,7 @@ const directIncomeId: string = "string";
 
   const res = await sdk.accountsReceivable.directIncomes.get(companyId, connectionId, directIncomeId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -133,6 +135,7 @@ import { Lending } from "lending";
     directIncomeId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -180,6 +183,7 @@ import { Lending } from "lending";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -224,6 +228,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const directIncomeId: string = "string";
 
   const res = await sdk.accountsReceivable.directIncomes.listAttachments(companyId, connectionId, directIncomeId);
+
 
   if (res.statusCode == 200) {
     // handle response

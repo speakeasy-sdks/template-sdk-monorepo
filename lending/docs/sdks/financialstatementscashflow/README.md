@@ -26,6 +26,7 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
 
   const res = await sdk.financialStatements.cashFlow.get(companyId, periodLength, periodsToCompare, startMonth);
 
+
   if (res.statusCode == 200) {
     // handle response
   }

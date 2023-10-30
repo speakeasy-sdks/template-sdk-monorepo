@@ -33,6 +33,7 @@ const disputeId: string = "string";
 
   const res = await sdk.sales.disputes.get(companyId, connectionId, disputeId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -81,6 +82,7 @@ import { Lending } from "lending";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

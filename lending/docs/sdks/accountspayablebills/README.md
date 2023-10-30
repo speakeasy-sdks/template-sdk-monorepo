@@ -35,6 +35,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.accountsPayable.bills.downloadAttachment(attachmentId, billId, companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -84,6 +85,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.accountsPayable.bills.get(billId, companyId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -130,6 +132,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.accountsPayable.bills.getAttachment(attachmentId, billId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -180,6 +183,7 @@ import { Lending } from "lending";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -224,6 +228,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.accountsPayable.bills.listAttachments(billId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
