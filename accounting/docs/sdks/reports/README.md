@@ -37,6 +37,7 @@ const reportDate: RFCDate = new RFCDate("2022-12-31");
 
   const res = await sdk.reports.getAgedCreditorsReport(companyId, numberOfPeriods, periodLengthDays, reportDate);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -82,6 +83,7 @@ const reportDate: RFCDate = new RFCDate("2022-12-31");
 
   const res = await sdk.reports.getAgedDebtorsReport(companyId, numberOfPeriods, periodLengthDays, reportDate);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -125,6 +127,7 @@ const periodsToCompare: number = 20;
 const startMonth: string = "2022-10-23T00:00:00.000Z";
 
   const res = await sdk.reports.getBalanceSheet(companyId, periodLength, periodsToCompare, startMonth);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -170,6 +173,7 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
 
   const res = await sdk.reports.getCashFlowStatement(companyId, periodLength, periodsToCompare, startMonth);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -214,6 +218,7 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
 
   const res = await sdk.reports.getProfitAndLoss(companyId, periodLength, periodsToCompare, startMonth);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -255,6 +260,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.reports.isAgedCreditorsReportAvailable(companyId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -292,6 +298,7 @@ import { IsAgedDebtorReportAvailableRequest } from "@speakeasy-sdks/accounting/d
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.reports.isAgedDebtorReportAvailable(companyId);
+
 
   if (res.statusCode == 200) {
     // handle response

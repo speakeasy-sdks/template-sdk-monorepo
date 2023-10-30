@@ -48,6 +48,7 @@ const timeoutInMinutes: number = 859213;
 
   const res = await sdk.journals.create(companyId, connectionId, journal, timeoutInMinutes);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -96,6 +97,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const journalId: string = "string";
 
   const res = await sdk.journals.get(companyId, journalId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -146,6 +148,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.journals.getCreateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -192,6 +195,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

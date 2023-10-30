@@ -40,12 +40,12 @@ import {
   AccountingCustomerRef,
   AccountRef,
   Bill,
+  BillAccountingPaymentAllocation,
+  BillAccountingPaymentAllocationAllocation,
   BilledToType,
   BillLineItem,
   BillLineItemRecordLineReference,
   BillLineItemRecordLineReferenceDataType,
-  BillPaymentAllocation,
-  BillPaymentAllocationAllocation,
   BillStatus,
   BillWithholdingTax,
   ItemRef,
@@ -146,6 +146,7 @@ const timeoutInMinutes: number = 89964;
 
   const res = await sdk.bills.create(companyId, connectionId, bill, timeoutInMinutes);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -216,6 +217,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.delete(billId, companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -263,6 +265,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.downloadAttachment(attachmentId, billId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -313,6 +316,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.bills.get(billId, companyId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -359,6 +363,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.getAttachment(attachmentId, billId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -411,6 +416,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.getCreateUpdateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -458,6 +464,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -502,6 +509,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.listAttachments(billId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -631,6 +639,7 @@ import { BilledToType, BillLineItemRecordLineReferenceDataType, BillStatus } fro
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -683,6 +692,7 @@ const requestBody: UploadBillAttachmentRequestBody = {
 };
 
   const res = await sdk.bills.uploadAttachment(billId, companyId, connectionId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

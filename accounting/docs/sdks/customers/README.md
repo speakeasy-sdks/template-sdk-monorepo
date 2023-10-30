@@ -90,6 +90,7 @@ const timeoutInMinutes: number = 796474;
 
   const res = await sdk.customers.create(companyId, connectionId, customer, timeoutInMinutes);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -138,6 +139,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const customerId: string = "string";
 
   const res = await sdk.customers.downloadAttachment(attachmentId, companyId, connectionId, customerId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -188,6 +190,7 @@ const customerId: string = "string";
 
   const res = await sdk.customers.get(companyId, customerId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -234,6 +237,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const customerId: string = "string";
 
   const res = await sdk.customers.getAttachment(attachmentId, companyId, connectionId, customerId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -286,6 +290,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.customers.getCreateUpdateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -333,6 +338,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -377,6 +383,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const customerId: string = "string";
 
   const res = await sdk.customers.listAttachments(companyId, connectionId, customerId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -463,6 +470,7 @@ import { AccountingAddressType, CustomerStatus, PhoneNumberType } from "@speakea
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     customerId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

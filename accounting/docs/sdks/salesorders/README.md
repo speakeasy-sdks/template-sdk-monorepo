@@ -36,6 +36,7 @@ const salesOrderId: string = "string";
 
   const res = await sdk.salesOrders.get(companyId, salesOrderId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -82,6 +83,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

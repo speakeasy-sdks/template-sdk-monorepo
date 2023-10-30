@@ -151,6 +151,7 @@ const timeoutInMinutes: number = 792620;
 
   const res = await sdk.invoices.create(companyId, connectionId, invoice, timeoutInMinutes);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -221,6 +222,7 @@ const invoiceId: string = "string";
 
   const res = await sdk.invoices.delete(companyId, connectionId, invoiceId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -269,6 +271,7 @@ const invoiceId: string = "string";
 
   const res = await sdk.invoices.downloadAttachment(attachmentId, companyId, connectionId, invoiceId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -310,6 +313,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const invoiceId: string = "string";
 
   const res = await sdk.invoices.downloadPdf(companyId, invoiceId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -357,6 +361,7 @@ const invoiceId: string = "string";
 
   const res = await sdk.invoices.get(companyId, invoiceId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -403,6 +408,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const invoiceId: string = "string";
 
   const res = await sdk.invoices.getAttachment(attachmentId, companyId, connectionId, invoiceId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -454,6 +460,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.invoices.getCreateUpdateModel(companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -508,6 +515,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -552,6 +560,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const invoiceId: string = "string";
 
   const res = await sdk.invoices.listAttachments(companyId, connectionId, invoiceId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -686,6 +695,7 @@ import { BilledToType1, DataType, InvoiceStatus } from "@speakeasy-sdks/accounti
     invoiceId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -738,6 +748,7 @@ const requestBody: UploadInvoiceAttachmentRequestBody = {
 };
 
   const res = await sdk.invoices.uploadAttachment(companyId, connectionId, invoiceId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

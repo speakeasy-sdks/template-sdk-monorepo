@@ -87,6 +87,7 @@ const transfer: Transfer = {
 
   const res = await sdk.transfers.create(companyId, connectionId, transfer);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -135,6 +136,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const transferId: string = "string";
 
   const res = await sdk.transfers.get(companyId, connectionId, transferId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -186,6 +188,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.transfers.getCreateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -233,6 +236,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -286,6 +290,7 @@ const requestBody: UploadTransferAttachmentRequestBody = {
 };
 
   const res = await sdk.transfers.uploadAttachment(companyId, connectionId, transferId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

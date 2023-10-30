@@ -94,6 +94,7 @@ const timeoutInMinutes: number = 69025;
 
   const res = await sdk.purchaseOrders.create(companyId, connectionId, purchaseOrder, timeoutInMinutes);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -143,6 +144,7 @@ const purchaseOrderId: string = "string";
 
   const res = await sdk.purchaseOrders.downloadAttachment(attachmentId, companyId, connectionId, purchaseOrderId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -188,6 +190,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const purchaseOrderId: string = "string";
 
   const res = await sdk.purchaseOrders.downloadPurchaseOrderPdf(companyId, purchaseOrderId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -236,6 +239,7 @@ const purchaseOrderId: string = "string";
 
   const res = await sdk.purchaseOrders.get(companyId, purchaseOrderId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -282,6 +286,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const purchaseOrderId: string = "string";
 
   const res = await sdk.purchaseOrders.getAttachment(attachmentId, companyId, connectionId, purchaseOrderId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -334,6 +339,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.purchaseOrders.getCreateUpdateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -381,6 +387,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -425,6 +432,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const purchaseOrderId: string = "string";
 
   const res = await sdk.purchaseOrders.listAttachments(companyId, connectionId, purchaseOrderId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -510,6 +518,7 @@ import { AccountingAddressType, PurchaseOrderStatus } from "@speakeasy-sdks/acco
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     purchaseOrderId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

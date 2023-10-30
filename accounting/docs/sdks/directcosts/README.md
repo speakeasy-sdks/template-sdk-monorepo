@@ -123,6 +123,7 @@ const timeoutInMinutes: number = 455222;
 
   const res = await sdk.directCosts.create(companyId, connectionId, directCost, timeoutInMinutes);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -171,6 +172,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const directCostId: string = "string";
 
   const res = await sdk.directCosts.downloadAttachment(attachmentId, companyId, connectionId, directCostId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -222,6 +224,7 @@ const directCostId: string = "string";
 
   const res = await sdk.directCosts.get(companyId, connectionId, directCostId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -269,6 +272,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const directCostId: string = "string";
 
   const res = await sdk.directCosts.getAttachment(attachmentId, companyId, connectionId, directCostId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -321,6 +325,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.directCosts.getCreateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -369,6 +374,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -413,6 +419,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const directCostId: string = "string";
 
   const res = await sdk.directCosts.listAttachments(companyId, connectionId, directCostId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -468,6 +475,7 @@ const requestBody: UploadDirectCostAttachmentRequestBody = {
 };
 
   const res = await sdk.directCosts.uploadAttachment(companyId, connectionId, directCostId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

@@ -36,6 +36,7 @@ const paymentMethodId: string = "string";
 
   const res = await sdk.paymentMethods.get(companyId, paymentMethodId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -82,6 +83,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

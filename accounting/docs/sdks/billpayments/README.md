@@ -88,6 +88,7 @@ const timeoutInMinutes: number = 786546;
 
   const res = await sdk.billPayments.create(companyId, connectionId, billPayment, timeoutInMinutes);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -157,6 +158,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.billPayments.delete(billPaymentId, companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -204,6 +206,7 @@ const billPaymentId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.billPayments.get(billPaymentId, companyId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -254,6 +257,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.billPayments.getCreateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -300,6 +304,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

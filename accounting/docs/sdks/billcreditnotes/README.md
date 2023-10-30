@@ -141,6 +141,7 @@ const timeoutInMinutes: number = 86;
 
   const res = await sdk.billCreditNotes.create(companyId, connectionId, billCreditNote, timeoutInMinutes);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -189,6 +190,7 @@ const billCreditNoteId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.billCreditNotes.get(billCreditNoteId, companyId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -239,6 +241,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.billCreditNotes.getCreateUpdateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -285,6 +288,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -414,6 +418,7 @@ import { BillCreditNoteStatus, BilledToType } from "@speakeasy-sdks/accounting/d
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -470,6 +475,7 @@ const requestBody: UploadBillCreditNoteAttachmentRequestBody = {
 };
 
   const res = await sdk.billCreditNotes.uploadAttachment(billCreditNoteId, companyId, connectionId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response
