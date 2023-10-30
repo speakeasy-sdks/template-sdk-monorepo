@@ -24,10 +24,10 @@ If forbidden characters (see `name` pattern) are present in the request, a compa
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { Lending } from "lending";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -35,6 +35,7 @@ import { SDK } from "openapi";
     description: "Requested early access to the new financing scheme.",
     name: "Bank of Dave",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -64,16 +65,17 @@ Permanently deletes a company, its connections and any cached data. This operati
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DeleteCompanyRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { DeleteCompanyRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.companies.delete(companyId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -102,16 +104,17 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetCompanyRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetCompanyRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.companies.get(companyId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -140,19 +143,20 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { ListCompaniesRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { ListCompaniesRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const orderBy: string = "-modifiedDate";
 const page: number = 1;
 const pageSize: number = 100;
-const query: string = "Bicycle";
+const query: string = "string";
 
   const res = await sdk.companies.list(orderBy, page, pageSize, query);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -184,12 +188,12 @@ const query: string = "Bicycle";
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { UpdateCompanyRequest } from "openapi/dist/sdk/models/operations";
-import { CompanyRequestBody } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { UpdateCompanyRequest } from "lending/dist/sdk/models/operations";
+import { CompanyRequestBody } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -199,6 +203,7 @@ const companyRequestBody: CompanyRequestBody = {
 };
 
   const res = await sdk.companies.update(companyId, companyRequestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

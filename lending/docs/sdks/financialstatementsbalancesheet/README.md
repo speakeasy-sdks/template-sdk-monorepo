@@ -13,11 +13,11 @@ Gets the latest balance sheet for a company.
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetAccountingBalanceSheetRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetAccountingBalanceSheetRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -26,6 +26,7 @@ const periodsToCompare: number = 20;
 const startMonth: string = "2022-10-23T00:00:00.000Z";
 
   const res = await sdk.financialStatements.balanceSheet.get(companyId, periodLength, periodsToCompare, startMonth);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -59,11 +60,11 @@ Codat suggests a category for each account automatically, but you can [change it
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetCategorizedBalanceSheetStatementRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetCategorizedBalanceSheetStatementRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -71,6 +72,7 @@ const reportDate: string = "29-09-2020";
 const numberOfPeriods: number = 258121;
 
   const res = await sdk.financialStatements.balanceSheet.getCategorizedAccounts(companyId, reportDate, numberOfPeriods);
+
 
   if (res.statusCode == 200) {
     // handle response

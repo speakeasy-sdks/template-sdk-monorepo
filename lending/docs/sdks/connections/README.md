@@ -22,11 +22,11 @@ Use the [List Integrations](https://docs.codat.io/lending-api#/operations/list-i
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { CreateConnectionRequest, CreateConnectionRequestBody } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { CreateConnectionRequest, CreateConnectionRequestBody } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -35,6 +35,7 @@ const requestBody: CreateConnectionRequestBody = {
 };
 
   const res = await sdk.connections.create(companyId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -65,17 +66,18 @@ This operation is not reversible. The end user would need to reauthorize a new d
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DeleteConnectionRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { DeleteConnectionRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.connections.delete(companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -105,17 +107,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetConnectionRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetConnectionRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.connections.get(companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -145,10 +148,10 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { Lending } from "lending";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -158,6 +161,7 @@ import { SDK } from "openapi";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -186,12 +190,12 @@ import { SDK } from "openapi";
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { UnlinkConnectionRequest, UnlinkConnectionUpdateConnection } from "openapi/dist/sdk/models/operations";
-import { DataConnectionStatus } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { UnlinkConnectionRequest, UnlinkConnectionUpdateConnection } from "lending/dist/sdk/models/operations";
+import { DataConnectionStatus } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -199,6 +203,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const requestBody: UnlinkConnectionUpdateConnection = {};
 
   const res = await sdk.connections.unlink(companyId, connectionId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

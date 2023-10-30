@@ -13,17 +13,18 @@ Retrieve create operation.
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetCreateOperationRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetCreateOperationRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const pushOperationKey: string = "b18d8d81-fd7b-4764-a31e-475cb1f36591";
 
   const res = await sdk.loanWriteback.createOperations.get(companyId, pushOperationKey);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -53,10 +54,10 @@ List create operations.
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { Lending } from "lending";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -66,6 +67,7 @@ import { SDK } from "openapi";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

@@ -12,11 +12,11 @@ Gets the latest cash flow statement for a company.
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetAccountingCashFlowStatementRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetAccountingCashFlowStatementRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -25,6 +25,7 @@ const periodsToCompare: number = 20;
 const startMonth: string = "2022-10-23T00:00:00.000Z";
 
   const res = await sdk.financialStatements.cashFlow.get(companyId, periodLength, periodsToCompare, startMonth);
+
 
   if (res.statusCode == 200) {
     // handle response

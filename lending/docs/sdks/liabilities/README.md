@@ -24,17 +24,18 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GenerateLoanSummaryRequest, GenerateLoanSummarySourceType } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GenerateLoanSummaryRequest, GenerateLoanSummarySourceType } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const sourceType: GenerateLoanSummarySourceType = GenerateLoanSummarySourceType.Accounting;
 
   const res = await sdk.liabilities.generateLoanSummary(companyId, sourceType);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -69,17 +70,18 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GenerateLoanTransactionsRequest, GenerateLoanTransactionsSourceType } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GenerateLoanTransactionsRequest, GenerateLoanTransactionsSourceType } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const sourceType: GenerateLoanTransactionsSourceType = GenerateLoanTransactionsSourceType.Accounting;
 
   const res = await sdk.liabilities.generateLoanTransactions(companyId, sourceType);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -114,17 +116,18 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetLoanSummaryRequest, GetLoanSummarySourceType } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetLoanSummaryRequest, GetLoanSummarySourceType } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const sourceType: GetLoanSummarySourceType = GetLoanSummarySourceType.Banking;
 
   const res = await sdk.liabilities.getLoanSummary(companyId, sourceType);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -159,17 +162,18 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { ListLoanTransactionsRequest, ListLoanTransactionsSourceType } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { ListLoanTransactionsRequest, ListLoanTransactionsSourceType } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const sourceType: ListLoanTransactionsSourceType = ListLoanTransactionsSourceType.Commerce;
 
   const res = await sdk.liabilities.listLoanTransactions(companyId, sourceType);
+
 
   if (res.statusCode == 200) {
     // handle response

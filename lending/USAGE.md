@@ -2,15 +2,15 @@
 
 
 ```typescript
-import { SDK } from "openapi";
+import { Lending } from "lending";
 
 (async () => {
-    const sdk = new SDK({
+    const sdk = new Lending({
         authHeader: "Basic BASE_64_ENCODED(API_KEY)",
     });
 
     const res = await sdk.accountingBankData.listTransactions({
-        accountId: "back",
+        accountId: "string",
         companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
         connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         orderBy: "-modifiedDate",

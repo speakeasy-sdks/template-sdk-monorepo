@@ -12,16 +12,17 @@ Get the state of each data type for a company
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetDataStatusRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetDataStatusRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.manageData.getStatus(companyId);
+
 
   if (res.statusCode == 200) {
     // handle response

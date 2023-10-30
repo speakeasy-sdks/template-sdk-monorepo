@@ -16,19 +16,20 @@ The _Get categorized bank statement_ endpoint provides a fully categorized list 
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetCategorizedBankStatementRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetCategorizedBankStatementRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const page: number = 1;
 const pageSize: number = 100;
-const query: string = "female";
+const query: string = "string";
 
   const res = await sdk.banking.categorizedStatement.get(companyId, page, pageSize, query);
+
 
   if (res.statusCode == 200) {
     // handle response

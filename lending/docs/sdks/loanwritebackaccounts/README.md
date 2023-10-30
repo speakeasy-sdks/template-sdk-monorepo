@@ -22,11 +22,11 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { AccountStatus, AccountType } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { AccountStatus, AccountType } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -46,8 +46,8 @@ import { AccountStatus, AccountType } from "openapi/dist/sdk/models/shared";
       status: AccountStatus.Active,
       supplementalData: {
         content: {
-          "Money": {
-            "blue": "shred",
+          "key": {
+            "key": "string",
           },
         },
       },
@@ -55,7 +55,7 @@ import { AccountStatus, AccountType } from "openapi/dist/sdk/models/shared";
       validDatatypeLinks: [
         {
           links: [
-            "abnormally",
+            "string",
           ],
         },
       ],
@@ -63,6 +63,7 @@ import { AccountStatus, AccountType } from "openapi/dist/sdk/models/shared";
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -100,17 +101,18 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetCreateChartOfAccountsModelRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetCreateChartOfAccountsModelRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.loanWriteback.accounts.getCreateModel(companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response

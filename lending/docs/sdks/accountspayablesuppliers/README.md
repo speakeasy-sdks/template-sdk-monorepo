@@ -21,19 +21,20 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DownloadAccountingSupplierAttachmentRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { DownloadAccountingSupplierAttachmentRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const supplierId: string = "complex";
+const supplierId: string = "string";
 
   const res = await sdk.accountsPayable.suppliers.downloadAttachment(attachmentId, companyId, connectionId, supplierId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -72,17 +73,18 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetAccountingSupplierRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetAccountingSupplierRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const supplierId: string = "female";
+const supplierId: string = "string";
 
   const res = await sdk.accountsPayable.suppliers.get(companyId, supplierId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -117,19 +119,20 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetAccountingSupplierAttachmentRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetAccountingSupplierAttachmentRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const supplierId: string = "provided";
+const supplierId: string = "string";
 
   const res = await sdk.accountsPayable.suppliers.getAttachment(attachmentId, companyId, connectionId, supplierId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -166,10 +169,10 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { Lending } from "lending";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -179,6 +182,7 @@ import { SDK } from "openapi";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -212,18 +216,19 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { ListAccountingSupplierAttachmentsRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { ListAccountingSupplierAttachmentsRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const supplierId: string = "behind";
+const supplierId: string = "string";
 
   const res = await sdk.accountsPayable.suppliers.listAttachments(companyId, connectionId, supplierId);
+
 
   if (res.statusCode == 200) {
     // handle response

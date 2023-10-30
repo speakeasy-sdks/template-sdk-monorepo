@@ -22,10 +22,10 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { Lending } from "lending";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -38,10 +38,11 @@ import { SDK } from "openapi";
         },
       ],
     },
-    accountId: "Configuration",
+    accountId: "string",
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -79,18 +80,19 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetCreateBankTransactionsModelRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetCreateBankTransactionsModelRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const accountId: string = "North";
+const accountId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.loanWriteback.bankTransactions.getCreateModel(accountId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
