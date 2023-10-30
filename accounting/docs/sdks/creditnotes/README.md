@@ -121,24 +121,25 @@ const creditNote: CreditNote = {
   subTotal: 3015.1,
   supplementalData: {
     content: {
-      "Northwest": {
-        "fuchsia": "Gasoline",
+      "key": {
+        "key": "string",
       },
     },
   },
-  totalAmount: 5862.2,
-  totalDiscount: 8275.63,
-  totalTaxAmount: 7524.38,
+  totalAmount: 899.64,
+  totalDiscount: 7150.4,
+  totalTaxAmount: 7926.2,
   withholdingTax: [
     {
-      amount: 4915.7,
-      name: "physical",
+      amount: 8559.52,
+      name: "string",
     },
   ],
 };
-const timeoutInMinutes: number = 357021;
+const timeoutInMinutes: number = 816588;
 
   const res = await sdk.creditNotes.create(companyId, connectionId, creditNote, timeoutInMinutes);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -185,9 +186,10 @@ import { GetCreditNoteRequest } from "@speakeasy-sdks/accounting/dist/sdk/models
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const creditNoteId: string = "female";
+const creditNoteId: string = "string";
 
   const res = await sdk.creditNotes.get(companyId, creditNoteId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -238,6 +240,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.creditNotes.getCreateUpdateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -284,6 +287,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -393,25 +397,26 @@ import { BilledToType1, CreditNoteStatus } from "@speakeasy-sdks/accounting/dist
       subTotal: 4995.57,
       supplementalData: {
         content: {
-          "withdrawal": {
-            "extend": "Plastic",
+          "key": {
+            "key": "string",
           },
         },
       },
-      totalAmount: 1395.79,
-      totalDiscount: 6447.13,
-      totalTaxAmount: 7892.75,
+      totalAmount: 4468.63,
+      totalDiscount: 3691.82,
+      totalTaxAmount: 3115.07,
       withholdingTax: [
         {
-          amount: 9936.8,
-          name: "immediately",
+          amount: 7884.4,
+          name: "string",
         },
       ],
     },
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    creditNoteId: "implement",
+    creditNoteId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

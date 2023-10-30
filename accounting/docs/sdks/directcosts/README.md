@@ -111,17 +111,18 @@ const directCost: DirectCost = {
   subTotal: 9510.62,
   supplementalData: {
     content: {
-      "abnormally": {
-        "deposit": "evolve",
+      "key": {
+        "key": "string",
       },
     },
   },
-  taxAmount: 7150.4,
-  totalAmount: 7926.2,
+  taxAmount: 8915.1,
+  totalAmount: 0.86,
 };
-const timeoutInMinutes: number = 855952;
+const timeoutInMinutes: number = 455222;
 
   const res = await sdk.directCosts.create(companyId, connectionId, directCost, timeoutInMinutes);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -168,9 +169,10 @@ import { DownloadDirectCostAttachmentRequest } from "@speakeasy-sdks/accounting/
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "complex";
+const directCostId: string = "string";
 
   const res = await sdk.directCosts.downloadAttachment(attachmentId, companyId, connectionId, directCostId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -218,9 +220,10 @@ import { GetDirectCostRequest } from "@speakeasy-sdks/accounting/dist/sdk/models
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "female";
+const directCostId: string = "string";
 
   const res = await sdk.directCosts.get(companyId, connectionId, directCostId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -266,9 +269,10 @@ import { GetDirectCostAttachmentRequest } from "@speakeasy-sdks/accounting/dist/
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "provided";
+const directCostId: string = "string";
 
   const res = await sdk.directCosts.getAttachment(attachmentId, companyId, connectionId, directCostId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -321,6 +325,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.directCosts.getCreateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -369,6 +374,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -410,9 +416,10 @@ import { ListDirectCostAttachmentsRequest } from "@speakeasy-sdks/accounting/dis
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "behind";
+const directCostId: string = "string";
 
   const res = await sdk.directCosts.listAttachments(companyId, connectionId, directCostId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -461,13 +468,14 @@ import { UploadDirectCostAttachmentRequest, UploadDirectCostAttachmentRequestBod
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "huzzah";
+const directCostId: string = "string";
 const requestBody: UploadDirectCostAttachmentRequestBody = {
-  content: "ghW&IC$xd6" as bytes <<<>>>,
-  requestBody: "novel",
+  content: "v/ghW&IC$x" as bytes <<<>>>,
+  requestBody: "string",
 };
 
   const res = await sdk.directCosts.uploadAttachment(companyId, connectionId, directCostId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

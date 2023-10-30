@@ -74,8 +74,8 @@ const billPayment: BillPayment = {
   sourceModifiedDate: "2022-10-23T00:00:00.000Z",
   supplementalData: {
     content: {
-      "blue": {
-        "shred": "abnormally",
+      "key": {
+        "key": "string",
       },
     },
   },
@@ -84,9 +84,10 @@ const billPayment: BillPayment = {
   },
   totalAmount: 1329.54,
 };
-const timeoutInMinutes: number = 455222;
+const timeoutInMinutes: number = 786546;
 
   const res = await sdk.billPayments.create(companyId, connectionId, billPayment, timeoutInMinutes);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -151,11 +152,12 @@ import { DeleteBillPaymentRequest } from "@speakeasy-sdks/accounting/dist/sdk/mo
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const billPaymentId: string = "program";
+const billPaymentId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.billPayments.delete(billPaymentId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -200,10 +202,11 @@ import { GetBillPaymentsRequest } from "@speakeasy-sdks/accounting/dist/sdk/mode
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const billPaymentId: string = "female";
+const billPaymentId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.billPayments.get(billPaymentId, companyId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -254,6 +257,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.billPayments.getCreateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -300,6 +304,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

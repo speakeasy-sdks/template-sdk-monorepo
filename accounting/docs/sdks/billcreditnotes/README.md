@@ -119,8 +119,8 @@ const billCreditNote: BillCreditNote = {
   subTotal: 805.78,
   supplementalData: {
     content: {
-      "abnormally": {
-        "deposit": "evolve",
+      "key": {
+        "key": "string",
       },
     },
   },
@@ -132,14 +132,15 @@ const billCreditNote: BillCreditNote = {
   totalTaxAmount: 0,
   withholdingTax: [
     {
-      amount: 7150.4,
-      name: "fuchsia",
+      amount: 8915.1,
+      name: "string",
     },
   ],
 };
-const timeoutInMinutes: number = 816588;
+const timeoutInMinutes: number = 86;
 
   const res = await sdk.billCreditNotes.create(companyId, connectionId, billCreditNote, timeoutInMinutes);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -185,10 +186,11 @@ import { GetBillCreditNoteRequest } from "@speakeasy-sdks/accounting/dist/sdk/mo
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const billCreditNoteId: string = "female";
+const billCreditNoteId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.billCreditNotes.get(billCreditNoteId, companyId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -239,6 +241,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.billCreditNotes.getCreateUpdateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -285,6 +288,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -391,8 +395,8 @@ import { BillCreditNoteStatus, BilledToType } from "@speakeasy-sdks/accounting/d
       subTotal: 805.78,
       supplementalData: {
         content: {
-          "Arizona": {
-            "Cotton": "extend",
+          "key": {
+            "key": "string",
           },
         },
       },
@@ -404,15 +408,16 @@ import { BillCreditNoteStatus, BilledToType } from "@speakeasy-sdks/accounting/d
       totalTaxAmount: 0,
       withholdingTax: [
         {
-          amount: 2494.4,
-          name: "bifurcated",
+          amount: 1341.51,
+          name: "string",
         },
       ],
     },
-    billCreditNoteId: "Forward",
+    billCreditNoteId: "string",
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -461,15 +466,16 @@ import { UploadBillCreditNoteAttachmentRequest, UploadBillCreditNoteAttachmentRe
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const billCreditNoteId: string = "huzzah";
+const billCreditNoteId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const requestBody: UploadBillCreditNoteAttachmentRequestBody = {
-  content: "ghW&IC$xd6" as bytes <<<>>>,
-  requestBody: "novel",
+  content: "v/ghW&IC$x" as bytes <<<>>>,
+  requestBody: "string",
 };
 
   const res = await sdk.billCreditNotes.uploadAttachment(billCreditNoteId, companyId, connectionId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

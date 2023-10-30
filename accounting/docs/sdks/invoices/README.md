@@ -133,23 +133,24 @@ const invoice: Invoice = {
   status: InvoiceStatus.Draft,
   supplementalData: {
     content: {
-      "evolve": {
-        "male": "SUV",
+      "key": {
+        "key": "string",
       },
     },
   },
-  totalAmount: 5519.29,
-  totalTaxAmount: 5862.2,
+  totalAmount: 3015.1,
+  totalTaxAmount: 899.64,
   withholdingTax: [
     {
-      amount: 8275.63,
-      name: "volt",
+      amount: 7150.4,
+      name: "string",
     },
   ],
 };
-const timeoutInMinutes: number = 957409;
+const timeoutInMinutes: number = 792620;
 
   const res = await sdk.invoices.create(companyId, connectionId, invoice, timeoutInMinutes);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -217,9 +218,10 @@ import { DeleteInvoiceRequest } from "@speakeasy-sdks/accounting/dist/sdk/models
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "program";
+const invoiceId: string = "string";
 
   const res = await sdk.invoices.delete(companyId, connectionId, invoiceId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -265,9 +267,10 @@ import { DownloadInvoiceAttachmentRequest } from "@speakeasy-sdks/accounting/dis
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "complex";
+const invoiceId: string = "string";
 
   const res = await sdk.invoices.downloadAttachment(attachmentId, companyId, connectionId, invoiceId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -307,9 +310,10 @@ import { DownloadInvoicePdfRequest } from "@speakeasy-sdks/accounting/dist/sdk/m
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const invoiceId: string = "Island";
+const invoiceId: string = "string";
 
   const res = await sdk.invoices.downloadPdf(companyId, invoiceId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -353,9 +357,10 @@ import { GetInvoiceRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/op
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const invoiceId: string = "female";
+const invoiceId: string = "string";
 
   const res = await sdk.invoices.get(companyId, invoiceId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -400,9 +405,10 @@ import { GetInvoiceAttachmentRequest } from "@speakeasy-sdks/accounting/dist/sdk
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "provided";
+const invoiceId: string = "string";
 
   const res = await sdk.invoices.getAttachment(attachmentId, companyId, connectionId, invoiceId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -454,6 +460,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.invoices.getCreateUpdateModel(companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -508,6 +515,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -549,9 +557,10 @@ import { ListInvoiceAttachmentsRequest } from "@speakeasy-sdks/accounting/dist/s
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "behind";
+const invoiceId: string = "string";
 
   const res = await sdk.invoices.listAttachments(companyId, connectionId, invoiceId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -667,24 +676,25 @@ import { BilledToType1, DataType, InvoiceStatus } from "@speakeasy-sdks/accounti
       status: InvoiceStatus.Void,
       supplementalData: {
         content: {
-          "online": {
-            "dynamic": "white",
+          "key": {
+            "key": "string",
           },
         },
       },
-      totalAmount: 3668.07,
-      totalTaxAmount: 1395.79,
+      totalAmount: 4995.57,
+      totalTaxAmount: 4468.63,
       withholdingTax: [
         {
-          amount: 6447.13,
-          name: "silver",
+          amount: 3691.82,
+          name: "string",
         },
       ],
     },
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    invoiceId: "immediately",
+    invoiceId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -731,13 +741,14 @@ import { UploadInvoiceAttachmentRequest, UploadInvoiceAttachmentRequestBody } fr
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "huzzah";
+const invoiceId: string = "string";
 const requestBody: UploadInvoiceAttachmentRequestBody = {
-  content: "ghW&IC$xd6" as bytes <<<>>>,
-  requestBody: "novel",
+  content: "v/ghW&IC$x" as bytes <<<>>>,
+  requestBody: "string",
 };
 
   const res = await sdk.invoices.uploadAttachment(companyId, connectionId, invoiceId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

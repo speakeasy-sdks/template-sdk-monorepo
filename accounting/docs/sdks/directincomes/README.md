@@ -98,17 +98,18 @@ const directIncome: DirectIncome = {
   subTotal: 7964.74,
   supplementalData: {
     content: {
-      "abnormally": {
-        "deposit": "evolve",
+      "key": {
+        "key": "string",
       },
     },
   },
-  taxAmount: 7150.4,
-  totalAmount: 7926.2,
+  taxAmount: 3768.44,
+  totalAmount: 9510.62,
 };
-const timeoutInMinutes: number = 855952;
+const timeoutInMinutes: number = 891510;
 
   const res = await sdk.directIncomes.create(companyId, connectionId, directIncome, timeoutInMinutes);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -155,9 +156,10 @@ import { DownloadDirectIncomeAttachmentRequest } from "@speakeasy-sdks/accountin
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directIncomeId: string = "complex";
+const directIncomeId: string = "string";
 
   const res = await sdk.directIncomes.downloadAttachment(attachmentId, companyId, connectionId, directIncomeId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -205,9 +207,10 @@ import { GetDirectIncomeRequest } from "@speakeasy-sdks/accounting/dist/sdk/mode
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directIncomeId: string = "female";
+const directIncomeId: string = "string";
 
   const res = await sdk.directIncomes.get(companyId, connectionId, directIncomeId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -254,8 +257,9 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     attachmentId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    directIncomeId: "provided",
+    directIncomeId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -305,6 +309,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.directIncomes.getCreateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -353,6 +358,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -394,9 +400,10 @@ import { ListDirectIncomeAttachmentsRequest } from "@speakeasy-sdks/accounting/d
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directIncomeId: string = "behind";
+const directIncomeId: string = "string";
 
   const res = await sdk.directIncomes.listAttachments(companyId, connectionId, directIncomeId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -445,13 +452,14 @@ import { UploadDirectIncomeAttachmentRequest, UploadDirectIncomeAttachmentReques
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directIncomeId: string = "huzzah";
+const directIncomeId: string = "string";
 const requestBody: UploadDirectIncomeAttachmentRequestBody = {
-  content: "ghW&IC$xd6" as bytes <<<>>>,
-  requestBody: "novel",
+  content: "v/ghW&IC$x" as bytes <<<>>>,
+  requestBody: "string",
 };
 
   const res = await sdk.directIncomes.uploadAttachment(companyId, connectionId, directIncomeId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

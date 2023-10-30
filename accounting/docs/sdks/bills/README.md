@@ -40,12 +40,12 @@ import {
   AccountingCustomerRef,
   AccountRef,
   Bill,
+  BillAccountingPaymentAllocation,
+  BillAccountingPaymentAllocationAllocation,
   BilledToType,
   BillLineItem,
   BillLineItemRecordLineReference,
   BillLineItemRecordLineReferenceDataType,
-  BillPaymentAllocation,
-  BillPaymentAllocationAllocation,
   BillStatus,
   BillWithholdingTax,
   ItemRef,
@@ -125,26 +125,27 @@ const bill: Bill = {
   subTotal: 0.86,
   supplementalData: {
     content: {
-      "deposit": {
-        "evolve": "male",
+      "key": {
+        "key": "string",
       },
     },
   },
   supplierRef: {
     id: "<ID>",
   },
-  taxAmount: 8559.52,
-  totalAmount: 8165.88,
+  taxAmount: 4552.22,
+  totalAmount: 1697.27,
   withholdingTax: [
     {
-      amount: 5519.29,
-      name: "Screen",
+      amount: 3015.1,
+      name: "string",
     },
   ],
 };
-const timeoutInMinutes: number = 491570;
+const timeoutInMinutes: number = 89964;
 
   const res = await sdk.bills.create(companyId, connectionId, bill, timeoutInMinutes);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -216,6 +217,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.delete(billId, companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -263,6 +265,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.downloadAttachment(attachmentId, billId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -313,6 +316,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.bills.get(billId, companyId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -359,6 +363,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.getAttachment(attachmentId, billId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -411,6 +416,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.getCreateUpdateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -458,6 +464,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -502,6 +509,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.listAttachments(billId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -609,20 +617,20 @@ import { BilledToType, BillLineItemRecordLineReferenceDataType, BillStatus } fro
       subTotal: 540.62,
       supplementalData: {
         content: {
-          "Cotton": {
-            "extend": "Plastic",
+          "key": {
+            "key": "string",
           },
         },
       },
       supplierRef: {
         id: "<ID>",
       },
-      taxAmount: 1395.79,
-      totalAmount: 6447.13,
+      taxAmount: 2782.81,
+      totalAmount: 8965.01,
       withholdingTax: [
         {
-          amount: 7892.75,
-          name: "syndicate",
+          amount: 4995.57,
+          name: "string",
         },
       ],
     },
@@ -630,6 +638,7 @@ import { BilledToType, BillLineItemRecordLineReferenceDataType, BillStatus } fro
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -679,10 +688,11 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const requestBody: UploadBillAttachmentRequestBody = {
   content: "/ghW&IC$xd" as bytes <<<>>>,
-  requestBody: "Elegant",
+  requestBody: "string",
 };
 
   const res = await sdk.bills.uploadAttachment(billId, companyId, connectionId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response
