@@ -40,12 +40,12 @@ import {
   AccountingCustomerRef,
   AccountRef,
   Bill,
+  BillAccountingPaymentAllocation,
+  BillAccountingPaymentAllocationAllocation,
   BilledToType,
   BillLineItem,
   BillLineItemRecordLineReference,
   BillLineItemRecordLineReferenceDataType,
-  BillPaymentAllocation,
-  BillPaymentAllocationAllocation,
   BillStatus,
   BillWithholdingTax,
   ItemRef,
@@ -125,26 +125,27 @@ const bill: Bill = {
   subTotal: 0.86,
   supplementalData: {
     content: {
-      "deposit": {
-        "evolve": "male",
+      "key": {
+        "key": "string",
       },
     },
   },
   supplierRef: {
     id: "<ID>",
   },
-  taxAmount: 8559.52,
-  totalAmount: 8165.88,
+  taxAmount: 4552.22,
+  totalAmount: 1697.27,
   withholdingTax: [
     {
-      amount: 5519.29,
-      name: "Screen",
+      amount: 3015.1,
+      name: "string",
     },
   ],
 };
-const timeoutInMinutes: number = 491570;
+const timeoutInMinutes: number = 89964;
 
   const res = await sdk.bills.create(companyId, connectionId, bill, timeoutInMinutes);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -177,7 +178,7 @@ The *Delete bill* endpoint allows you to delete a specified bill from an account
 
 ### Process 
 1. Pass the `{billId}` to the *Delete bill* endpoint and store the `pushOperationKey` returned.
-2. Check the status of the delete operation by checking the status of push operation either via
+2. Check the status of the delete operation by checking the status of the push operation either via
     1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
     2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation).
 
@@ -194,11 +195,12 @@ Integrations that support soft delete do not permanently delete the object in th
 | Integration | Soft Delete | Details                                                                                                      |  
 |-------------|-------------|--------------------------------------------------------------------------------------------------------------|
 | QuickBooks Online | No          | -                                                                                                            |
-| Oracle NetSuite   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |
+| Oracle NetSuite   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |                                                                                                      |
+| Sage Intacct   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |
 
 > **Supported Integrations**
 > 
-> This functionality is currently supported for our QuickBooks Online, Xero and Oracle NetSuite integrations.
+> This functionality is currently supported for our QuickBooks Online, Xero, Oracle NetSuite and Sage Intacct integrations.
 
 ### Example Usage
 
@@ -215,6 +217,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.delete(billId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -263,6 +266,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.downloadAttachment(attachmentId, billId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -313,6 +317,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.bills.get(billId, companyId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -359,6 +364,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.getAttachment(attachmentId, billId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -411,6 +417,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.getCreateUpdateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -458,6 +465,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -502,6 +510,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.listAttachments(billId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -609,20 +618,20 @@ import { BilledToType, BillLineItemRecordLineReferenceDataType, BillStatus } fro
       subTotal: 540.62,
       supplementalData: {
         content: {
-          "Cotton": {
-            "extend": "Plastic",
+          "key": {
+            "key": "string",
           },
         },
       },
       supplierRef: {
         id: "<ID>",
       },
-      taxAmount: 1395.79,
-      totalAmount: 6447.13,
+      taxAmount: 2782.81,
+      totalAmount: 8965.01,
       withholdingTax: [
         {
-          amount: 7892.75,
-          name: "syndicate",
+          amount: 4995.57,
+          name: "string",
         },
       ],
     },
@@ -630,6 +639,7 @@ import { BilledToType, BillLineItemRecordLineReferenceDataType, BillStatus } fro
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -679,10 +689,11 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const requestBody: UploadBillAttachmentRequestBody = {
   content: "/ghW&IC$xd" as bytes <<<>>>,
-  requestBody: "Elegant",
+  requestBody: "string",
 };
 
   const res = await sdk.bills.uploadAttachment(billId, companyId, connectionId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

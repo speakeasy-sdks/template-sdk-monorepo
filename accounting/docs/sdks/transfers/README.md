@@ -69,14 +69,14 @@ const transfer: Transfer = {
   sourceModifiedDate: "2022-10-23T00:00:00.000Z",
   supplementalData: {
     content: {
-      "innovative": {
-        "blue": "shred",
+      "key": {
+        "key": "string",
       },
     },
   },
   to: {
     accountRef: {},
-    currency: "USD",
+    currency: "GBP",
   },
   trackingCategoryRefs: [
     {
@@ -86,6 +86,7 @@ const transfer: Transfer = {
 };
 
   const res = await sdk.transfers.create(companyId, connectionId, transfer);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -132,9 +133,10 @@ import { GetTransferRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/o
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const transferId: string = "female";
+const transferId: string = "string";
 
   const res = await sdk.transfers.get(companyId, connectionId, transferId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -186,6 +188,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.transfers.getCreateModel(companyId, connectionId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -234,6 +237,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -279,13 +283,14 @@ import { UploadTransferAttachmentRequest, UploadTransferAttachmentRequestBody } 
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const transferId: string = "huzzah";
+const transferId: string = "string";
 const requestBody: UploadTransferAttachmentRequestBody = {
-  content: "ghW&IC$xd6" as bytes <<<>>>,
-  requestBody: "novel",
+  content: "v/ghW&IC$x" as bytes <<<>>>,
+  requestBody: "string",
 };
 
   const res = await sdk.transfers.uploadAttachment(companyId, connectionId, transferId, requestBody);
+
 
   if (res.statusCode == 200) {
     // handle response

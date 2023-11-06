@@ -32,9 +32,10 @@ import { GetTaxRateRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/op
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const taxRateId: string = "female";
+const taxRateId: string = "string";
 
   const res = await sdk.taxRates.get(companyId, taxRateId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -82,6 +83,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response
