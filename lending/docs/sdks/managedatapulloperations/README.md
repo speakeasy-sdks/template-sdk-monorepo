@@ -13,17 +13,18 @@ Retrieve information about a single dataset or pull operation.
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetPullOperationRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetPullOperationRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const datasetId: string = "b18d8d81-fd7b-4764-a31e-475cb1f36591";
 
   const res = await sdk.manageData.pullOperations.get(companyId, datasetId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -48,23 +49,15 @@ const datasetId: string = "b18d8d81-fd7b-4764-a31e-475cb1f36591";
 
 ## list
 
-﻿The *List pull operations* endpoint returns a list of [pull operations](https://docs.codat.io/lending-api#/schemas/PullOperation) made by your client.
-
-A [pull operation](https://docs.codat.io/lending-api#/schemas/PullOperation) is a request to retrieve a specific data type from an integration.
-
-### Tips and traps
-
-- The *List pull operations* endpoint does not support querying the `isCompleted` property. You can filter failed pull operations by querying `status!=Complete&&status!=NotSupported` instead.
-
-
+Gets the pull operation history (datasets) for a given company.
 
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { Lending } from "lending";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -74,6 +67,7 @@ import { SDK } from "openapi";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

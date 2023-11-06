@@ -21,19 +21,20 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DownloadAccountingDirectCostAttachmentRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { DownloadAccountingDirectCostAttachmentRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "complex";
+const directCostId: string = "string";
 
   const res = await sdk.transactions.directCosts.downloadAttachment(attachmentId, companyId, connectionId, directCostId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -72,18 +73,19 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetAccountingDirectCostRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetAccountingDirectCostRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "female";
+const directCostId: string = "string";
 
   const res = await sdk.transactions.directCosts.get(companyId, connectionId, directCostId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -119,19 +121,20 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetAccountingDirectCostAttachmentRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetAccountingDirectCostAttachmentRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "provided";
+const directCostId: string = "string";
 
   const res = await sdk.transactions.directCosts.getAttachment(attachmentId, companyId, connectionId, directCostId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -168,10 +171,10 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { Lending } from "lending";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -182,6 +185,7 @@ import { SDK } from "openapi";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -215,18 +219,19 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { ListAccountingDirectCostAttachmentsRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { ListAccountingDirectCostAttachmentsRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "behind";
+const directCostId: string = "string";
 
   const res = await sdk.transactions.directCosts.listAttachments(companyId, connectionId, directCostId);
+
 
   if (res.statusCode == 200) {
     // handle response

@@ -20,18 +20,19 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetAccountingBankAccountRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetAccountingBankAccountRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const accountId: string = "female";
+const accountId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.accountingBankData.accounts.get(accountId, companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -67,10 +68,10 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { Lending } from "lending";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -81,6 +82,7 @@ import { SDK } from "openapi";
     page: 1,
     pageSize: 100,
   });
+
 
   if (res.statusCode == 200) {
     // handle response

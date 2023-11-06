@@ -158,4 +158,11 @@ export class PullOperation extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "status" })
     status: PullOperationStatus;
+
+    /**
+     * Additional information about the dataset status.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "statusDescription" })
+    statusDescription?: string;
 }

@@ -22,11 +22,11 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { AccountingAddressType, SupplierStatus } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { AccountingAddressType, SupplierStatus } from "lending/dist/sdk/models/shared";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -44,8 +44,8 @@ import { AccountingAddressType, SupplierStatus } from "openapi/dist/sdk/models/s
       status: SupplierStatus.Active,
       supplementalData: {
         content: {
-          "innovative": {
-            "blue": "shred",
+          "key": {
+            "key": "string",
           },
         },
       },
@@ -53,6 +53,7 @@ import { AccountingAddressType, SupplierStatus } from "openapi/dist/sdk/models/s
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -90,17 +91,18 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetCreateUpdateSuppliersModelRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetCreateUpdateSuppliersModelRequest } from "lending/dist/sdk/models/operations";
 
 (async() => {
-  const sdk = new SDK({
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.loanWriteback.suppliers.getCreateUpdateModel(companyId, connectionId);
+
 
   if (res.statusCode == 200) {
     // handle response
