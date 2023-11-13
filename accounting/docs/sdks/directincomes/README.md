@@ -36,14 +36,14 @@ import { Accounting } from "@speakeasy-sdks/accounting";
 import { CreateDirectIncomeRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 import {
   AccountRef,
+  Allocation,
   ContactRef,
   DataType,
   DirectIncome,
   DirectIncomeLineItem,
   ItemRef,
-  Items,
-  ItemsAllocation,
   Metadata,
+  PaymentAllocationItems,
   PaymentAllocationPayment,
   SupplementalData,
   TaxRateRef,
@@ -110,7 +110,6 @@ const timeoutInMinutes: number = 891510;
 
   const res = await sdk.directIncomes.create(companyId, connectionId, directIncome, timeoutInMinutes);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -123,16 +122,20 @@ const timeoutInMinutes: number = 891510;
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
 | `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `directIncome`                                                        | [shared.DirectIncome](../../models/shared/directincome.md)            | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `directIncome`                                                        | [shared.DirectIncome](../../../sdk/models/shared/directincome.md)     | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
-| `retries`                                                             | [utils.RetryConfig](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
+| `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 | `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
 
 
 ### Response
 
-**Promise<[operations.CreateDirectIncomeResponse](../../models/operations/createdirectincomeresponse.md)>**
+**Promise<[operations.CreateDirectIncomeResponse](../../sdk/models/operations/createdirectincomeresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## downloadAttachment
 
@@ -160,7 +163,6 @@ const directIncomeId: string = "string";
 
   const res = await sdk.directIncomes.downloadAttachment(attachmentId, companyId, connectionId, directIncomeId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -175,14 +177,18 @@ const directIncomeId: string = "string";
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
 | `directIncomeId`                                                    | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a direct income.                              |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.DownloadDirectIncomeAttachmentResponse](../../models/operations/downloaddirectincomeattachmentresponse.md)>**
+**Promise<[operations.DownloadDirectIncomeAttachmentResponse](../../sdk/models/operations/downloaddirectincomeattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## get
 
@@ -211,7 +217,6 @@ const directIncomeId: string = "string";
 
   const res = await sdk.directIncomes.get(companyId, connectionId, directIncomeId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -225,14 +230,18 @@ const directIncomeId: string = "string";
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
 | `directIncomeId`                                                    | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a direct income.                              |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetDirectIncomeResponse](../../models/operations/getdirectincomeresponse.md)>**
+**Promise<[operations.GetDirectIncomeResponse](../../sdk/models/operations/getdirectincomeresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAttachment
 
@@ -260,7 +269,6 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     directIncomeId: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -269,17 +277,21 @@ import { Accounting } from "@speakeasy-sdks/accounting";
 
 ### Parameters
 
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                  | [operations.GetDirectIncomeAttachmentRequest](../../models/operations/getdirectincomeattachmentrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
-| `retries`                                                                                                  | [utils.RetryConfig](../../models/utils/retryconfig.md)                                                     | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
-| `config`                                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                               | :heavy_minus_sign:                                                                                         | Available config options for making requests.                                                              |
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                      | [operations.GetDirectIncomeAttachmentRequest](../../sdk/models/operations/getdirectincomeattachmentrequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
+| `retries`                                                                                                      | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                       | :heavy_minus_sign:                                                                                             | Configuration to override the default retry behavior of the client.                                            |
+| `config`                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                   | :heavy_minus_sign:                                                                                             | Available config options for making requests.                                                                  |
 
 
 ### Response
 
-**Promise<[operations.GetDirectIncomeAttachmentResponse](../../models/operations/getdirectincomeattachmentresponse.md)>**
+**Promise<[operations.GetDirectIncomeAttachmentResponse](../../sdk/models/operations/getdirectincomeattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getCreateModel
 
@@ -309,7 +321,6 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.directIncomes.getCreateModel(companyId, connectionId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -322,14 +333,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetCreateDirectIncomesModelResponse](../../models/operations/getcreatedirectincomesmodelresponse.md)>**
+**Promise<[operations.GetCreateDirectIncomesModelResponse](../../sdk/models/operations/getcreatedirectincomesmodelresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## list
 
@@ -358,7 +373,6 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -367,17 +381,21 @@ import { Accounting } from "@speakeasy-sdks/accounting";
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.ListDirectIncomesRequest](../../models/operations/listdirectincomesrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `retries`                                                                                  | [utils.RetryConfig](../../models/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                         | Configuration to override the default retry behavior of the client.                        |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.ListDirectIncomesRequest](../../sdk/models/operations/listdirectincomesrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `retries`                                                                                      | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.ListDirectIncomesResponse](../../models/operations/listdirectincomesresponse.md)>**
+**Promise<[operations.ListDirectIncomesResponse](../../sdk/models/operations/listdirectincomesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## listAttachments
 
@@ -404,7 +422,6 @@ const directIncomeId: string = "string";
 
   const res = await sdk.directIncomes.listAttachments(companyId, connectionId, directIncomeId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -418,14 +435,18 @@ const directIncomeId: string = "string";
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
 | `directIncomeId`                                                    | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a direct income.                              |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.ListDirectIncomeAttachmentsResponse](../../models/operations/listdirectincomeattachmentsresponse.md)>**
+**Promise<[operations.ListDirectIncomeAttachmentsResponse](../../sdk/models/operations/listdirectincomeattachmentsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## uploadAttachment
 
@@ -454,12 +475,11 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const directIncomeId: string = "string";
 const requestBody: UploadDirectIncomeAttachmentRequestBody = {
-  content: "v/ghW&IC$x" as bytes <<<>>>,
-  requestBody: "string",
+  content: new TextEncoder().encode("0xE3ABc1980E"),
+  fileName: "elegant_producer_electric.jpeg",
 };
 
   const res = await sdk.directIncomes.uploadAttachment(companyId, connectionId, directIncomeId, requestBody);
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -469,17 +489,21 @@ const requestBody: UploadDirectIncomeAttachmentRequestBody = {
 
 ### Parameters
 
-| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              | Example                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `companyId`                                                                                                              | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | Unique identifier for a company.                                                                                         | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                                     |
-| `connectionId`                                                                                                           | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | Unique identifier for a connection.                                                                                      | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                                     |
-| `directIncomeId`                                                                                                         | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | Unique identifier for a direct income.                                                                                   |                                                                                                                          |
-| `requestBody`                                                                                                            | [operations.UploadDirectIncomeAttachmentRequestBody](../../models/operations/uploaddirectincomeattachmentrequestbody.md) | :heavy_minus_sign:                                                                                                       | N/A                                                                                                                      |                                                                                                                          |
-| `retries`                                                                                                                | [utils.RetryConfig](../../models/utils/retryconfig.md)                                                                   | :heavy_minus_sign:                                                                                                       | Configuration to override the default retry behavior of the client.                                                      |                                                                                                                          |
-| `config`                                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                             | :heavy_minus_sign:                                                                                                       | Available config options for making requests.                                                                            |                                                                                                                          |
+| Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     | Example                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `companyId`                                                                                                                     | *string*                                                                                                                        | :heavy_check_mark:                                                                                                              | Unique identifier for a company.                                                                                                | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                                            |
+| `connectionId`                                                                                                                  | *string*                                                                                                                        | :heavy_check_mark:                                                                                                              | Unique identifier for a connection.                                                                                             | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                                            |
+| `directIncomeId`                                                                                                                | *string*                                                                                                                        | :heavy_check_mark:                                                                                                              | Unique identifier for a direct income.                                                                                          |                                                                                                                                 |
+| `requestBody`                                                                                                                   | [operations.UploadDirectIncomeAttachmentRequestBody](../../../sdk/models/operations/uploaddirectincomeattachmentrequestbody.md) | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |                                                                                                                                 |
+| `retries`                                                                                                                       | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                                        | :heavy_minus_sign:                                                                                                              | Configuration to override the default retry behavior of the client.                                                             |                                                                                                                                 |
+| `config`                                                                                                                        | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                    | :heavy_minus_sign:                                                                                                              | Available config options for making requests.                                                                                   |                                                                                                                                 |
 
 
 ### Response
 
-**Promise<[operations.UploadDirectIncomeAttachmentResponse](../../models/operations/uploaddirectincomeattachmentresponse.md)>**
+**Promise<[operations.UploadDirectIncomeAttachmentResponse](../../sdk/models/operations/uploaddirectincomeattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

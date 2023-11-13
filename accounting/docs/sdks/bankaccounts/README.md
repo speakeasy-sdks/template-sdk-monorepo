@@ -29,7 +29,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { BankAccountBankAccountType } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
+import { BankAccountType } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new Accounting({
@@ -54,7 +54,6 @@ import { BankAccountBankAccountType } from "@speakeasy-sdks/accounting/dist/sdk/
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -63,17 +62,21 @@ import { BankAccountBankAccountType } from "@speakeasy-sdks/accounting/dist/sdk/
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.CreateBankAccountRequest](../../models/operations/createbankaccountrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `retries`                                                                                  | [utils.RetryConfig](../../models/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                         | Configuration to override the default retry behavior of the client.                        |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.CreateBankAccountRequest](../../sdk/models/operations/createbankaccountrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `retries`                                                                                      | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.CreateBankAccountResponse](../../models/operations/createbankaccountresponse.md)>**
+**Promise<[operations.CreateBankAccountResponse](../../sdk/models/operations/createbankaccountresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## get
 
@@ -102,7 +105,6 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bankAccounts.get(accountId, companyId, connectionId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -116,14 +118,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | `accountId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for an account.                                   |                                                                     |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetBankAccountResponse](../../models/operations/getbankaccountresponse.md)>**
+**Promise<[operations.GetBankAccountResponse](../../sdk/models/operations/getbankaccountresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getCreateUpdateModel
 
@@ -153,7 +159,6 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bankAccounts.getCreateUpdateModel(companyId, connectionId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -166,14 +171,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetCreateUpdateBankAccountsModelResponse](../../models/operations/getcreateupdatebankaccountsmodelresponse.md)>**
+**Promise<[operations.GetCreateUpdateBankAccountsModelResponse](../../sdk/models/operations/getcreateupdatebankaccountsmodelresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## list
 
@@ -202,7 +211,6 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -211,17 +219,21 @@ import { Accounting } from "@speakeasy-sdks/accounting";
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.ListBankAccountsRequest](../../models/operations/listbankaccountsrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `retries`                                                                                | [utils.RetryConfig](../../models/utils/retryconfig.md)                                   | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
-| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.ListBankAccountsRequest](../../sdk/models/operations/listbankaccountsrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `retries`                                                                                    | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
 
 
 ### Response
 
-**Promise<[operations.ListBankAccountsResponse](../../models/operations/listbankaccountsresponse.md)>**
+**Promise<[operations.ListBankAccountsResponse](../../sdk/models/operations/listbankaccountsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update
 
@@ -240,7 +252,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { BankAccountBankAccountType } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
+import { BankAccountType } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new Accounting({
@@ -266,7 +278,6 @@ import { BankAccountBankAccountType } from "@speakeasy-sdks/accounting/dist/sdk/
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -275,14 +286,18 @@ import { BankAccountBankAccountType } from "@speakeasy-sdks/accounting/dist/sdk/
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.UpdateBankAccountRequest](../../models/operations/updatebankaccountrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `retries`                                                                                  | [utils.RetryConfig](../../models/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                         | Configuration to override the default retry behavior of the client.                        |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.UpdateBankAccountRequest](../../sdk/models/operations/updatebankaccountrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `retries`                                                                                      | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.UpdateBankAccountResponse](../../models/operations/updatebankaccountresponse.md)>**
+**Promise<[operations.UpdateBankAccountResponse](../../sdk/models/operations/updatebankaccountresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

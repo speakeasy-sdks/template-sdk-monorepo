@@ -37,7 +37,6 @@ const reportDate: RFCDate = new RFCDate("2022-12-31");
 
   const res = await sdk.reports.getAgedCreditorsReport(companyId, numberOfPeriods, periodLengthDays, reportDate);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -52,14 +51,18 @@ const reportDate: RFCDate = new RFCDate("2022-12-31");
 | `numberOfPeriods`                                                   | *number*                                                            | :heavy_minus_sign:                                                  | Number of periods to include in the report.                         | 12                                                                  |
 | `periodLengthDays`                                                  | *number*                                                            | :heavy_minus_sign:                                                  | The length of period in days.                                       | 30                                                                  |
 | `reportDate`                                                        | [RFCDate](../../types/rfcdate.md)                                   | :heavy_minus_sign:                                                  | Date the report is generated up to.                                 | 2022-12-31                                                          |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetAgedCreditorsReportResponse](../../models/operations/getagedcreditorsreportresponse.md)>**
+**Promise<[operations.GetAgedCreditorsReportResponse](../../sdk/models/operations/getagedcreditorsreportresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAgedDebtorsReport
 
@@ -83,7 +86,6 @@ const reportDate: RFCDate = new RFCDate("2022-12-31");
 
   const res = await sdk.reports.getAgedDebtorsReport(companyId, numberOfPeriods, periodLengthDays, reportDate);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -98,14 +100,18 @@ const reportDate: RFCDate = new RFCDate("2022-12-31");
 | `numberOfPeriods`                                                   | *number*                                                            | :heavy_minus_sign:                                                  | Number of periods to include in the report.                         | 12                                                                  |
 | `periodLengthDays`                                                  | *number*                                                            | :heavy_minus_sign:                                                  | The length of period in days.                                       | 30                                                                  |
 | `reportDate`                                                        | [RFCDate](../../types/rfcdate.md)                                   | :heavy_minus_sign:                                                  | Date the report is generated up to.                                 | 2022-12-31                                                          |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetAgedDebtorsReportResponse](../../models/operations/getageddebtorsreportresponse.md)>**
+**Promise<[operations.GetAgedDebtorsReportResponse](../../sdk/models/operations/getageddebtorsreportresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getBalanceSheet
 
@@ -128,7 +134,6 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
 
   const res = await sdk.reports.getBalanceSheet(companyId, periodLength, periodsToCompare, startMonth);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -143,14 +148,18 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
 | `periodLength`                                                      | *number*                                                            | :heavy_check_mark:                                                  | Number of months defining the period of interest.                   | 4                                                                   |
 | `periodsToCompare`                                                  | *number*                                                            | :heavy_check_mark:                                                  | Number of periods with `periodLength` to compare.                   | 20                                                                  |
 | `startMonth`                                                        | *string*                                                            | :heavy_minus_sign:                                                  | The month the report starts from.                                   | 2022-10-23T00:00:00.000Z                                            |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetBalanceSheetResponse](../../models/operations/getbalancesheetresponse.md)>**
+**Promise<[operations.GetBalanceSheetResponse](../../sdk/models/operations/getbalancesheetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getCashFlowStatement
 
@@ -173,7 +182,6 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
 
   const res = await sdk.reports.getCashFlowStatement(companyId, periodLength, periodsToCompare, startMonth);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -188,14 +196,18 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
 | `periodLength`                                                      | *number*                                                            | :heavy_check_mark:                                                  | Number of months defining the period of interest.                   | 4                                                                   |
 | `periodsToCompare`                                                  | *number*                                                            | :heavy_check_mark:                                                  | Number of periods with `periodLength` to compare.                   | 20                                                                  |
 | `startMonth`                                                        | *string*                                                            | :heavy_minus_sign:                                                  | The month the report starts from.                                   | 2022-10-23T00:00:00.000Z                                            |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetCashFlowStatementResponse](../../models/operations/getcashflowstatementresponse.md)>**
+**Promise<[operations.GetCashFlowStatementResponse](../../sdk/models/operations/getcashflowstatementresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getProfitAndLoss
 
@@ -218,7 +230,6 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
 
   const res = await sdk.reports.getProfitAndLoss(companyId, periodLength, periodsToCompare, startMonth);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -233,14 +244,18 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
 | `periodLength`                                                      | *number*                                                            | :heavy_check_mark:                                                  | Number of months defining the period of interest.                   | 4                                                                   |
 | `periodsToCompare`                                                  | *number*                                                            | :heavy_check_mark:                                                  | Number of periods with `periodLength` to compare.                   | 20                                                                  |
 | `startMonth`                                                        | *string*                                                            | :heavy_minus_sign:                                                  | The month the report starts from.                                   | 2022-10-23T00:00:00.000Z                                            |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetProfitAndLossResponse](../../models/operations/getprofitandlossresponse.md)>**
+**Promise<[operations.GetProfitAndLossResponse](../../sdk/models/operations/getprofitandlossresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## isAgedCreditorsReportAvailable
 
@@ -260,7 +275,6 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.reports.isAgedCreditorsReportAvailable(companyId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -272,14 +286,18 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.IsAgedCreditorsReportAvailableResponse](../../models/operations/isagedcreditorsreportavailableresponse.md)>**
+**Promise<[operations.IsAgedCreditorsReportAvailableResponse](../../sdk/models/operations/isagedcreditorsreportavailableresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## isAgedDebtorReportAvailable
 
@@ -299,7 +317,6 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.reports.isAgedDebtorReportAvailable(companyId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -311,11 +328,15 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.IsAgedDebtorReportAvailableResponse](../../models/operations/isageddebtorreportavailableresponse.md)>**
+**Promise<[operations.IsAgedDebtorReportAvailableResponse](../../sdk/models/operations/isageddebtorreportavailableresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

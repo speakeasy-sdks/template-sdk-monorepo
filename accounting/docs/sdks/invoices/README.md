@@ -40,6 +40,7 @@ import { CreateInvoiceRequest } from "@speakeasy-sdks/accounting/dist/sdk/models
 import {
   AccountingCustomerRef,
   AccountRef,
+  Allocation,
   BilledToType1,
   DataType,
   Invoice,
@@ -47,17 +48,16 @@ import {
   InvoiceStatus,
   InvoiceTo,
   ItemRef,
-  Items,
-  ItemsAllocation,
   Metadata,
+  PaymentAllocationItems,
   PaymentAllocationPayment,
   ProjectRef,
-  Propertiestracking1,
+  PropertieTracking1,
   SalesOrderRef,
   SupplementalData,
   TaxRateRef,
   TrackingCategoryRef,
-  WithholdingTaxitems,
+  WithholdingTaxItems,
 } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 (async() => {
@@ -151,7 +151,6 @@ const timeoutInMinutes: number = 792620;
 
   const res = await sdk.invoices.create(companyId, connectionId, invoice, timeoutInMinutes);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -164,16 +163,20 @@ const timeoutInMinutes: number = 792620;
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
 | `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `invoice`                                                             | [shared.Invoice](../../models/shared/invoice.md)                      | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `invoice`                                                             | [shared.Invoice](../../../sdk/models/shared/invoice.md)               | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
-| `retries`                                                             | [utils.RetryConfig](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
+| `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 | `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
 
 
 ### Response
 
-**Promise<[operations.CreateInvoiceResponse](../../models/operations/createinvoiceresponse.md)>**
+**Promise<[operations.CreateInvoiceResponse](../../sdk/models/operations/createinvoiceresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## delete
 
@@ -222,7 +225,6 @@ const invoiceId: string = "string";
 
   const res = await sdk.invoices.delete(companyId, connectionId, invoiceId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -236,14 +238,18 @@ const invoiceId: string = "string";
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
 | `invoiceId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for an invoice.                                   |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.DeleteInvoiceResponse](../../models/operations/deleteinvoiceresponse.md)>**
+**Promise<[operations.DeleteInvoiceResponse](../../sdk/models/operations/deleteinvoiceresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## downloadAttachment
 
@@ -271,7 +277,6 @@ const invoiceId: string = "string";
 
   const res = await sdk.invoices.downloadAttachment(attachmentId, companyId, connectionId, invoiceId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -286,14 +291,18 @@ const invoiceId: string = "string";
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
 | `invoiceId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for an invoice.                                   |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.DownloadInvoiceAttachmentResponse](../../models/operations/downloadinvoiceattachmentresponse.md)>**
+**Promise<[operations.DownloadInvoiceAttachmentResponse](../../sdk/models/operations/downloadinvoiceattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## downloadPdf
 
@@ -314,7 +323,6 @@ const invoiceId: string = "string";
 
   const res = await sdk.invoices.downloadPdf(companyId, invoiceId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -327,14 +335,18 @@ const invoiceId: string = "string";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `invoiceId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for an invoice.                                   |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.DownloadInvoicePdfResponse](../../models/operations/downloadinvoicepdfresponse.md)>**
+**Promise<[operations.DownloadInvoicePdfResponse](../../sdk/models/operations/downloadinvoicepdfresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## get
 
@@ -361,7 +373,6 @@ const invoiceId: string = "string";
 
   const res = await sdk.invoices.get(companyId, invoiceId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -374,14 +385,18 @@ const invoiceId: string = "string";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `invoiceId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for an invoice.                                   |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetInvoiceResponse](../../models/operations/getinvoiceresponse.md)>**
+**Promise<[operations.GetInvoiceResponse](../../sdk/models/operations/getinvoiceresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAttachment
 
@@ -409,7 +424,6 @@ const invoiceId: string = "string";
 
   const res = await sdk.invoices.getAttachment(attachmentId, companyId, connectionId, invoiceId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -424,14 +438,18 @@ const invoiceId: string = "string";
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
 | `invoiceId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for an invoice.                                   |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetInvoiceAttachmentResponse](../../models/operations/getinvoiceattachmentresponse.md)>**
+**Promise<[operations.GetInvoiceAttachmentResponse](../../sdk/models/operations/getinvoiceattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getCreateUpdateModel
 
@@ -461,7 +479,6 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.invoices.getCreateUpdateModel(companyId, connectionId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -474,14 +491,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetCreateUpdateInvoicesModelResponse](../../models/operations/getcreateupdateinvoicesmodelresponse.md)>**
+**Promise<[operations.GetCreateUpdateInvoicesModelResponse](../../sdk/models/operations/getcreateupdateinvoicesmodelresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## list
 
@@ -515,7 +536,6 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -524,17 +544,21 @@ import { Accounting } from "@speakeasy-sdks/accounting";
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.ListInvoicesRequest](../../models/operations/listinvoicesrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `retries`                                                                        | [utils.RetryConfig](../../models/utils/retryconfig.md)                           | :heavy_minus_sign:                                                               | Configuration to override the default retry behavior of the client.              |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.ListInvoicesRequest](../../sdk/models/operations/listinvoicesrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `retries`                                                                            | [utils.RetryConfig](../../internal/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.ListInvoicesResponse](../../models/operations/listinvoicesresponse.md)>**
+**Promise<[operations.ListInvoicesResponse](../../sdk/models/operations/listinvoicesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## listAttachments
 
@@ -561,7 +585,6 @@ const invoiceId: string = "string";
 
   const res = await sdk.invoices.listAttachments(companyId, connectionId, invoiceId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -575,14 +598,18 @@ const invoiceId: string = "string";
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
 | `invoiceId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for an invoice.                                   |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.ListInvoiceAttachmentsResponse](../../models/operations/listinvoiceattachmentsresponse.md)>**
+**Promise<[operations.ListInvoiceAttachmentsResponse](../../sdk/models/operations/listinvoiceattachmentsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update
 
@@ -695,7 +722,6 @@ import { BilledToType1, DataType, InvoiceStatus } from "@speakeasy-sdks/accounti
     invoiceId: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -704,17 +730,21 @@ import { BilledToType1, DataType, InvoiceStatus } from "@speakeasy-sdks/accounti
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.UpdateInvoiceRequest](../../models/operations/updateinvoicerequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `retries`                                                                          | [utils.RetryConfig](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.UpdateInvoiceRequest](../../sdk/models/operations/updateinvoicerequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `retries`                                                                              | [utils.RetryConfig](../../internal/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.UpdateInvoiceResponse](../../models/operations/updateinvoiceresponse.md)>**
+**Promise<[operations.UpdateInvoiceResponse](../../sdk/models/operations/updateinvoiceresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## uploadAttachment
 
@@ -743,12 +773,11 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const invoiceId: string = "string";
 const requestBody: UploadInvoiceAttachmentRequestBody = {
-  content: "v/ghW&IC$x" as bytes <<<>>>,
-  requestBody: "string",
+  content: new TextEncoder().encode("0xE3ABc1980E"),
+  fileName: "elegant_producer_electric.jpeg",
 };
 
   const res = await sdk.invoices.uploadAttachment(companyId, connectionId, invoiceId, requestBody);
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -758,17 +787,21 @@ const requestBody: UploadInvoiceAttachmentRequestBody = {
 
 ### Parameters
 
-| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    | Example                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `companyId`                                                                                                    | *string*                                                                                                       | :heavy_check_mark:                                                                                             | Unique identifier for a company.                                                                               | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                           |
-| `connectionId`                                                                                                 | *string*                                                                                                       | :heavy_check_mark:                                                                                             | Unique identifier for a connection.                                                                            | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                           |
-| `invoiceId`                                                                                                    | *string*                                                                                                       | :heavy_check_mark:                                                                                             | Unique identifier for an invoice.                                                                              |                                                                                                                |
-| `requestBody`                                                                                                  | [operations.UploadInvoiceAttachmentRequestBody](../../models/operations/uploadinvoiceattachmentrequestbody.md) | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |                                                                                                                |
-| `retries`                                                                                                      | [utils.RetryConfig](../../models/utils/retryconfig.md)                                                         | :heavy_minus_sign:                                                                                             | Configuration to override the default retry behavior of the client.                                            |                                                                                                                |
-| `config`                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                   | :heavy_minus_sign:                                                                                             | Available config options for making requests.                                                                  |                                                                                                                |
+| Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           | Example                                                                                                               |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `companyId`                                                                                                           | *string*                                                                                                              | :heavy_check_mark:                                                                                                    | Unique identifier for a company.                                                                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                                  |
+| `connectionId`                                                                                                        | *string*                                                                                                              | :heavy_check_mark:                                                                                                    | Unique identifier for a connection.                                                                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                                  |
+| `invoiceId`                                                                                                           | *string*                                                                                                              | :heavy_check_mark:                                                                                                    | Unique identifier for an invoice.                                                                                     |                                                                                                                       |
+| `requestBody`                                                                                                         | [operations.UploadInvoiceAttachmentRequestBody](../../../sdk/models/operations/uploadinvoiceattachmentrequestbody.md) | :heavy_minus_sign:                                                                                                    | N/A                                                                                                                   |                                                                                                                       |
+| `retries`                                                                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                              | :heavy_minus_sign:                                                                                                    | Configuration to override the default retry behavior of the client.                                                   |                                                                                                                       |
+| `config`                                                                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                          | :heavy_minus_sign:                                                                                                    | Available config options for making requests.                                                                         |                                                                                                                       |
 
 
 ### Response
 
-**Promise<[operations.UploadInvoiceAttachmentResponse](../../models/operations/uploadinvoiceattachmentresponse.md)>**
+**Promise<[operations.UploadInvoiceAttachmentResponse](../../sdk/models/operations/uploadinvoiceattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

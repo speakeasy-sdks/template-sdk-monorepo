@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -62,7 +62,7 @@ export class PurchaseOrders {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/push/purchaseOrders",
             req
@@ -112,7 +112,7 @@ export class PurchaseOrders {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url + queryParams,
+                url: operationUrl + queryParams,
                 method: "post",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -121,7 +121,7 @@ export class PurchaseOrders {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -130,20 +130,20 @@ export class PurchaseOrders {
         const res: operations.CreatePurchaseOrderResponse =
             new operations.CreatePurchaseOrderResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.createPurchaseOrderResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.CreatePurchaseOrderResponse
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -151,14 +151,14 @@ export class PurchaseOrders {
                 }
                 break;
             case [400, 401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -200,7 +200,7 @@ export class PurchaseOrders {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/data/purchaseOrders/{purchaseOrderId}/attachments/{attachmentId}/download",
             req
@@ -239,7 +239,7 @@ export class PurchaseOrders {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url,
+                url: operationUrl,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -247,7 +247,7 @@ export class PurchaseOrders {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -256,17 +256,17 @@ export class PurchaseOrders {
         const res: operations.DownloadPurchaseOrderAttachmentResponse =
             new operations.DownloadPurchaseOrderAttachmentResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/octet-stream`)) {
+                if (utils.matchContentType(responseContentType, `application/octet-stream`)) {
                     res.data = httpRes?.data;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -274,14 +274,14 @@ export class PurchaseOrders {
                 }
                 break;
             case [401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -318,7 +318,7 @@ export class PurchaseOrders {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/data/purchaseOrders/{purchaseOrderId}/pdf",
             req
@@ -357,7 +357,7 @@ export class PurchaseOrders {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url,
+                url: operationUrl,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -365,7 +365,7 @@ export class PurchaseOrders {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -374,17 +374,17 @@ export class PurchaseOrders {
         const res: operations.DownloadPurchaseOrderPdfResponse =
             new operations.DownloadPurchaseOrderPdfResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/octet-stream`)) {
+                if (utils.matchContentType(responseContentType, `application/octet-stream`)) {
                     res.data = httpRes?.data;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -392,14 +392,14 @@ export class PurchaseOrders {
                 }
                 break;
             case [401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -438,7 +438,7 @@ export class PurchaseOrders {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/data/purchaseOrders/{purchaseOrderId}",
             req
@@ -473,7 +473,7 @@ export class PurchaseOrders {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url,
+                url: operationUrl,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -481,7 +481,7 @@ export class PurchaseOrders {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -489,20 +489,20 @@ export class PurchaseOrders {
 
         const res: operations.GetPurchaseOrderResponse = new operations.GetPurchaseOrderResponse({
             statusCode: httpRes.status,
-            contentType: contentType,
+            contentType: responseContentType,
             rawResponse: httpRes,
         });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.purchaseOrder = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.PurchaseOrder
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -510,14 +510,14 @@ export class PurchaseOrders {
                 }
                 break;
             case [401, 402, 403, 404, 409, 429, 500, 503].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -558,7 +558,7 @@ export class PurchaseOrders {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/data/purchaseOrders/{purchaseOrderId}/attachments/{attachmentId}",
             req
@@ -593,7 +593,7 @@ export class PurchaseOrders {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url,
+                url: operationUrl,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -601,7 +601,7 @@ export class PurchaseOrders {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -610,17 +610,17 @@ export class PurchaseOrders {
         const res: operations.GetPurchaseOrderAttachmentResponse =
             new operations.GetPurchaseOrderAttachmentResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.attachment = utils.objectToClass(JSON.parse(decodedRes), shared.Attachment);
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -628,14 +628,14 @@ export class PurchaseOrders {
                 }
                 break;
             case [401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -676,7 +676,7 @@ export class PurchaseOrders {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/options/purchaseOrders",
             req
@@ -711,7 +711,7 @@ export class PurchaseOrders {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url,
+                url: operationUrl,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -719,7 +719,7 @@ export class PurchaseOrders {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -728,17 +728,17 @@ export class PurchaseOrders {
         const res: operations.GetCreateUpdatePurchaseOrdersModelResponse =
             new operations.GetCreateUpdatePurchaseOrdersModelResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.pushOption = utils.objectToClass(JSON.parse(decodedRes), shared.PushOption);
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -746,14 +746,14 @@ export class PurchaseOrders {
                 }
                 break;
             case [401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -789,7 +789,7 @@ export class PurchaseOrders {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/data/purchaseOrders",
             req
@@ -825,7 +825,7 @@ export class PurchaseOrders {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url + queryParams,
+                url: operationUrl + queryParams,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -833,7 +833,7 @@ export class PurchaseOrders {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -842,20 +842,20 @@ export class PurchaseOrders {
         const res: operations.ListPurchaseOrdersResponse =
             new operations.ListPurchaseOrdersResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.purchaseOrders = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.PurchaseOrders
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -863,14 +863,14 @@ export class PurchaseOrders {
                 }
                 break;
             case [400, 401, 402, 403, 404, 409, 429, 500, 503].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -909,7 +909,7 @@ export class PurchaseOrders {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/data/purchaseOrders/{purchaseOrderId}/attachments",
             req
@@ -944,7 +944,7 @@ export class PurchaseOrders {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url,
+                url: operationUrl,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -952,7 +952,7 @@ export class PurchaseOrders {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -961,20 +961,20 @@ export class PurchaseOrders {
         const res: operations.ListPurchaseOrderAttachmentsResponse =
             new operations.ListPurchaseOrderAttachmentsResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.attachmentsDataset = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.AttachmentsDataset
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -982,14 +982,14 @@ export class PurchaseOrders {
                 }
                 break;
             case [401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -1029,7 +1029,7 @@ export class PurchaseOrders {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/push/purchaseOrders/{purchaseOrderId}",
             req
@@ -1079,7 +1079,7 @@ export class PurchaseOrders {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url + queryParams,
+                url: operationUrl + queryParams,
                 method: "put",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -1088,7 +1088,7 @@ export class PurchaseOrders {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -1097,20 +1097,20 @@ export class PurchaseOrders {
         const res: operations.UpdatePurchaseOrderResponse =
             new operations.UpdatePurchaseOrderResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.updatePurchaseOrderResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.UpdatePurchaseOrderResponse
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -1118,14 +1118,14 @@ export class PurchaseOrders {
                 }
                 break;
             case [400, 401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes

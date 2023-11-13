@@ -35,22 +35,22 @@ import { CreateBillCreditNoteRequest } from "@speakeasy-sdks/accounting/dist/sdk
 import {
   AccountingCustomerRef,
   AccountRef,
+  Allocation,
   BillCreditNote,
   BillCreditNoteLineItem,
   BillCreditNoteLineItemTracking,
   BillCreditNoteStatus,
   BilledToType,
   ItemRef,
-  Items,
-  ItemsAllocation,
   Metadata,
+  PaymentAllocationItems,
   PaymentAllocationPayment,
   ProjectRef,
   SupplementalData,
   SupplierRef,
   TaxRateRef,
   TrackingCategoryRef,
-  WithholdingTaxitems,
+  WithholdingTaxItems,
 } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 (async() => {
@@ -141,7 +141,6 @@ const timeoutInMinutes: number = 86;
 
   const res = await sdk.billCreditNotes.create(companyId, connectionId, billCreditNote, timeoutInMinutes);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -154,16 +153,20 @@ const timeoutInMinutes: number = 86;
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
 | `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `billCreditNote`                                                      | [shared.BillCreditNote](../../models/shared/billcreditnote.md)        | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `billCreditNote`                                                      | [shared.BillCreditNote](../../../sdk/models/shared/billcreditnote.md) | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
-| `retries`                                                             | [utils.RetryConfig](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
+| `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 | `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
 
 
 ### Response
 
-**Promise<[operations.CreateBillCreditNoteResponse](../../models/operations/createbillcreditnoteresponse.md)>**
+**Promise<[operations.CreateBillCreditNoteResponse](../../sdk/models/operations/createbillcreditnoteresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## get
 
@@ -191,7 +194,6 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.billCreditNotes.get(billCreditNoteId, companyId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -204,14 +206,18 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `billCreditNoteId`                                                  | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a bill credit note.                           |                                                                     |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetBillCreditNoteResponse](../../models/operations/getbillcreditnoteresponse.md)>**
+**Promise<[operations.GetBillCreditNoteResponse](../../sdk/models/operations/getbillcreditnoteresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getCreateUpdateModel
 
@@ -241,7 +247,6 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.billCreditNotes.getCreateUpdateModel(companyId, connectionId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -254,14 +259,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetCreateUpdateBillCreditNotesModelResponse](../../models/operations/getcreateupdatebillcreditnotesmodelresponse.md)>**
+**Promise<[operations.GetCreateUpdateBillCreditNotesModelResponse](../../sdk/models/operations/getcreateupdatebillcreditnotesmodelresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## list
 
@@ -289,7 +298,6 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -298,17 +306,21 @@ import { Accounting } from "@speakeasy-sdks/accounting";
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request`                                                                                      | [operations.ListBillCreditNotesRequest](../../models/operations/listbillcreditnotesrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `retries`                                                                                      | [utils.RetryConfig](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.ListBillCreditNotesRequest](../../sdk/models/operations/listbillcreditnotesrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `retries`                                                                                          | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                 | Configuration to override the default retry behavior of the client.                                |
+| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.ListBillCreditNotesResponse](../../models/operations/listbillcreditnotesresponse.md)>**
+**Promise<[operations.ListBillCreditNotesResponse](../../sdk/models/operations/listbillcreditnotesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update
 
@@ -418,7 +430,6 @@ import { BillCreditNoteStatus, BilledToType } from "@speakeasy-sdks/accounting/d
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -427,17 +438,21 @@ import { BillCreditNoteStatus, BilledToType } from "@speakeasy-sdks/accounting/d
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [operations.UpdateBillCreditNoteRequest](../../models/operations/updatebillcreditnoterequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `retries`                                                                                        | [utils.RetryConfig](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `request`                                                                                            | [operations.UpdateBillCreditNoteRequest](../../sdk/models/operations/updatebillcreditnoterequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `retries`                                                                                            | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                             | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |
+| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
 
 
 ### Response
 
-**Promise<[operations.UpdateBillCreditNoteResponse](../../models/operations/updatebillcreditnoteresponse.md)>**
+**Promise<[operations.UpdateBillCreditNoteResponse](../../sdk/models/operations/updatebillcreditnoteresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## uploadAttachment
 
@@ -470,12 +485,11 @@ const billCreditNoteId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const requestBody: UploadBillCreditNoteAttachmentRequestBody = {
-  content: "v/ghW&IC$x" as bytes <<<>>>,
-  requestBody: "string",
+  content: new TextEncoder().encode("0xE3ABc1980E"),
+  fileName: "elegant_producer_electric.jpeg",
 };
 
   const res = await sdk.billCreditNotes.uploadAttachment(billCreditNoteId, companyId, connectionId, requestBody);
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -485,17 +499,21 @@ const requestBody: UploadBillCreditNoteAttachmentRequestBody = {
 
 ### Parameters
 
-| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  | Example                                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `billCreditNoteId`                                                                                                           | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | Unique identifier for a bill credit note.                                                                                    |                                                                                                                              |
-| `companyId`                                                                                                                  | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | Unique identifier for a company.                                                                                             | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                                         |
-| `connectionId`                                                                                                               | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | Unique identifier for a connection.                                                                                          | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                                         |
-| `requestBody`                                                                                                                | [operations.UploadBillCreditNoteAttachmentRequestBody](../../models/operations/uploadbillcreditnoteattachmentrequestbody.md) | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |                                                                                                                              |
-| `retries`                                                                                                                    | [utils.RetryConfig](../../models/utils/retryconfig.md)                                                                       | :heavy_minus_sign:                                                                                                           | Configuration to override the default retry behavior of the client.                                                          |                                                                                                                              |
-| `config`                                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                 | :heavy_minus_sign:                                                                                                           | Available config options for making requests.                                                                                |                                                                                                                              |
+| Parameter                                                                                                                           | Type                                                                                                                                | Required                                                                                                                            | Description                                                                                                                         | Example                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `billCreditNoteId`                                                                                                                  | *string*                                                                                                                            | :heavy_check_mark:                                                                                                                  | Unique identifier for a bill credit note.                                                                                           |                                                                                                                                     |
+| `companyId`                                                                                                                         | *string*                                                                                                                            | :heavy_check_mark:                                                                                                                  | Unique identifier for a company.                                                                                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                                                |
+| `connectionId`                                                                                                                      | *string*                                                                                                                            | :heavy_check_mark:                                                                                                                  | Unique identifier for a connection.                                                                                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                                                |
+| `requestBody`                                                                                                                       | [operations.UploadBillCreditNoteAttachmentRequestBody](../../../sdk/models/operations/uploadbillcreditnoteattachmentrequestbody.md) | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |                                                                                                                                     |
+| `retries`                                                                                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                                            | :heavy_minus_sign:                                                                                                                  | Configuration to override the default retry behavior of the client.                                                                 |                                                                                                                                     |
+| `config`                                                                                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                        | :heavy_minus_sign:                                                                                                                  | Available config options for making requests.                                                                                       |                                                                                                                                     |
 
 
 ### Response
 
-**Promise<[operations.UploadBillCreditNoteAttachmentResponse](../../models/operations/uploadbillcreditnoteattachmentresponse.md)>**
+**Promise<[operations.UploadBillCreditNoteAttachmentResponse](../../sdk/models/operations/uploadbillcreditnoteattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

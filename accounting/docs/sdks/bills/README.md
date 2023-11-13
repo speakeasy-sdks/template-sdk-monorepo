@@ -39,25 +39,25 @@ import { CreateBillRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/op
 import {
   AccountingCustomerRef,
   AccountRef,
+  Allocation,
   Bill,
-  BillAccountingPaymentAllocation,
-  BillAccountingPaymentAllocationAllocation,
   BilledToType,
   BillLineItem,
-  BillLineItemRecordLineReference,
-  BillLineItemRecordLineReferenceDataType,
+  BillLineItemDataType,
   BillStatus,
-  BillWithholdingTax,
   ItemRef,
   Metadata,
+  PaymentAllocationItems,
   PaymentAllocationPayment,
   ProjectRef,
-  Propertiestracking,
+  PropertieTracking,
   PurchaseOrderRef,
+  RecordLineReference,
   SupplementalData,
   SupplierRef,
   TaxRateRef,
   TrackingCategoryRef,
+  WithholdingTax,
 } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 (async() => {
@@ -146,7 +146,6 @@ const timeoutInMinutes: number = 89964;
 
   const res = await sdk.bills.create(companyId, connectionId, bill, timeoutInMinutes);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -159,16 +158,20 @@ const timeoutInMinutes: number = 89964;
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
 | `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `bill`                                                                | [shared.Bill](../../models/shared/bill.md)                            | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `bill`                                                                | [shared.Bill](../../../sdk/models/shared/bill.md)                     | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
-| `retries`                                                             | [utils.RetryConfig](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
+| `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 | `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
 
 
 ### Response
 
-**Promise<[operations.CreateBillResponse](../../models/operations/createbillresponse.md)>**
+**Promise<[operations.CreateBillResponse](../../sdk/models/operations/createbillresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## delete
 
@@ -218,7 +221,6 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.delete(billId, companyId, connectionId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -232,14 +234,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | `billId`                                                            | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a bill.                                       | 13d946f0-c5d5-42bc-b092-97ece17923ab                                |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.DeleteBillResponse](../../models/operations/deletebillresponse.md)>**
+**Promise<[operations.DeleteBillResponse](../../sdk/models/operations/deletebillresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## downloadAttachment
 
@@ -267,7 +273,6 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.downloadAttachment(attachmentId, billId, companyId, connectionId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -282,14 +287,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | `billId`                                                            | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a bill.                                       | 13d946f0-c5d5-42bc-b092-97ece17923ab                                |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.DownloadBillAttachmentResponse](../../models/operations/downloadbillattachmentresponse.md)>**
+**Promise<[operations.DownloadBillAttachmentResponse](../../sdk/models/operations/downloadbillattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## get
 
@@ -317,7 +326,6 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.bills.get(billId, companyId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -330,14 +338,18 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `billId`                                                            | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a bill.                                       | 13d946f0-c5d5-42bc-b092-97ece17923ab                                |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetBillResponse](../../models/operations/getbillresponse.md)>**
+**Promise<[operations.GetBillResponse](../../sdk/models/operations/getbillresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAttachment
 
@@ -365,7 +377,6 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.getAttachment(attachmentId, billId, companyId, connectionId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -380,14 +391,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | `billId`                                                            | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a bill.                                       | 13d946f0-c5d5-42bc-b092-97ece17923ab                                |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetBillAttachmentResponse](../../models/operations/getbillattachmentresponse.md)>**
+**Promise<[operations.GetBillAttachmentResponse](../../sdk/models/operations/getbillattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getCreateUpdateModel
 
@@ -417,7 +432,6 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.getCreateUpdateModel(companyId, connectionId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -430,14 +444,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetCreateUpdateBillsModelResponse](../../models/operations/getcreateupdatebillsmodelresponse.md)>**
+**Promise<[operations.GetCreateUpdateBillsModelResponse](../../sdk/models/operations/getcreateupdatebillsmodelresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## list
 
@@ -465,7 +483,6 @@ import { Accounting } from "@speakeasy-sdks/accounting";
     pageSize: 100,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -474,17 +491,21 @@ import { Accounting } from "@speakeasy-sdks/accounting";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.ListBillsRequest](../../models/operations/listbillsrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `retries`                                                                  | [utils.RetryConfig](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                         | Configuration to override the default retry behavior of the client.        |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.ListBillsRequest](../../sdk/models/operations/listbillsrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `retries`                                                                      | [utils.RetryConfig](../../internal/utils/retryconfig.md)                       | :heavy_minus_sign:                                                             | Configuration to override the default retry behavior of the client.            |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.ListBillsResponse](../../models/operations/listbillsresponse.md)>**
+**Promise<[operations.ListBillsResponse](../../sdk/models/operations/listbillsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## listAttachments
 
@@ -511,7 +532,6 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
   const res = await sdk.bills.listAttachments(billId, companyId, connectionId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -525,14 +545,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | `billId`                                                            | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a bill.                                       | 13d946f0-c5d5-42bc-b092-97ece17923ab                                |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.ListBillAttachmentsResponse](../../models/operations/listbillattachmentsresponse.md)>**
+**Promise<[operations.ListBillAttachmentsResponse](../../sdk/models/operations/listbillattachmentsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update
 
@@ -551,7 +575,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { BilledToType, BillLineItemRecordLineReferenceDataType, BillStatus } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
+import { BilledToType, BillLineItemDataType, BillStatus } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new Accounting({
@@ -640,7 +664,6 @@ import { BilledToType, BillLineItemRecordLineReferenceDataType, BillStatus } fro
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -649,17 +672,21 @@ import { BilledToType, BillLineItemRecordLineReferenceDataType, BillStatus } fro
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `request`                                                                    | [operations.UpdateBillRequest](../../models/operations/updatebillrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-| `retries`                                                                    | [utils.RetryConfig](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                           | Configuration to override the default retry behavior of the client.          |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.UpdateBillRequest](../../sdk/models/operations/updatebillrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `retries`                                                                        | [utils.RetryConfig](../../internal/utils/retryconfig.md)                         | :heavy_minus_sign:                                                               | Configuration to override the default retry behavior of the client.              |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response
 
-**Promise<[operations.UpdateBillResponse](../../models/operations/updatebillresponse.md)>**
+**Promise<[operations.UpdateBillResponse](../../sdk/models/operations/updatebillresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## uploadAttachment
 
@@ -688,12 +715,11 @@ const billId: string = "EILBDVJVNUAGVKRQ";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const requestBody: UploadBillAttachmentRequestBody = {
-  content: "/ghW&IC$xd" as bytes <<<>>>,
-  requestBody: "string",
+  content: new TextEncoder().encode("0x3ABc1980Ef"),
+  fileName: "novel.mpg4",
 };
 
   const res = await sdk.bills.uploadAttachment(billId, companyId, connectionId, requestBody);
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -703,17 +729,21 @@ const requestBody: UploadBillAttachmentRequestBody = {
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `billId`                                                                                                 | *string*                                                                                                 | :heavy_check_mark:                                                                                       | Unique identifier for a bill.                                                                            | 13d946f0-c5d5-42bc-b092-97ece17923ab                                                                     |
-| `companyId`                                                                                              | *string*                                                                                                 | :heavy_check_mark:                                                                                       | Unique identifier for a company.                                                                         | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                     |
-| `connectionId`                                                                                           | *string*                                                                                                 | :heavy_check_mark:                                                                                       | Unique identifier for a connection.                                                                      | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                     |
-| `requestBody`                                                                                            | [operations.UploadBillAttachmentRequestBody](../../models/operations/uploadbillattachmentrequestbody.md) | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |                                                                                                          |
-| `retries`                                                                                                | [utils.RetryConfig](../../models/utils/retryconfig.md)                                                   | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |                                                                                                          |
-| `config`                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                             | :heavy_minus_sign:                                                                                       | Available config options for making requests.                                                            |                                                                                                          |
+| Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     | Example                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `billId`                                                                                                        | *string*                                                                                                        | :heavy_check_mark:                                                                                              | Unique identifier for a bill.                                                                                   | 13d946f0-c5d5-42bc-b092-97ece17923ab                                                                            |
+| `companyId`                                                                                                     | *string*                                                                                                        | :heavy_check_mark:                                                                                              | Unique identifier for a company.                                                                                | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                            |
+| `connectionId`                                                                                                  | *string*                                                                                                        | :heavy_check_mark:                                                                                              | Unique identifier for a connection.                                                                             | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                            |
+| `requestBody`                                                                                                   | [operations.UploadBillAttachmentRequestBody](../../../sdk/models/operations/uploadbillattachmentrequestbody.md) | :heavy_minus_sign:                                                                                              | N/A                                                                                                             |                                                                                                                 |
+| `retries`                                                                                                       | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                        | :heavy_minus_sign:                                                                                              | Configuration to override the default retry behavior of the client.                                             |                                                                                                                 |
+| `config`                                                                                                        | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                    | :heavy_minus_sign:                                                                                              | Available config options for making requests.                                                                   |                                                                                                                 |
 
 
 ### Response
 
-**Promise<[operations.UploadBillAttachmentResponse](../../models/operations/uploadbillattachmentresponse.md)>**
+**Promise<[operations.UploadBillAttachmentResponse](../../sdk/models/operations/uploadbillattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

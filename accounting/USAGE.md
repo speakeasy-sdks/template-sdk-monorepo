@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetAccountTransactionRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
