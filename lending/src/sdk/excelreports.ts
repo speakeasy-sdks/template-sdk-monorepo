@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -49,7 +49,7 @@ export class ExcelReports {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/data/companies/{companyId}/assess/excel/download",
             req
@@ -89,7 +89,7 @@ export class ExcelReports {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url + queryParams,
+                url: operationUrl + queryParams,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -97,7 +97,7 @@ export class ExcelReports {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -106,17 +106,17 @@ export class ExcelReports {
         const res: operations.DownloadExcelReportResponse =
             new operations.DownloadExcelReportResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/octet-stream`)) {
+                if (utils.matchContentType(responseContentType, `application/octet-stream`)) {
                     res.body = httpRes?.data;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -124,14 +124,14 @@ export class ExcelReports {
                 }
                 break;
             case [400, 401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -179,7 +179,7 @@ export class ExcelReports {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/data/companies/{companyId}/assess/excel",
             req
@@ -215,7 +215,7 @@ export class ExcelReports {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url + queryParams,
+                url: operationUrl + queryParams,
                 method: "post",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -223,7 +223,7 @@ export class ExcelReports {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -232,20 +232,20 @@ export class ExcelReports {
         const res: operations.GenerateExcelReportResponse =
             new operations.GenerateExcelReportResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.excelStatus = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ExcelStatus
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -253,14 +253,14 @@ export class ExcelReports {
                 }
                 break;
             case [400, 401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -296,7 +296,7 @@ export class ExcelReports {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/data/companies/{companyId}/assess/excel",
             req
@@ -332,7 +332,7 @@ export class ExcelReports {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url + queryParams,
+                url: operationUrl + queryParams,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -340,7 +340,7 @@ export class ExcelReports {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -349,20 +349,20 @@ export class ExcelReports {
         const res: operations.GetExcelReportGenerationStatusResponse =
             new operations.GetExcelReportGenerationStatusResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.excelStatus = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ExcelStatus
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -370,14 +370,14 @@ export class ExcelReports {
                 }
                 break;
             case [400, 401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes

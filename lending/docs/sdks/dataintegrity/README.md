@@ -36,7 +36,6 @@ import { DataIntegrityDataType } from "lending/dist/sdk/models/shared";
     pageSize: 100,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -45,17 +44,21 @@ import { DataIntegrityDataType } from "lending/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                | [operations.ListDataIntegrityDetailsRequest](../../models/operations/listdataintegritydetailsrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
-| `retries`                                                                                                | [utils.RetryConfig](../../models/utils/retryconfig.md)                                                   | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
-| `config`                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                             | :heavy_minus_sign:                                                                                       | Available config options for making requests.                                                            |
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                    | [operations.ListDataIntegrityDetailsRequest](../../sdk/models/operations/listdataintegritydetailsrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `retries`                                                                                                    | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                     | :heavy_minus_sign:                                                                                           | Configuration to override the default retry behavior of the client.                                          |
+| `config`                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                 | :heavy_minus_sign:                                                                                           | Available config options for making requests.                                                                |
 
 
 ### Response
 
-**Promise<[operations.ListDataIntegrityDetailsResponse](../../models/operations/listdataintegritydetailsresponse.md)>**
+**Promise<[operations.ListDataIntegrityDetailsResponse](../../sdk/models/operations/listdataintegritydetailsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## status
 
@@ -84,7 +87,6 @@ const dataType: DataIntegrityDataType = DataIntegrityDataType.BankingAccounts;
 
   const res = await sdk.dataIntegrity.status(companyId, dataType);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -93,18 +95,22 @@ const dataType: DataIntegrityDataType = DataIntegrityDataType.BankingAccounts;
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `companyId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | Unique identifier for a company.                                             | 8a210b68-6988-11ed-a1eb-0242ac120002                                         |
-| `dataType`                                                                   | [shared.DataIntegrityDataType](../../models/shared/dataintegritydatatype.md) | :heavy_check_mark:                                                           | A key for a Codat data type.                                                 | banking-accounts                                                             |
-| `retries`                                                                    | [utils.RetryConfig](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                           | Configuration to override the default retry behavior of the client.          |                                                                              |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |                                                                              |
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         | Example                                                                             |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `companyId`                                                                         | *string*                                                                            | :heavy_check_mark:                                                                  | Unique identifier for a company.                                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                                |
+| `dataType`                                                                          | [shared.DataIntegrityDataType](../../../sdk/models/shared/dataintegritydatatype.md) | :heavy_check_mark:                                                                  | A key for a Codat data type.                                                        | banking-accounts                                                                    |
+| `retries`                                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)                            | :heavy_minus_sign:                                                                  | Configuration to override the default retry behavior of the client.                 |                                                                                     |
+| `config`                                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                        | :heavy_minus_sign:                                                                  | Available config options for making requests.                                       |                                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetDataIntegrityStatusResponse](../../models/operations/getdataintegritystatusresponse.md)>**
+**Promise<[operations.GetDataIntegrityStatusResponse](../../sdk/models/operations/getdataintegritystatusresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## summaries
 
@@ -131,7 +137,6 @@ const query: string = "string";
 
   const res = await sdk.dataIntegrity.summaries(companyId, dataType, query);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -140,16 +145,20 @@ const query: string = "string";
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `companyId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | Unique identifier for a company.                                               | 8a210b68-6988-11ed-a1eb-0242ac120002                                           |
-| `dataType`                                                                     | [shared.DataIntegrityDataType](../../models/shared/dataintegritydatatype.md)   | :heavy_check_mark:                                                             | A key for a Codat data type.                                                   | banking-accounts                                                               |
-| `query`                                                                        | *string*                                                                       | :heavy_minus_sign:                                                             | Codat query string. [Read more](https://docs.codat.io/using-the-api/querying). |                                                                                |
-| `retries`                                                                      | [utils.RetryConfig](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                             | Configuration to override the default retry behavior of the client.            |                                                                                |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |                                                                                |
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         | Example                                                                             |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `companyId`                                                                         | *string*                                                                            | :heavy_check_mark:                                                                  | Unique identifier for a company.                                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                                |
+| `dataType`                                                                          | [shared.DataIntegrityDataType](../../../sdk/models/shared/dataintegritydatatype.md) | :heavy_check_mark:                                                                  | A key for a Codat data type.                                                        | banking-accounts                                                                    |
+| `query`                                                                             | *string*                                                                            | :heavy_minus_sign:                                                                  | Codat query string. [Read more](https://docs.codat.io/using-the-api/querying).      |                                                                                     |
+| `retries`                                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)                            | :heavy_minus_sign:                                                                  | Configuration to override the default retry behavior of the client.                 |                                                                                     |
+| `config`                                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                        | :heavy_minus_sign:                                                                  | Available config options for making requests.                                       |                                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetDataIntegritySummariesResponse](../../models/operations/getdataintegritysummariesresponse.md)>**
+**Promise<[operations.GetDataIntegritySummariesResponse](../../sdk/models/operations/getdataintegritysummariesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class RefreshDataTypeRequest extends SpeakeasyBase {
@@ -17,7 +17,7 @@ export class RefreshDataTypeRequest extends SpeakeasyBase {
      * The key of a Codat data type
      */
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=dataType" })
-    dataType: shared.DataType;
+    dataType: shared.SchemaDataType;
 
     /**
      * Optionally, provide a data connection id to only queue pull operations on that connection.

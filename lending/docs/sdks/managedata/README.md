@@ -23,7 +23,6 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.manageData.getStatus(companyId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -35,11 +34,15 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetDataStatusResponse](../../models/operations/getdatastatusresponse.md)>**
+**Promise<[operations.GetDataStatusResponse](../../sdk/models/operations/getdatastatusresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

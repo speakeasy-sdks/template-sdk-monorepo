@@ -36,7 +36,6 @@ import { Lending } from "lending";
     name: "Bank of Dave",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -45,17 +44,21 @@ import { Lending } from "lending";
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `request`                                                              | [shared.CompanyRequestBody](../../models/shared/companyrequestbody.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
-| `retries`                                                              | [utils.RetryConfig](../../models/utils/retryconfig.md)                 | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |
-| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `request`                                                                  | [shared.CompanyRequestBody](../../sdk/models/shared/companyrequestbody.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `retries`                                                                  | [utils.RetryConfig](../../internal/utils/retryconfig.md)                   | :heavy_minus_sign:                                                         | Configuration to override the default retry behavior of the client.        |
+| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
 
 
 ### Response
 
-**Promise<[operations.CreateCompanyResponse](../../models/operations/createcompanyresponse.md)>**
+**Promise<[operations.CreateCompanyResponse](../../sdk/models/operations/createcompanyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## delete
 
@@ -76,7 +79,6 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.companies.delete(companyId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -88,14 +90,18 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.DeleteCompanyResponse](../../models/operations/deletecompanyresponse.md)>**
+**Promise<[operations.DeleteCompanyResponse](../../sdk/models/operations/deletecompanyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## get
 
@@ -115,7 +121,6 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.companies.get(companyId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -127,14 +132,18 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetCompanyResponse](../../models/operations/getcompanyresponse.md)>**
+**Promise<[operations.GetCompanyResponse](../../sdk/models/operations/getcompanyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## list
 
@@ -157,7 +166,6 @@ const query: string = "string";
 
   const res = await sdk.companies.list(orderBy, page, pageSize, query);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -172,14 +180,18 @@ const query: string = "string";
 | `page`                                                                                          | *number*                                                                                        | :heavy_minus_sign:                                                                              | Page number. [Read more](https://docs.codat.io/using-the-api/paging).                           | 1                                                                                               |
 | `pageSize`                                                                                      | *number*                                                                                        | :heavy_minus_sign:                                                                              | Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging). | 100                                                                                             |
 | `query`                                                                                         | *string*                                                                                        | :heavy_minus_sign:                                                                              | Codat query string. [Read more](https://docs.codat.io/using-the-api/querying).                  |                                                                                                 |
-| `retries`                                                                                       | [utils.RetryConfig](../../models/utils/retryconfig.md)                                          | :heavy_minus_sign:                                                                              | Configuration to override the default retry behavior of the client.                             |                                                                                                 |
+| `retries`                                                                                       | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                        | :heavy_minus_sign:                                                                              | Configuration to override the default retry behavior of the client.                             |                                                                                                 |
 | `config`                                                                                        | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                    | :heavy_minus_sign:                                                                              | Available config options for making requests.                                                   |                                                                                                 |
 
 
 ### Response
 
-**Promise<[operations.ListCompaniesResponse](../../models/operations/listcompaniesresponse.md)>**
+**Promise<[operations.ListCompaniesResponse](../../sdk/models/operations/listcompaniesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update
 
@@ -204,7 +216,6 @@ const companyRequestBody: CompanyRequestBody = {
 
   const res = await sdk.companies.update(companyId, companyRequestBody);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -213,15 +224,19 @@ const companyRequestBody: CompanyRequestBody = {
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `companyId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a company.                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                   |
-| `companyRequestBody`                                                   | [shared.CompanyRequestBody](../../models/shared/companyrequestbody.md) | :heavy_minus_sign:                                                     | N/A                                                                    |                                                                        |
-| `retries`                                                              | [utils.RetryConfig](../../models/utils/retryconfig.md)                 | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |                                                                        |
-| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |                                                                        |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `companyId`                                                                   | *string*                                                                      | :heavy_check_mark:                                                            | Unique identifier for a company.                                              | 8a210b68-6988-11ed-a1eb-0242ac120002                                          |
+| `companyRequestBody`                                                          | [shared.CompanyRequestBody](../../../sdk/models/shared/companyrequestbody.md) | :heavy_minus_sign:                                                            | N/A                                                                           |                                                                               |
+| `retries`                                                                     | [utils.RetryConfig](../../internal/utils/retryconfig.md)                      | :heavy_minus_sign:                                                            | Configuration to override the default retry behavior of the client.           |                                                                               |
+| `config`                                                                      | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                  | :heavy_minus_sign:                                                            | Available config options for making requests.                                 |                                                                               |
 
 
 ### Response
 
-**Promise<[operations.UpdateCompanyResponse](../../models/operations/updatecompanyresponse.md)>**
+**Promise<[operations.UpdateCompanyResponse](../../sdk/models/operations/updatecompanyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
