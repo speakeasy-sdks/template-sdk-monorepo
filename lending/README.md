@@ -562,7 +562,6 @@ import { Lending } from "lending";
 
 
 <!-- Start Authentication -->
-
 ## Authentication
 
 ### Per-Client Security Schemes
