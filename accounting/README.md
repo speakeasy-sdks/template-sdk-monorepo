@@ -460,7 +460,6 @@ import { GetAccountTransactionRequest } from "@speakeasy-sdks/accounting/dist/sd
 
 
 <!-- Start Authentication -->
-
 ## Authentication
 
 ### Per-Client Security Schemes
