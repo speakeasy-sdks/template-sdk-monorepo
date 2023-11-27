@@ -99,9 +99,6 @@ export class BillLineItem extends SpeakeasyBase {
     @Expose({ name: "lineNumber" })
     lineNumber?: string;
 
-    /**
-     * Reference to the purchase order line this line was generated from.
-     */
     @SpeakeasyMetadata()
     @Expose({ name: "purchaseOrderLineRef" })
     @Type(() => RecordLineReference)
@@ -176,4 +173,11 @@ export class BillLineItem extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "unitAmount" })
     unitAmount: number;
+
+    /**
+     * The measurement which defines a unit for this item (e.g. 'kilogram', 'litre').
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "unitOfMeasurement" })
+    unitOfMeasurement?: string;
 }

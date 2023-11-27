@@ -39,3 +39,13 @@ Based on:
 - [typescript v0.3.1] lending
 ### Releases
 - [NPM v0.3.1] https://www.npmjs.com/package/lending/v/0.3.1 - lending
+
+## 2023-11-27 01:57:23
+### Changes
+Based on:
+- OpenAPI Doc 3.0.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Lending.yaml
+- Speakeasy CLI 1.122.0 (2.195.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.3.2] lending
+### Releases
+- [NPM v0.3.2] https://www.npmjs.com/package/lending/v/0.3.2 - lending

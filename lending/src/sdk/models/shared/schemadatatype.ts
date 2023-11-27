@@ -21,6 +21,7 @@ export enum SchemaDataType {
     DirectCosts = "directCosts",
     DirectIncomes = "directIncomes",
     Invoices = "invoices",
+    ItemReceipts = "itemReceipts",
     Items = "items",
     JournalEntries = "journalEntries",
     Journals = "journals",
