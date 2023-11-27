@@ -17,6 +17,7 @@ import { Customers } from "./customers";
 import { DirectCosts } from "./directcosts";
 import { DirectIncomes } from "./directincomes";
 import { Invoices } from "./invoices";
+import { ItemReceipts } from "./itemreceipts";
 import { Items } from "./items";
 import { JournalEntries } from "./journalentries";
 import { Journals } from "./journals";
@@ -75,9 +76,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "3.0.0";
-    sdkVersion = "0.4.1";
-    genVersion = "2.194.1";
-    userAgent = "speakeasy-sdk/typescript 0.4.1 2.194.1 3.0.0 @speakeasy-sdks/accounting";
+    sdkVersion = "0.4.2";
+    genVersion = "2.195.2";
+    userAgent = "speakeasy-sdk/typescript 0.4.2 2.195.2 3.0.0 @speakeasy-sdks/accounting";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -128,6 +129,10 @@ export class Accounting {
      * Invoices
      */
     public invoices: Invoices;
+    /**
+     * Item receipts
+     */
+    public itemReceipts: ItemReceipts;
     /**
      * Purchase orders
      */
@@ -224,6 +229,7 @@ export class Accounting {
         this.directCosts = new DirectCosts(this.sdkConfiguration);
         this.directIncomes = new DirectIncomes(this.sdkConfiguration);
         this.invoices = new Invoices(this.sdkConfiguration);
+        this.itemReceipts = new ItemReceipts(this.sdkConfiguration);
         this.purchaseOrders = new PurchaseOrders(this.sdkConfiguration);
         this.suppliers = new Suppliers(this.sdkConfiguration);
         this.transfers = new Transfers(this.sdkConfiguration);

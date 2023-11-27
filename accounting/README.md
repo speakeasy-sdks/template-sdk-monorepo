@@ -131,6 +131,11 @@ import { GetAccountTransactionRequest } from "@speakeasy-sdks/accounting/dist/sd
 * [update](docs/sdks/invoices/README.md#update) - Update invoice
 * [uploadAttachment](docs/sdks/invoices/README.md#uploadattachment) - Push invoice attachment
 
+### [itemReceipts](docs/sdks/itemreceipts/README.md)
+
+* [get](docs/sdks/itemreceipts/README.md#get) - Get item receipt
+* [list](docs/sdks/itemreceipts/README.md#list) - List item receipts
+
 ### [purchaseOrders](docs/sdks/purchaseorders/README.md)
 
 * [create](docs/sdks/purchaseorders/README.md#create) - Create purchase order

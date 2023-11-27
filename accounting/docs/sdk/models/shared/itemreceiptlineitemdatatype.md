@@ -1,4 +1,4 @@
-# BillLineItemDataType
+# ItemReceiptLineItemDataType
 
 Allowed name of the 'dataType'.
 

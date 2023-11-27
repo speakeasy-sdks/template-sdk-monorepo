@@ -6,6 +6,7 @@ src/sdk/customers.ts
 src/sdk/directcosts.ts
 src/sdk/directincomes.ts
 src/sdk/invoices.ts
+src/sdk/itemreceipts.ts
 src/sdk/purchaseorders.ts
 src/sdk/suppliers.ts
 src/sdk/transfers.ts
@@ -98,6 +99,8 @@ src/sdk/models/operations/listinvoices.ts
 src/sdk/models/operations/listinvoiceattachments.ts
 src/sdk/models/operations/updateinvoice.ts
 src/sdk/models/operations/uploadinvoiceattachment.ts
+src/sdk/models/operations/getitemreceipt.ts
+src/sdk/models/operations/listitemreceipts.ts
 src/sdk/models/operations/createpurchaseorder.ts
 src/sdk/models/operations/downloadpurchaseorderattachment.ts
 src/sdk/models/operations/downloadpurchaseorderpdf.ts
@@ -174,6 +177,7 @@ src/sdk/models/operations/gettaxrate.ts
 src/sdk/models/operations/listtaxrates.ts
 src/sdk/models/operations/gettrackingcategory.ts
 src/sdk/models/operations/listtrackingcategories.ts
+src/sdk/models/shared/zero.ts
 src/sdk/models/shared/errormessage.ts
 src/sdk/models/shared/accounttransaction.ts
 src/sdk/models/shared/metadata.ts
@@ -258,6 +262,10 @@ src/sdk/models/shared/propertietracking1.ts
 src/sdk/models/shared/billedtotype1.ts
 src/sdk/models/shared/invoices.ts
 src/sdk/models/shared/updateinvoiceresponse.ts
+src/sdk/models/shared/itemreceipt.ts
+src/sdk/models/shared/itemreceiptstatus.ts
+src/sdk/models/shared/itemreceiptlineitem.ts
+src/sdk/models/shared/itemreceipts.ts
 src/sdk/models/shared/createpurchaseorderresponse.ts
 src/sdk/models/shared/purchaseorder.ts
 src/sdk/models/shared/purchaseorderstatus.ts
@@ -479,6 +487,10 @@ docs/sdk/models/operations/updateinvoiceresponse.md
 docs/sdk/models/operations/uploadinvoiceattachmentrequestbody.md
 docs/sdk/models/operations/uploadinvoiceattachmentrequest.md
 docs/sdk/models/operations/uploadinvoiceattachmentresponse.md
+docs/sdk/models/operations/getitemreceiptrequest.md
+docs/sdk/models/operations/getitemreceiptresponse.md
+docs/sdk/models/operations/listitemreceiptsrequest.md
+docs/sdk/models/operations/listitemreceiptsresponse.md
 docs/sdk/models/operations/createpurchaseorderrequest.md
 docs/sdk/models/operations/createpurchaseorderresponse.md
 docs/sdk/models/operations/downloadpurchaseorderattachmentrequest.md
@@ -634,6 +646,8 @@ docs/sdk/models/operations/gettrackingcategoryrequest.md
 docs/sdk/models/operations/gettrackingcategoryresponse.md
 docs/sdk/models/operations/listtrackingcategoriesrequest.md
 docs/sdk/models/operations/listtrackingcategoriesresponse.md
+docs/sdk/models/shared/zerodatatype.md
+docs/sdk/models/shared/zero.md
 docs/sdk/models/shared/errormessage.md
 docs/sdk/models/shared/accounttransactionstatus.md
 docs/sdk/models/shared/accounttransaction.md
@@ -679,8 +693,6 @@ docs/sdk/models/shared/allocation.md
 docs/sdk/models/shared/paymentallocationitems.md
 docs/sdk/models/shared/paymentallocationpayment.md
 docs/sdk/models/shared/accountref.md
-docs/sdk/models/shared/billlineitemdatatype.md
-docs/sdk/models/shared/recordlinereference.md
 docs/sdk/models/shared/billlineitem.md
 docs/sdk/models/shared/trackingcategoryref.md
 docs/sdk/models/shared/propertietracking.md
@@ -732,6 +744,13 @@ docs/sdk/models/shared/propertietracking1.md
 docs/sdk/models/shared/billedtotype1.md
 docs/sdk/models/shared/invoices.md
 docs/sdk/models/shared/updateinvoiceresponse.md
+docs/sdk/models/shared/itemreceipt.md
+docs/sdk/models/shared/itemreceiptstatus.md
+docs/sdk/models/shared/itemreceiptlineitemdatatype.md
+docs/sdk/models/shared/recordlinereference.md
+docs/sdk/models/shared/itemreceiptlineitemtracking.md
+docs/sdk/models/shared/itemreceiptlineitem.md
+docs/sdk/models/shared/itemreceipts.md
 docs/sdk/models/shared/createpurchaseorderresponse.md
 docs/sdk/models/shared/purchaseorder.md
 docs/sdk/models/shared/purchaseorderstatus.md
@@ -834,7 +853,6 @@ docs/sdk/models/shared/salesordercontact.md
 docs/sdk/models/shared/salesordershipto.md
 docs/sdk/models/shared/salesorder.md
 docs/sdk/models/shared/salesorderstatus.md
-docs/sdk/models/shared/salesorderlineitemtracking.md
 docs/sdk/models/shared/salesorderlineitem.md
 docs/sdk/models/shared/salesorderinvoicestatus.md
 docs/sdk/models/shared/salesorders.md
@@ -857,6 +875,7 @@ docs/sdks/customers/README.md
 docs/sdks/directcosts/README.md
 docs/sdks/directincomes/README.md
 docs/sdks/invoices/README.md
+docs/sdks/itemreceipts/README.md
 docs/sdks/purchaseorders/README.md
 docs/sdks/suppliers/README.md
 docs/sdks/transfers/README.md

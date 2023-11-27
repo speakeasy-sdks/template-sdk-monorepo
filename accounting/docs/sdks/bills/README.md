@@ -43,7 +43,6 @@ import {
   Bill,
   BilledToType,
   BillLineItem,
-  BillLineItemDataType,
   BillStatus,
   ItemRef,
   Metadata,
@@ -52,12 +51,13 @@ import {
   ProjectRef,
   PropertieTracking,
   PurchaseOrderRef,
-  RecordLineReference,
   SupplementalData,
   SupplierRef,
   TaxRateRef,
   TrackingCategoryRef,
   WithholdingTax,
+  Zero,
+  ZeroDataType,
 } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 (async() => {
@@ -575,7 +575,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { BilledToType, BillLineItemDataType, BillStatus } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
+import { BilledToType, BillStatus, ZeroDataType } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new Accounting({

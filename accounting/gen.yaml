@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 7ddc91260b90f36bb72d9591c05dc7a1
+  docChecksum: 49548ed02cdb13e87a5528599235687f
   docVersion: 3.0.0
-  speakeasyVersion: 1.121.1
-  generationVersion: 2.194.1
+  speakeasyVersion: 1.122.0
+  generationVersion: 2.195.2
 generation:
   comments: {}
   sdkClassName: accounting
@@ -23,7 +23,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.1
 typescript:
-  version: 0.4.1
+  version: 0.4.2
   author: Accounting
   clientServerStatusCodesAsErrors: false
   description: Access the Accounting API
