@@ -16,7 +16,7 @@ Retrieve information about a single dataset or pull operation.
 import { Lending } from "lending";
 import { GetPullOperationRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -28,7 +28,9 @@ const datasetId: string = "b18d8d81-fd7b-4764-a31e-475cb1f36591";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -59,7 +61,7 @@ Gets the pull operation history (datasets) for a given company.
 ```typescript
 import { Lending } from "lending";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -74,7 +76,9 @@ import { Lending } from "lending";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

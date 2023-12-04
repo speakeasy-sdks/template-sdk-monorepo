@@ -21,7 +21,7 @@ The *Download files* endpoint downloads all files that have  been uploaded by to
 import { Lending } from "lending";
 import { DownloadFilesRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -33,7 +33,9 @@ const date: string = "2022-10-23T00:00:00.000Z";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -65,7 +67,7 @@ const date: string = "2022-10-23T00:00:00.000Z";
 import { Lending } from "lending";
 import { ListFilesRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -76,7 +78,9 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -113,7 +117,7 @@ Uploaded files must meet the following requirements:
 import { Lending } from "lending";
 import { UploadFilesRequest, UploadFilesRequestBody } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -129,7 +133,9 @@ const requestBody: UploadFilesRequestBody = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

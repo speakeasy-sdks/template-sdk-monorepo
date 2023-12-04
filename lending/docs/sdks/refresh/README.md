@@ -20,7 +20,7 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 import { Lending } from "lending";
 import { RefreshAllDataTypesRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -31,7 +31,9 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -65,7 +67,7 @@ import { Lending } from "lending";
 import { RefreshDataTypeRequest } from "lending/dist/sdk/models/operations";
 import { SchemaDataType } from "lending/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -78,7 +80,9 @@ const connectionId: string = "34f47fda-384b-4d2f-a80b-311909008b33";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

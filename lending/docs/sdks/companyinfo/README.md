@@ -20,7 +20,7 @@ Gets the latest basic info for a company.
 import { Lending } from "lending";
 import { GetAccountingProfileRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -31,7 +31,9 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -66,7 +68,7 @@ social media or website information."
 import { Lending } from "lending";
 import { GetCommerceProfileRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -78,7 +80,9 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

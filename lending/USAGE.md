@@ -1,8 +1,8 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```typescript
 import { Lending } from "lending";
 
-(async () => {
+async function run() {
     const sdk = new Lending({
         authHeader: "Basic BASE_64_ENCODED(API_KEY)",
     });
@@ -15,7 +15,9 @@ import { Lending } from "lending";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

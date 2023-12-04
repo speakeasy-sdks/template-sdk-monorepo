@@ -23,7 +23,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 import { Lending } from "lending";
 import { GetAccountingAccountRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -35,7 +35,9 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -70,7 +72,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ```typescript
 import { Lending } from "lending";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -85,7 +87,9 @@ import { Lending } from "lending";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

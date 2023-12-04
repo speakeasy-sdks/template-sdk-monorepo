@@ -23,7 +23,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 import { Lending } from "lending";
 import { GetCommerceLocationRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -36,7 +36,9 @@ const locationId: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -74,7 +76,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 import { Lending } from "lending";
 import { ListCommerceLocationsRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -86,7 +88,9 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

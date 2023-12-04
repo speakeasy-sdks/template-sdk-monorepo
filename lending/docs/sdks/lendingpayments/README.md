@@ -25,7 +25,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 import { Lending } from "lending";
 import { PaymentLinkType } from "lending/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -70,7 +70,9 @@ import { PaymentLinkType } from "lending/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -110,7 +112,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 import { Lending } from "lending";
 import { GetCreatePaymentModelRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -122,7 +124,9 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

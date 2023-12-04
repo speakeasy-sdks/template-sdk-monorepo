@@ -6,7 +6,7 @@
     
 </div>
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### NPM
@@ -20,16 +20,17 @@ npm add lending
 ```bash
 yarn add lending
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example
 
 ```typescript
 import { Lending } from "lending";
 
-(async () => {
+async function run() {
     const sdk = new Lending({
         authHeader: "Basic BASE_64_ENCODED(API_KEY)",
     });
@@ -42,14 +43,15 @@ import { Lending } from "lending";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
 
 ### [companies](docs/sdks/companies/README.md)
 
@@ -361,15 +363,11 @@ import { Lending } from "lending";
 * [download](docs/sdks/excelreports/README.md#download) - Download Excel report
 * [generate](docs/sdks/excelreports/README.md#generate) - Generate Excel report
 * [getStatus](docs/sdks/excelreports/README.md#getstatus) - Get Excel report status
-<!-- End SDK Available Operations -->
-
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
@@ -383,7 +381,7 @@ Example
 ```typescript
 import { Lending } from "lending";
 
-(async () => {
+async function run() {
     const sdk = new Lending({
         authHeader: "Basic BASE_64_ENCODED(API_KEY)",
     });
@@ -394,19 +392,26 @@ import { Lending } from "lending";
             description: "Requested early access to the new financing scheme.",
             name: "Bank of Dave",
         });
-    } catch (e) {}
+    } catch (err) {
+        if (err instanceof errors.SDKError) {
+            console.error(err); // handle exception
+            throw err;
+        }
+    }
 
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Error Handling -->
+<!-- End Error Handling [errors] -->
 
 
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Index
@@ -422,7 +427,7 @@ You can override the default server globally by passing a server index to the `s
 ```typescript
 import { Lending } from "lending";
 
-(async () => {
+async function run() {
     const sdk = new Lending({
         serverIdx: 0,
         authHeader: "Basic BASE_64_ENCODED(API_KEY)",
@@ -436,7 +441,9 @@ import { Lending } from "lending";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
 
@@ -447,7 +454,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```typescript
 import { Lending } from "lending";
 
-(async () => {
+async function run() {
     const sdk = new Lending({
         serverURL: "https://api.codat.io",
         authHeader: "Basic BASE_64_ENCODED(API_KEY)",
@@ -461,23 +468,25 @@ import { Lending } from "lending";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+The Typescript SDK makes API calls using the [axios](https://axios-http.com/docs/intro) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
 
 For example, you could specify a header for every request that your sdk makes as follows:
 
 ```typescript
-from lending import Lending;
-import axios;
+import { lending } from "Lending";
+import axios from "axios";
 
 const httpClient = axios.create({
     headers: {'x-custom-header': 'someValue'}
@@ -485,11 +494,11 @@ const httpClient = axios.create({
 
 const sdk = new Lending({defaultClient: httpClient});
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Retries -->
+<!-- Start Retries [retries] -->
 ## Retries
 
 Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
@@ -498,7 +507,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```typescript
 import { Lending } from "lending";
 
-(async () => {
+async function run() {
     const sdk = new Lending({
         authHeader: "Basic BASE_64_ENCODED(API_KEY)",
     });
@@ -523,7 +532,9 @@ import { Lending } from "lending";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
 
@@ -531,7 +542,7 @@ If you'd like to override the default retry strategy for all operations that sup
 ```typescript
 import { Lending } from "lending";
 
-(async () => {
+async function run() {
     const sdk = new Lending({
         retry_config: {
             strategy: "backoff",
@@ -554,14 +565,16 @@ import { Lending } from "lending";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Retries -->
+<!-- End Retries [retries] -->
 
 
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -576,7 +589,7 @@ To authenticate with the API the `authHeader` parameter must be set when initial
 ```typescript
 import { Lending } from "lending";
 
-(async () => {
+async function run() {
     const sdk = new Lending({
         authHeader: "Basic BASE_64_ENCODED(API_KEY)",
     });
@@ -589,10 +602,12 @@ import { Lending } from "lending";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

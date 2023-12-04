@@ -25,7 +25,7 @@ Use the [List Integrations](https://docs.codat.io/lending-api#/operations/list-i
 import { Lending } from "lending";
 import { CreateConnectionRequest, CreateConnectionRequestBody } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -39,7 +39,9 @@ const requestBody: CreateConnectionRequestBody = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -72,7 +74,7 @@ This operation is not reversible. The end user would need to reauthorize a new d
 import { Lending } from "lending";
 import { DeleteConnectionRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -84,7 +86,9 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -116,7 +120,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 import { Lending } from "lending";
 import { GetConnectionRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -128,7 +132,9 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -159,7 +165,7 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 ```typescript
 import { Lending } from "lending";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -174,7 +180,9 @@ import { Lending } from "lending";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -206,7 +214,7 @@ import { Lending } from "lending";
 import { UnlinkConnectionRequest, UnlinkConnectionUpdateConnection } from "lending/dist/sdk/models/operations";
 import { DataConnectionStatus } from "lending/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -219,7 +227,9 @@ const requestBody: UnlinkConnectionUpdateConnection = {};
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

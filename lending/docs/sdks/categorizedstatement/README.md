@@ -19,7 +19,7 @@ The _Get categorized bank statement_ endpoint provides a fully categorized list 
 import { Lending } from "lending";
 import { GetCategorizedBankStatementRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -33,7 +33,9 @@ const query: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

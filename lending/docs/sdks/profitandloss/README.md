@@ -16,7 +16,7 @@ Gets the latest profit and loss for a company.
 import { Lending } from "lending";
 import { GetAccountingProfitAndLossRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -30,7 +30,9 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -66,7 +68,7 @@ Codat suggests a category for each account automatically, but you can [change it
 import { Lending } from "lending";
 import { GetCategorizedProfitAndLossStatementRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -79,7 +81,9 @@ const reportDate: string = "29-09-2020";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

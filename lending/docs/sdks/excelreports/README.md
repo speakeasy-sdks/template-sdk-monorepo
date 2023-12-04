@@ -26,7 +26,7 @@ import { Lending } from "lending";
 import { DownloadExcelReportRequest } from "lending/dist/sdk/models/operations";
 import { ExcelReportTypes } from "lending/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -38,7 +38,9 @@ const reportType: ExcelReportTypes = ExcelReportTypes.EnhancedFinancials;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -87,7 +89,7 @@ import { Lending } from "lending";
 import { GenerateExcelReportRequest } from "lending/dist/sdk/models/operations";
 import { ExcelReportTypes } from "lending/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -99,7 +101,9 @@ const reportType: ExcelReportTypes = ExcelReportTypes.EnhancedInvoices;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -136,7 +140,7 @@ import { Lending } from "lending";
 import { GetExcelReportGenerationStatusRequest } from "lending/dist/sdk/models/operations";
 import { ExcelReportTypes } from "lending/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -148,7 +152,9 @@ const reportType: ExcelReportTypes = ExcelReportTypes.EnhancedCashFlow;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

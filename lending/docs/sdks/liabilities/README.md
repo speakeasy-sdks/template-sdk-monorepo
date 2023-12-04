@@ -27,7 +27,7 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 import { Lending } from "lending";
 import { GenerateLoanSummaryRequest, SourceType } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -39,7 +39,9 @@ const sourceType: SourceType = SourceType.Accounting;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -76,7 +78,7 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 import { Lending } from "lending";
 import { GenerateLoanTransactionsRequest, QueryParamSourceType } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -88,7 +90,9 @@ const sourceType: QueryParamSourceType = QueryParamSourceType.Accounting;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -125,7 +129,7 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 import { Lending } from "lending";
 import { GetLoanSummaryQueryParamSourceType, GetLoanSummaryRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -137,7 +141,9 @@ const sourceType: GetLoanSummaryQueryParamSourceType = GetLoanSummaryQueryParamS
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -174,7 +180,7 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 import { Lending } from "lending";
 import { ListLoanTransactionsQueryParamSourceType, ListLoanTransactionsRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -186,7 +192,9 @@ const sourceType: ListLoanTransactionsQueryParamSourceType = ListLoanTransaction
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

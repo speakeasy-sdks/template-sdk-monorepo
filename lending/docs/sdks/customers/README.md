@@ -24,7 +24,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 import { Lending } from "lending";
 import { DownloadAccountingCustomerAttachmentRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -38,7 +38,9 @@ const customerId: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -79,7 +81,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 import { Lending } from "lending";
 import { GetAccountingCustomerRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -91,7 +93,9 @@ const customerId: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -128,7 +132,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 import { Lending } from "lending";
 import { GetAccountingCustomerAttachmentRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -142,7 +146,9 @@ const customerId: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -180,7 +186,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ```typescript
 import { Lending } from "lending";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -195,7 +201,9 @@ import { Lending } from "lending";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -231,7 +239,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 import { Lending } from "lending";
 import { ListAccountingCustomerAttachmentsRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -244,7 +252,9 @@ const customerId: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

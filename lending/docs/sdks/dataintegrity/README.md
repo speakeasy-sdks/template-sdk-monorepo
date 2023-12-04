@@ -23,7 +23,7 @@ The [details](https://docs.codat.io/lending-api#/schemas/DataIntegrityDetails) a
 import { Lending } from "lending";
 import { DataIntegrityDataType } from "lending/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -39,7 +39,9 @@ import { DataIntegrityDataType } from "lending/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -78,7 +80,7 @@ import { Lending } from "lending";
 import { GetDataIntegrityStatusRequest } from "lending/dist/sdk/models/operations";
 import { DataIntegrityDataType } from "lending/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -90,7 +92,9 @@ const dataType: DataIntegrityDataType = DataIntegrityDataType.BankingAccounts;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -127,7 +131,7 @@ import { Lending } from "lending";
 import { GetDataIntegritySummariesRequest } from "lending/dist/sdk/models/operations";
 import { DataIntegrityDataType } from "lending/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -140,7 +144,9 @@ const query: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

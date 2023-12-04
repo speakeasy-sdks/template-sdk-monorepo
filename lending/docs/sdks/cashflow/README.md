@@ -15,7 +15,7 @@ Gets the latest cash flow statement for a company.
 import { Lending } from "lending";
 import { GetAccountingCashFlowStatementRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -29,7 +29,9 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

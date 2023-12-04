@@ -39,7 +39,7 @@ The report data then combines multiple reporting dimensions and measures and out
 import { Lending } from "lending";
 import { PeriodUnit } from "lending/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -56,7 +56,9 @@ import { PeriodUnit } from "lending/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -111,7 +113,7 @@ The report data then combines multiple reporting dimensions and measures and out
 import { Lending } from "lending";
 import { PeriodUnit } from "lending/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -128,7 +130,9 @@ import { PeriodUnit } from "lending/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

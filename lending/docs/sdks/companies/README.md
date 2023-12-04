@@ -26,7 +26,7 @@ If forbidden characters (see `name` pattern) are present in the request, a compa
 ```typescript
 import { Lending } from "lending";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -39,7 +39,9 @@ import { Lending } from "lending";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -71,7 +73,7 @@ Permanently deletes a company, its connections and any cached data. This operati
 import { Lending } from "lending";
 import { DeleteCompanyRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -82,7 +84,9 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -113,7 +117,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 import { Lending } from "lending";
 import { GetCompanyRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -124,7 +128,9 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -155,7 +161,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 import { Lending } from "lending";
 import { ListCompaniesRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -169,7 +175,9 @@ const query: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -204,7 +212,7 @@ import { Lending } from "lending";
 import { UpdateCompanyRequest } from "lending/dist/sdk/models/operations";
 import { CompanyRequestBody } from "lending/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -219,7 +227,9 @@ const companyRequestBody: CompanyRequestBody = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
