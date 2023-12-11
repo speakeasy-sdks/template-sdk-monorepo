@@ -26,7 +26,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetAgedCreditorsReportRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 import { RFCDate } from "@speakeasy-sdks/accounting/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -40,7 +40,9 @@ const reportDate: RFCDate = new RFCDate("2022-12-31");
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -75,7 +77,7 @@ import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetAgedDebtorsReportRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 import { RFCDate } from "@speakeasy-sdks/accounting/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -89,7 +91,9 @@ const reportDate: RFCDate = new RFCDate("2022-12-31");
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -123,7 +127,7 @@ Gets the latest balance sheet for a company.
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetBalanceSheetRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -137,7 +141,9 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -171,7 +177,7 @@ Gets the latest cash flow statement for a company.
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetCashFlowStatementRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -185,7 +191,9 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -219,7 +227,7 @@ Gets the latest profit and loss for a company.
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetProfitAndLossRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -233,7 +241,9 @@ const startMonth: string = "2022-10-23T00:00:00.000Z";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -267,7 +277,7 @@ Indicates whether the aged creditor report is available for the company.
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { IsAgedCreditorsReportAvailableRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -278,7 +288,9 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -309,7 +321,7 @@ Indicates whether the aged debtor report is available for the company.
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { IsAgedDebtorReportAvailableRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -320,7 +332,9 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

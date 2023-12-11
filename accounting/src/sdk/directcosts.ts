@@ -898,7 +898,7 @@ export class DirectCosts {
         companyId: string,
         connectionId: string,
         directCostId: string,
-        requestBody?: operations.UploadDirectCostAttachmentRequestBody,
+        attachmentUpload?: shared.AttachmentUpload,
         retries?: utils.RetryConfig,
         config?: AxiosRequestConfig
     ): Promise<operations.UploadDirectCostAttachmentResponse> {
@@ -906,7 +906,7 @@ export class DirectCosts {
             companyId: companyId,
             connectionId: connectionId,
             directCostId: directCostId,
-            requestBody: requestBody,
+            attachmentUpload: attachmentUpload,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -921,7 +921,11 @@ export class DirectCosts {
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
-            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "multipart");
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "attachmentUpload",
+                "multipart"
+            );
         } catch (e: unknown) {
             if (e instanceof Error) {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);

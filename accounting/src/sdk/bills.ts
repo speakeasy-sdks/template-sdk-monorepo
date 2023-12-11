@@ -1164,7 +1164,7 @@ export class Bills {
         billId: string,
         companyId: string,
         connectionId: string,
-        requestBody?: operations.UploadBillAttachmentRequestBody,
+        attachmentUpload?: shared.AttachmentUpload,
         retries?: utils.RetryConfig,
         config?: AxiosRequestConfig
     ): Promise<operations.UploadBillAttachmentResponse> {
@@ -1172,7 +1172,7 @@ export class Bills {
             billId: billId,
             companyId: companyId,
             connectionId: connectionId,
-            requestBody: requestBody,
+            attachmentUpload: attachmentUpload,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -1187,7 +1187,11 @@ export class Bills {
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
-            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "multipart");
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "attachmentUpload",
+                "multipart"
+            );
         } catch (e: unknown) {
             if (e instanceof Error) {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);

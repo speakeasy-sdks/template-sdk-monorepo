@@ -19,7 +19,7 @@ export enum DownloadAttachmentAcceptEnum {
 
 export enum DownloadPdfAcceptEnum {
     applicationJson = "application/json",
-    applicationOctetStream = "application/octet-stream",
+    applicationPdf = "application/pdf",
 }
 
 export class Invoices {
@@ -471,7 +471,7 @@ export class Invoices {
         if (acceptHeaderOverride !== undefined) {
             headers["Accept"] = acceptHeaderOverride.toString();
         } else {
-            headers["Accept"] = "application/json;q=1, application/octet-stream;q=0";
+            headers["Accept"] = "application/json;q=1, application/pdf;q=0";
         }
 
         headers["user-agent"] = this.sdkConfiguration.userAgent;
@@ -515,7 +515,7 @@ export class Invoices {
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(responseContentType, `application/octet-stream`)) {
+                if (utils.matchContentType(responseContentType, `application/pdf`)) {
                     res.data = httpRes?.data;
                 } else {
                     throw new errors.SDKError(

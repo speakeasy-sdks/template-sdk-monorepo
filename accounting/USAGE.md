@@ -1,9 +1,9 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetAccountTransactionRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new Accounting({
         authHeader: "Basic BASE_64_ENCODED(API_KEY)",
     });
@@ -16,7 +16,9 @@ import { GetAccountTransactionRequest } from "@speakeasy-sdks/accounting/dist/sd
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
