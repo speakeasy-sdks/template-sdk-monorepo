@@ -60,12 +60,12 @@ async function run() {
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const billCreditNote: BillCreditNote = {
-  allocatedOnDate: "2022-10-23T00:00:00.000Z",
+  allocatedOnDate: "2022-10-23T00:00:00Z",
   billCreditNoteNumber: "91fe2a83-e161-4c21-929d-c5c10c4b07e5",
   currency: "USD",
   discountPercentage: 0,
   id: "1509398f-98e2-436d-8a5d-c042e0c74ffc",
-  issueDate: "2022-10-23T00:00:00.000Z",
+  issueDate: "2022-10-23T00:00:00Z",
   lineItems: [
     {
       accountRef: {},
@@ -98,23 +98,23 @@ const billCreditNote: BillCreditNote = {
     },
   ],
   metadata: {},
-  modifiedDate: "2022-10-23T00:00:00.000Z",
+  modifiedDate: "2022-10-23T00:00:00Z",
   note: "Bill Credit Note with 1 line items, totaling 805.78",
   paymentAllocations: [
     {
       allocation: {
-        allocatedOnDate: "2022-10-23T00:00:00.000Z",
+        allocatedOnDate: "2022-10-23T00:00:00Z",
         currency: "EUR",
       },
       payment: {
         accountRef: {},
         currency: "EUR",
-        paidOnDate: "2022-10-23T00:00:00.000Z",
+        paidOnDate: "2022-10-23T00:00:00Z",
       },
     },
   ],
   remainingCredit: 0,
-  sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+  sourceModifiedDate: "2022-10-23T00:00:00Z",
   status: BillCreditNoteStatus.Paid,
   subTotal: 805.78,
   supplementalData: {
@@ -155,7 +155,7 @@ run();
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
 | `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `billCreditNote`                                                      | [shared.BillCreditNote](../../../sdk/models/shared/billcreditnote.md) | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `billCreditNote`                                                      | [shared.BillCreditNote](../../sdk/models/shared/billcreditnote.md)    | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
 | `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 | `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
@@ -356,12 +356,12 @@ async function run() {
 
   const res = await sdk.billCreditNotes.update({
     billCreditNote: {
-      allocatedOnDate: "2022-10-23T00:00:00.000Z",
+      allocatedOnDate: "2022-10-23T00:00:00Z",
       billCreditNoteNumber: "91fe2a83-e161-4c21-929d-c5c10c4b07e5",
       currency: "GBP",
       discountPercentage: 0,
       id: "1509398f-98e2-436d-8a5d-c042e0c74ffc",
-      issueDate: "2022-10-23T00:00:00.000Z",
+      issueDate: "2022-10-23T00:00:00Z",
       lineItems: [
         {
           accountRef: {},
@@ -394,23 +394,23 @@ async function run() {
         },
       ],
       metadata: {},
-      modifiedDate: "2022-10-23T00:00:00.000Z",
+      modifiedDate: "2022-10-23T00:00:00Z",
       note: "Bill Credit Note with 1 line items, totaling 805.78",
       paymentAllocations: [
         {
           allocation: {
-            allocatedOnDate: "2022-10-23T00:00:00.000Z",
+            allocatedOnDate: "2022-10-23T00:00:00Z",
             currency: "EUR",
           },
           payment: {
             accountRef: {},
             currency: "USD",
-            paidOnDate: "2022-10-23T00:00:00.000Z",
+            paidOnDate: "2022-10-23T00:00:00Z",
           },
         },
       ],
       remainingCredit: 0,
-      sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+      sourceModifiedDate: "2022-10-23T00:00:00Z",
       status: BillCreditNoteStatus.Paid,
       subTotal: 805.78,
       supplementalData: {
@@ -485,7 +485,8 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { UploadBillCreditNoteAttachmentRequest, UploadBillCreditNoteAttachmentRequestBody } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
+import { UploadBillCreditNoteAttachmentRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
+import { AttachmentUpload, CodatFile } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 async function run() {
   const sdk = new Accounting({
@@ -494,12 +495,14 @@ async function run() {
 const billCreditNoteId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const requestBody: UploadBillCreditNoteAttachmentRequestBody = {
-  content: new TextEncoder().encode("0xE3ABc1980E"),
-  fileName: "elegant_producer_electric.jpeg",
+const attachmentUpload: AttachmentUpload = {
+  file: {
+    content: new TextEncoder().encode("0xE3ABc1980E"),
+    fileName: "elegant_producer_electric.jpeg",
+  },
 };
 
-  const res = await sdk.billCreditNotes.uploadAttachment(billCreditNoteId, companyId, connectionId, requestBody);
+  const res = await sdk.billCreditNotes.uploadAttachment(billCreditNoteId, companyId, connectionId, attachmentUpload);
 
   if (res.statusCode == 200) {
     // handle response
@@ -511,14 +514,14 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                           | Type                                                                                                                                | Required                                                                                                                            | Description                                                                                                                         | Example                                                                                                                             |
-| ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `billCreditNoteId`                                                                                                                  | *string*                                                                                                                            | :heavy_check_mark:                                                                                                                  | Unique identifier for a bill credit note.                                                                                           |                                                                                                                                     |
-| `companyId`                                                                                                                         | *string*                                                                                                                            | :heavy_check_mark:                                                                                                                  | Unique identifier for a company.                                                                                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                                                |
-| `connectionId`                                                                                                                      | *string*                                                                                                                            | :heavy_check_mark:                                                                                                                  | Unique identifier for a connection.                                                                                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                                                |
-| `requestBody`                                                                                                                       | [operations.UploadBillCreditNoteAttachmentRequestBody](../../../sdk/models/operations/uploadbillcreditnoteattachmentrequestbody.md) | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |                                                                                                                                     |
-| `retries`                                                                                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                                            | :heavy_minus_sign:                                                                                                                  | Configuration to override the default retry behavior of the client.                                                                 |                                                                                                                                     |
-| `config`                                                                                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                        | :heavy_minus_sign:                                                                                                                  | Available config options for making requests.                                                                                       |                                                                                                                                     |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `billCreditNoteId`                                                     | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a bill credit note.                              |                                                                        |
+| `companyId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a company.                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                   |
+| `connectionId`                                                         | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a connection.                                    | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                   |
+| `attachmentUpload`                                                     | [shared.AttachmentUpload](../../sdk/models/shared/attachmentupload.md) | :heavy_minus_sign:                                                     | N/A                                                                    |                                                                        |
+| `retries`                                                              | [utils.RetryConfig](../../internal/utils/retryconfig.md)               | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |                                                                        |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |                                                                        |
 
 
 ### Response

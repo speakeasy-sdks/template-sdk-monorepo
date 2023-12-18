@@ -1270,7 +1270,7 @@ export class Invoices {
     }
 
     /**
-     * Push invoice attachment
+     * Upload invoice attachment
      *
      * @remarks
      * The *Upload invoice attachment* endpoint uploads an attachment and assigns it against a specific `invoiceId`.
@@ -1288,7 +1288,7 @@ export class Invoices {
         companyId: string,
         connectionId: string,
         invoiceId: string,
-        requestBody?: operations.UploadInvoiceAttachmentRequestBody,
+        attachmentUpload?: shared.AttachmentUpload,
         retries?: utils.RetryConfig,
         config?: AxiosRequestConfig
     ): Promise<operations.UploadInvoiceAttachmentResponse> {
@@ -1296,7 +1296,7 @@ export class Invoices {
             companyId: companyId,
             connectionId: connectionId,
             invoiceId: invoiceId,
-            requestBody: requestBody,
+            attachmentUpload: attachmentUpload,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -1311,7 +1311,11 @@ export class Invoices {
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
-            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "multipart");
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "attachmentUpload",
+                "multipart"
+            );
         } catch (e: unknown) {
             if (e instanceof Error) {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);

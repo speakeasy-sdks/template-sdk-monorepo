@@ -506,7 +506,7 @@ export class Transfers {
     }
 
     /**
-     * Push invoice attachment
+     * Upload invoice attachment
      *
      * @remarks
      * The *Upload transfer attachment* endpoint uploads an attachment and assigns it against a specific `transferId`.
@@ -524,7 +524,7 @@ export class Transfers {
         companyId: string,
         connectionId: string,
         transferId: string,
-        requestBody?: operations.UploadTransferAttachmentRequestBody,
+        attachmentUpload?: shared.AttachmentUpload,
         retries?: utils.RetryConfig,
         config?: AxiosRequestConfig
     ): Promise<operations.UploadTransferAttachmentResponse> {
@@ -532,7 +532,7 @@ export class Transfers {
             companyId: companyId,
             connectionId: connectionId,
             transferId: transferId,
-            requestBody: requestBody,
+            attachmentUpload: attachmentUpload,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -547,7 +547,11 @@ export class Transfers {
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
-            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "multipart");
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "attachmentUpload",
+                "multipart"
+            );
         } catch (e: unknown) {
             if (e instanceof Error) {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);

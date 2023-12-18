@@ -11,7 +11,7 @@ Transfers
 * [get](#get) - Get transfer
 * [getCreateModel](#getcreatemodel) - Get create transfer model
 * [list](#list) - List transfers
-* [uploadAttachment](#uploadattachment) - Push invoice attachment
+* [uploadAttachment](#uploadattachment) - Upload invoice attachment
 
 ## create
 
@@ -54,7 +54,7 @@ const transfer: Transfer = {
     dataType: DataType.Invoices,
     id: "<ID>",
   },
-  date: "2022-10-23T00:00:00.000Z",
+  date: "2022-10-23T00:00:00Z",
   depositedRecordRefs: [
     {
       dataType: "invoice",
@@ -65,8 +65,8 @@ const transfer: Transfer = {
     currency: "USD",
   },
   metadata: {},
-  modifiedDate: "2022-10-23T00:00:00.000Z",
-  sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+  modifiedDate: "2022-10-23T00:00:00Z",
+  sourceModifiedDate: "2022-10-23T00:00:00Z",
   supplementalData: {
     content: {
       "key": {
@@ -101,7 +101,7 @@ run();
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `transfer`                                                          | [shared.Transfer](../../../sdk/models/shared/transfer.md)           | :heavy_minus_sign:                                                  | N/A                                                                 |                                                                     |
+| `transfer`                                                          | [shared.Transfer](../../sdk/models/shared/transfer.md)              | :heavy_minus_sign:                                                  | N/A                                                                 |                                                                     |
 | `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
@@ -295,7 +295,8 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { UploadTransferAttachmentRequest, UploadTransferAttachmentRequestBody } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
+import { UploadTransferAttachmentRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
+import { AttachmentUpload, CodatFile } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 async function run() {
   const sdk = new Accounting({
@@ -304,12 +305,14 @@ async function run() {
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const transferId: string = "string";
-const requestBody: UploadTransferAttachmentRequestBody = {
-  content: new TextEncoder().encode("0xE3ABc1980E"),
-  fileName: "elegant_producer_electric.jpeg",
+const attachmentUpload: AttachmentUpload = {
+  file: {
+    content: new TextEncoder().encode("0xE3ABc1980E"),
+    fileName: "elegant_producer_electric.jpeg",
+  },
 };
 
-  const res = await sdk.transfers.uploadAttachment(companyId, connectionId, transferId, requestBody);
+  const res = await sdk.transfers.uploadAttachment(companyId, connectionId, transferId, attachmentUpload);
 
   if (res.statusCode == 200) {
     // handle response
@@ -321,14 +324,14 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                               | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             | Example                                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `companyId`                                                                                                             | *string*                                                                                                                | :heavy_check_mark:                                                                                                      | Unique identifier for a company.                                                                                        | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                                    |
-| `connectionId`                                                                                                          | *string*                                                                                                                | :heavy_check_mark:                                                                                                      | Unique identifier for a connection.                                                                                     | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                                    |
-| `transferId`                                                                                                            | *string*                                                                                                                | :heavy_check_mark:                                                                                                      | Unique identifier for a transfer.                                                                                       |                                                                                                                         |
-| `requestBody`                                                                                                           | [operations.UploadTransferAttachmentRequestBody](../../../sdk/models/operations/uploadtransferattachmentrequestbody.md) | :heavy_minus_sign:                                                                                                      | N/A                                                                                                                     |                                                                                                                         |
-| `retries`                                                                                                               | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                                | :heavy_minus_sign:                                                                                                      | Configuration to override the default retry behavior of the client.                                                     |                                                                                                                         |
-| `config`                                                                                                                | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                            | :heavy_minus_sign:                                                                                                      | Available config options for making requests.                                                                           |                                                                                                                         |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `companyId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a company.                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                   |
+| `connectionId`                                                         | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a connection.                                    | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                   |
+| `transferId`                                                           | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a transfer.                                      |                                                                        |
+| `attachmentUpload`                                                     | [shared.AttachmentUpload](../../sdk/models/shared/attachmentupload.md) | :heavy_minus_sign:                                                     | N/A                                                                    |                                                                        |
+| `retries`                                                              | [utils.RetryConfig](../../internal/utils/retryconfig.md)               | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |                                                                        |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |                                                                        |
 
 
 ### Response

@@ -52,11 +52,11 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const billPayment: BillPayment = {
   accountRef: {},
   currency: "USD",
-  date: "2022-10-23T00:00:00.000Z",
+  date: "2022-10-23T00:00:00Z",
   id: "3d5a8e00-d108-4045-8823-7f342676cffa",
   lines: [
     {
-      allocatedOnDate: "2022-10-23T00:00:00.000Z",
+      allocatedOnDate: "2022-10-23T00:00:00Z",
       amount: 8592.13,
       links: [
         {
@@ -66,12 +66,12 @@ const billPayment: BillPayment = {
     },
   ],
   metadata: {},
-  modifiedDate: "2022-10-23T00:00:00.000Z",
+  modifiedDate: "2022-10-23T00:00:00Z",
   note: "Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44",
   paymentMethodRef: {
     id: "<ID>",
   },
-  sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+  sourceModifiedDate: "2022-10-23T00:00:00Z",
   supplementalData: {
     content: {
       "key": {
@@ -102,7 +102,7 @@ run();
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
 | `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `billPayment`                                                         | [shared.BillPayment](../../../sdk/models/shared/billpayment.md)       | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `billPayment`                                                         | [shared.BillPayment](../../sdk/models/shared/billpayment.md)          | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
 | `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 | `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |

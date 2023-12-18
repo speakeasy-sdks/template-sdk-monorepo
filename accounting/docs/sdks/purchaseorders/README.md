@@ -59,9 +59,9 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const purchaseOrder: PurchaseOrder = {
   currency: "USD",
-  deliveryDate: "2022-10-23T00:00:00.000Z",
-  expectedDeliveryDate: "2022-10-23T00:00:00.000Z",
-  issueDate: "2022-10-23T00:00:00.000Z",
+  deliveryDate: "2022-10-23T00:00:00Z",
+  expectedDeliveryDate: "2022-10-23T00:00:00Z",
+  issueDate: "2022-10-23T00:00:00Z",
   lineItems: [
     {
       accountRef: {},
@@ -77,15 +77,15 @@ const purchaseOrder: PurchaseOrder = {
     },
   ],
   metadata: {},
-  modifiedDate: "2022-10-23T00:00:00.000Z",
-  paymentDueDate: "2022-10-23T00:00:00.000Z",
+  modifiedDate: "2022-10-23T00:00:00Z",
+  paymentDueDate: "2022-10-23T00:00:00Z",
   shipTo: {
     address: {
       type: AccountingAddressType.Unknown,
     },
     contact: {},
   },
-  sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+  sourceModifiedDate: "2022-10-23T00:00:00Z",
   supplierRef: {
     id: "<ID>",
   },
@@ -108,7 +108,7 @@ run();
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
 | `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `purchaseOrder`                                                       | [shared.PurchaseOrder](../../../sdk/models/shared/purchaseorder.md)   | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `purchaseOrder`                                                       | [shared.PurchaseOrder](../../sdk/models/shared/purchaseorder.md)      | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
 | `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 | `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
@@ -523,9 +523,9 @@ async function run() {
   const res = await sdk.purchaseOrders.update({
     purchaseOrder: {
       currency: "EUR",
-      deliveryDate: "2022-10-23T00:00:00.000Z",
-      expectedDeliveryDate: "2022-10-23T00:00:00.000Z",
-      issueDate: "2022-10-23T00:00:00.000Z",
+      deliveryDate: "2022-10-23T00:00:00Z",
+      expectedDeliveryDate: "2022-10-23T00:00:00Z",
+      issueDate: "2022-10-23T00:00:00Z",
       lineItems: [
         {
           accountRef: {},
@@ -541,15 +541,15 @@ async function run() {
         },
       ],
       metadata: {},
-      modifiedDate: "2022-10-23T00:00:00.000Z",
-      paymentDueDate: "2022-10-23T00:00:00.000Z",
+      modifiedDate: "2022-10-23T00:00:00Z",
+      paymentDueDate: "2022-10-23T00:00:00Z",
       shipTo: {
         address: {
           type: AccountingAddressType.Delivery,
         },
         contact: {},
       },
-      sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+      sourceModifiedDate: "2022-10-23T00:00:00Z",
       supplierRef: {
         id: "<ID>",
       },

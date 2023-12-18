@@ -63,7 +63,7 @@ const customer: Customer = {
       address: {
         type: AccountingAddressType.Billing,
       },
-      modifiedDate: "2022-10-23T00:00:00.000Z",
+      modifiedDate: "2022-10-23T00:00:00Z",
       phone: [
         {
           number: "01224 658 999",
@@ -75,8 +75,8 @@ const customer: Customer = {
   ],
   defaultCurrency: "GBP",
   metadata: {},
-  modifiedDate: "2022-10-23T00:00:00.000Z",
-  sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+  modifiedDate: "2022-10-23T00:00:00Z",
+  sourceModifiedDate: "2022-10-23T00:00:00Z",
   status: CustomerStatus.Archived,
   supplementalData: {
     content: {
@@ -104,7 +104,7 @@ run();
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
 | `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `customer`                                                            | [shared.Customer](../../../sdk/models/shared/customer.md)             | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `customer`                                                            | [shared.Customer](../../sdk/models/shared/customer.md)                | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
 | `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 | `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
@@ -478,7 +478,7 @@ async function run() {
           address: {
             type: AccountingAddressType.Unknown,
           },
-          modifiedDate: "2022-10-23T00:00:00.000Z",
+          modifiedDate: "2022-10-23T00:00:00Z",
           phone: [
             {
               number: "+44 25691 154789",
@@ -490,8 +490,8 @@ async function run() {
       ],
       defaultCurrency: "EUR",
       metadata: {},
-      modifiedDate: "2022-10-23T00:00:00.000Z",
-      sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+      modifiedDate: "2022-10-23T00:00:00Z",
+      sourceModifiedDate: "2022-10-23T00:00:00Z",
       status: CustomerStatus.Archived,
       supplementalData: {
         content: {

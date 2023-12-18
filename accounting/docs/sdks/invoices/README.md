@@ -17,7 +17,7 @@ Invoices
 * [list](#list) - List invoices
 * [listAttachments](#listattachments) - List invoice attachments
 * [update](#update) - Update invoice
-* [uploadAttachment](#uploadattachment) - Push invoice attachment
+* [uploadAttachment](#uploadattachment) - Upload invoice attachment
 
 ## create
 
@@ -72,8 +72,8 @@ const invoice: Invoice = {
   customerRef: {
     id: "<ID>",
   },
-  dueDate: "2022-10-23T00:00:00.000Z",
-  issueDate: "2022-10-23T00:00:00.000Z",
+  dueDate: "2022-10-23T00:00:00Z",
+  issueDate: "2022-10-23T00:00:00Z",
   lineItems: [
     {
       accountRef: {},
@@ -109,18 +109,18 @@ const invoice: Invoice = {
     },
   ],
   metadata: {},
-  modifiedDate: "2022-10-23T00:00:00.000Z",
-  paidOnDate: "2022-10-23T00:00:00.000Z",
+  modifiedDate: "2022-10-23T00:00:00Z",
+  paidOnDate: "2022-10-23T00:00:00Z",
   paymentAllocations: [
     {
       allocation: {
-        allocatedOnDate: "2022-10-23T00:00:00.000Z",
+        allocatedOnDate: "2022-10-23T00:00:00Z",
         currency: "EUR",
       },
       payment: {
         accountRef: {},
         currency: "EUR",
-        paidOnDate: "2022-10-23T00:00:00.000Z",
+        paidOnDate: "2022-10-23T00:00:00Z",
       },
     },
   ],
@@ -129,7 +129,7 @@ const invoice: Invoice = {
       dataType: DataType.Invoices,
     },
   ],
-  sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+  sourceModifiedDate: "2022-10-23T00:00:00Z",
   status: InvoiceStatus.Draft,
   supplementalData: {
     content: {
@@ -165,7 +165,7 @@ run();
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
 | `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `invoice`                                                             | [shared.Invoice](../../../sdk/models/shared/invoice.md)               | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `invoice`                                                             | [shared.Invoice](../../sdk/models/shared/invoice.md)                  | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
 | `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 | `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
@@ -660,8 +660,8 @@ async function run() {
       customerRef: {
         id: "<ID>",
       },
-      dueDate: "2022-10-23T00:00:00.000Z",
-      issueDate: "2022-10-23T00:00:00.000Z",
+      dueDate: "2022-10-23T00:00:00Z",
+      issueDate: "2022-10-23T00:00:00Z",
       lineItems: [
         {
           accountRef: {},
@@ -697,18 +697,18 @@ async function run() {
         },
       ],
       metadata: {},
-      modifiedDate: "2022-10-23T00:00:00.000Z",
-      paidOnDate: "2022-10-23T00:00:00.000Z",
+      modifiedDate: "2022-10-23T00:00:00Z",
+      paidOnDate: "2022-10-23T00:00:00Z",
       paymentAllocations: [
         {
           allocation: {
-            allocatedOnDate: "2022-10-23T00:00:00.000Z",
+            allocatedOnDate: "2022-10-23T00:00:00Z",
             currency: "EUR",
           },
           payment: {
             accountRef: {},
             currency: "GBP",
-            paidOnDate: "2022-10-23T00:00:00.000Z",
+            paidOnDate: "2022-10-23T00:00:00Z",
           },
         },
       ],
@@ -717,7 +717,7 @@ async function run() {
           dataType: DataType.Invoices,
         },
       ],
-      sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+      sourceModifiedDate: "2022-10-23T00:00:00Z",
       status: InvoiceStatus.Void,
       supplementalData: {
         content: {
@@ -783,7 +783,8 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { UploadInvoiceAttachmentRequest, UploadInvoiceAttachmentRequestBody } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
+import { UploadInvoiceAttachmentRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
+import { AttachmentUpload, CodatFile } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 async function run() {
   const sdk = new Accounting({
@@ -792,12 +793,14 @@ async function run() {
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const invoiceId: string = "string";
-const requestBody: UploadInvoiceAttachmentRequestBody = {
-  content: new TextEncoder().encode("0xE3ABc1980E"),
-  fileName: "elegant_producer_electric.jpeg",
+const attachmentUpload: AttachmentUpload = {
+  file: {
+    content: new TextEncoder().encode("0xE3ABc1980E"),
+    fileName: "elegant_producer_electric.jpeg",
+  },
 };
 
-  const res = await sdk.invoices.uploadAttachment(companyId, connectionId, invoiceId, requestBody);
+  const res = await sdk.invoices.uploadAttachment(companyId, connectionId, invoiceId, attachmentUpload);
 
   if (res.statusCode == 200) {
     // handle response
@@ -809,14 +812,14 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           | Example                                                                                                               |
-| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `companyId`                                                                                                           | *string*                                                                                                              | :heavy_check_mark:                                                                                                    | Unique identifier for a company.                                                                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                                  |
-| `connectionId`                                                                                                        | *string*                                                                                                              | :heavy_check_mark:                                                                                                    | Unique identifier for a connection.                                                                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                                  |
-| `invoiceId`                                                                                                           | *string*                                                                                                              | :heavy_check_mark:                                                                                                    | Unique identifier for an invoice.                                                                                     |                                                                                                                       |
-| `requestBody`                                                                                                         | [operations.UploadInvoiceAttachmentRequestBody](../../../sdk/models/operations/uploadinvoiceattachmentrequestbody.md) | :heavy_minus_sign:                                                                                                    | N/A                                                                                                                   |                                                                                                                       |
-| `retries`                                                                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                              | :heavy_minus_sign:                                                                                                    | Configuration to override the default retry behavior of the client.                                                   |                                                                                                                       |
-| `config`                                                                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                          | :heavy_minus_sign:                                                                                                    | Available config options for making requests.                                                                         |                                                                                                                       |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `companyId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a company.                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                   |
+| `connectionId`                                                         | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a connection.                                    | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                   |
+| `invoiceId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for an invoice.                                      |                                                                        |
+| `attachmentUpload`                                                     | [shared.AttachmentUpload](../../sdk/models/shared/attachmentupload.md) | :heavy_minus_sign:                                                     | N/A                                                                    |                                                                        |
+| `retries`                                                              | [utils.RetryConfig](../../internal/utils/retryconfig.md)               | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |                                                                        |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |                                                                        |
 
 
 ### Response

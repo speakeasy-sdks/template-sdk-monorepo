@@ -6,14 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
-export class UploadTransferAttachmentRequestBody extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "multipart_form, content=true" })
-    content: Uint8Array;
-
-    @SpeakeasyMetadata({ data: "multipart_form, name=fileName" })
-    fileName: string;
-}
-
 export class UploadTransferAttachmentRequest extends SpeakeasyBase {
     /**
      * Unique identifier for a company.
@@ -33,10 +25,8 @@ export class UploadTransferAttachmentRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=transferId" })
     transferId: string;
 
-    @SpeakeasyMetadata({
-        data: "multipart_form, file=true, request, media_type=multipart/form-data",
-    })
-    requestBody?: UploadTransferAttachmentRequestBody;
+    @SpeakeasyMetadata({ data: "request, media_type=multipart/form-data" })
+    attachmentUpload?: shared.AttachmentUpload;
 }
 
 export class UploadTransferAttachmentResponse extends SpeakeasyBase {

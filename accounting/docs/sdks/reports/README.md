@@ -134,7 +134,7 @@ async function run() {
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const periodLength: number = 4;
 const periodsToCompare: number = 20;
-const startMonth: string = "2022-10-23T00:00:00.000Z";
+const startMonth: string = "2022-10-23T00:00:00Z";
 
   const res = await sdk.reports.getBalanceSheet(companyId, periodLength, periodsToCompare, startMonth);
 
@@ -153,7 +153,7 @@ run();
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `periodLength`                                                      | *number*                                                            | :heavy_check_mark:                                                  | Number of months defining the period of interest.                   | 4                                                                   |
 | `periodsToCompare`                                                  | *number*                                                            | :heavy_check_mark:                                                  | Number of periods with `periodLength` to compare.                   | 20                                                                  |
-| `startMonth`                                                        | *string*                                                            | :heavy_minus_sign:                                                  | The month the report starts from.                                   | 2022-10-23T00:00:00.000Z                                            |
+| `startMonth`                                                        | *string*                                                            | :heavy_minus_sign:                                                  | The month the report starts from.                                   | 2022-10-23 00:00:00 +0000 UTC                                       |
 | `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
@@ -184,7 +184,7 @@ async function run() {
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const periodLength: number = 4;
 const periodsToCompare: number = 20;
-const startMonth: string = "2022-10-23T00:00:00.000Z";
+const startMonth: string = "2022-10-23T00:00:00Z";
 
   const res = await sdk.reports.getCashFlowStatement(companyId, periodLength, periodsToCompare, startMonth);
 
@@ -203,7 +203,7 @@ run();
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `periodLength`                                                      | *number*                                                            | :heavy_check_mark:                                                  | Number of months defining the period of interest.                   | 4                                                                   |
 | `periodsToCompare`                                                  | *number*                                                            | :heavy_check_mark:                                                  | Number of periods with `periodLength` to compare.                   | 20                                                                  |
-| `startMonth`                                                        | *string*                                                            | :heavy_minus_sign:                                                  | The month the report starts from.                                   | 2022-10-23T00:00:00.000Z                                            |
+| `startMonth`                                                        | *string*                                                            | :heavy_minus_sign:                                                  | The month the report starts from.                                   | 2022-10-23 00:00:00 +0000 UTC                                       |
 | `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
@@ -234,7 +234,7 @@ async function run() {
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const periodLength: number = 4;
 const periodsToCompare: number = 20;
-const startMonth: string = "2022-10-23T00:00:00.000Z";
+const startMonth: string = "2022-10-23T00:00:00Z";
 
   const res = await sdk.reports.getProfitAndLoss(companyId, periodLength, periodsToCompare, startMonth);
 
@@ -253,7 +253,7 @@ run();
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `periodLength`                                                      | *number*                                                            | :heavy_check_mark:                                                  | Number of months defining the period of interest.                   | 4                                                                   |
 | `periodsToCompare`                                                  | *number*                                                            | :heavy_check_mark:                                                  | Number of periods with `periodLength` to compare.                   | 20                                                                  |
-| `startMonth`                                                        | *string*                                                            | :heavy_minus_sign:                                                  | The month the report starts from.                                   | 2022-10-23T00:00:00.000Z                                            |
+| `startMonth`                                                        | *string*                                                            | :heavy_minus_sign:                                                  | The month the report starts from.                                   | 2022-10-23 00:00:00 +0000 UTC                                       |
 | `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 

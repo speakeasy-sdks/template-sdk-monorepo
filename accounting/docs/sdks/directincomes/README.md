@@ -62,7 +62,7 @@ const directIncome: DirectIncome = {
     id: "<ID>",
   },
   currency: "USD",
-  issueDate: "2022-10-23T00:00:00.000Z",
+  issueDate: "2022-10-23T00:00:00Z",
   lineItems: [
     {
       accountRef: {},
@@ -80,21 +80,21 @@ const directIncome: DirectIncome = {
     },
   ],
   metadata: {},
-  modifiedDate: "2022-10-23T00:00:00.000Z",
+  modifiedDate: "2022-10-23T00:00:00Z",
   paymentAllocations: [
     {
       allocation: {
-        allocatedOnDate: "2022-10-23T00:00:00.000Z",
+        allocatedOnDate: "2022-10-23T00:00:00Z",
         currency: "GBP",
       },
       payment: {
         accountRef: {},
         currency: "EUR",
-        paidOnDate: "2022-10-23T00:00:00.000Z",
+        paidOnDate: "2022-10-23T00:00:00Z",
       },
     },
   ],
-  sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+  sourceModifiedDate: "2022-10-23T00:00:00Z",
   subTotal: 7964.74,
   supplementalData: {
     content: {
@@ -124,7 +124,7 @@ run();
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
 | `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `directIncome`                                                        | [shared.DirectIncome](../../../sdk/models/shared/directincome.md)     | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `directIncome`                                                        | [shared.DirectIncome](../../sdk/models/shared/directincome.md)        | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
 | `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 | `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
@@ -479,7 +479,8 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { UploadDirectIncomeAttachmentRequest, UploadDirectIncomeAttachmentRequestBody } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
+import { UploadDirectIncomeAttachmentRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
+import { AttachmentUpload, CodatFile } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 async function run() {
   const sdk = new Accounting({
@@ -488,12 +489,14 @@ async function run() {
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const directIncomeId: string = "string";
-const requestBody: UploadDirectIncomeAttachmentRequestBody = {
-  content: new TextEncoder().encode("0xE3ABc1980E"),
-  fileName: "elegant_producer_electric.jpeg",
+const attachmentUpload: AttachmentUpload = {
+  file: {
+    content: new TextEncoder().encode("0xE3ABc1980E"),
+    fileName: "elegant_producer_electric.jpeg",
+  },
 };
 
-  const res = await sdk.directIncomes.uploadAttachment(companyId, connectionId, directIncomeId, requestBody);
+  const res = await sdk.directIncomes.uploadAttachment(companyId, connectionId, directIncomeId, attachmentUpload);
 
   if (res.statusCode == 200) {
     // handle response
@@ -505,14 +508,14 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     | Example                                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `companyId`                                                                                                                     | *string*                                                                                                                        | :heavy_check_mark:                                                                                                              | Unique identifier for a company.                                                                                                | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                                            |
-| `connectionId`                                                                                                                  | *string*                                                                                                                        | :heavy_check_mark:                                                                                                              | Unique identifier for a connection.                                                                                             | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                                            |
-| `directIncomeId`                                                                                                                | *string*                                                                                                                        | :heavy_check_mark:                                                                                                              | Unique identifier for a direct income.                                                                                          |                                                                                                                                 |
-| `requestBody`                                                                                                                   | [operations.UploadDirectIncomeAttachmentRequestBody](../../../sdk/models/operations/uploaddirectincomeattachmentrequestbody.md) | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |                                                                                                                                 |
-| `retries`                                                                                                                       | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                                        | :heavy_minus_sign:                                                                                                              | Configuration to override the default retry behavior of the client.                                                             |                                                                                                                                 |
-| `config`                                                                                                                        | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                    | :heavy_minus_sign:                                                                                                              | Available config options for making requests.                                                                                   |                                                                                                                                 |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `companyId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a company.                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                   |
+| `connectionId`                                                         | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a connection.                                    | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                   |
+| `directIncomeId`                                                       | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a direct income.                                 |                                                                        |
+| `attachmentUpload`                                                     | [shared.AttachmentUpload](../../sdk/models/shared/attachmentupload.md) | :heavy_minus_sign:                                                     | N/A                                                                    |                                                                        |
+| `retries`                                                              | [utils.RetryConfig](../../internal/utils/retryconfig.md)               | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |                                                                        |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |                                                                        |
 
 
 ### Response

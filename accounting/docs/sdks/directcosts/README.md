@@ -64,7 +64,7 @@ const directCostPrototype: DirectCostPrototype = {
     id: "<ID>",
   },
   currency: "USD",
-  issueDate: "2022-10-23T00:00:00.000Z",
+  issueDate: "2022-10-23T00:00:00Z",
   lineItems: [
     {
       accountRef: {},
@@ -94,13 +94,13 @@ const directCostPrototype: DirectCostPrototype = {
   paymentAllocations: [
     {
       allocation: {
-        allocatedOnDate: "2022-10-23T00:00:00.000Z",
+        allocatedOnDate: "2022-10-23T00:00:00Z",
         currency: "EUR",
       },
       payment: {
         accountRef: {},
         currency: "GBP",
-        paidOnDate: "2022-10-23T00:00:00.000Z",
+        paidOnDate: "2022-10-23T00:00:00Z",
       },
     },
   ],
@@ -129,14 +129,14 @@ run();
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `companyId`                                                                     | *string*                                                                        | :heavy_check_mark:                                                              | Unique identifier for a company.                                                | 8a210b68-6988-11ed-a1eb-0242ac120002                                            |
-| `connectionId`                                                                  | *string*                                                                        | :heavy_check_mark:                                                              | Unique identifier for a connection.                                             | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                            |
-| `directCostPrototype`                                                           | [shared.DirectCostPrototype](../../../sdk/models/shared/directcostprototype.md) | :heavy_minus_sign:                                                              | N/A                                                                             |                                                                                 |
-| `timeoutInMinutes`                                                              | *number*                                                                        | :heavy_minus_sign:                                                              | Time limit for the push operation to complete before it is timed out.           |                                                                                 |
-| `retries`                                                                       | [utils.RetryConfig](../../internal/utils/retryconfig.md)                        | :heavy_minus_sign:                                                              | Configuration to override the default retry behavior of the client.             |                                                                                 |
-| `config`                                                                        | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                    | :heavy_minus_sign:                                                              | Available config options for making requests.                                   |                                                                                 |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `companyId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | Unique identifier for a company.                                             | 8a210b68-6988-11ed-a1eb-0242ac120002                                         |
+| `connectionId`                                                               | *string*                                                                     | :heavy_check_mark:                                                           | Unique identifier for a connection.                                          | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                         |
+| `directCostPrototype`                                                        | [shared.DirectCostPrototype](../../sdk/models/shared/directcostprototype.md) | :heavy_minus_sign:                                                           | N/A                                                                          |                                                                              |
+| `timeoutInMinutes`                                                           | *number*                                                                     | :heavy_minus_sign:                                                           | Time limit for the push operation to complete before it is timed out.        |                                                                              |
+| `retries`                                                                    | [utils.RetryConfig](../../internal/utils/retryconfig.md)                     | :heavy_minus_sign:                                                           | Configuration to override the default retry behavior of the client.          |                                                                              |
+| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |                                                                              |
 
 
 ### Response
@@ -520,14 +520,14 @@ run();
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `companyId`                                                               | *string*                                                                  | :heavy_check_mark:                                                        | Unique identifier for a company.                                          | 8a210b68-6988-11ed-a1eb-0242ac120002                                      |
-| `connectionId`                                                            | *string*                                                                  | :heavy_check_mark:                                                        | Unique identifier for a connection.                                       | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                      |
-| `directCostId`                                                            | *string*                                                                  | :heavy_check_mark:                                                        | Unique identifier for a direct cost.                                      |                                                                           |
-| `attachmentUpload`                                                        | [shared.AttachmentUpload](../../../sdk/models/shared/attachmentupload.md) | :heavy_minus_sign:                                                        | N/A                                                                       |                                                                           |
-| `retries`                                                                 | [utils.RetryConfig](../../internal/utils/retryconfig.md)                  | :heavy_minus_sign:                                                        | Configuration to override the default retry behavior of the client.       |                                                                           |
-| `config`                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)              | :heavy_minus_sign:                                                        | Available config options for making requests.                             |                                                                           |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `companyId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a company.                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                   |
+| `connectionId`                                                         | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a connection.                                    | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                   |
+| `directCostId`                                                         | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a direct cost.                                   |                                                                        |
+| `attachmentUpload`                                                     | [shared.AttachmentUpload](../../sdk/models/shared/attachmentupload.md) | :heavy_minus_sign:                                                     | N/A                                                                    |                                                                        |
+| `retries`                                                              | [utils.RetryConfig](../../internal/utils/retryconfig.md)               | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |                                                                        |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |                                                                        |
 
 
 ### Response
