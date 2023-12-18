@@ -26,7 +26,7 @@ async function run() {
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const date: string = "2022-10-23T00:00:00.000Z";
+const date: string = "2022-10-23T00:00:00Z";
 
   const res = await sdk.fileUpload.download(companyId, date);
 
@@ -43,7 +43,7 @@ run();
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `date`                                                              | *string*                                                            | :heavy_minus_sign:                                                  | Only download files uploaded on this date.                          | 2022-10-23T00:00:00.000Z                                            |
+| `date`                                                              | *string*                                                            | :heavy_minus_sign:                                                  | Only download files uploaded on this date.                          | 2022-10-23 00:00:00 +0000 UTC                                       |
 | `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
@@ -115,7 +115,8 @@ Uploaded files must meet the following requirements:
 
 ```typescript
 import { Lending } from "lending";
-import { UploadFilesRequest, UploadFilesRequestBody } from "lending/dist/sdk/models/operations";
+import { UploadFilesRequest } from "lending/dist/sdk/models/operations";
+import { CodatFile, FileUpload } from "lending/dist/sdk/models/shared";
 
 async function run() {
   const sdk = new Lending({
@@ -123,12 +124,14 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const requestBody: UploadFilesRequestBody = {
-  content: new TextEncoder().encode("0x87cbca97eC"),
-  fileName: "ullam.wav",
+const fileUpload: FileUpload = {
+  file: {
+    content: new TextEncoder().encode("0x87cbca97eC"),
+    fileName: "ullam.wav",
+  },
 };
 
-  const res = await sdk.fileUpload.upload(companyId, connectionId, requestBody);
+  const res = await sdk.fileUpload.upload(companyId, connectionId, fileUpload);
 
   if (res.statusCode == 200) {
     // handle response
@@ -140,13 +143,13 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `companyId`                                                                                   | *string*                                                                                      | :heavy_check_mark:                                                                            | Unique identifier for a company.                                                              | 8a210b68-6988-11ed-a1eb-0242ac120002                                                          |
-| `connectionId`                                                                                | *string*                                                                                      | :heavy_check_mark:                                                                            | Unique identifier for a connection.                                                           | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                          |
-| `requestBody`                                                                                 | [operations.UploadFilesRequestBody](../../../sdk/models/operations/uploadfilesrequestbody.md) | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
-| `retries`                                                                                     | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                      | :heavy_minus_sign:                                                                            | Configuration to override the default retry behavior of the client.                           |                                                                                               |
-| `config`                                                                                      | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                  | :heavy_minus_sign:                                                                            | Available config options for making requests.                                                 |                                                                                               |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
+| `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
+| `fileUpload`                                                        | [shared.FileUpload](../../sdk/models/shared/fileupload.md)          | :heavy_minus_sign:                                                  | N/A                                                                 |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response

@@ -36,7 +36,7 @@ async function run() {
         dataType: DataType.Invoices,
         id: "<ID>",
       },
-      date: "2022-10-23T00:00:00.000Z",
+      date: "2022-10-23T00:00:00Z",
       depositedRecordRefs: [
         {
           dataType: "invoice",
@@ -47,8 +47,8 @@ async function run() {
         currency: "USD",
       },
       metadata: {},
-      modifiedDate: "2022-10-23T00:00:00.000Z",
-      sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+      modifiedDate: "2022-10-23T00:00:00Z",
+      sourceModifiedDate: "2022-10-23T00:00:00Z",
       supplementalData: {
         content: {
           "key": {

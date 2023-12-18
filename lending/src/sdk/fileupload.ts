@@ -265,14 +265,14 @@ export class FileUpload {
     async upload(
         companyId: string,
         connectionId: string,
-        requestBody?: operations.UploadFilesRequestBody,
+        fileUpload?: shared.FileUpload,
         retries?: utils.RetryConfig,
         config?: AxiosRequestConfig
     ): Promise<operations.UploadFilesResponse> {
         const req = new operations.UploadFilesRequest({
             companyId: companyId,
             connectionId: connectionId,
-            requestBody: requestBody,
+            fileUpload: fileUpload,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -287,7 +287,7 @@ export class FileUpload {
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
-            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "multipart");
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "fileUpload", "multipart");
         } catch (e: unknown) {
             if (e instanceof Error) {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
