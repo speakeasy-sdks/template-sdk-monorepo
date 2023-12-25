@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 7cb8227cc55b72607e39c0387a4f6937
+  docChecksum: 6333eddcefb3ad95c067098da6a82191
   docVersion: 3.0.0
-  speakeasyVersion: 1.126.4
-  generationVersion: 2.214.10
+  speakeasyVersion: 1.129.1
+  generationVersion: 2.223.3
 generation:
   comments: {}
   sdkClassName: lending
@@ -15,7 +15,7 @@ generation:
 features:
   typescript:
     acceptHeaders: 2.81.1
-    core: 3.3.8
+    core: 3.3.12
     deprecations: 2.81.1
     examples: 2.81.3
     flattening: 2.81.1
@@ -26,7 +26,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.1
 typescript:
-  version: 0.4.0
+  version: 0.4.1
   author: Speakeasy
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true

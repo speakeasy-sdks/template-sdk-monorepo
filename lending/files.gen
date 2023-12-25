@@ -225,6 +225,7 @@ src/sdk/models/shared/connection.ts
 src/sdk/models/shared/dataconnectionstatus.ts
 src/sdk/models/shared/dataconnectionerror.ts
 src/sdk/models/shared/companyrequestbody.ts
+src/sdk/models/shared/items.ts
 src/sdk/models/shared/companies.ts
 src/sdk/models/shared/links.ts
 src/sdk/models/shared/halref.ts
@@ -304,7 +305,7 @@ src/sdk/models/shared/accountingaddress.ts
 src/sdk/models/shared/accountingaddresstype.ts
 src/sdk/models/shared/accountingsuppliers.ts
 src/sdk/models/shared/accountingbillcreditnote.ts
-src/sdk/models/shared/items.ts
+src/sdk/models/shared/withholdingtaxitems.ts
 src/sdk/models/shared/billcreditnotestatus.ts
 src/sdk/models/shared/billcreditnotelineitem.ts
 src/sdk/models/shared/accountingbillcreditnotes.ts
@@ -781,12 +782,14 @@ docs/sdk/models/operations/generateexcelreportresponse.md
 docs/sdk/models/operations/getexcelreportgenerationstatusrequest.md
 docs/sdk/models/operations/getexcelreportgenerationstatusresponse.md
 docs/sdk/models/shared/errormessage.md
+docs/sdk/models/shared/groupreference.md
 docs/sdk/models/shared/company.md
 docs/sdk/models/shared/sourcetype.md
 docs/sdk/models/shared/connection.md
 docs/sdk/models/shared/dataconnectionstatus.md
 docs/sdk/models/shared/dataconnectionerror.md
 docs/sdk/models/shared/companyrequestbody.md
+docs/sdk/models/shared/items.md
 docs/sdk/models/shared/companies.md
 docs/sdk/models/shared/links.md
 docs/sdk/models/shared/halref.md
@@ -874,7 +877,7 @@ docs/sdk/models/shared/accountingaddress.md
 docs/sdk/models/shared/accountingaddresstype.md
 docs/sdk/models/shared/accountingsuppliers.md
 docs/sdk/models/shared/accountingbillcreditnote.md
-docs/sdk/models/shared/items.md
+docs/sdk/models/shared/withholdingtaxitems.md
 docs/sdk/models/shared/billcreditnotestatus.md
 docs/sdk/models/shared/itemreference.md
 docs/sdk/models/shared/taxratereference.md
