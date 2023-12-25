@@ -100,6 +100,7 @@ run();
 ### [directCosts](docs/sdks/directcosts/README.md)
 
 * [create](docs/sdks/directcosts/README.md#create) - Create direct cost
+* [delete](docs/sdks/directcosts/README.md#delete) - Delete direct cost
 * [downloadAttachment](docs/sdks/directcosts/README.md#downloadattachment) - Download direct cost attachment
 * [get](docs/sdks/directcosts/README.md#get) - Get direct cost
 * [getAttachment](docs/sdks/directcosts/README.md#getattachment) - Get direct cost attachment
@@ -275,7 +276,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 Example
 

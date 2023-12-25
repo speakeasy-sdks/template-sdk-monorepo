@@ -73,6 +73,7 @@ src/sdk/models/operations/listcustomers.ts
 src/sdk/models/operations/listcustomerattachments.ts
 src/sdk/models/operations/updatecustomer.ts
 src/sdk/models/operations/createdirectcost.ts
+src/sdk/models/operations/deletedirectcost.ts
 src/sdk/models/operations/downloaddirectcostattachment.ts
 src/sdk/models/operations/getdirectcost.ts
 src/sdk/models/operations/getdirectcostattachment.ts
@@ -432,6 +433,8 @@ docs/sdk/models/operations/updatecustomerrequest.md
 docs/sdk/models/operations/updatecustomerresponse.md
 docs/sdk/models/operations/createdirectcostrequest.md
 docs/sdk/models/operations/createdirectcostresponse.md
+docs/sdk/models/operations/deletedirectcostrequest.md
+docs/sdk/models/operations/deletedirectcostresponse.md
 docs/sdk/models/operations/downloaddirectcostattachmentrequest.md
 docs/sdk/models/operations/downloaddirectcostattachmentresponse.md
 docs/sdk/models/operations/getdirectcostrequest.md

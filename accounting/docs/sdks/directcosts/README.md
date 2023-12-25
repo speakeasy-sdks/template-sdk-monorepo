@@ -8,6 +8,7 @@ Direct costs
 ### Available Operations
 
 * [create](#create) - Create direct cost
+* [delete](#delete) - Delete direct cost
 * [downloadAttachment](#downloadattachment) - Download direct cost attachment
 * [get](#get) - Get direct cost
 * [getAttachment](#getattachment) - Get direct cost attachment
@@ -146,7 +147,80 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## delete
+
+The *Delete direct cost* endpoint allows you to delete a specified direct cost from an accounting platform. 
+
+[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are the expenses associated with a business' operations. For example, purchases of raw materials that are paid off at the point of the purchase and service fees are considered direct costs.
+
+### Process 
+1. Pass the `{directCostId}` to the *Delete direct cost* endpoint and store the `pushOperationKey` returned.
+2. Check the status of the delete operation by checking the status of the push operation either via
+    1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
+    2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation).
+
+   A `Success` status indicates that the direct cost object was deleted from the accounting platform.
+3. (Optional) Check that the direct cost was deleted from the accounting platform.
+
+### Effect on related objects
+Be aware that deleting a direct cost from an accounting platform might cause related objects to be modified.
+
+## Integration specifics
+Integrations that support soft delete do not permanently delete the object in the accounting platform.
+
+| Integration        | Soft Delete | Details                                                                                                   |  
+|--------------------|-------------|-----------------------------------------------------------------------------------------------------------|
+| QuickBooks Desktop | No          | - |
+
+> **Supported Integrations**
+> 
+> This functionality is currently supported for our QuickBooks Desktop integration.
+
+### Example Usage
+
+```typescript
+import { Accounting } from "@speakeasy-sdks/accounting";
+import { DeleteDirectCostRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
+
+async function run() {
+  const sdk = new Accounting({
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  });
+const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
+const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
+const directCostId: string = "string";
+
+  const res = await sdk.directCosts.delete(companyId, connectionId, directCostId);
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
+| `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
+| `directCostId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a direct cost.                                |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
+
+
+### Response
+
+**Promise<[operations.DeleteDirectCostResponse](../../sdk/models/operations/deletedirectcostresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## downloadAttachment
 
@@ -201,7 +275,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## get
 
@@ -256,7 +330,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getAttachment
 
@@ -311,7 +385,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getCreateModel
 
@@ -366,7 +440,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## list
 
@@ -419,7 +493,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listAttachments
 
@@ -472,7 +546,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## uploadAttachment
 
@@ -537,4 +611,4 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
