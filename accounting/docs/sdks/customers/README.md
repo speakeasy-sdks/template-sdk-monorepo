@@ -36,17 +36,17 @@ import { Accounting } from "@speakeasy-sdks/accounting";
 import { CreateCustomerRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 import {
   AccountingAddressType,
-  Addressesitems,
   Contact,
   Customer,
   CustomerStatus,
+  Items,
   Metadata,
-  PhoneNumbersitems,
+  PhoneNumberItems,
   PhoneNumberType,
   SupplementalData,
 } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -63,7 +63,7 @@ const customer: Customer = {
       address: {
         type: AccountingAddressType.Billing,
       },
-      modifiedDate: "2022-10-23T00:00:00.000Z",
+      modifiedDate: "2022-10-23T00:00:00Z",
       phone: [
         {
           number: "01224 658 999",
@@ -75,25 +75,27 @@ const customer: Customer = {
   ],
   defaultCurrency: "GBP",
   metadata: {},
-  modifiedDate: "2022-10-23T00:00:00.000Z",
-  sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+  modifiedDate: "2022-10-23T00:00:00Z",
+  sourceModifiedDate: "2022-10-23T00:00:00Z",
   status: CustomerStatus.Archived,
   supplementalData: {
     content: {
-      "grey": {
-        "technology": "East",
+      "key": {
+        "key": "string",
       },
     },
   },
 };
-const timeoutInMinutes: number = 169727;
+const timeoutInMinutes: number = 796474;
 
   const res = await sdk.customers.create(companyId, connectionId, customer, timeoutInMinutes);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -102,16 +104,20 @@ const timeoutInMinutes: number = 169727;
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
 | `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `customer`                                                            | [shared.Customer](../../models/shared/customer.md)                    | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `customer`                                                            | [shared.Customer](../../sdk/models/shared/customer.md)                | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
-| `retries`                                                             | [utils.RetryConfig](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
+| `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 | `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
 
 
 ### Response
 
-**Promise<[operations.CreateCustomerResponse](../../models/operations/createcustomerresponse.md)>**
+**Promise<[operations.CreateCustomerResponse](../../sdk/models/operations/createcustomerresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## downloadAttachment
 
@@ -128,21 +134,23 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { DownloadCustomerAttachmentRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const customerId: string = "complex";
+const customerId: string = "string";
 
   const res = await sdk.customers.downloadAttachment(attachmentId, companyId, connectionId, customerId);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -153,14 +161,18 @@ const customerId: string = "complex";
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
 | `customerId`                                                        | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a customer.                                   |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.DownloadCustomerAttachmentResponse](../../models/operations/downloadcustomerattachmentresponse.md)>**
+**Promise<[operations.DownloadCustomerAttachmentResponse](../../sdk/models/operations/downloadcustomerattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## get
 
@@ -179,19 +191,21 @@ Before using this endpoint, you must have [retrieved data for the company](https
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetCustomerRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const customerId: string = "female";
+const customerId: string = "string";
 
   const res = await sdk.customers.get(companyId, customerId);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -200,14 +214,18 @@ const customerId: string = "female";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `customerId`                                                        | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a customer.                                   |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetCustomerResponse](../../models/operations/getcustomerresponse.md)>**
+**Promise<[operations.GetCustomerResponse](../../sdk/models/operations/getcustomerresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getAttachment
 
@@ -224,21 +242,23 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetCustomerAttachmentRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const customerId: string = "provided";
+const customerId: string = "string";
 
   const res = await sdk.customers.getAttachment(attachmentId, companyId, connectionId, customerId);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -249,14 +269,18 @@ const customerId: string = "provided";
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
 | `customerId`                                                        | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a customer.                                   |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetCustomerAttachmentResponse](../../models/operations/getcustomerattachmentresponse.md)>**
+**Promise<[operations.GetCustomerAttachmentResponse](../../sdk/models/operations/getcustomerattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getCreateUpdateModel
 
@@ -277,7 +301,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetCreateUpdateCustomersModelRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -289,7 +313,9 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -298,14 +324,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetCreateUpdateCustomersModelResponse](../../models/operations/getcreateupdatecustomersmodelresponse.md)>**
+**Promise<[operations.GetCreateUpdateCustomersModelResponse](../../sdk/models/operations/getcreateupdatecustomersmodelresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## list
 
@@ -321,7 +351,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -336,22 +366,28 @@ import { Accounting } from "@speakeasy-sdks/accounting";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.ListCustomersRequest](../../models/operations/listcustomersrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `retries`                                                                          | [utils.RetryConfig](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.ListCustomersRequest](../../sdk/models/operations/listcustomersrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `retries`                                                                              | [utils.RetryConfig](../../internal/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.ListCustomersResponse](../../models/operations/listcustomersresponse.md)>**
+**Promise<[operations.ListCustomersResponse](../../sdk/models/operations/listcustomersresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listAttachments
 
@@ -368,20 +404,22 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { ListCustomerAttachmentsRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const customerId: string = "behind";
+const customerId: string = "string";
 
   const res = await sdk.customers.listAttachments(companyId, connectionId, customerId);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -391,14 +429,18 @@ const customerId: string = "behind";
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
 | `customerId`                                                        | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a customer.                                   |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.ListCustomerAttachmentsResponse](../../models/operations/listcustomerattachmentsresponse.md)>**
+**Promise<[operations.ListCustomerAttachmentsResponse](../../sdk/models/operations/listcustomerattachmentsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update
 
@@ -419,7 +461,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { AccountingAddressType, CustomerStatus, PhoneNumberType } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -436,7 +478,7 @@ import { AccountingAddressType, CustomerStatus, PhoneNumberType } from "@speakea
           address: {
             type: AccountingAddressType.Unknown,
           },
-          modifiedDate: "2022-10-23T00:00:00.000Z",
+          modifiedDate: "2022-10-23T00:00:00Z",
           phone: [
             {
               number: "+44 25691 154789",
@@ -448,38 +490,44 @@ import { AccountingAddressType, CustomerStatus, PhoneNumberType } from "@speakea
       ],
       defaultCurrency: "EUR",
       metadata: {},
-      modifiedDate: "2022-10-23T00:00:00.000Z",
-      sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+      modifiedDate: "2022-10-23T00:00:00Z",
+      sourceModifiedDate: "2022-10-23T00:00:00Z",
       status: CustomerStatus.Archived,
       supplementalData: {
         content: {
-          "redundant": {
-            "cheater": "Islands",
+          "key": {
+            "key": "string",
           },
         },
       },
     },
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    customerId: "online",
+    customerId: "string",
   });
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.UpdateCustomerRequest](../../models/operations/updatecustomerrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `retries`                                                                            | [utils.RetryConfig](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [operations.UpdateCustomerRequest](../../sdk/models/operations/updatecustomerrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `retries`                                                                                | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
+| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
 
 
 ### Response
 
-**Promise<[operations.UpdateCustomerResponse](../../models/operations/updatecustomerresponse.md)>**
+**Promise<[operations.UpdateCustomerResponse](../../sdk/models/operations/updatecustomerresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

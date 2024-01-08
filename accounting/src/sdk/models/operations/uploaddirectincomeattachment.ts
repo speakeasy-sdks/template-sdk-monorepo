@@ -3,16 +3,8 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
-
-export class UploadDirectIncomeAttachmentRequestBody extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "multipart_form, content=true" })
-    content: Uint8Array;
-
-    @SpeakeasyMetadata({ data: "multipart_form, name=requestBody" })
-    requestBody: string;
-}
 
 export class UploadDirectIncomeAttachmentRequest extends SpeakeasyBase {
     /**
@@ -33,10 +25,8 @@ export class UploadDirectIncomeAttachmentRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=directIncomeId" })
     directIncomeId: string;
 
-    @SpeakeasyMetadata({
-        data: "multipart_form, file=true, request, media_type=multipart/form-data",
-    })
-    requestBody?: UploadDirectIncomeAttachmentRequestBody;
+    @SpeakeasyMetadata({ data: "request, media_type=multipart/form-data" })
+    attachmentUpload?: shared.AttachmentUpload;
 }
 
 export class UploadDirectIncomeAttachmentResponse extends SpeakeasyBase {
@@ -47,7 +37,7 @@ export class UploadDirectIncomeAttachmentResponse extends SpeakeasyBase {
     contentType: string;
 
     /**
-     * Your API request was not properly authorized.
+     * The request made is not valid.
      */
     @SpeakeasyMetadata()
     errorMessage?: shared.ErrorMessage;
@@ -62,5 +52,5 @@ export class UploadDirectIncomeAttachmentResponse extends SpeakeasyBase {
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 }

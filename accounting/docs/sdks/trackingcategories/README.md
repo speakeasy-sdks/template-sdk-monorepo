@@ -27,19 +27,21 @@ Before using this endpoint, you must have [retrieved data for the company](https
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetTrackingCategoryRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const trackingCategoryId: string = "female";
+const trackingCategoryId: string = "string";
 
   const res = await sdk.trackingCategories.get(companyId, trackingCategoryId);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -48,14 +50,18 @@ const trackingCategoryId: string = "female";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `trackingCategoryId`                                                | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a tracking category.                          |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetTrackingCategoryResponse](../../models/operations/gettrackingcategoryresponse.md)>**
+**Promise<[operations.GetTrackingCategoryResponse](../../sdk/models/operations/gettrackingcategoryresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## list
 
@@ -71,7 +77,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -86,19 +92,25 @@ import { Accounting } from "@speakeasy-sdks/accounting";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `request`                                                                                            | [operations.ListTrackingCategoriesRequest](../../models/operations/listtrackingcategoriesrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-| `retries`                                                                                            | [utils.RetryConfig](../../models/utils/retryconfig.md)                                               | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |
-| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                | [operations.ListTrackingCategoriesRequest](../../sdk/models/operations/listtrackingcategoriesrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `retries`                                                                                                | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                 | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
+| `config`                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                             | :heavy_minus_sign:                                                                                       | Available config options for making requests.                                                            |
 
 
 ### Response
 
-**Promise<[operations.ListTrackingCategoriesResponse](../../models/operations/listtrackingcategoriesresponse.md)>**
+**Promise<[operations.ListTrackingCategoriesResponse](../../sdk/models/operations/listtrackingcategoriesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

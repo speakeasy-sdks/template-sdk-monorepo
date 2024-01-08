@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -57,7 +57,7 @@ export class Bills {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/push/bills",
             req
@@ -107,7 +107,7 @@ export class Bills {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url + queryParams,
+                url: operationUrl + queryParams,
                 method: "post",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -116,7 +116,7 @@ export class Bills {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -124,35 +124,35 @@ export class Bills {
 
         const res: operations.CreateBillResponse = new operations.CreateBillResponse({
             statusCode: httpRes.status,
-            contentType: contentType,
+            contentType: responseContentType,
             rawResponse: httpRes,
         });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.createBillResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.CreateBillResponse
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
                     );
                 }
                 break;
-            case [400, 401, 404, 429].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+            case [400, 401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -174,7 +174,7 @@ export class Bills {
      *
      * ### Process
      * 1. Pass the `{billId}` to the *Delete bill* endpoint and store the `pushOperationKey` returned.
-     * 2. Check the status of the delete operation by checking the status of push operation either via
+     * 2. Check the status of the delete operation by checking the status of the push operation either via
      *     1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
      *     2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation).
      *
@@ -183,19 +183,21 @@ export class Bills {
      *
      * ### Effect on related objects
      *
-     * Be aware that deleting a bill from an accounting platform might cause related objects to be modified. For example, if you delete a paid bill in QuickBooks Online, the bill is deleted but the bill payment against that bill is not. The bill payment is converted to a payment on account.
+     * Be aware that deleting a bill from an accounting platform might cause related objects to be modified. For example, if you delete a paid bill in QuickBooks Online or QuickBooks Desktop, the bill is deleted but the bill payment against that bill is not. The bill payment is converted to a payment on account.
      *
      * ## Integration specifics
      * Integrations that support soft delete do not permanently delete the object in the accounting platform.
      *
      * | Integration | Soft Delete | Details                                                                                                      |
      * |-------------|-------------|--------------------------------------------------------------------------------------------------------------|
-     * | QuickBooks Online | No          | -                                                                                                            |
-     * | Oracle NetSuite   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |
+     * | QuickBooks Online | No          | - |
+     * | QuickBooks Desktop | No          | - |
+     * | Oracle NetSuite   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |                                                                                                      |
+     * | Sage Intacct   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |
      *
      * > **Supported Integrations**
      * >
-     * > This functionality is currently supported for our QuickBooks Online, Xero and Oracle NetSuite integrations.
+     * > This functionality is currently supported for our QuickBooks Online, QuickBooks Desktop, Xero, Oracle NetSuite and Sage Intacct integrations.
      */
     async delete(
         billId: string,
@@ -213,7 +215,7 @@ export class Bills {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/push/bills/{billId}",
             req
@@ -248,7 +250,7 @@ export class Bills {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url,
+                url: operationUrl,
                 method: "delete",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -256,7 +258,7 @@ export class Bills {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -264,35 +266,35 @@ export class Bills {
 
         const res: operations.DeleteBillResponse = new operations.DeleteBillResponse({
             statusCode: httpRes.status,
-            contentType: contentType,
+            contentType: responseContentType,
             rawResponse: httpRes,
         });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.pushOperationSummary = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.PushOperationSummary
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
                     );
                 }
                 break;
-            case [401, 404, 429].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+            case [401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -334,7 +336,7 @@ export class Bills {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments/{attachmentId}/download",
             req
@@ -373,7 +375,7 @@ export class Bills {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url,
+                url: operationUrl,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -381,7 +383,7 @@ export class Bills {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -390,32 +392,32 @@ export class Bills {
         const res: operations.DownloadBillAttachmentResponse =
             new operations.DownloadBillAttachmentResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/octet-stream`)) {
+                if (utils.matchContentType(responseContentType, `application/octet-stream`)) {
                     res.data = httpRes?.data;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
                     );
                 }
                 break;
-            case [401, 404, 429].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+            case [401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -454,7 +456,7 @@ export class Bills {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/data/bills/{billId}",
             req
@@ -489,7 +491,7 @@ export class Bills {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url,
+                url: operationUrl,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -497,7 +499,7 @@ export class Bills {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -505,32 +507,32 @@ export class Bills {
 
         const res: operations.GetBillResponse = new operations.GetBillResponse({
             statusCode: httpRes.status,
-            contentType: contentType,
+            contentType: responseContentType,
             rawResponse: httpRes,
         });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.bill = utils.objectToClass(JSON.parse(decodedRes), shared.Bill);
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
                     );
                 }
                 break;
-            case [401, 404, 409, 429].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+            case [401, 402, 403, 404, 409, 429, 500, 503].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -571,7 +573,7 @@ export class Bills {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments/{attachmentId}",
             req
@@ -606,7 +608,7 @@ export class Bills {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url,
+                url: operationUrl,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -614,7 +616,7 @@ export class Bills {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -622,32 +624,32 @@ export class Bills {
 
         const res: operations.GetBillAttachmentResponse = new operations.GetBillAttachmentResponse({
             statusCode: httpRes.status,
-            contentType: contentType,
+            contentType: responseContentType,
             rawResponse: httpRes,
         });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.attachment = utils.objectToClass(JSON.parse(decodedRes), shared.Attachment);
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
                     );
                 }
                 break;
-            case [401, 404, 429].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+            case [401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -688,7 +690,7 @@ export class Bills {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/options/bills",
             req
@@ -723,7 +725,7 @@ export class Bills {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url,
+                url: operationUrl,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -731,7 +733,7 @@ export class Bills {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -740,32 +742,32 @@ export class Bills {
         const res: operations.GetCreateUpdateBillsModelResponse =
             new operations.GetCreateUpdateBillsModelResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.pushOption = utils.objectToClass(JSON.parse(decodedRes), shared.PushOption);
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
                     );
                 }
                 break;
-            case [401, 404, 429].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+            case [401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -801,7 +803,11 @@ export class Bills {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/companies/{companyId}/data/bills", req);
+        const operationUrl: string = utils.generateURL(
+            baseURL,
+            "/companies/{companyId}/data/bills",
+            req
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -833,7 +839,7 @@ export class Bills {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url + queryParams,
+                url: operationUrl + queryParams,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -841,7 +847,7 @@ export class Bills {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -849,32 +855,32 @@ export class Bills {
 
         const res: operations.ListBillsResponse = new operations.ListBillsResponse({
             statusCode: httpRes.status,
-            contentType: contentType,
+            contentType: responseContentType,
             rawResponse: httpRes,
         });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.bills = utils.objectToClass(JSON.parse(decodedRes), shared.Bills);
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
                     );
                 }
                 break;
-            case [400, 401, 404, 409].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+            case [400, 401, 402, 403, 404, 409, 429, 500, 503].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -913,7 +919,7 @@ export class Bills {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments",
             req
@@ -948,7 +954,7 @@ export class Bills {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url,
+                url: operationUrl,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -956,7 +962,7 @@ export class Bills {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -965,35 +971,35 @@ export class Bills {
         const res: operations.ListBillAttachmentsResponse =
             new operations.ListBillAttachmentsResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.attachmentsDataset = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.AttachmentsDataset
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
                     );
                 }
                 break;
-            case [401, 404, 429].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+            case [401, 402, 403, 404, 409, 429, 500, 503].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -1033,7 +1039,7 @@ export class Bills {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/push/bills/{billId}",
             req
@@ -1083,7 +1089,7 @@ export class Bills {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url + queryParams,
+                url: operationUrl + queryParams,
                 method: "put",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -1092,7 +1098,7 @@ export class Bills {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -1100,35 +1106,35 @@ export class Bills {
 
         const res: operations.UpdateBillResponse = new operations.UpdateBillResponse({
             statusCode: httpRes.status,
-            contentType: contentType,
+            contentType: responseContentType,
             rawResponse: httpRes,
         });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.updateBillResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.UpdateBillResponse
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
                     );
                 }
                 break;
-            case [400, 401, 404, 429].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+            case [400, 401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -1159,7 +1165,7 @@ export class Bills {
         billId: string,
         companyId: string,
         connectionId: string,
-        requestBody?: operations.UploadBillAttachmentRequestBody,
+        attachmentUpload?: shared.AttachmentUpload,
         retries?: utils.RetryConfig,
         config?: AxiosRequestConfig
     ): Promise<operations.UploadBillAttachmentResponse> {
@@ -1167,13 +1173,13 @@ export class Bills {
             billId: billId,
             companyId: companyId,
             connectionId: connectionId,
-            requestBody: requestBody,
+            attachmentUpload: attachmentUpload,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/companies/{companyId}/connections/{connectionId}/push/bills/{billId}/attachments",
             req
@@ -1182,7 +1188,11 @@ export class Bills {
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
-            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "multipart");
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "attachmentUpload",
+                "multipart"
+            );
         } catch (e: unknown) {
             if (e instanceof Error) {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -1222,7 +1232,7 @@ export class Bills {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url,
+                url: operationUrl,
                 method: "post",
                 headers: headers,
                 responseType: "arraybuffer",
@@ -1231,7 +1241,7 @@ export class Bills {
             });
         }, new utils.Retries(retryConfig, ["408", "429", "5XX"]));
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -1240,22 +1250,22 @@ export class Bills {
         const res: operations.UploadBillAttachmentResponse =
             new operations.UploadBillAttachmentResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case [401, 404, 429].includes(httpRes?.status):
-                if (utils.matchContentType(contentType, `application/json`)) {
+            case [400, 401, 402, 403, 404, 429, 500, 503].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.errorMessage = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ErrorMessage
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes

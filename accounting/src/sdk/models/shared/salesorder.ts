@@ -4,7 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AccountingCustomerRef } from "./accountingcustomerref";
-import { Addressesitems } from "./addressesitems";
+import { Items } from "./items";
 import { Metadata } from "./metadata";
 import { SalesOrderInvoiceStatus } from "./salesorderinvoicestatus";
 import { SalesOrderLineItem } from "./salesorderlineitem";
@@ -14,7 +14,7 @@ import { Expose, Type } from "class-transformer";
 /**
  * Details of the named contact at the delivery address.
  */
-export class SalesOrderShipToContact extends SpeakeasyBase {
+export class SalesOrderContact extends SpeakeasyBase {
     /**
      * Email address of the contact at the delivery address.
      */
@@ -43,16 +43,16 @@ export class SalesOrderShipToContact extends SpeakeasyBase {
 export class SalesOrderShipTo extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "address" })
-    @Type(() => Addressesitems)
-    address?: Addressesitems;
+    @Type(() => Items)
+    address?: Items;
 
     /**
      * Details of the named contact at the delivery address.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "contact" })
-    @Type(() => SalesOrderShipToContact)
-    contact?: SalesOrderShipToContact;
+    @Type(() => SalesOrderContact)
+    contact?: SalesOrderContact;
 }
 
 /**
@@ -110,6 +110,13 @@ export class SalesOrder extends SpeakeasyBase {
      * | **GBP**          | £20            | 1.277         | $25.54                     |
      * | **EUR**          | €20            | 1.134         | $22.68                     |
      * | **RUB**          | ₽20            | 0.015         | $0.30                      |
+     *
+     *
+     * ### Integration-specific details
+     *
+     * | Integration       | Scenario                                        | System behavior                                                                                                                                                      |
+     * |-------------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+     * | QuickBooks Online | Transaction currency differs from base currency | If currency rate value is left `null`, a rate of 1 will be used by QBO by default. To override this, include the required currency rate in the expense transaction.  |
      */
     @SpeakeasyMetadata()
     @Expose({ name: "currencyRate" })

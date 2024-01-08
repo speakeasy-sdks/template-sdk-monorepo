@@ -35,37 +35,37 @@ import { CreateBillCreditNoteRequest } from "@speakeasy-sdks/accounting/dist/sdk
 import {
   AccountingCustomerRef,
   AccountRef,
+  Allocation,
   BillCreditNote,
   BillCreditNoteLineItem,
   BillCreditNoteLineItemTracking,
   BillCreditNoteStatus,
   BilledToType,
   ItemRef,
-  Items,
-  ItemsAllocation,
   Metadata,
+  PaymentAllocationItems,
   PaymentAllocationPayment,
   ProjectRef,
   SupplementalData,
   SupplierRef,
   TaxRateRef,
   TrackingCategoryRef,
-  WithholdingTaxitems,
+  WithholdingTaxItems,
 } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const billCreditNote: BillCreditNote = {
-  allocatedOnDate: "2022-10-23T00:00:00.000Z",
+  allocatedOnDate: "2022-10-23T00:00:00Z",
   billCreditNoteNumber: "91fe2a83-e161-4c21-929d-c5c10c4b07e5",
   currency: "USD",
   discountPercentage: 0,
   id: "1509398f-98e2-436d-8a5d-c042e0c74ffc",
-  issueDate: "2022-10-23T00:00:00.000Z",
+  issueDate: "2022-10-23T00:00:00Z",
   lineItems: [
     {
       accountRef: {},
@@ -98,29 +98,29 @@ const billCreditNote: BillCreditNote = {
     },
   ],
   metadata: {},
-  modifiedDate: "2022-10-23T00:00:00.000Z",
+  modifiedDate: "2022-10-23T00:00:00Z",
   note: "Bill Credit Note with 1 line items, totaling 805.78",
   paymentAllocations: [
     {
       allocation: {
-        allocatedOnDate: "2022-10-23T00:00:00.000Z",
+        allocatedOnDate: "2022-10-23T00:00:00Z",
         currency: "EUR",
       },
       payment: {
         accountRef: {},
         currency: "EUR",
-        paidOnDate: "2022-10-23T00:00:00.000Z",
+        paidOnDate: "2022-10-23T00:00:00Z",
       },
     },
   ],
   remainingCredit: 0,
-  sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+  sourceModifiedDate: "2022-10-23T00:00:00Z",
   status: BillCreditNoteStatus.Paid,
   subTotal: 805.78,
   supplementalData: {
     content: {
-      "abnormally": {
-        "deposit": "evolve",
+      "key": {
+        "key": "string",
       },
     },
   },
@@ -132,19 +132,21 @@ const billCreditNote: BillCreditNote = {
   totalTaxAmount: 0,
   withholdingTax: [
     {
-      amount: 7150.4,
-      name: "fuchsia",
+      amount: 8915.1,
+      name: "string",
     },
   ],
 };
-const timeoutInMinutes: number = 816588;
+const timeoutInMinutes: number = 86;
 
   const res = await sdk.billCreditNotes.create(companyId, connectionId, billCreditNote, timeoutInMinutes);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -153,16 +155,20 @@ const timeoutInMinutes: number = 816588;
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
 | `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `billCreditNote`                                                      | [shared.BillCreditNote](../../models/shared/billcreditnote.md)        | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `billCreditNote`                                                      | [shared.BillCreditNote](../../sdk/models/shared/billcreditnote.md)    | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
-| `retries`                                                             | [utils.RetryConfig](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
+| `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 | `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
 
 
 ### Response
 
-**Promise<[operations.CreateBillCreditNoteResponse](../../models/operations/createbillcreditnoteresponse.md)>**
+**Promise<[operations.CreateBillCreditNoteResponse](../../sdk/models/operations/createbillcreditnoteresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## get
 
@@ -181,11 +187,11 @@ Before using this endpoint, you must have [retrieved data for the company](https
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetBillCreditNoteRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const billCreditNoteId: string = "female";
+const billCreditNoteId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.billCreditNotes.get(billCreditNoteId, companyId);
@@ -193,7 +199,9 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -202,14 +210,18 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `billCreditNoteId`                                                  | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a bill credit note.                           |                                                                     |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetBillCreditNoteResponse](../../models/operations/getbillcreditnoteresponse.md)>**
+**Promise<[operations.GetBillCreditNoteResponse](../../sdk/models/operations/getbillcreditnoteresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getCreateUpdateModel
 
@@ -230,7 +242,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetCreateUpdateBillCreditNotesModelRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -242,7 +254,9 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -251,14 +265,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetCreateUpdateBillCreditNotesModelResponse](../../models/operations/getcreateupdatebillcreditnotesmodelresponse.md)>**
+**Promise<[operations.GetCreateUpdateBillCreditNotesModelResponse](../../sdk/models/operations/getcreateupdatebillcreditnotesmodelresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## list
 
@@ -274,7 +292,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -289,22 +307,28 @@ import { Accounting } from "@speakeasy-sdks/accounting";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request`                                                                                      | [operations.ListBillCreditNotesRequest](../../models/operations/listbillcreditnotesrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `retries`                                                                                      | [utils.RetryConfig](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.ListBillCreditNotesRequest](../../sdk/models/operations/listbillcreditnotesrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `retries`                                                                                          | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                 | Configuration to override the default retry behavior of the client.                                |
+| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.ListBillCreditNotesResponse](../../models/operations/listbillcreditnotesresponse.md)>**
+**Promise<[operations.ListBillCreditNotesResponse](../../sdk/models/operations/listbillcreditnotesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update
 
@@ -325,19 +349,19 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { BillCreditNoteStatus, BilledToType } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
   const res = await sdk.billCreditNotes.update({
     billCreditNote: {
-      allocatedOnDate: "2022-10-23T00:00:00.000Z",
+      allocatedOnDate: "2022-10-23T00:00:00Z",
       billCreditNoteNumber: "91fe2a83-e161-4c21-929d-c5c10c4b07e5",
       currency: "GBP",
       discountPercentage: 0,
       id: "1509398f-98e2-436d-8a5d-c042e0c74ffc",
-      issueDate: "2022-10-23T00:00:00.000Z",
+      issueDate: "2022-10-23T00:00:00Z",
       lineItems: [
         {
           accountRef: {},
@@ -370,29 +394,29 @@ import { BillCreditNoteStatus, BilledToType } from "@speakeasy-sdks/accounting/d
         },
       ],
       metadata: {},
-      modifiedDate: "2022-10-23T00:00:00.000Z",
+      modifiedDate: "2022-10-23T00:00:00Z",
       note: "Bill Credit Note with 1 line items, totaling 805.78",
       paymentAllocations: [
         {
           allocation: {
-            allocatedOnDate: "2022-10-23T00:00:00.000Z",
+            allocatedOnDate: "2022-10-23T00:00:00Z",
             currency: "EUR",
           },
           payment: {
             accountRef: {},
             currency: "USD",
-            paidOnDate: "2022-10-23T00:00:00.000Z",
+            paidOnDate: "2022-10-23T00:00:00Z",
           },
         },
       ],
       remainingCredit: 0,
-      sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+      sourceModifiedDate: "2022-10-23T00:00:00Z",
       status: BillCreditNoteStatus.Paid,
       subTotal: 805.78,
       supplementalData: {
         content: {
-          "Arizona": {
-            "Cotton": "extend",
+          "key": {
+            "key": "string",
           },
         },
       },
@@ -404,12 +428,12 @@ import { BillCreditNoteStatus, BilledToType } from "@speakeasy-sdks/accounting/d
       totalTaxAmount: 0,
       withholdingTax: [
         {
-          amount: 2494.4,
-          name: "bifurcated",
+          amount: 1341.51,
+          name: "string",
         },
       ],
     },
-    billCreditNoteId: "Forward",
+    billCreditNoteId: "string",
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
@@ -417,22 +441,28 @@ import { BillCreditNoteStatus, BilledToType } from "@speakeasy-sdks/accounting/d
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [operations.UpdateBillCreditNoteRequest](../../models/operations/updatebillcreditnoterequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `retries`                                                                                        | [utils.RetryConfig](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `request`                                                                                            | [operations.UpdateBillCreditNoteRequest](../../sdk/models/operations/updatebillcreditnoterequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `retries`                                                                                            | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                             | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |
+| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
 
 
 ### Response
 
-**Promise<[operations.UpdateBillCreditNoteResponse](../../models/operations/updatebillcreditnoteresponse.md)>**
+**Promise<[operations.UpdateBillCreditNoteResponse](../../sdk/models/operations/updatebillcreditnoteresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## uploadAttachment
 
@@ -455,41 +485,50 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { UploadBillCreditNoteAttachmentRequest, UploadBillCreditNoteAttachmentRequestBody } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
+import { UploadBillCreditNoteAttachmentRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
+import { AttachmentUpload, CodatFile } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const billCreditNoteId: string = "huzzah";
+const billCreditNoteId: string = "string";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const requestBody: UploadBillCreditNoteAttachmentRequestBody = {
-  content: "ghW&IC$xd6" as bytes <<<>>>,
-  requestBody: "novel",
+const attachmentUpload: AttachmentUpload = {
+  file: {
+    content: new TextEncoder().encode("0xE3ABc1980E"),
+    fileName: "elegant_producer_electric.jpeg",
+  },
 };
 
-  const res = await sdk.billCreditNotes.uploadAttachment(billCreditNoteId, companyId, connectionId, requestBody);
+  const res = await sdk.billCreditNotes.uploadAttachment(billCreditNoteId, companyId, connectionId, attachmentUpload);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  | Example                                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `billCreditNoteId`                                                                                                           | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | Unique identifier for a bill credit note.                                                                                    |                                                                                                                              |
-| `companyId`                                                                                                                  | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | Unique identifier for a company.                                                                                             | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                                         |
-| `connectionId`                                                                                                               | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | Unique identifier for a connection.                                                                                          | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                                         |
-| `requestBody`                                                                                                                | [operations.UploadBillCreditNoteAttachmentRequestBody](../../models/operations/uploadbillcreditnoteattachmentrequestbody.md) | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |                                                                                                                              |
-| `retries`                                                                                                                    | [utils.RetryConfig](../../models/utils/retryconfig.md)                                                                       | :heavy_minus_sign:                                                                                                           | Configuration to override the default retry behavior of the client.                                                          |                                                                                                                              |
-| `config`                                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                 | :heavy_minus_sign:                                                                                                           | Available config options for making requests.                                                                                |                                                                                                                              |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `billCreditNoteId`                                                     | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a bill credit note.                              |                                                                        |
+| `companyId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a company.                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                   |
+| `connectionId`                                                         | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a connection.                                    | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                   |
+| `attachmentUpload`                                                     | [shared.AttachmentUpload](../../sdk/models/shared/attachmentupload.md) | :heavy_minus_sign:                                                     | N/A                                                                    |                                                                        |
+| `retries`                                                              | [utils.RetryConfig](../../internal/utils/retryconfig.md)               | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |                                                                        |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |                                                                        |
 
 
 ### Response
 
-**Promise<[operations.UploadBillCreditNoteAttachmentResponse](../../models/operations/uploadbillcreditnoteattachmentresponse.md)>**
+**Promise<[operations.UploadBillCreditNoteAttachmentResponse](../../sdk/models/operations/uploadbillcreditnoteattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

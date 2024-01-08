@@ -38,18 +38,18 @@ import {
   JournalLine,
   JournalRef,
   Metadata,
-  Propertiestracking2,
+  PropertieTracking2,
   SupplementalData,
 } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const journalEntry: JournalEntry = {
-  createdOn: "2022-10-23T00:00:00.000Z",
+  createdOn: "2022-10-23T00:00:00Z",
   journalLines: [
     {
       accountRef: {},
@@ -67,29 +67,31 @@ const journalEntry: JournalEntry = {
     id: "<ID>",
   },
   metadata: {},
-  modifiedDate: "2022-10-23T00:00:00.000Z",
-  postedOn: "2022-10-23T00:00:00.000Z",
+  modifiedDate: "2022-10-23T00:00:00Z",
+  postedOn: "2022-10-23T00:00:00Z",
   recordRef: {
     dataType: "invoice",
   },
-  sourceModifiedDate: "2022-10-23T00:00:00.000Z",
+  sourceModifiedDate: "2022-10-23T00:00:00Z",
   supplementalData: {
     content: {
-      "blue": {
-        "shred": "abnormally",
+      "key": {
+        "key": "string",
       },
     },
   },
-  updatedOn: "2022-10-23T00:00:00.000Z",
+  updatedOn: "2022-10-23T00:00:00Z",
 };
-const timeoutInMinutes: number = 169727;
+const timeoutInMinutes: number = 69025;
 
   const res = await sdk.journalEntries.create(companyId, connectionId, journalEntry, timeoutInMinutes);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -98,16 +100,20 @@ const timeoutInMinutes: number = 169727;
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
 | `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `journalEntry`                                                        | [shared.JournalEntry](../../models/shared/journalentry.md)            | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `journalEntry`                                                        | [shared.JournalEntry](../../sdk/models/shared/journalentry.md)        | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
-| `retries`                                                             | [utils.RetryConfig](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
+| `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 | `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
 
 
 ### Response
 
-**Promise<[operations.CreateJournalEntryResponse](../../models/operations/createjournalentryresponse.md)>**
+**Promise<[operations.CreateJournalEntryResponse](../../sdk/models/operations/createjournalentryresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete
 
@@ -151,20 +157,22 @@ Integrations that support soft delete do not permanently delete the object in th
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { DeleteJournalEntryRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const journalEntryId: string = "program";
+const journalEntryId: string = "string";
 
   const res = await sdk.journalEntries.delete(companyId, connectionId, journalEntryId);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -174,14 +182,18 @@ const journalEntryId: string = "program";
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
 | `journalEntryId`                                                    | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a journal entry.                              |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.DeleteJournalEntryResponse](../../models/operations/deletejournalentryresponse.md)>**
+**Promise<[operations.DeleteJournalEntryResponse](../../sdk/models/operations/deletejournalentryresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## get
 
@@ -200,19 +212,21 @@ Before using this endpoint, you must have [retrieved data for the company](https
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetJournalEntryRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const journalEntryId: string = "female";
+const journalEntryId: string = "string";
 
   const res = await sdk.journalEntries.get(companyId, journalEntryId);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -221,14 +235,18 @@ const journalEntryId: string = "female";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `journalEntryId`                                                    | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a journal entry.                              |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetJournalEntryResponse](../../models/operations/getjournalentryresponse.md)>**
+**Promise<[operations.GetJournalEntryResponse](../../sdk/models/operations/getjournalentryresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getCreateModel
 
@@ -249,7 +267,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { GetCreateJournalEntriesModelRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -261,7 +279,9 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -270,14 +290,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetCreateJournalEntriesModelResponse](../../models/operations/getcreatejournalentriesmodelresponse.md)>**
+**Promise<[operations.GetCreateJournalEntriesModelResponse](../../sdk/models/operations/getcreatejournalentriesmodelresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## list
 
@@ -293,7 +317,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
@@ -308,19 +332,25 @@ import { Accounting } from "@speakeasy-sdks/accounting";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `request`                                                                                    | [operations.ListJournalEntriesRequest](../../models/operations/listjournalentriesrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-| `retries`                                                                                    | [utils.RetryConfig](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
-| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.ListJournalEntriesRequest](../../sdk/models/operations/listjournalentriesrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `retries`                                                                                        | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
+| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
 
 
 ### Response
 
-**Promise<[operations.ListJournalEntriesResponse](../../models/operations/listjournalentriesresponse.md)>**
+**Promise<[operations.ListJournalEntriesResponse](../../sdk/models/operations/listjournalentriesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
