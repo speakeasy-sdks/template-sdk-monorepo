@@ -1,32 +1,12 @@
-configVersion: 1.0.0
-management:
-  docChecksum: 6333eddcefb3ad95c067098da6a82191
-  docVersion: 3.0.0
-  speakeasyVersion: 1.129.1
-  generationVersion: 2.223.3
+configVersion: 2.0.0
 generation:
-  comments: {}
   sdkClassName: lending
-  repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   usageSnippets:
     optionalPropertyRendering: withExample
   fixes:
     nameResolutionDec2023: false
-features:
-  typescript:
-    acceptHeaders: 2.81.1
-    core: 3.3.12
-    deprecations: 2.81.1
-    examples: 2.81.3
-    flattening: 2.81.1
-    globalSecurity: 2.82.2
-    globalServerURLs: 2.82.1
-    groups: 2.81.2
-    inputOutputModels: 2.83.0
-    nameOverrides: 2.81.1
-    retries: 2.82.1
 typescript:
-  version: 0.4.1
+  version: 0.5.0
   author: Speakeasy
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true
@@ -39,10 +19,7 @@ typescript:
       shared: sdk/models/shared
       webhooks: sdk/models/webhooks
   inputModelSuffix: input
-  installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
   maxMethodParams: 4
   outputModelSuffix: output
   packageName: lending
-  published: true
-  repoSubDirectory: lending
   templateVersion: v1
