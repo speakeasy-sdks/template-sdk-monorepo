@@ -6,10 +6,10 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AccountingPaymentAllocation } from "./accountingpaymentallocation";
 import { BillCreditNoteLineItem } from "./billcreditnotelineitem";
 import { BillCreditNoteStatus } from "./billcreditnotestatus";
-import { Items } from "./items";
 import { Metadata } from "./metadata";
 import { SupplementalData } from "./supplementaldata";
 import { SupplierRef } from "./supplierref";
+import { WithholdingTaxItems } from "./withholdingtaxitems";
 import { Expose, Type } from "class-transformer";
 
 /**
@@ -110,6 +110,13 @@ export class AccountingBillCreditNote extends SpeakeasyBase {
      * | **GBP**          | £20            | 1.277         | $25.54                     |
      * | **EUR**          | €20            | 1.134         | $22.68                     |
      * | **RUB**          | ₽20            | 0.015         | $0.30                      |
+     *
+     *
+     * ### Integration-specific details
+     *
+     * | Integration       | Scenario                                        | System behavior                                                                                                                                                      |
+     * |-------------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+     * | QuickBooks Online | Transaction currency differs from base currency | If currency rate value is left `null`, a rate of 1 will be used by QBO by default. To override this, include the required currency rate in the expense transaction.  |
      */
     @SpeakeasyMetadata()
     @Expose({ name: "currencyRate" })
@@ -254,8 +261,8 @@ export class AccountingBillCreditNote extends SpeakeasyBase {
     @Expose({ name: "totalTaxAmount" })
     totalTaxAmount: number;
 
-    @SpeakeasyMetadata({ elemType: Items })
+    @SpeakeasyMetadata({ elemType: WithholdingTaxItems })
     @Expose({ name: "withholdingTax" })
-    @Type(() => Items)
-    withholdingTax?: Items[];
+    @Type(() => WithholdingTaxItems)
+    withholdingTax?: WithholdingTaxItems[];
 }

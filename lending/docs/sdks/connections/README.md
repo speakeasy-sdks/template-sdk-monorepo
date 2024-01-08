@@ -22,11 +22,11 @@ Use the [List Integrations](https://docs.codat.io/lending-api#/operations/list-i
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { CreateConnectionRequest, CreateConnectionRequestBody } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { CreateConnectionRequest, CreateConnectionRequestBody } from "lending/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -39,23 +39,29 @@ const requestBody: CreateConnectionRequestBody = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `companyId`                                                                                      | *string*                                                                                         | :heavy_check_mark:                                                                               | Unique identifier for a company.                                                                 | 8a210b68-6988-11ed-a1eb-0242ac120002                                                             |
-| `requestBody`                                                                                    | [operations.CreateConnectionRequestBody](../../models/operations/createconnectionrequestbody.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |                                                                                                  |
-| `retries`                                                                                        | [utils.RetryConfig](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |                                                                                                  |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |                                                                                                  |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          | Example                                                                                              |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `companyId`                                                                                          | *string*                                                                                             | :heavy_check_mark:                                                                                   | Unique identifier for a company.                                                                     | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                 |
+| `requestBody`                                                                                        | [operations.CreateConnectionRequestBody](../../sdk/models/operations/createconnectionrequestbody.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |                                                                                                      |
+| `retries`                                                                                            | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                             | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |                                                                                                      |
+| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |                                                                                                      |
 
 
 ### Response
 
-**Promise<[operations.CreateConnectionResponse](../../models/operations/createconnectionresponse.md)>**
+**Promise<[operations.CreateConnectionResponse](../../sdk/models/operations/createconnectionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete
 
@@ -65,11 +71,11 @@ This operation is not reversible. The end user would need to reauthorize a new d
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DeleteConnectionRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { DeleteConnectionRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -80,7 +86,9 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -89,14 +97,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.DeleteConnectionResponse](../../models/operations/deleteconnectionresponse.md)>**
+**Promise<[operations.DeleteConnectionResponse](../../sdk/models/operations/deleteconnectionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## get
 
@@ -105,11 +117,11 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetConnectionRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetConnectionRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -120,7 +132,9 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -129,14 +143,18 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
 | `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetConnectionResponse](../../models/operations/getconnectionresponse.md)>**
+**Promise<[operations.GetConnectionResponse](../../sdk/models/operations/getconnectionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## list
 
@@ -145,10 +163,10 @@ const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { Lending } from "lending";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
@@ -162,22 +180,28 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.ListConnectionsRequest](../../models/operations/listconnectionsrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `retries`                                                                              | [utils.RetryConfig](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `request`                                                                                  | [operations.ListConnectionsRequest](../../sdk/models/operations/listconnectionsrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `retries`                                                                                  | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                   | :heavy_minus_sign:                                                                         | Configuration to override the default retry behavior of the client.                        |
+| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
 
 
 ### Response
 
-**Promise<[operations.ListConnectionsResponse](../../models/operations/listconnectionsresponse.md)>**
+**Promise<[operations.ListConnectionsResponse](../../sdk/models/operations/listconnectionsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## unlink
 
@@ -186,12 +210,12 @@ import { SDK } from "openapi";
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { UnlinkConnectionRequest, UnlinkConnectionUpdateConnection } from "openapi/dist/sdk/models/operations";
-import { DataConnectionStatus } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { UnlinkConnectionRequest, UnlinkConnectionUpdateConnection } from "lending/dist/sdk/models/operations";
+import { DataConnectionStatus } from "lending/dist/sdk/models/shared";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -203,21 +227,27 @@ const requestBody: UnlinkConnectionUpdateConnection = {};
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                | Example                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `companyId`                                                                                                | *string*                                                                                                   | :heavy_check_mark:                                                                                         | Unique identifier for a company.                                                                           | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                       |
-| `connectionId`                                                                                             | *string*                                                                                                   | :heavy_check_mark:                                                                                         | Unique identifier for a connection.                                                                        | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                       |
-| `requestBody`                                                                                              | [operations.UnlinkConnectionUpdateConnection](../../models/operations/unlinkconnectionupdateconnection.md) | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |                                                                                                            |
-| `retries`                                                                                                  | [utils.RetryConfig](../../models/utils/retryconfig.md)                                                     | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |                                                                                                            |
-| `config`                                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                               | :heavy_minus_sign:                                                                                         | Available config options for making requests.                                                              |                                                                                                            |
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    | Example                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `companyId`                                                                                                    | *string*                                                                                                       | :heavy_check_mark:                                                                                             | Unique identifier for a company.                                                                               | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                           |
+| `connectionId`                                                                                                 | *string*                                                                                                       | :heavy_check_mark:                                                                                             | Unique identifier for a connection.                                                                            | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                           |
+| `requestBody`                                                                                                  | [operations.UnlinkConnectionUpdateConnection](../../sdk/models/operations/unlinkconnectionupdateconnection.md) | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |                                                                                                                |
+| `retries`                                                                                                      | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                       | :heavy_minus_sign:                                                                                             | Configuration to override the default retry behavior of the client.                                            |                                                                                                                |
+| `config`                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                   | :heavy_minus_sign:                                                                                             | Available config options for making requests.                                                                  |                                                                                                                |
 
 
 ### Response
 
-**Promise<[operations.UnlinkConnectionResponse](../../models/operations/unlinkconnectionresponse.md)>**
+**Promise<[operations.UnlinkConnectionResponse](../../sdk/models/operations/unlinkconnectionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
