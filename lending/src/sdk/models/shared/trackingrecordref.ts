@@ -6,28 +6,29 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 /**
- * Allowed name of the 'dataType'.
+ * Name of underlying data type.
  */
-export enum ContactRefDataType {
+export enum TrackingRecordRefDataType {
     Customers = "customers",
     Suppliers = "suppliers",
+    TrackingCategories = "trackingCategories",
 }
 
 /**
- * A customer or supplier associated with the direct cost.
+ * Links to the customer or tracking category.
  */
-export class ContactRef extends SpeakeasyBase {
+export class TrackingRecordRef extends SpeakeasyBase {
     /**
-     * Allowed name of the 'dataType'.
+     * Name of underlying data type.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "dataType" })
-    dataType?: ContactRefDataType;
+    dataType?: TrackingRecordRefDataType;
 
     /**
-     * Unique identifier for a customer or supplier.
+     * 'id' of the underlying record or data type.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
-    id: string;
+    id?: string;
 }

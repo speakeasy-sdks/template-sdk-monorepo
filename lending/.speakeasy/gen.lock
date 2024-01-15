@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 38d21dc9-6771-456d-8305-4621acb2f6e4
 management:
-  docChecksum: 6333eddcefb3ad95c067098da6a82191
+  docChecksum: 59121580e332ee36a6df0e12682d0fdd
   docVersion: 3.0.0
   speakeasyVersion: internal
-  generationVersion: 2.228.1
-  releaseVersion: 0.5.0
-  configChecksum: eba77f724778d535c50cf0d2474212cb
+  generationVersion: 2.231.0
+  releaseVersion: 0.5.1
+  configChecksum: 685107698b1801066b418a116d74a6b1
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   repoSubDirectory: lending
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     acceptHeaders: 2.81.1
-    core: 3.4.2
+    core: 3.4.5
     deprecations: 2.81.1
     examples: 2.81.3
     flattening: 2.81.1
@@ -260,7 +260,7 @@ generatedFiles:
   - src/sdk/models/shared/accountingaccounttransaction.ts
   - src/sdk/models/shared/metadata.ts
   - src/sdk/models/shared/accounttransactionline.ts
-  - src/sdk/models/shared/recordref.ts
+  - src/sdk/models/shared/accounttransactionlinerecordref.ts
   - src/sdk/models/shared/bankaccountref.ts
   - src/sdk/models/shared/accountingaccounttransactions.ts
   - src/sdk/models/shared/accountingdirectcost.ts
@@ -271,9 +271,10 @@ generatedFiles:
   - src/sdk/models/shared/directcostlineitem.ts
   - src/sdk/models/shared/trackingcategoryref.ts
   - src/sdk/models/shared/tracking.ts
+  - src/sdk/models/shared/trackingrecordref.ts
+  - src/sdk/models/shared/recordref.ts
   - src/sdk/models/shared/taxrateref.ts
   - src/sdk/models/shared/propertieitemref.ts
-  - src/sdk/models/shared/datatype.ts
   - src/sdk/models/shared/accountingattachment.ts
   - src/sdk/models/shared/accountingdirectcosts.ts
   - src/sdk/models/shared/attachments.ts
@@ -282,6 +283,7 @@ generatedFiles:
   - src/sdk/models/shared/contactref.ts
   - src/sdk/models/shared/accountingtransfers.ts
   - src/sdk/models/shared/accountingjournalentry.ts
+  - src/sdk/models/shared/journalentryrecordref.ts
   - src/sdk/models/shared/journalref.ts
   - src/sdk/models/shared/journalline.ts
   - src/sdk/models/shared/accountingjournalentries.ts
@@ -439,6 +441,7 @@ generatedFiles:
   - src/sdk/models/shared/validation.ts
   - src/sdk/models/shared/validationitem.ts
   - src/sdk/models/shared/pushoperationstatus.ts
+  - src/sdk/models/shared/datatype.ts
   - src/sdk/models/shared/pushoperationchange.ts
   - src/sdk/models/shared/pushchangetype.ts
   - src/sdk/models/shared/pushoperationref.ts
@@ -449,10 +452,9 @@ generatedFiles:
   - src/sdk/models/shared/pushoptionproperty.ts
   - src/sdk/models/shared/pushoptionchoice.ts
   - src/sdk/models/shared/accountingcreatebanktransactionsresponse.ts
-  - src/sdk/models/shared/accountingcreatebanktransactions.ts
   - src/sdk/models/shared/createbankaccounttransaction.ts
+  - src/sdk/models/shared/accountingcreatebanktransactions.ts
   - src/sdk/models/shared/accountingcreateaccountresponse.ts
-  - src/sdk/models/shared/accountingaccount.ts
   - src/sdk/models/shared/accounttype.ts
   - src/sdk/models/shared/accountstatus.ts
   - src/sdk/models/shared/accountprototype.ts
@@ -463,6 +465,7 @@ generatedFiles:
   - src/sdk/models/shared/accountingcreatetransferresponse.ts
   - src/sdk/models/shared/pushoperation.ts
   - src/sdk/models/shared/pushoperations.ts
+  - src/sdk/models/shared/accountingaccount.ts
   - src/sdk/models/shared/accountingaccounts.ts
   - src/sdk/models/shared/accountingbalancesheet.ts
   - src/sdk/models/shared/balancesheet.ts
@@ -825,10 +828,12 @@ generatedFiles:
   - docs/sdk/models/shared/accountingaccounttransaction.md
   - docs/sdk/models/shared/metadata.md
   - docs/sdk/models/shared/accounttransactionline.md
-  - docs/sdk/models/shared/recordref.md
+  - docs/sdk/models/shared/accounttransactionlinerecordrefdatatype.md
+  - docs/sdk/models/shared/accounttransactionlinerecordref.md
   - docs/sdk/models/shared/bankaccountref.md
   - docs/sdk/models/shared/accountingaccounttransactions.md
-  - docs/sdk/models/shared/accountingdirectcostcontactref.md
+  - docs/sdk/models/shared/accountingdirectcostdatatype.md
+  - docs/sdk/models/shared/accountingdirectcostcontactreference.md
   - docs/sdk/models/shared/accountingdirectcost.md
   - docs/sdk/models/shared/supplementaldata.md
   - docs/sdk/models/shared/allocation.md
@@ -838,17 +843,22 @@ generatedFiles:
   - docs/sdk/models/shared/directcostlineitem.md
   - docs/sdk/models/shared/trackingcategoryref.md
   - docs/sdk/models/shared/tracking.md
+  - docs/sdk/models/shared/trackingrecordrefdatatype.md
+  - docs/sdk/models/shared/trackingrecordref.md
+  - docs/sdk/models/shared/recordref.md
   - docs/sdk/models/shared/taxrateref.md
   - docs/sdk/models/shared/propertieitemref.md
-  - docs/sdk/models/shared/datatype.md
   - docs/sdk/models/shared/accountingattachment.md
   - docs/sdk/models/shared/accountingdirectcosts.md
   - docs/sdk/models/shared/attachments.md
   - docs/sdk/models/shared/accountingtransfer.md
   - docs/sdk/models/shared/transferaccount.md
+  - docs/sdk/models/shared/contactrefdatatype.md
   - docs/sdk/models/shared/contactref.md
   - docs/sdk/models/shared/accountingtransfers.md
   - docs/sdk/models/shared/accountingjournalentry.md
+  - docs/sdk/models/shared/journalentryrecordrefdatatype.md
+  - docs/sdk/models/shared/journalentryrecordref.md
   - docs/sdk/models/shared/journalref.md
   - docs/sdk/models/shared/journallinetracking.md
   - docs/sdk/models/shared/journalline.md
@@ -982,6 +992,7 @@ generatedFiles:
   - docs/sdk/models/shared/accountingdirectincome.md
   - docs/sdk/models/shared/directincomelineitem.md
   - docs/sdk/models/shared/accountingdirectincomes.md
+  - docs/sdk/models/shared/accountinginvoicedatatype.md
   - docs/sdk/models/shared/salesorderreference.md
   - docs/sdk/models/shared/accountinginvoice.md
   - docs/sdk/models/shared/invoicestatus.md
@@ -1014,10 +1025,12 @@ generatedFiles:
   - docs/sdk/models/shared/file.md
   - docs/sdk/models/shared/fileupload.md
   - docs/sdk/models/shared/codatfile.md
+  - docs/sdk/models/shared/accountingcreatebankaccountresponseaccountingbankaccount.md
   - docs/sdk/models/shared/accountingcreatebankaccountresponse.md
   - docs/sdk/models/shared/validation.md
   - docs/sdk/models/shared/validationitem.md
   - docs/sdk/models/shared/pushoperationstatus.md
+  - docs/sdk/models/shared/datatype.md
   - docs/sdk/models/shared/pushoperationchange.md
   - docs/sdk/models/shared/pushchangetype.md
   - docs/sdk/models/shared/pushoperationref.md
@@ -1027,24 +1040,34 @@ generatedFiles:
   - docs/sdk/models/shared/pushoptiontype.md
   - docs/sdk/models/shared/pushoptionproperty.md
   - docs/sdk/models/shared/pushoptionchoice.md
+  - docs/sdk/models/shared/accountingcreatebankaccounttransactions.md
   - docs/sdk/models/shared/accountingcreatebanktransactionsresponse.md
-  - docs/sdk/models/shared/accountingcreatebanktransactions.md
   - docs/sdk/models/shared/createbankaccounttransaction.md
+  - docs/sdk/models/shared/accountingcreatebanktransactions.md
+  - docs/sdk/models/shared/accountingcreateaccountresponsevaliddatatypelinks.md
+  - docs/sdk/models/shared/accountingcreateaccountresponseaccountingaccount.md
   - docs/sdk/models/shared/accountingcreateaccountresponse.md
-  - docs/sdk/models/shared/accountingaccountvaliddatatypelinks.md
-  - docs/sdk/models/shared/accountingaccount.md
   - docs/sdk/models/shared/accounttype.md
   - docs/sdk/models/shared/accountstatus.md
   - docs/sdk/models/shared/validdatatypelinks.md
   - docs/sdk/models/shared/accountprototype.md
+  - docs/sdk/models/shared/accountingcreatedirectcostresponsedatatype.md
+  - docs/sdk/models/shared/accountingcreatedirectcostresponsecontactreference.md
+  - docs/sdk/models/shared/accountingcreatedirectcostresponseaccountingdirectcost.md
   - docs/sdk/models/shared/accountingcreatedirectcostresponse.md
-  - docs/sdk/models/shared/directcostprototypecontactref.md
+  - docs/sdk/models/shared/directcostprototypedatatype.md
+  - docs/sdk/models/shared/contactreference.md
   - docs/sdk/models/shared/directcostprototype.md
+  - docs/sdk/models/shared/accountingcreatepaymentresponseaccountingpayment.md
   - docs/sdk/models/shared/accountingcreatepaymentresponse.md
+  - docs/sdk/models/shared/accountingcreatesupplierresponseaccountingsupplier.md
   - docs/sdk/models/shared/accountingcreatesupplierresponse.md
+  - docs/sdk/models/shared/accountingcreatetransferresponseaccountingtransfer.md
   - docs/sdk/models/shared/accountingcreatetransferresponse.md
   - docs/sdk/models/shared/pushoperation.md
   - docs/sdk/models/shared/pushoperations.md
+  - docs/sdk/models/shared/accountingaccountvaliddatatypelinks.md
+  - docs/sdk/models/shared/accountingaccount.md
   - docs/sdk/models/shared/accountingaccounts.md
   - docs/sdk/models/shared/accountingbalancesheet.md
   - docs/sdk/models/shared/balancesheet.md

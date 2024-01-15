@@ -23,7 +23,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Lending } from "lending";
-import { DataType } from "lending/dist/sdk/models/shared";
+import { ContactRefDataType } from "lending/dist/sdk/models/shared";
 
 async function run() {
   const sdk = new Lending({
@@ -33,7 +33,6 @@ async function run() {
   const res = await sdk.loanWriteback.transfers.create({
     accountingTransfer: {
       contactRef: {
-        dataType: DataType.Invoices,
         id: "<ID>",
       },
       date: "2022-10-23T00:00:00Z",

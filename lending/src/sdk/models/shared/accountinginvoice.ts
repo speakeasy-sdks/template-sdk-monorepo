@@ -5,7 +5,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AccountingCustomerRef } from "./accountingcustomerref";
 import { AccountingPaymentAllocation } from "./accountingpaymentallocation";
-import { DataType } from "./datatype";
 import { InvoiceLineItem } from "./invoicelineitem";
 import { InvoiceStatus } from "./invoicestatus";
 import { Metadata } from "./metadata";
@@ -13,13 +12,20 @@ import { SupplementalData } from "./supplementaldata";
 import { WithholdingTaxItems } from "./withholdingtaxitems";
 import { Expose, Type } from "class-transformer";
 
+/**
+ * The underlying data type associated to the reference `id`.
+ */
+export enum AccountingInvoiceDataType {
+    SalesOrders = "salesOrders",
+}
+
 export class SalesOrderReference extends SpeakeasyBase {
     /**
-     * Available Data types
+     * The underlying data type associated to the reference `id`.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "dataType" })
-    dataType?: DataType;
+    dataType?: AccountingInvoiceDataType;
 
     /**
      * Unique identifier to a record in `dataType`.

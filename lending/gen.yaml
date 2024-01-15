@@ -6,7 +6,7 @@ generation:
   fixes:
     nameResolutionDec2023: false
 typescript:
-  version: 0.5.0
+  version: 0.5.1
   author: Speakeasy
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true
