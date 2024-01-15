@@ -42,7 +42,6 @@ import {
   AccountRef,
   Allocation,
   BilledToType1,
-  DataType,
   Invoice,
   InvoiceLineItem,
   InvoiceStatus,
@@ -54,6 +53,7 @@ import {
   ProjectRef,
   PropertieTracking1,
   SalesOrderRef,
+  SalesOrderRefDataType,
   SupplementalData,
   TaxRateRef,
   TrackingCategoryRef,
@@ -125,9 +125,7 @@ const invoice: Invoice = {
     },
   ],
   salesOrderRefs: [
-    {
-      dataType: DataType.Invoices,
-    },
+    {},
   ],
   sourceModifiedDate: "2022-10-23T00:00:00Z",
   status: InvoiceStatus.Draft,
@@ -646,7 +644,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { BilledToType1, DataType, InvoiceStatus } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
+import { BilledToType1, InvoiceStatus, SalesOrderRefDataType } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 async function run() {
   const sdk = new Accounting({
@@ -713,9 +711,7 @@ async function run() {
         },
       ],
       salesOrderRefs: [
-        {
-          dataType: DataType.Invoices,
-        },
+        {},
       ],
       sourceModifiedDate: "2022-10-23T00:00:00Z",
       status: InvoiceStatus.Void,

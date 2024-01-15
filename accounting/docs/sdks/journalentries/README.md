@@ -33,13 +33,16 @@ import { Accounting } from "@speakeasy-sdks/accounting";
 import { CreateJournalEntryRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 import {
   AccountRef,
-  InvoiceTo,
   JournalEntry,
+  JournalEntryRecordRef,
+  JournalEntryRecordRefDataType,
   JournalLine,
   JournalRef,
   Metadata,
   PropertieTracking2,
   SupplementalData,
+  TrackingRecordRef,
+  TrackingRecordRefDataType,
 } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 async function run() {
@@ -57,7 +60,7 @@ const journalEntry: JournalEntry = {
       tracking: {
         recordRefs: [
           {
-            dataType: "accountTransaction",
+            dataType: TrackingRecordRefDataType.TrackingCategories,
           },
         ],
       },
@@ -70,7 +73,7 @@ const journalEntry: JournalEntry = {
   modifiedDate: "2022-10-23T00:00:00Z",
   postedOn: "2022-10-23T00:00:00Z",
   recordRef: {
-    dataType: "invoice",
+    dataType: JournalEntryRecordRefDataType.Transfers,
   },
   sourceModifiedDate: "2022-10-23T00:00:00Z",
   supplementalData: {
@@ -82,7 +85,7 @@ const journalEntry: JournalEntry = {
   },
   updatedOn: "2022-10-23T00:00:00Z",
 };
-const timeoutInMinutes: number = 69025;
+const timeoutInMinutes: number = 134365;
 
   const res = await sdk.journalEntries.create(companyId, connectionId, journalEntry, timeoutInMinutes);
 

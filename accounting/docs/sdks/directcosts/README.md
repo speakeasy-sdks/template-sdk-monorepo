@@ -38,12 +38,11 @@ import { CreateDirectCostRequest } from "@speakeasy-sdks/accounting/dist/sdk/mod
 import {
   AccountingPaymentAllocation,
   AccountRef,
-  DataType,
+  ContactReference,
   DirectCostLineItem,
   DirectCostPrototype,
   DirectCostPrototypeAllocation,
-  DirectCostPrototypeContactRef,
-  InvoiceTo,
+  DirectCostPrototypeDataType,
   ItemRef,
   PaymentAllocationPayment,
   RecordReference,
@@ -51,6 +50,8 @@ import {
   TaxRateRef,
   Tracking,
   TrackingCategoryRef,
+  TrackingRecordRef,
+  TrackingRecordRefDataType,
 } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
 
 async function run() {
@@ -61,7 +62,6 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const directCostPrototype: DirectCostPrototype = {
   contactRef: {
-    dataType: DataType.Invoices,
     id: "<ID>",
   },
   currency: "USD",
@@ -80,7 +80,7 @@ const directCostPrototype: DirectCostPrototype = {
         },
         recordRefs: [
           {
-            dataType: "invoice",
+            dataType: TrackingRecordRefDataType.TrackingCategories,
           },
         ],
       },
@@ -89,23 +89,23 @@ const directCostPrototype: DirectCostPrototype = {
           id: "<ID>",
         },
       ],
-      unitAmount: 2884.08,
+      unitAmount: 4174.58,
     },
   ],
   paymentAllocations: [
     {
       allocation: {
         allocatedOnDate: "2022-10-23T00:00:00Z",
-        currency: "EUR",
+        currency: "GBP",
       },
       payment: {
         accountRef: {},
-        currency: "GBP",
+        currency: "EUR",
         paidOnDate: "2022-10-23T00:00:00Z",
       },
     },
   ],
-  subTotal: 7964.74,
+  subTotal: 9967.06,
   supplementalData: {
     content: {
       "key": {
@@ -113,10 +113,10 @@ const directCostPrototype: DirectCostPrototype = {
       },
     },
   },
-  taxAmount: 3768.44,
-  totalAmount: 9510.62,
+  taxAmount: 7964.74,
+  totalAmount: 3768.44,
 };
-const timeoutInMinutes: number = 891510;
+const timeoutInMinutes: number = 951062;
 
   const res = await sdk.directCosts.create(companyId, connectionId, directCostPrototype, timeoutInMinutes);
 
