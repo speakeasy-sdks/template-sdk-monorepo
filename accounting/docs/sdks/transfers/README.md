@@ -11,7 +11,7 @@ Transfers
 * [get](#get) - Get transfer
 * [getCreateModel](#getcreatemodel) - Get create transfer model
 * [list](#list) - List transfers
-* [uploadAttachment](#uploadattachment) - Upload invoice attachment
+* [uploadAttachment](#uploadattachment) - Upload transfer attachment
 
 ## create
 

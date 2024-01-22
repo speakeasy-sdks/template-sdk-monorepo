@@ -168,7 +168,7 @@ run();
 * [get](docs/sdks/transfers/README.md#get) - Get transfer
 * [getCreateModel](docs/sdks/transfers/README.md#getcreatemodel) - Get create transfer model
 * [list](docs/sdks/transfers/README.md#list) - List transfers
-* [uploadAttachment](docs/sdks/transfers/README.md#uploadattachment) - Upload invoice attachment
+* [uploadAttachment](docs/sdks/transfers/README.md#uploadattachment) - Upload transfer attachment
 
 ### [billCreditNotes](docs/sdks/billcreditnotes/README.md)
 

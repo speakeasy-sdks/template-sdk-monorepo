@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 80e28e67-caa9-40bb-9472-fad72c602ded
 management:
-  docChecksum: 189f95ae89193f1620dd07934a8c3c62
+  docChecksum: 30ee627c4a486f0f91a272f77aa628b9
   docVersion: 3.0.0
   speakeasyVersion: internal
-  generationVersion: 2.231.0
-  releaseVersion: 0.6.1
-  configChecksum: 1f8d00345967e5a23138895f56231b14
+  generationVersion: 2.237.3
+  releaseVersion: 0.6.2
+  configChecksum: 81555b4f15604721c5025aaf7476d05a
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   repoSubDirectory: accounting
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/accounting
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     acceptHeaders: 2.81.1
-    core: 3.4.5
+    core: 3.4.6
     deprecations: 2.81.1
     examples: 2.81.3
     flattening: 2.81.1
