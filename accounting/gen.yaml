@@ -5,8 +5,9 @@ generation:
     optionalPropertyRendering: withExample
   fixes:
     nameResolutionDec2023: false
+    parameterOrderingFeb2024: false
 typescript:
-  version: 0.6.2
+  version: 0.7.0
   author: Accounting
   clientServerStatusCodesAsErrors: false
   description: Access the Accounting API
