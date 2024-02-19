@@ -23,7 +23,7 @@ The *Create bill payment* endpoint creates a new [bill payment](https://docs.cod
 
 Required data may vary by integration. To see what data to post, first call [Get create bill payment model](https://docs.codat.io/accounting-api#/operations/get-create-billPayments-model).
 
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating an account.
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating a bill payment.
 
 
 ### Example Usage
@@ -57,10 +57,12 @@ const billPayment: BillPayment = {
   lines: [
     {
       allocatedOnDate: "2022-10-23T00:00:00Z",
-      amount: 8592.13,
+      amount: 1000,
       links: [
         {
-          type: BillPaymentLineLinkType.CreditNote,
+          amount: -1000,
+          id: "x",
+          type: BillPaymentLineLinkType.Bill,
         },
       ],
     },
@@ -69,22 +71,23 @@ const billPayment: BillPayment = {
   modifiedDate: "2022-10-23T00:00:00Z",
   note: "Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44",
   paymentMethodRef: {
-    id: "<ID>",
+    id: "EILBDVJVNUAGVKRQ",
+    name: "AliPay",
   },
   sourceModifiedDate: "2022-10-23T00:00:00Z",
   supplementalData: {
     content: {
       "key": {
-        "key": "string",
+        "key": "<value>",
       },
     },
   },
   supplierRef: {
-    id: "<ID>",
+    id: "<id>",
   },
-  totalAmount: 1329.54,
+  totalAmount: 1000,
 };
-const timeoutInMinutes: number = 786546;
+const timeoutInMinutes: number = 417458;
 
   const res = await sdk.billPayments.create(companyId, connectionId, billPayment, timeoutInMinutes);
 
@@ -98,14 +101,14 @@ run();
 
 ### Parameters
 
-| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
-| `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `billPayment`                                                         | [shared.BillPayment](../../sdk/models/shared/billpayment.md)          | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
-| `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
-| `retries`                                                             | [utils.RetryConfig](../../internal/utils/retryconfig.md)              | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
-| `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `companyId`                                                                                      | *string*                                                                                         | :heavy_check_mark:                                                                               | Unique identifier for a company.                                                                 | 8a210b68-6988-11ed-a1eb-0242ac120002                                                             |
+| `connectionId`                                                                                   | *string*                                                                                         | :heavy_check_mark:                                                                               | Unique identifier for a connection.                                                              | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                             |
+| `billPayment`                                                                                    | [shared.BillPayment](../../sdk/models/shared/billpayment.md)                                     | :heavy_minus_sign:                                                                               | N/A                                                                                              | {"totalAmount":1000,"lines":[{"amount":1000,"links":[{"type":"Bill","id":"x","amount":-1000}]}]} |
+| `timeoutInMinutes`                                                                               | *number*                                                                                         | :heavy_minus_sign:                                                                               | Time limit for the push operation to complete before it is timed out.                            |                                                                                                  |
+| `retries`                                                                                        | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |                                                                                                  |
+| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |                                                                                                  |
 
 
 ### Response
@@ -160,7 +163,7 @@ async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const billPaymentId: string = "string";
+const billPaymentId: string = "<value>";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
@@ -215,7 +218,7 @@ async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const billPaymentId: string = "string";
+const billPaymentId: string = "<value>";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
   const res = await sdk.billPayments.get(billPaymentId, companyId);

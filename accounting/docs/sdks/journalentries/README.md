@@ -67,7 +67,7 @@ const journalEntry: JournalEntry = {
     },
   ],
   journalRef: {
-    id: "<ID>",
+    id: "<id>",
   },
   metadata: {},
   modifiedDate: "2022-10-23T00:00:00Z",
@@ -79,7 +79,7 @@ const journalEntry: JournalEntry = {
   supplementalData: {
     content: {
       "key": {
-        "key": "string",
+        "key": "<value>",
       },
     },
   },
@@ -166,7 +166,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const journalEntryId: string = "string";
+const journalEntryId: string = "<value>";
 
   const res = await sdk.journalEntries.delete(companyId, connectionId, journalEntryId);
 
@@ -220,7 +220,7 @@ async function run() {
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const journalEntryId: string = "string";
+const journalEntryId: string = "<value>";
 
   const res = await sdk.journalEntries.get(companyId, journalEntryId);
 

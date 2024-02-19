@@ -70,7 +70,7 @@ const invoice: Invoice = {
   amountDue: 4865.89,
   currency: "USD",
   customerRef: {
-    id: "<ID>",
+    id: "<id>",
   },
   dueDate: "2022-10-23T00:00:00Z",
   issueDate: "2022-10-23T00:00:00Z",
@@ -78,23 +78,23 @@ const invoice: Invoice = {
     {
       accountRef: {},
       itemRef: {
-        id: "<ID>",
+        id: "<id>",
       },
       quantity: 4174.58,
       taxRateRef: {},
       tracking: {
         categoryRefs: [
           {
-            id: "<ID>",
+            id: "<id>",
           },
         ],
         customerRef: {
-          id: "<ID>",
+          id: "<id>",
         },
         isBilledTo: BilledToType1.Unknown,
         isRebilledTo: BilledToType1.Unknown,
         projectRef: {
-          id: "<ID>",
+          id: "<id>",
         },
         recordRef: {
           dataType: "transfer",
@@ -102,7 +102,7 @@ const invoice: Invoice = {
       },
       trackingCategoryRefs: [
         {
-          id: "<ID>",
+          id: "<id>",
         },
       ],
       unitAmount: 690.25,
@@ -132,7 +132,7 @@ const invoice: Invoice = {
   supplementalData: {
     content: {
       "key": {
-        "key": "string",
+        "key": "<value>",
       },
     },
   },
@@ -141,7 +141,7 @@ const invoice: Invoice = {
   withholdingTax: [
     {
       amount: 7150.4,
-      name: "string",
+      name: "<value>",
     },
   ],
 };
@@ -221,7 +221,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "string";
+const invoiceId: string = "<value>";
 
   const res = await sdk.invoices.delete(companyId, connectionId, invoiceId);
 
@@ -275,7 +275,7 @@ async function run() {
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "string";
+const invoiceId: string = "<value>";
 
   const res = await sdk.invoices.downloadAttachment(attachmentId, companyId, connectionId, invoiceId);
 
@@ -323,7 +323,7 @@ async function run() {
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const invoiceId: string = "string";
+const invoiceId: string = "<value>";
 
   const res = await sdk.invoices.downloadPdf(companyId, invoiceId);
 
@@ -375,7 +375,7 @@ async function run() {
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const invoiceId: string = "string";
+const invoiceId: string = "<value>";
 
   const res = await sdk.invoices.get(companyId, invoiceId);
 
@@ -428,7 +428,7 @@ async function run() {
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "string";
+const invoiceId: string = "<value>";
 
   const res = await sdk.invoices.getAttachment(attachmentId, companyId, connectionId, invoiceId);
 
@@ -595,7 +595,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "string";
+const invoiceId: string = "<value>";
 
   const res = await sdk.invoices.listAttachments(companyId, connectionId, invoiceId);
 
@@ -656,7 +656,7 @@ async function run() {
       amountDue: 8574.78,
       currency: "GBP",
       customerRef: {
-        id: "<ID>",
+        id: "<id>",
       },
       dueDate: "2022-10-23T00:00:00Z",
       issueDate: "2022-10-23T00:00:00Z",
@@ -664,23 +664,23 @@ async function run() {
         {
           accountRef: {},
           itemRef: {
-            id: "<ID>",
+            id: "<id>",
           },
           quantity: 3446.2,
           taxRateRef: {},
           tracking: {
             categoryRefs: [
               {
-                id: "<ID>",
+                id: "<id>",
               },
             ],
             customerRef: {
-              id: "<ID>",
+              id: "<id>",
             },
             isBilledTo: BilledToType1.Project,
             isRebilledTo: BilledToType1.Project,
             projectRef: {
-              id: "<ID>",
+              id: "<id>",
             },
             recordRef: {
               dataType: "invoice",
@@ -688,7 +688,7 @@ async function run() {
           },
           trackingCategoryRefs: [
             {
-              id: "<ID>",
+              id: "<id>",
             },
           ],
           unitAmount: 6276.9,
@@ -718,7 +718,7 @@ async function run() {
       supplementalData: {
         content: {
           "key": {
-            "key": "string",
+            "key": "<value>",
           },
         },
       },
@@ -727,13 +727,13 @@ async function run() {
       withholdingTax: [
         {
           amount: 3691.82,
-          name: "string",
+          name: "<value>",
         },
       ],
     },
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    invoiceId: "string",
+    invoiceId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -788,7 +788,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "string";
+const invoiceId: string = "<value>";
 const attachmentUpload: AttachmentUpload = {
   file: {
     content: new TextEncoder().encode("0xE3ABc1980E"),

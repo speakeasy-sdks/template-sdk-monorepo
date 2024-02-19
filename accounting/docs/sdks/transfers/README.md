@@ -51,7 +51,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const transfer: Transfer = {
   contactRef: {
-    id: "<ID>",
+    id: "<id>",
   },
   date: "2022-10-23T00:00:00Z",
   depositedRecordRefs: [
@@ -69,7 +69,7 @@ const transfer: Transfer = {
   supplementalData: {
     content: {
       "key": {
-        "key": "string",
+        "key": "<value>",
       },
     },
   },
@@ -79,7 +79,7 @@ const transfer: Transfer = {
   },
   trackingCategoryRefs: [
     {
-      id: "<ID>",
+      id: "<id>",
     },
   ],
 };
@@ -137,7 +137,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const transferId: string = "string";
+const transferId: string = "<value>";
 
   const res = await sdk.transfers.get(companyId, connectionId, transferId);
 
@@ -303,7 +303,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const transferId: string = "string";
+const transferId: string = "<value>";
 const attachmentUpload: AttachmentUpload = {
   file: {
     content: new TextEncoder().encode("0xE3ABc1980E"),

@@ -81,7 +81,7 @@ const customer: Customer = {
   supplementalData: {
     content: {
       "key": {
-        "key": "string",
+        "key": "<value>",
       },
     },
   },
@@ -141,7 +141,7 @@ async function run() {
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const customerId: string = "string";
+const customerId: string = "<value>";
 
   const res = await sdk.customers.downloadAttachment(attachmentId, companyId, connectionId, customerId);
 
@@ -196,7 +196,7 @@ async function run() {
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const customerId: string = "string";
+const customerId: string = "<value>";
 
   const res = await sdk.customers.get(companyId, customerId);
 
@@ -249,7 +249,7 @@ async function run() {
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const customerId: string = "string";
+const customerId: string = "<value>";
 
   const res = await sdk.customers.getAttachment(attachmentId, companyId, connectionId, customerId);
 
@@ -410,7 +410,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const customerId: string = "string";
+const customerId: string = "<value>";
 
   const res = await sdk.customers.listAttachments(companyId, connectionId, customerId);
 
@@ -496,14 +496,14 @@ async function run() {
       supplementalData: {
         content: {
           "key": {
-            "key": "string",
+            "key": "<value>",
           },
         },
       },
     },
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    customerId: "string",
+    customerId: "<value>",
   });
 
   if (res.statusCode == 200) {

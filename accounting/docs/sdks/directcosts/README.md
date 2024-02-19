@@ -62,7 +62,7 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 const directCostPrototype: DirectCostPrototype = {
   contactRef: {
-    id: "<ID>",
+    id: "<id>",
   },
   currency: "USD",
   issueDate: "2022-10-23T00:00:00Z",
@@ -70,7 +70,7 @@ const directCostPrototype: DirectCostPrototype = {
     {
       accountRef: {},
       itemRef: {
-        id: "<ID>",
+        id: "<id>",
       },
       quantity: 6384.24,
       taxRateRef: {},
@@ -86,7 +86,7 @@ const directCostPrototype: DirectCostPrototype = {
       },
       trackingCategoryRefs: [
         {
-          id: "<ID>",
+          id: "<id>",
         },
       ],
       unitAmount: 4174.58,
@@ -109,7 +109,7 @@ const directCostPrototype: DirectCostPrototype = {
   supplementalData: {
     content: {
       "key": {
-        "key": "string",
+        "key": "<value>",
       },
     },
   },
@@ -190,7 +190,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "string";
+const directCostId: string = "<value>";
 
   const res = await sdk.directCosts.delete(companyId, connectionId, directCostId);
 
@@ -244,7 +244,7 @@ async function run() {
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "string";
+const directCostId: string = "<value>";
 
   const res = await sdk.directCosts.downloadAttachment(attachmentId, companyId, connectionId, directCostId);
 
@@ -300,7 +300,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "string";
+const directCostId: string = "<value>";
 
   const res = await sdk.directCosts.get(companyId, connectionId, directCostId);
 
@@ -354,7 +354,7 @@ async function run() {
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "string";
+const directCostId: string = "<value>";
 
   const res = await sdk.directCosts.getAttachment(attachmentId, companyId, connectionId, directCostId);
 
@@ -516,7 +516,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "string";
+const directCostId: string = "<value>";
 
   const res = await sdk.directCosts.listAttachments(companyId, connectionId, directCostId);
 
@@ -574,7 +574,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directCostId: string = "string";
+const directCostId: string = "<value>";
 const attachmentUpload: AttachmentUpload = {
   file: {
     content: new TextEncoder().encode("0xE3ABc1980E"),

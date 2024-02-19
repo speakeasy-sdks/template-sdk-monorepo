@@ -52,7 +52,7 @@ const payment: Payment = {
   accountRef: {},
   currency: "USD",
   customerRef: {
-    id: "<ID>",
+    id: "<id>",
   },
   date: "2022-10-23T00:00:00Z",
   lines: [
@@ -69,13 +69,14 @@ const payment: Payment = {
   metadata: {},
   modifiedDate: "2022-10-23T00:00:00Z",
   paymentMethodRef: {
-    id: "<ID>",
+    id: "EILBDVJVNUAGVKRQ",
+    name: "AliPay",
   },
   sourceModifiedDate: "2022-10-23T00:00:00Z",
   supplementalData: {
     content: {
       "key": {
-        "key": "string",
+        "key": "<value>",
       },
     },
   },
@@ -135,7 +136,7 @@ async function run() {
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const paymentId: string = "string";
+const paymentId: string = "<value>";
 
   const res = await sdk.payments.get(companyId, paymentId);
 

@@ -91,6 +91,8 @@ export * from "./directincome";
 export * from "./directincomelineitem";
 export * from "./directincomes";
 export * from "./errormessage";
+export * from "./errorvalidation";
+export * from "./errorvalidationitem";
 export * from "./halref";
 export * from "./invoice";
 export * from "./invoiceitem";

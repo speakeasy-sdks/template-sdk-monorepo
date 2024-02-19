@@ -28,7 +28,7 @@ The *Create bill* endpoint creates a new [bill](https://docs.codat.io/accounting
 
 Required data may vary by integration. To see what data to post, first call [Get create/update bill model](https://docs.codat.io/accounting-api#/operations/get-create-update-bills-model).
 
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support creating an account.
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support creating a bill.
 
 
 ### Example Usage
@@ -74,7 +74,7 @@ const bill: Bill = {
     {
       accountRef: {},
       itemRef: {
-        id: "<ID>",
+        id: "<id>",
       },
       purchaseOrderLineRef: {},
       quantity: 8592.13,
@@ -82,21 +82,21 @@ const bill: Bill = {
       tracking: {
         categoryRefs: [
           {
-            id: "<ID>",
+            id: "<id>",
           },
         ],
         customerRef: {
-          id: "<ID>",
+          id: "<id>",
         },
         isBilledTo: BilledToType.NotApplicable,
         isRebilledTo: BilledToType.NotApplicable,
         projectRef: {
-          id: "<ID>",
+          id: "<id>",
         },
       },
       trackingCategoryRefs: [
         {
-          id: "<ID>",
+          id: "<id>",
         },
       ],
       unitAmount: 1343.65,
@@ -126,19 +126,19 @@ const bill: Bill = {
   supplementalData: {
     content: {
       "key": {
-        "key": "string",
+        "key": "<value>",
       },
     },
   },
   supplierRef: {
-    id: "<ID>",
+    id: "<id>",
   },
   taxAmount: 4552.22,
   totalAmount: 1697.27,
   withholdingTax: [
     {
       amount: 3015.1,
-      name: "string",
+      name: "<value>",
     },
   ],
 };
@@ -608,7 +608,7 @@ async function run() {
         {
           accountRef: {},
           itemRef: {
-            id: "<ID>",
+            id: "<id>",
           },
           purchaseOrderLineRef: {},
           quantity: 156.52,
@@ -616,21 +616,21 @@ async function run() {
           tracking: {
             categoryRefs: [
               {
-                id: "<ID>",
+                id: "<id>",
               },
             ],
             customerRef: {
-              id: "<ID>",
+              id: "<id>",
             },
             isBilledTo: BilledToType.NotApplicable,
             isRebilledTo: BilledToType.Customer,
             projectRef: {
-              id: "<ID>",
+              id: "<id>",
             },
           },
           trackingCategoryRefs: [
             {
-              id: "<ID>",
+              id: "<id>",
             },
           ],
           unitAmount: 9914.64,
@@ -660,19 +660,19 @@ async function run() {
       supplementalData: {
         content: {
           "key": {
-            "key": "string",
+            "key": "<value>",
           },
         },
       },
       supplierRef: {
-        id: "<ID>",
+        id: "<id>",
       },
       taxAmount: 2782.81,
       totalAmount: 8965.01,
       withholdingTax: [
         {
           amount: 4995.57,
-          name: "string",
+          name: "<value>",
         },
       ],
     },
