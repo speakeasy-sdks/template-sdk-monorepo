@@ -137,7 +137,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const dataType: DataIntegrityDataType = DataIntegrityDataType.BankingAccounts;
-const query: string = "string";
+const query: string = "<value>";
 
   const res = await sdk.dataIntegrity.summaries(companyId, dataType, query);
 

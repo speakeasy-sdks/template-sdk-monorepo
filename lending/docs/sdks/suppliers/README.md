@@ -31,7 +31,7 @@ async function run() {
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const supplierId: string = "string";
+const supplierId: string = "<value>";
 
   const res = await sdk.accountsPayable.suppliers.downloadAttachment(attachmentId, companyId, connectionId, supplierId);
 
@@ -86,7 +86,7 @@ async function run() {
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const supplierId: string = "string";
+const supplierId: string = "<value>";
 
   const res = await sdk.accountsPayable.suppliers.get(companyId, supplierId);
 
@@ -139,7 +139,7 @@ async function run() {
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const supplierId: string = "string";
+const supplierId: string = "<value>";
 
   const res = await sdk.accountsPayable.suppliers.getAttachment(attachmentId, companyId, connectionId, supplierId);
 
@@ -245,7 +245,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const supplierId: string = "string";
+const supplierId: string = "<value>";
 
   const res = await sdk.accountsPayable.suppliers.listAttachments(companyId, connectionId, supplierId);
 

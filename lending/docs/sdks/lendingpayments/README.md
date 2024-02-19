@@ -35,7 +35,7 @@ async function run() {
       accountRef: {},
       currency: "USD",
       customerRef: {
-        id: "<ID>",
+        id: "<id>",
       },
       date: "2022-10-23T00:00:00Z",
       lines: [
@@ -52,13 +52,14 @@ async function run() {
       metadata: {},
       modifiedDate: "2022-10-23T00:00:00Z",
       paymentMethodRef: {
-        id: "<ID>",
+        id: "EILBDVJVNUAGVKRQ",
+        name: "AliPay",
       },
       sourceModifiedDate: "2022-10-23T00:00:00Z",
       supplementalData: {
         content: {
           "key": {
-            "key": "string",
+            "key": "<value>",
           },
         },
       },

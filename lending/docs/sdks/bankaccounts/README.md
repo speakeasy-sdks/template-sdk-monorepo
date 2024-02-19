@@ -38,7 +38,7 @@ async function run() {
       supplementalData: {
         content: {
           "key": {
-            "key": "string",
+            "key": "<value>",
           },
         },
       },

@@ -33,7 +33,7 @@ async function run() {
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "string";
+const invoiceId: string = "<value>";
 
   const res = await sdk.accountsReceivable.invoices.downloadAttachment(attachmentId, companyId, connectionId, invoiceId);
 
@@ -81,7 +81,7 @@ async function run() {
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const invoiceId: string = "string";
+const invoiceId: string = "<value>";
 
   const res = await sdk.accountsReceivable.invoices.downloadPdf(companyId, invoiceId);
 
@@ -133,7 +133,7 @@ async function run() {
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const invoiceId: string = "string";
+const invoiceId: string = "<value>";
 
   const res = await sdk.accountsReceivable.invoices.get(companyId, invoiceId);
 
@@ -186,7 +186,7 @@ async function run() {
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "string";
+const invoiceId: string = "<value>";
 
   const res = await sdk.accountsReceivable.invoices.getAttachment(attachmentId, companyId, connectionId, invoiceId);
 
@@ -298,7 +298,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const invoiceId: string = "string";
+const invoiceId: string = "<value>";
 
   const res = await sdk.accountsReceivable.invoices.listAttachments(companyId, connectionId, invoiceId);
 
@@ -347,7 +347,7 @@ async function run() {
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const page: number = 1;
 const pageSize: number = 100;
-const query: string = "string";
+const query: string = "<value>";
 
   const res = await sdk.accountsReceivable.invoices.listReconciled(companyId, page, pageSize, query);
 

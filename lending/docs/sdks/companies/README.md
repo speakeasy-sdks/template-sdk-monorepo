@@ -184,7 +184,7 @@ async function run() {
 const orderBy: string = "-modifiedDate";
 const page: number = 1;
 const pageSize: number = 100;
-const query: string = "string";
+const query: string = "<value>";
 
   const res = await sdk.companies.list(orderBy, page, pageSize, query);
 

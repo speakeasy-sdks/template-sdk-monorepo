@@ -28,7 +28,7 @@ async function run() {
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const creditNoteId: string = "string";
+const creditNoteId: string = "<value>";
 
   const res = await sdk.accountsReceivable.creditNotes.get(companyId, creditNoteId);
 

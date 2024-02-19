@@ -33,7 +33,7 @@ async function run() {
   const res = await sdk.loanWriteback.transfers.create({
     accountingTransfer: {
       contactRef: {
-        id: "<ID>",
+        id: "<id>",
       },
       date: "2022-10-23T00:00:00Z",
       depositedRecordRefs: [
@@ -51,7 +51,7 @@ async function run() {
       supplementalData: {
         content: {
           "key": {
-            "key": "string",
+            "key": "<value>",
           },
         },
       },
@@ -61,7 +61,7 @@ async function run() {
       },
       trackingCategoryRefs: [
         {
-          id: "<ID>",
+          id: "<id>",
         },
       ],
     },

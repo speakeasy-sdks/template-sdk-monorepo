@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 38d21dc9-6771-456d-8305-4621acb2f6e4
 management:
-  docChecksum: 1f0dd58ae834c387f85778d2df356f46
+  docChecksum: 9a052a2ca64f81374b6e6f63554da9c5
   docVersion: 3.0.0
   speakeasyVersion: internal
-  generationVersion: 2.248.6
-  releaseVersion: 0.6.0
-  configChecksum: 7ca173fefd2c4b957810cd35f6454ab9
+  generationVersion: 2.262.2
+  releaseVersion: 0.6.1
+  configChecksum: 5449512609b4420db92b7557a06f165f
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   repoSubDirectory: lending
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     acceptHeaders: 2.81.1
-    core: 3.4.6
+    core: 3.4.7
     deprecations: 2.81.1
     examples: 2.81.3
     flattening: 2.81.1
@@ -247,6 +247,8 @@ generatedFiles:
   - src/sdk/models/operations/generateexcelreport.ts
   - src/sdk/models/operations/getexcelreportgenerationstatus.ts
   - src/sdk/models/shared/errormessage.ts
+  - src/sdk/models/shared/errorvalidation.ts
+  - src/sdk/models/shared/errorvalidationitem.ts
   - src/sdk/models/shared/company.ts
   - src/sdk/models/shared/connection.ts
   - src/sdk/models/shared/dataconnectionstatus.ts
@@ -812,6 +814,8 @@ generatedFiles:
   - docs/sdk/models/operations/getexcelreportgenerationstatusrequest.md
   - docs/sdk/models/operations/getexcelreportgenerationstatusresponse.md
   - docs/sdk/models/shared/errormessage.md
+  - docs/sdk/models/shared/errorvalidation.md
+  - docs/sdk/models/shared/errorvalidationitem.md
   - docs/sdk/models/shared/groupreference.md
   - docs/sdk/models/shared/company.md
   - docs/sdk/models/shared/sourcetype.md

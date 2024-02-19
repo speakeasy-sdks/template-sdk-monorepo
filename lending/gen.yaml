@@ -6,8 +6,9 @@ generation:
   fixes:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
+    requestResponseComponentNamesFeb2024: false
 typescript:
-  version: 0.6.0
+  version: 0.6.1
   author: Speakeasy
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true

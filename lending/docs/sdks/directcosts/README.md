@@ -35,7 +35,7 @@ async function run() {
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     directCostPrototype: {
       contactRef: {
-        id: "<ID>",
+        id: "<id>",
       },
       currency: "USD",
       issueDate: "2022-10-23T00:00:00Z",
@@ -43,7 +43,7 @@ async function run() {
         {
           accountRef: {},
           itemRef: {
-            id: "<ID>",
+            id: "<id>",
           },
           quantity: 6384.24,
           taxRateRef: {},
@@ -59,7 +59,7 @@ async function run() {
           },
           trackingCategoryRefs: [
             {
-              id: "<ID>",
+              id: "<id>",
             },
           ],
           unitAmount: 4174.58,
@@ -82,7 +82,7 @@ async function run() {
       supplementalData: {
         content: {
           "key": {
-            "key": "string",
+            "key": "<value>",
           },
         },
       },

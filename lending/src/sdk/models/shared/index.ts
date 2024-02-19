@@ -177,6 +177,8 @@ export * from "./enhancedinvoicesreport";
 export * from "./enhancedreportaccountcategory";
 export * from "./enhancedreportinfo";
 export * from "./errormessage";
+export * from "./errorvalidation";
+export * from "./errorvalidationitem";
 export * from "./excelreporttypes";
 export * from "./excelstatus";
 export * from "./file";

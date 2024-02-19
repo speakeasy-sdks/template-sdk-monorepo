@@ -31,7 +31,7 @@ async function run() {
 const attachmentId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directIncomeId: string = "string";
+const directIncomeId: string = "<value>";
 
   const res = await sdk.accountsReceivable.directIncomes.downloadAttachment(attachmentId, companyId, connectionId, directIncomeId);
 
@@ -87,7 +87,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directIncomeId: string = "string";
+const directIncomeId: string = "<value>";
 
   const res = await sdk.accountsReceivable.directIncomes.get(companyId, connectionId, directIncomeId);
 
@@ -142,7 +142,7 @@ async function run() {
     attachmentId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    directIncomeId: "string",
+    directIncomeId: "<value>",
   });
 
   if (res.statusCode == 200) {
@@ -245,7 +245,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const directIncomeId: string = "string";
+const directIncomeId: string = "<value>";
 
   const res = await sdk.accountsReceivable.directIncomes.listAttachments(companyId, connectionId, directIncomeId);
 

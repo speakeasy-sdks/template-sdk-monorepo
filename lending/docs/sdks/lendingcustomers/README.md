@@ -29,7 +29,7 @@ async function run() {
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const customerId: string = "string";
+const customerId: string = "<value>";
 
   const res = await sdk.sales.customers.get(companyId, connectionId, customerId);
 
