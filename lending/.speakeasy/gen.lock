@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 38d21dc9-6771-456d-8305-4621acb2f6e4
 management:
-  docChecksum: 9a052a2ca64f81374b6e6f63554da9c5
+  docChecksum: 920a6b98ae66d9ce054f5136ffc6cdfe
   docVersion: 3.0.0
   speakeasyVersion: internal
-  generationVersion: 2.262.2
-  releaseVersion: 0.6.1
-  configChecksum: 5449512609b4420db92b7557a06f165f
+  generationVersion: 2.272.4
+  releaseVersion: 0.6.2
+  configChecksum: 41567d3b0094c6579962b422f0a23ee8
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   repoSubDirectory: lending
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
@@ -14,11 +14,11 @@ management:
 features:
   typescript:
     acceptHeaders: 2.81.1
-    core: 3.4.7
+    core: 3.4.8
     deprecations: 2.81.1
     examples: 2.81.3
     flattening: 2.81.1
-    globalSecurity: 2.82.2
+    globalSecurity: 2.82.3
     globalServerURLs: 2.82.1
     groups: 2.81.2
     inputOutputModels: 2.83.0
@@ -27,6 +27,7 @@ features:
 generatedFiles:
   - src/sdk/companies.ts
   - src/sdk/connections.ts
+  - src/sdk/bankstatements.ts
   - src/sdk/accounttransactions.ts
   - src/sdk/lendingdirectcosts.ts
   - src/sdk/lendingtransfers.ts
@@ -117,6 +118,11 @@ generatedFiles:
   - src/sdk/models/operations/getconnection.ts
   - src/sdk/models/operations/listconnections.ts
   - src/sdk/models/operations/unlinkconnection.ts
+  - src/sdk/models/operations/endbankstatementuploadsession.ts
+  - src/sdk/models/operations/getbankstatementuploadconfiguration.ts
+  - src/sdk/models/operations/setbankstatementuploadconfiguration.ts
+  - src/sdk/models/operations/startbankstatementuploadsession.ts
+  - src/sdk/models/operations/uploadbankstatementdata.ts
   - src/sdk/models/operations/getaccountingaccounttransaction.ts
   - src/sdk/models/operations/listaccountingaccounttransactions.ts
   - src/sdk/models/operations/downloadaccountingdirectcostattachment.ts
@@ -259,6 +265,11 @@ generatedFiles:
   - src/sdk/models/shared/links.ts
   - src/sdk/models/shared/halref.ts
   - src/sdk/models/shared/connections.ts
+  - src/sdk/models/shared/enduploadsessionrequest.ts
+  - src/sdk/models/shared/bankstatementuploadconfiguration.ts
+  - src/sdk/models/shared/pulloperation.ts
+  - src/sdk/models/shared/startuploadsessionrequest.ts
+  - src/sdk/models/shared/path.ts
   - src/sdk/models/shared/accountingaccounttransaction.ts
   - src/sdk/models/shared/metadata.ts
   - src/sdk/models/shared/accounttransactionline.ts
@@ -484,7 +495,6 @@ generatedFiles:
   - src/sdk/models/shared/accountingprofitandlossreport.ts
   - src/sdk/models/shared/profitandlossreport.ts
   - src/sdk/models/shared/datastatus.ts
-  - src/sdk/models/shared/pulloperation.ts
   - src/sdk/models/shared/schemadatatype.ts
   - src/sdk/models/shared/pulloperations.ts
   - src/sdk/models/shared/loansummary.ts
@@ -550,6 +560,16 @@ generatedFiles:
   - docs/sdk/models/operations/unlinkconnectionupdateconnection.md
   - docs/sdk/models/operations/unlinkconnectionrequest.md
   - docs/sdk/models/operations/unlinkconnectionresponse.md
+  - docs/sdk/models/operations/endbankstatementuploadsessionrequest.md
+  - docs/sdk/models/operations/endbankstatementuploadsessionresponse.md
+  - docs/sdk/models/operations/getbankstatementuploadconfigurationrequest.md
+  - docs/sdk/models/operations/getbankstatementuploadconfigurationresponse.md
+  - docs/sdk/models/operations/setbankstatementuploadconfigurationrequest.md
+  - docs/sdk/models/operations/setbankstatementuploadconfigurationresponse.md
+  - docs/sdk/models/operations/startbankstatementuploadsessionrequest.md
+  - docs/sdk/models/operations/startbankstatementuploadsessionresponse.md
+  - docs/sdk/models/operations/uploadbankstatementdatarequest.md
+  - docs/sdk/models/operations/uploadbankstatementdataresponse.md
   - docs/sdk/models/operations/getaccountingaccounttransactionrequest.md
   - docs/sdk/models/operations/getaccountingaccounttransactionresponse.md
   - docs/sdk/models/operations/listaccountingaccounttransactionsrequest.md
@@ -828,6 +848,15 @@ generatedFiles:
   - docs/sdk/models/shared/links.md
   - docs/sdk/models/shared/halref.md
   - docs/sdk/models/shared/connections.md
+  - docs/sdk/models/shared/enduploadsessionrequeststatus.md
+  - docs/sdk/models/shared/enduploadsessionrequest.md
+  - docs/sdk/models/shared/source.md
+  - docs/sdk/models/shared/bankstatementuploadconfiguration.md
+  - docs/sdk/models/shared/pulloperationstatus.md
+  - docs/sdk/models/shared/pulloperation.md
+  - docs/sdk/models/shared/startuploadsessionrequestdatatype.md
+  - docs/sdk/models/shared/startuploadsessionrequest.md
+  - docs/sdk/models/shared/path.md
   - docs/sdk/models/shared/status.md
   - docs/sdk/models/shared/accountingaccounttransaction.md
   - docs/sdk/models/shared/metadata.md
@@ -1090,8 +1119,6 @@ generatedFiles:
   - docs/sdk/models/shared/profitandlossreport.md
   - docs/sdk/models/shared/datatypes.md
   - docs/sdk/models/shared/datastatus.md
-  - docs/sdk/models/shared/pulloperationstatus.md
-  - docs/sdk/models/shared/pulloperation.md
   - docs/sdk/models/shared/schemadatatype.md
   - docs/sdk/models/shared/pulloperations.md
   - docs/sdk/models/shared/loansummary.md
@@ -1137,6 +1164,7 @@ generatedFiles:
   - docs/internal/utils/retryconfig.md
   - docs/sdks/companies/README.md
   - docs/sdks/connections/README.md
+  - docs/sdks/bankstatements/README.md
   - docs/sdks/transactions/README.md
   - docs/sdks/accounttransactions/README.md
   - docs/sdks/lendingdirectcosts/README.md

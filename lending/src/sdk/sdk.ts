@@ -7,6 +7,7 @@ import * as shared from "../sdk/models/shared";
 import { AccountsPayable } from "./accountspayable";
 import { AccountsReceivable } from "./accountsreceivable";
 import { Banking } from "./banking";
+import { BankStatements } from "./bankstatements";
 import { Companies } from "./companies";
 import { CompanyInfo } from "./companyinfo";
 import { Connections } from "./connections";
@@ -66,9 +67,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "3.0.0";
-    sdkVersion = "0.6.1";
-    genVersion = "2.262.2";
-    userAgent = "speakeasy-sdk/typescript 0.6.1 2.262.2 3.0.0 lending";
+    sdkVersion = "0.6.2";
+    genVersion = "2.272.4";
+    userAgent = "speakeasy-sdk/typescript 0.6.2 2.272.4 3.0.0 lending";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -115,6 +116,10 @@ export class Lending {
      * Manage your companies' data connections.
      */
     public connections: Connections;
+    /**
+     * Retrieve banking data from linked bank accounts.
+     */
+    public bankStatements: BankStatements;
     public transactions: Transactions;
     /**
      * Access bank transactions from an accounting platform.
@@ -169,6 +174,7 @@ export class Lending {
 
         this.companies = new Companies(this.sdkConfiguration);
         this.connections = new Connections(this.sdkConfiguration);
+        this.bankStatements = new BankStatements(this.sdkConfiguration);
         this.transactions = new Transactions(this.sdkConfiguration);
         this.accountingBankData = new LendingAccountingBankData(this.sdkConfiguration);
         this.banking = new Banking(this.sdkConfiguration);

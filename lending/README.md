@@ -74,6 +74,14 @@ run();
 * [list](docs/sdks/connections/README.md#list) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 
+### [bankStatements](docs/sdks/bankstatements/README.md)
+
+* [endUploadSession](docs/sdks/bankstatements/README.md#enduploadsession) - End upload session
+* [getUploadConfiguration](docs/sdks/bankstatements/README.md#getuploadconfiguration) - Get upload configuration
+* [setUploadConfiguration](docs/sdks/bankstatements/README.md#setuploadconfiguration) - Set upload configuration
+* [startUploadSession](docs/sdks/bankstatements/README.md#startuploadsession) - Start upload session
+* [uploadBankStatementData](docs/sdks/bankstatements/README.md#uploadbankstatementdata) - Upload data
+
 
 ### [transactions.accountTransactions](docs/sdks/accounttransactions/README.md)
 
