@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 80e28e67-caa9-40bb-9472-fad72c602ded
 management:
-  docChecksum: 75949b53976db71c784eaa96126d3946
+  docChecksum: 8886e0b759017eafc190517276dd5799
   docVersion: 3.0.0
   speakeasyVersion: internal
-  generationVersion: 2.262.2
-  releaseVersion: 0.7.1
-  configChecksum: 6ea595376d7b88dca4f25be7f6b90489
+  generationVersion: 2.272.4
+  releaseVersion: 0.7.2
+  configChecksum: 9f579368c05525c7bde2d7a9aa995c9b
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   repoSubDirectory: accounting
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/accounting
@@ -14,11 +14,11 @@ management:
 features:
   typescript:
     acceptHeaders: 2.81.1
-    core: 3.4.7
+    core: 3.4.8
     deprecations: 2.81.1
     examples: 2.81.3
     flattening: 2.81.1
-    globalSecurity: 2.82.2
+    globalSecurity: 2.82.3
     globalServerURLs: 2.82.1
     inputOutputModels: 2.83.0
     nameOverrides: 2.81.1
@@ -811,14 +811,17 @@ generatedFiles:
   - docs/sdk/models/shared/itemreceiptlineitemtracking.md
   - docs/sdk/models/shared/itemreceiptlineitem.md
   - docs/sdk/models/shared/itemreceipts.md
+  - docs/sdk/models/shared/createpurchaseorderresponseuser.md
   - docs/sdk/models/shared/accountingpurchaseorder.md
   - docs/sdk/models/shared/createpurchaseorderresponse.md
   - docs/sdk/models/shared/purchaseorderstatus.md
   - docs/sdk/models/shared/shiptocontact.md
   - docs/sdk/models/shared/shipto.md
   - docs/sdk/models/shared/purchaseorderlineitem.md
+  - docs/sdk/models/shared/user.md
   - docs/sdk/models/shared/purchaseorder.md
   - docs/sdk/models/shared/purchaseorders.md
+  - docs/sdk/models/shared/updatepurchaseorderresponseuser.md
   - docs/sdk/models/shared/updatepurchaseorderresponseaccountingpurchaseorder.md
   - docs/sdk/models/shared/updatepurchaseorderresponse.md
   - docs/sdk/models/shared/accountingsupplier.md

@@ -76,9 +76,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "3.0.0";
-    sdkVersion = "0.7.1";
-    genVersion = "2.262.2";
-    userAgent = "speakeasy-sdk/typescript 0.7.1 2.262.2 3.0.0 @speakeasy-sdks/accounting";
+    sdkVersion = "0.7.2";
+    genVersion = "2.272.4";
+    userAgent = "speakeasy-sdk/typescript 0.7.2 2.272.4 3.0.0 @speakeasy-sdks/accounting";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -86,9 +86,14 @@ export class SDKConfiguration {
 }
 
 /**
- * Accounting API: A flexible API for pulling accounting data, normalized and aggregated from 20 accounting integrations.
+ * Accounting API: > ### New to Codat?
  *
  * @remarks
+ * >
+ * > Our Accounting API reference is relevant only to our existing clients.
+ * > Please reach out to your Codat contact so that we can find the right product for you.
+ *
+ * A flexible API for pulling accounting data, normalized and aggregated from 20 accounting integrations.
  *
  * Standardize how you connect to your customers’ accounting software. View, create, update, and delete data in the same way for all the leading accounting platforms.
  *

@@ -15,6 +15,32 @@ import { Validation } from "./validation";
 import { Expose, Type } from "class-transformer";
 
 /**
+ * The user who created the purchase order in the accounting system
+ */
+export class UpdatePurchaseOrderResponseUser extends SpeakeasyBase {
+    /**
+     * Email address of the user.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "email" })
+    email?: string;
+
+    /**
+     * First name of the user.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "firstName" })
+    firstName?: string;
+
+    /**
+     * Last name of the user.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "lastName" })
+    lastName?: string;
+}
+
+/**
  * > View the coverage for purchase orders in the <a className="external" href="https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=purchaseOrders" target="_blank">Data coverage explorer</a>.
  *
  * @remarks
@@ -28,6 +54,14 @@ import { Expose, Type } from "class-transformer";
  * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export class UpdatePurchaseOrderResponseAccountingPurchaseOrder extends SpeakeasyBase {
+    /**
+     * The user who created the purchase order in the accounting system
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "createdBy" })
+    @Type(() => UpdatePurchaseOrderResponseUser)
+    createdBy?: UpdatePurchaseOrderResponseUser;
+
     /**
      * The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
      *
