@@ -4,9 +4,9 @@ management:
   docChecksum: 8886e0b759017eafc190517276dd5799
   docVersion: 3.0.0
   speakeasyVersion: internal
-  generationVersion: 2.272.4
-  releaseVersion: 0.7.2
-  configChecksum: 9f579368c05525c7bde2d7a9aa995c9b
+  generationVersion: 2.277.0
+  releaseVersion: 0.7.3
+  configChecksum: e4176598a3560bd15d81fa1cddbefeb4
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   repoSubDirectory: accounting
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/accounting
@@ -18,7 +18,7 @@ features:
     deprecations: 2.81.1
     examples: 2.81.3
     flattening: 2.81.1
-    globalSecurity: 2.82.3
+    globalSecurity: 2.82.4
     globalServerURLs: 2.82.1
     inputOutputModels: 2.83.0
     nameOverrides: 2.81.1
