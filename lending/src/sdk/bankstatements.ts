@@ -24,9 +24,9 @@ export class BankStatements {
      * End upload session
      *
      * @remarks
-     * The *End upload session* endpoint finalizes a bank statement upload session, either cancelling the dataset or triggering ingestion of the data and enrichment of uploaded transactions.
+     * Use the *End upload session* endpoint to finalize a bank statement upload session. Include a `status` in the request body to indicate if you want to cancel the processing of the dataset or trigger the ingestion and enrichment of the data.
      *
-     * A session is a one-time process where bank statements can be uploaded to Codat. The session will time out if no data is uploaded for 90 minutes.
+     * A session is a one-time process that enables you to upload bank statements to Codat. It will time out after 90 minutes if no data is uploaded.
      */
     async endUploadSession(
         companyId: string,
@@ -148,9 +148,11 @@ export class BankStatements {
      * Get upload configuration
      *
      * @remarks
-     * The *Get upload configuration* endpoint returns the bank statement upload configuration for the data connection.
+     * Use the *Get upload configuration* endpoint to view the existing bank statement upload configuration for the specified data connection.
      *
-     * Bank statement upload configuration allows configuration of the source of the data to be uploaded to the *Upload data* endpoint, the provider ID for a truelayer connection, and sets the account ID of the account. Data uploaded to the *Upload data* endpoint must be for the configured account.Bank statement upload configuration is used to define the source from which data is to be uploaded as well as any source specific requirements such as the provider ID for TrueLayer.
+     * With this configuration, you set the source of the data you plan to upload, the ID of the account in third-party banking platform, and a provider ID, if required. This lets us determine the expected format of the data and any source-specific requirements.
+     *
+     * When you use the [*Upload data*](https://docs.codat.io/lending-api#/operations/upload-bank-statement-data) endpoint next, you must upload the data for the account you configured.
      */
     async getUploadConfiguration(
         companyId: string,
@@ -262,11 +264,11 @@ export class BankStatements {
      * Set upload configuration
      *
      * @remarks
-     * The *Set upload configuration* endpoint sets the bank statement upload configuration for the data connection
+     * Use the *Set upload configuration* endpoint to create bank statement upload configuration for the specified data connection.
      *
-     * Bank statement upload configuration is used to define the source from which data is to be uploaded as well as any source specific requirements such as the provider ID for TrueLayer.
+     * With this configuration, you set the source of the data you plan to upload, the ID of the account in third-party banking platform, and a provider ID, if required. This lets us determine the expected format of the data and any source-specific requirements.
      *
-     * If configuration is already present for the data connection a Bad Request response will be returned. If there is already a data connection for the same company with the same account ID, a Bad Request response will be returned.
+     * Each data connection can only have one configuration for each company and external account ID combination. You will receive a Bad Request response if you try to set it again.
      */
     async setUploadConfiguration(
         companyId: string,
@@ -399,12 +401,11 @@ export class BankStatements {
      * Start upload session
      *
      * @remarks
-     * The *Start upload session* endpoint initiates a bank statement upload session for a given company.
+     * Use the *Start upload session* endpoint to initiate a bank statement upload session for a given company.
      *
-     * A session is a one-time session where bank statements can be uploaded to Codat.
+     * A session is a one-time process that enables you to upload bank statements to Codat. It will time out after 90 minutes if no data is uploaded.
      *
-     * If a session is already in progress for a data type bad request will be returned. The session will time out if no data is uploaded for 90 minutes.
-     * Use the *Close upload session* endpoint to complete or cancel a session.
+     * You can only have one active session per data type at a time. You can complete or cancel a session using the [*End upload session*](https://docs.codat.io/lending-api#/operations/end-bank-statement-upload-session) endpoint.
      */
     async startUploadSession(
         companyId: string,
@@ -537,9 +538,9 @@ export class BankStatements {
      * Upload data
      *
      * @remarks
-     * The *Upload data* endpoint uploads a page of bank accounts or bank transactions data to the session.
+     * During an active session, use the **Upload data* endpoint to uploads a page of bank accounts or bank transactions data to the session.
      *
-     * Upload data will only be accepted for the account configured via the *Set upload configuration* endpoint, and configuration is required before uploading.
+     * Make sure you created configuration for the account using the [*Set upload configuration*](https://docs.codat.io/lending-api#/operations/set-bank-statement-upload-configuration) endpoint before attempting an upload.
      */
     async uploadBankStatementData(
         req: operations.UploadBankStatementDataRequest,

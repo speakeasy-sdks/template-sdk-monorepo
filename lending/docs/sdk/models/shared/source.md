@@ -1,6 +1,6 @@
 # Source
 
-The source or format of the banking data e.g. Codat
+The source of the banking data that determines its format
 
 
 ## Values

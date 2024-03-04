@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 /**
- * A key for a Codat data type.
+ * An indicator to cancel the dataset processing or trigger ingestion and enrichment of data.
  */
 export enum EndUploadSessionRequestStatus {
     Cancel = "Cancel",
@@ -15,7 +15,7 @@ export enum EndUploadSessionRequestStatus {
 
 export class EndUploadSessionRequest extends SpeakeasyBase {
     /**
-     * A key for a Codat data type.
+     * An indicator to cancel the dataset processing or trigger ingestion and enrichment of data.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "status" })

@@ -6,32 +6,32 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 /**
- * The source or format of the banking data e.g. Codat
+ * The source of the banking data that determines its format
  */
 export enum Source {
     Codat = "codat",
 }
 
 /**
- * Settings for uploading banking data to Codat
+ * Configuration settings for uploading banking data to Codat
  */
 export class BankStatementUploadConfiguration extends SpeakeasyBase {
     /**
-     * The ID of the account in the 3rd party platform
+     * The ID of the account in the third-party platform
      */
     @SpeakeasyMetadata()
     @Expose({ name: "accountId" })
     accountId?: string;
 
     /**
-     * The truelayer provider ID, required if source is truelayer, ignored otherwise
+     * TrueLayer provider ID (only required if source is TrueLayer)
      */
     @SpeakeasyMetadata()
     @Expose({ name: "providerId" })
     providerId?: string;
 
     /**
-     * The source or format of the banking data e.g. Codat
+     * The source of the banking data that determines its format
      */
     @SpeakeasyMetadata()
     @Expose({ name: "source" })

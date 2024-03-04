@@ -29,7 +29,7 @@ export class UploadBankStatementDataRequest extends SpeakeasyBase {
     datasetId: string;
 
     /**
-     * The 3rd party banking service endpoint path the body is from, required if the source is not 'Codat'
+     * The endpoint path of the third-party banking service that the request body originates from. Only required if the source is not `codat`.
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=path" })
     path?: shared.Path;

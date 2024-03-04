@@ -1,12 +1,12 @@
 # BankStatementUploadConfiguration
 
-Settings for uploading banking data to Codat
+Configuration settings for uploading banking data to Codat
 
 
 ## Fields
 
-| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `accountId`                                                                   | *string*                                                                      | :heavy_minus_sign:                                                            | The ID of the account in the 3rd party platform                               |
-| `providerId`                                                                  | *string*                                                                      | :heavy_minus_sign:                                                            | The truelayer provider ID, required if source is truelayer, ignored otherwise |
-| `source`                                                                      | [shared.Source](../../../sdk/models/shared/source.md)                         | :heavy_minus_sign:                                                            | The source or format of the banking data e.g. Codat                           |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `accountId`                                                  | *string*                                                     | :heavy_minus_sign:                                           | The ID of the account in the third-party platform            |
+| `providerId`                                                 | *string*                                                     | :heavy_minus_sign:                                           | TrueLayer provider ID (only required if source is TrueLayer) |
+| `source`                                                     | [shared.Source](../../../sdk/models/shared/source.md)        | :heavy_minus_sign:                                           | The source of the banking data that determines its format    |

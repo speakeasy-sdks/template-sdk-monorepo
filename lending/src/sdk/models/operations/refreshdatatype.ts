@@ -14,7 +14,7 @@ export class RefreshDataTypeRequest extends SpeakeasyBase {
     companyId: string;
 
     /**
-     * The key of a Codat data type
+     * A key for a Codat data type.
      */
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=dataType" })
     dataType: shared.SchemaDataType;
