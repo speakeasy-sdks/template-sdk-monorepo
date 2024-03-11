@@ -230,7 +230,7 @@ export class AccountingCreateBankAccountResponse extends SpeakeasyBase {
     dataConnectionKey: string;
 
     /**
-     * Available Data types
+     * Available data types
      */
     @SpeakeasyMetadata()
     @Expose({ name: "dataType" })
