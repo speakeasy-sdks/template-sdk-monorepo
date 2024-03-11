@@ -10,7 +10,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 0.7.3
+  version: 0.7.4
   author: Accounting
   clientServerStatusCodesAsErrors: false
   description: Access the Accounting API

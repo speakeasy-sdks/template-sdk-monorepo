@@ -264,7 +264,7 @@ export class CreateDirectIncomeResponse extends SpeakeasyBase {
     dataConnectionKey: string;
 
     /**
-     * Available Data types
+     * Available data types
      */
     @SpeakeasyMetadata()
     @Expose({ name: "dataType" })
