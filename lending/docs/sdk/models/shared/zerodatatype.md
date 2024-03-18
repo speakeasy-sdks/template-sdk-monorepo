@@ -1,4 +1,4 @@
-# BillLineItemDataType
+# ZeroDataType
 
 Allowed name of the 'dataType'.
 

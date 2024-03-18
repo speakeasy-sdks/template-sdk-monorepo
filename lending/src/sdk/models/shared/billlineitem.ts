@@ -15,6 +15,7 @@ import { Expose, Type } from "class-transformer";
  */
 export enum BillLineItemDataType {
     PurchaseOrders = "purchaseOrders",
+    Bills = "bills",
 }
 
 /**

@@ -67,9 +67,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "3.0.0";
-    sdkVersion = "0.7.1";
-    genVersion = "2.279.1";
-    userAgent = "speakeasy-sdk/typescript 0.7.1 2.279.1 3.0.0 lending";
+    sdkVersion = "0.7.2";
+    genVersion = "2.281.2";
+    userAgent = "speakeasy-sdk/typescript 0.7.2 2.281.2 3.0.0 lending";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -157,9 +157,12 @@ export class Lending {
 
     constructor(props?: SDKProps) {
         let serverURL = props?.serverURL;
-        const serverIdx = props?.serverIdx ?? 0;
 
         if (!serverURL) {
+            const serverIdx = props?.serverIdx ?? 0;
+            if (serverIdx < 0 || serverIdx >= ServerList.length) {
+                throw new Error(`Invalid server index ${serverIdx}`);
+            }
             serverURL = ServerList[serverIdx];
         }
 
