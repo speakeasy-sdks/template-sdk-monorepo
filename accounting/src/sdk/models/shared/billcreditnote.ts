@@ -5,6 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { BillCreditNoteLineItem } from "./billcreditnotelineitem";
 import { BillCreditNoteStatus } from "./billcreditnotestatus";
+import { InvoiceTo } from "./invoiceto";
 import { Metadata } from "./metadata";
 import { PaymentAllocationItems } from "./paymentallocationitems";
 import { SupplementalData } from "./supplementaldata";
@@ -66,6 +67,14 @@ export class BillCreditNote extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "billCreditNoteNumber" })
     billCreditNoteNumber?: string;
+
+    /**
+     * An array of records the credit note was created from.
+     */
+    @SpeakeasyMetadata({ elemType: InvoiceTo })
+    @Expose({ name: "createdFromRefs" })
+    @Type(() => InvoiceTo)
+    createdFromRefs?: InvoiceTo[];
 
     /**
      * The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.

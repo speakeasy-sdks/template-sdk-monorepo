@@ -10,6 +10,7 @@ import { ItemRef } from "./itemref";
 import { ProjectRef } from "./projectref";
 import { TaxRateRef } from "./taxrateref";
 import { TrackingCategoryRef } from "./trackingcategoryref";
+import { Zero } from "./zero";
 import { Expose, Type } from "class-transformer";
 
 /**
@@ -54,6 +55,18 @@ export class BillCreditNoteLineItem extends SpeakeasyBase {
     @Expose({ name: "accountRef" })
     @Type(() => AccountRef)
     accountRef?: AccountRef;
+
+    /**
+     * Links the current record line to the underlying record line that created it.
+     *
+     * @remarks
+     *
+     * For example, if a bill is generated from a purchase order, this property allows you to connect the bill line item to the purchase order line item in our data model.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "createdFromLineRef" })
+    @Type(() => Zero)
+    createdFromLineRef?: Zero;
 
     /**
      * Friendly name of each line item. For example, the goods or service for which credit has been received.

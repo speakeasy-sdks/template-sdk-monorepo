@@ -10,10 +10,15 @@ import { Expose } from "class-transformer";
  */
 export enum ZeroDataType {
     PurchaseOrders = "purchaseOrders",
+    Bills = "bills",
 }
 
 /**
- * Reference to the purchase order line this line was generated from.
+ * Links the current record line to the underlying record line that created it.
+ *
+ * @remarks
+ *
+ * For example, if a bill is generated from a purchase order, this property allows you to connect the bill line item to the purchase order line item in our data model.
  */
 export class Zero extends SpeakeasyBase {
     /**

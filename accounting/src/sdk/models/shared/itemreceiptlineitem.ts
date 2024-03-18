@@ -13,6 +13,7 @@ import { Expose, Type } from "class-transformer";
  */
 export enum ItemReceiptLineItemDataType {
     PurchaseOrders = "purchaseOrders",
+    Bills = "bills",
 }
 
 /**
