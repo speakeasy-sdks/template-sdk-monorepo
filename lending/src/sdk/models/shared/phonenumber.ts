@@ -12,7 +12,7 @@ export class PhoneNumber extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "number" })
-    number: string;
+    number?: string;
 
     /**
      * The type of phone number

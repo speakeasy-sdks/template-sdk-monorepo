@@ -7,7 +7,7 @@ import { AccountCategoriesUpdatedWebhookData } from "./accountcategoriesupdatedw
 import { Expose, Type } from "class-transformer";
 
 /**
- * Webhook request body for account categories updated.
+ * Webhook request body for the "Account categories updated" event.
  */
 export class AccountCategoriesUpdatedWebhook extends SpeakeasyBase {
     /**
@@ -51,7 +51,7 @@ export class AccountCategoriesUpdatedWebhook extends SpeakeasyBase {
     dataConnectionId?: string;
 
     /**
-     * A human readable message about the webhook.
+     * A human-readable message about the webhook.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "Message" })
@@ -59,6 +59,8 @@ export class AccountCategoriesUpdatedWebhook extends SpeakeasyBase {
 
     /**
      * Unique identifier for the rule.
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "RuleId" })

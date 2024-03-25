@@ -24,38 +24,44 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GenerateLoanSummaryRequest, GenerateLoanSummarySourceType } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GenerateLoanSummaryRequest, SourceType } from "lending/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const sourceType: GenerateLoanSummarySourceType = GenerateLoanSummarySourceType.Accounting;
+const sourceType: SourceType = SourceType.Accounting;
 
   const res = await sdk.liabilities.generateLoanSummary(companyId, sourceType);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          | Example                                                                                              |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `companyId`                                                                                          | *string*                                                                                             | :heavy_check_mark:                                                                                   | Unique identifier for a company.                                                                     | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                 |
-| `sourceType`                                                                                         | [operations.GenerateLoanSummarySourceType](../../models/operations/generateloansummarysourcetype.md) | :heavy_check_mark:                                                                                   | Data source type.                                                                                    |                                                                                                      |
-| `retries`                                                                                            | [utils.RetryConfig](../../models/utils/retryconfig.md)                                               | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |                                                                                                      |
-| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |                                                                                                      |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
+| `sourceType`                                                        | [operations.SourceType](../../sdk/models/operations/sourcetype.md)  | :heavy_check_mark:                                                  | Data source type.                                                   |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GenerateLoanSummaryResponse](../../models/operations/generateloansummaryresponse.md)>**
+**Promise<[operations.GenerateLoanSummaryResponse](../../sdk/models/operations/generateloansummaryresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## generateLoanTransactions
 
@@ -69,38 +75,44 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GenerateLoanTransactionsRequest, GenerateLoanTransactionsSourceType } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GenerateLoanTransactionsRequest, QueryParamSourceType } from "lending/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const sourceType: GenerateLoanTransactionsSourceType = GenerateLoanTransactionsSourceType.Accounting;
+const sourceType: QueryParamSourceType = QueryParamSourceType.Accounting;
 
   const res = await sdk.liabilities.generateLoanTransactions(companyId, sourceType);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    | Example                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `companyId`                                                                                                    | *string*                                                                                                       | :heavy_check_mark:                                                                                             | Unique identifier for a company.                                                                               | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                           |
-| `sourceType`                                                                                                   | [operations.GenerateLoanTransactionsSourceType](../../models/operations/generateloantransactionssourcetype.md) | :heavy_check_mark:                                                                                             | Data source type.                                                                                              |                                                                                                                |
-| `retries`                                                                                                      | [utils.RetryConfig](../../models/utils/retryconfig.md)                                                         | :heavy_minus_sign:                                                                                             | Configuration to override the default retry behavior of the client.                                            |                                                                                                                |
-| `config`                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                   | :heavy_minus_sign:                                                                                             | Available config options for making requests.                                                                  |                                                                                                                |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `companyId`                                                                            | *string*                                                                               | :heavy_check_mark:                                                                     | Unique identifier for a company.                                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                                   |
+| `sourceType`                                                                           | [operations.QueryParamSourceType](../../sdk/models/operations/queryparamsourcetype.md) | :heavy_check_mark:                                                                     | Data source type.                                                                      |                                                                                        |
+| `retries`                                                                              | [utils.RetryConfig](../../internal/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |                                                                                        |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |                                                                                        |
 
 
 ### Response
 
-**Promise<[operations.GenerateLoanTransactionsResponse](../../models/operations/generateloantransactionsresponse.md)>**
+**Promise<[operations.GenerateLoanTransactionsResponse](../../sdk/models/operations/generateloantransactionsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getLoanSummary
 
@@ -114,38 +126,44 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetLoanSummaryRequest, GetLoanSummarySourceType } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetLoanSummaryQueryParamSourceType, GetLoanSummaryRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const sourceType: GetLoanSummarySourceType = GetLoanSummarySourceType.Banking;
+const sourceType: GetLoanSummaryQueryParamSourceType = GetLoanSummaryQueryParamSourceType.Banking;
 
   const res = await sdk.liabilities.getLoanSummary(companyId, sourceType);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `companyId`                                                                                | *string*                                                                                   | :heavy_check_mark:                                                                         | Unique identifier for a company.                                                           | 8a210b68-6988-11ed-a1eb-0242ac120002                                                       |
-| `sourceType`                                                                               | [operations.GetLoanSummarySourceType](../../models/operations/getloansummarysourcetype.md) | :heavy_check_mark:                                                                         | Data source type.                                                                          |                                                                                            |
-| `retries`                                                                                  | [utils.RetryConfig](../../models/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                         | Configuration to override the default retry behavior of the client.                        |                                                                                            |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |                                                                                            |
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        | Example                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `companyId`                                                                                                        | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | Unique identifier for a company.                                                                                   | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                               |
+| `sourceType`                                                                                                       | [operations.GetLoanSummaryQueryParamSourceType](../../sdk/models/operations/getloansummaryqueryparamsourcetype.md) | :heavy_check_mark:                                                                                                 | Data source type.                                                                                                  |                                                                                                                    |
+| `retries`                                                                                                          | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                           | :heavy_minus_sign:                                                                                                 | Configuration to override the default retry behavior of the client.                                                |                                                                                                                    |
+| `config`                                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                       | :heavy_minus_sign:                                                                                                 | Available config options for making requests.                                                                      |                                                                                                                    |
 
 
 ### Response
 
-**Promise<[operations.GetLoanSummaryResponse](../../models/operations/getloansummaryresponse.md)>**
+**Promise<[operations.GetLoanSummaryResponse](../../sdk/models/operations/getloansummaryresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listLoanTransactions
 
@@ -159,35 +177,41 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { ListLoanTransactionsRequest, ListLoanTransactionsSourceType } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { ListLoanTransactionsQueryParamSourceType, ListLoanTransactionsRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const sourceType: ListLoanTransactionsSourceType = ListLoanTransactionsSourceType.Commerce;
+const sourceType: ListLoanTransactionsQueryParamSourceType = ListLoanTransactionsQueryParamSourceType.Commerce;
 
   const res = await sdk.liabilities.listLoanTransactions(companyId, sourceType);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            | Example                                                                                                |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `companyId`                                                                                            | *string*                                                                                               | :heavy_check_mark:                                                                                     | Unique identifier for a company.                                                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                   |
-| `sourceType`                                                                                           | [operations.ListLoanTransactionsSourceType](../../models/operations/listloantransactionssourcetype.md) | :heavy_check_mark:                                                                                     | Data source type.                                                                                      |                                                                                                        |
-| `retries`                                                                                              | [utils.RetryConfig](../../models/utils/retryconfig.md)                                                 | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |                                                                                                        |
-| `config`                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                           | :heavy_minus_sign:                                                                                     | Available config options for making requests.                                                          |                                                                                                        |
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    | Example                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `companyId`                                                                                                                    | *string*                                                                                                                       | :heavy_check_mark:                                                                                                             | Unique identifier for a company.                                                                                               | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                                           |
+| `sourceType`                                                                                                                   | [operations.ListLoanTransactionsQueryParamSourceType](../../sdk/models/operations/listloantransactionsqueryparamsourcetype.md) | :heavy_check_mark:                                                                                                             | Data source type.                                                                                                              |                                                                                                                                |
+| `retries`                                                                                                                      | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                                                       | :heavy_minus_sign:                                                                                                             | Configuration to override the default retry behavior of the client.                                                            |                                                                                                                                |
+| `config`                                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                   | :heavy_minus_sign:                                                                                                             | Available config options for making requests.                                                                                  |                                                                                                                                |
 
 
 ### Response
 
-**Promise<[operations.ListLoanTransactionsResponse](../../models/operations/listloantransactionsresponse.md)>**
+**Promise<[operations.ListLoanTransactionsResponse](../../sdk/models/operations/listloantransactionsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

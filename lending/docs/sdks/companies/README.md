@@ -15,60 +15,75 @@ Create and manage your Codat companies.
 
 ## create
 
-﻿Creates a new company that can be used to assign connections to. 
+﻿Use the *Create company* endpoint to create a new [company](https://docs.codat.io/lending-api#/schemas/Company) that represents your customer in Codat. 
+
+A [company](https://docs.codat.io/lending-api#/schemas/Company) represents a business sharing access to their data.
+Each company can have multiple [connections](https://docs.codat.io/lending-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
 
 If forbidden characters (see `name` pattern) are present in the request, a company will be created with the forbidden characters removed. For example, `Company (Codat[1])` with be created as `Company Codat1`.
-
-
 
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { Lending } from "lending";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
   const res = await sdk.companies.create({
     description: "Requested early access to the new financing scheme.",
+    groups: [
+      {
+        id: "60d2fa12-8a04-11ee-b9d1-0242ac120002",
+      },
+    ],
     name: "Bank of Dave",
   });
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `request`                                                              | [shared.CompanyRequestBody](../../models/shared/companyrequestbody.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
-| `retries`                                                              | [utils.RetryConfig](../../models/utils/retryconfig.md)                 | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |
-| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `request`                                                                  | [shared.CompanyRequestBody](../../sdk/models/shared/companyrequestbody.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `retries`                                                                  | [utils.RetryConfig](../../internal/utils/retryconfig.md)                   | :heavy_minus_sign:                                                         | Configuration to override the default retry behavior of the client.        |
+| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
 
 
 ### Response
 
-**Promise<[operations.CreateCompanyResponse](../../models/operations/createcompanyresponse.md)>**
+**Promise<[operations.CreateCompanyResponse](../../sdk/models/operations/createcompanyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete
 
-﻿
-Permanently deletes a company, its connections and any cached data. This operation is irreversible. If the company ID does not exist an error is returned.
+﻿The *Delete company* endpoint permanently deletes a [company](https://docs.codat.io/lending-api#/schemas/Company), its [connections](https://docs.codat.io/lending-api#/schemas/Connection) and any cached data. This operation is irreversible.
+
+A [company](https://docs.codat.io/lending-api#/schemas/Company) represents a business sharing access to their data.
+Each company can have multiple [connections](https://docs.codat.io/lending-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
+
 
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DeleteCompanyRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { DeleteCompanyRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -78,7 +93,9 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -86,27 +103,35 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.DeleteCompanyResponse](../../models/operations/deletecompanyresponse.md)>**
+**Promise<[operations.DeleteCompanyResponse](../../sdk/models/operations/deletecompanyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## get
 
-﻿Returns the company for a valid identifier. If the identifier is for a deleted company, a not found response is returned.
+﻿The *Get company* endpoint returns a single company for a given `companyId`.
+
+A [company](https://docs.codat.io/lending-api#/schemas/Company) represents a business sharing access to their data.
+Each company can have multiple [connections](https://docs.codat.io/lending-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
+
 
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetCompanyRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { GetCompanyRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -116,7 +141,9 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -124,40 +151,49 @@ const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
 
 
 ### Response
 
-**Promise<[operations.GetCompanyResponse](../../models/operations/getcompanyresponse.md)>**
+**Promise<[operations.GetCompanyResponse](../../sdk/models/operations/getcompanyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## list
 
-﻿Returns a list of your companies. The company schema contains a list of [connections](https://docs.codat.io/lending-api#/schemas/Connection) related to the company.
+﻿The *List companies* endpoint returns a list of [companies] associated to your instances.
+
+A [company](https://docs.codat.io/lending-api#/schemas/Company) represents a business sharing access to their data.
+Each company can have multiple [connections](https://docs.codat.io/lending-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
 
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { ListCompaniesRequest } from "openapi/dist/sdk/models/operations";
+import { Lending } from "lending";
+import { ListCompaniesRequest } from "lending/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const orderBy: string = "-modifiedDate";
 const page: number = 1;
 const pageSize: number = 100;
-const query: string = "Bicycle";
+const query: string = "<value>";
 
   const res = await sdk.companies.list(orderBy, page, pageSize, query);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -168,33 +204,46 @@ const query: string = "Bicycle";
 | `page`                                                                                          | *number*                                                                                        | :heavy_minus_sign:                                                                              | Page number. [Read more](https://docs.codat.io/using-the-api/paging).                           | 1                                                                                               |
 | `pageSize`                                                                                      | *number*                                                                                        | :heavy_minus_sign:                                                                              | Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging). | 100                                                                                             |
 | `query`                                                                                         | *string*                                                                                        | :heavy_minus_sign:                                                                              | Codat query string. [Read more](https://docs.codat.io/using-the-api/querying).                  |                                                                                                 |
-| `retries`                                                                                       | [utils.RetryConfig](../../models/utils/retryconfig.md)                                          | :heavy_minus_sign:                                                                              | Configuration to override the default retry behavior of the client.                             |                                                                                                 |
+| `retries`                                                                                       | [utils.RetryConfig](../../internal/utils/retryconfig.md)                                        | :heavy_minus_sign:                                                                              | Configuration to override the default retry behavior of the client.                             |                                                                                                 |
 | `config`                                                                                        | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                    | :heavy_minus_sign:                                                                              | Available config options for making requests.                                                   |                                                                                                 |
 
 
 ### Response
 
-**Promise<[operations.ListCompaniesResponse](../../models/operations/listcompaniesresponse.md)>**
+**Promise<[operations.ListCompaniesResponse](../../sdk/models/operations/listcompaniesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update
 
-﻿Updates both the name and description of the company.
+﻿Use the *Update company* endpoint to update both the name and description of the company. 
+If you use [groups](https://docs.codat.io/lending-api#/schemas/Group) to manage a set of companies, use the [Add company](https://docs.codat.io/lending-api#/operations/add-company-to-group) or [Remove company](https://docs.codat.io/lending-api#/operations/remove-company-from-group) endpoints to add or remove a company from a group.
+
+A [company](https://docs.codat.io/lending-api#/schemas/Company) represents a business sharing access to their data.
+Each company can have multiple [connections](https://docs.codat.io/lending-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
 
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { UpdateCompanyRequest } from "openapi/dist/sdk/models/operations";
-import { CompanyRequestBody } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { UpdateCompanyRequest } from "lending/dist/sdk/models/operations";
+import { CompanyRequestBody, Items } from "lending/dist/sdk/models/shared";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 const companyRequestBody: CompanyRequestBody = {
   description: "Requested early access to the new financing scheme.",
+  groups: [
+    {
+      id: "60d2fa12-8a04-11ee-b9d1-0242ac120002",
+    },
+  ],
   name: "Bank of Dave",
 };
 
@@ -203,20 +252,26 @@ const companyRequestBody: CompanyRequestBody = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `companyId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a company.                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                   |
-| `companyRequestBody`                                                   | [shared.CompanyRequestBody](../../models/shared/companyrequestbody.md) | :heavy_minus_sign:                                                     | N/A                                                                    |                                                                        |
-| `retries`                                                              | [utils.RetryConfig](../../models/utils/retryconfig.md)                 | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |                                                                        |
-| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |                                                                        |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `companyId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | Unique identifier for a company.                                           | 8a210b68-6988-11ed-a1eb-0242ac120002                                       |
+| `companyRequestBody`                                                       | [shared.CompanyRequestBody](../../sdk/models/shared/companyrequestbody.md) | :heavy_minus_sign:                                                         | N/A                                                                        |                                                                            |
+| `retries`                                                                  | [utils.RetryConfig](../../internal/utils/retryconfig.md)                   | :heavy_minus_sign:                                                         | Configuration to override the default retry behavior of the client.        |                                                                            |
+| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |                                                                            |
 
 
 ### Response
 
-**Promise<[operations.UpdateCompanyResponse](../../models/operations/updatecompanyresponse.md)>**
+**Promise<[operations.UpdateCompanyResponse](../../sdk/models/operations/updatecompanyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

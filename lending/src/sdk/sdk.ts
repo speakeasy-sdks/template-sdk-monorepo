@@ -3,10 +3,11 @@
  */
 
 import * as utils from "../internal/utils";
-import { AccountingBankData } from "./accountingbankdata";
+import * as shared from "../sdk/models/shared";
 import { AccountsPayable } from "./accountspayable";
 import { AccountsReceivable } from "./accountsreceivable";
 import { Banking } from "./banking";
+import { BankStatements } from "./bankstatements";
 import { Companies } from "./companies";
 import { CompanyInfo } from "./companyinfo";
 import { Connections } from "./connections";
@@ -14,10 +15,10 @@ import { DataIntegrity } from "./dataintegrity";
 import { ExcelReports } from "./excelreports";
 import { FileUpload } from "./fileupload";
 import { FinancialStatements } from "./financialstatements";
+import { LendingAccountingBankData } from "./lendingaccountingbankdata";
 import { Liabilities } from "./liabilities";
 import { LoanWriteback } from "./loanwriteback";
 import { ManageData } from "./managedata";
-import * as shared from "./models/shared";
 import { Sales } from "./sales";
 import { Transactions } from "./transactions";
 import axios from "axios";
@@ -66,9 +67,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "3.0.0";
-    sdkVersion = "0.1.0";
-    genVersion = "2.166.0";
-    userAgent = "speakeasy-sdk/typescript 0.1.0 2.166.0 3.0.0 openapi";
+    sdkVersion = "0.7.3";
+    genVersion = "2.287.0";
+    userAgent = "speakeasy-sdk/typescript 0.7.3 2.287.0 3.0.0 lending";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -106,23 +107,43 @@ export class SDKConfiguration {
  * | Manage data          | Control how data is retrieved from an integration.                                                         |
  * | File upload          | Endpoints to manage uploaded files.                                                                        |
  */
-export class SDK {
-    /**
-     * Access bank transactions from an accounting platform.
-     */
-    public accountingBankData: AccountingBankData;
+export class Lending {
     /**
      * Create and manage your Codat companies.
      */
     public companies: Companies;
     /**
-     * View company information fetched from the source platform.
-     */
-    public companyInfo: CompanyInfo;
-    /**
      * Manage your companies' data connections.
      */
     public connections: Connections;
+    /**
+     * Retrieve banking data from linked bank accounts.
+     */
+    public bankStatements: BankStatements;
+    public transactions: Transactions;
+    /**
+     * Access bank transactions from an accounting platform.
+     */
+    public accountingBankData: LendingAccountingBankData;
+    public banking: Banking;
+    public accountsPayable: AccountsPayable;
+    public sales: Sales;
+    /**
+     * View company information fetched from the source platform.
+     */
+    public companyInfo: CompanyInfo;
+    public accountsReceivable: AccountsReceivable;
+    /**
+     * Endpoints to manage uploaded files.
+     */
+    public fileUpload: FileUpload;
+    public loanWriteback: LoanWriteback;
+    public financialStatements: FinancialStatements;
+    public manageData: ManageData;
+    /**
+     * Debt and other liabilities.
+     */
+    public liabilities: Liabilities;
     /**
      * Match mutable accounting data with immutable banking data to increase confidence in financial data.
      */
@@ -131,34 +152,21 @@ export class SDK {
      * Download reports in Excel format.
      */
     public excelReports: ExcelReports;
-    /**
-     * Endpoints to manage uploaded files.
-     */
-    public fileUpload: FileUpload;
-    /**
-     * Debt and other liabilities.
-     */
-    public liabilities: Liabilities;
-    public accountsPayable: AccountsPayable;
-    public accountsReceivable: AccountsReceivable;
-    public banking: Banking;
-    public financialStatements: FinancialStatements;
-    public loanWriteback: LoanWriteback;
-    public manageData: ManageData;
-    public sales: Sales;
-    public transactions: Transactions;
 
     private sdkConfiguration: SDKConfiguration;
 
     constructor(props?: SDKProps) {
         let serverURL = props?.serverURL;
-        const serverIdx = props?.serverIdx ?? 0;
 
         if (!serverURL) {
+            const serverIdx = props?.serverIdx ?? 0;
+            if (serverIdx < 0 || serverIdx >= ServerList.length) {
+                throw new Error(`Invalid server index ${serverIdx}`);
+            }
             serverURL = ServerList[serverIdx];
         }
 
-        const defaultClient = props?.defaultClient ?? axios.create({ baseURL: serverURL });
+        const defaultClient = props?.defaultClient ?? axios.create();
         this.sdkConfiguration = new SDKConfiguration({
             defaultClient: defaultClient,
             security: new shared.Security({ authHeader: props?.authHeader }),
@@ -167,21 +175,22 @@ export class SDK {
             retryConfig: props?.retryConfig,
         });
 
-        this.accountingBankData = new AccountingBankData(this.sdkConfiguration);
         this.companies = new Companies(this.sdkConfiguration);
-        this.companyInfo = new CompanyInfo(this.sdkConfiguration);
         this.connections = new Connections(this.sdkConfiguration);
+        this.bankStatements = new BankStatements(this.sdkConfiguration);
+        this.transactions = new Transactions(this.sdkConfiguration);
+        this.accountingBankData = new LendingAccountingBankData(this.sdkConfiguration);
+        this.banking = new Banking(this.sdkConfiguration);
+        this.accountsPayable = new AccountsPayable(this.sdkConfiguration);
+        this.sales = new Sales(this.sdkConfiguration);
+        this.companyInfo = new CompanyInfo(this.sdkConfiguration);
+        this.accountsReceivable = new AccountsReceivable(this.sdkConfiguration);
+        this.fileUpload = new FileUpload(this.sdkConfiguration);
+        this.loanWriteback = new LoanWriteback(this.sdkConfiguration);
+        this.financialStatements = new FinancialStatements(this.sdkConfiguration);
+        this.manageData = new ManageData(this.sdkConfiguration);
+        this.liabilities = new Liabilities(this.sdkConfiguration);
         this.dataIntegrity = new DataIntegrity(this.sdkConfiguration);
         this.excelReports = new ExcelReports(this.sdkConfiguration);
-        this.fileUpload = new FileUpload(this.sdkConfiguration);
-        this.liabilities = new Liabilities(this.sdkConfiguration);
-        this.accountsPayable = new AccountsPayable(this.sdkConfiguration);
-        this.accountsReceivable = new AccountsReceivable(this.sdkConfiguration);
-        this.banking = new Banking(this.sdkConfiguration);
-        this.financialStatements = new FinancialStatements(this.sdkConfiguration);
-        this.loanWriteback = new LoanWriteback(this.sdkConfiguration);
-        this.manageData = new ManageData(this.sdkConfiguration);
-        this.sales = new Sales(this.sdkConfiguration);
-        this.transactions = new Transactions(this.sdkConfiguration);
     }
 }

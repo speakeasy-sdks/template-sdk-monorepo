@@ -22,12 +22,12 @@ You can [learn more](https://docs.codat.io/lending/excel/overview) about valid E
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { DownloadExcelReportRequest } from "openapi/dist/sdk/models/operations";
-import { ExcelReportTypes } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { DownloadExcelReportRequest } from "lending/dist/sdk/models/operations";
+import { ExcelReportTypes } from "lending/dist/sdk/models/shared";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -38,23 +38,29 @@ const reportType: ExcelReportTypes = ExcelReportTypes.EnhancedFinancials;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `reportType`                                                        | [shared.ExcelReportTypes](../../models/shared/excelreporttypes.md)  | :heavy_check_mark:                                                  | The type of report you want to generate and download.               |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
-| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `companyId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a company.                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                   |
+| `reportType`                                                           | [shared.ExcelReportTypes](../../sdk/models/shared/excelreporttypes.md) | :heavy_check_mark:                                                     | The type of report you want to generate and download.                  |                                                                        |
+| `retries`                                                              | [utils.RetryConfig](../../internal/utils/retryconfig.md)               | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |                                                                        |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |                                                                        |
 
 
 ### Response
 
-**Promise<[operations.DownloadExcelReportResponse](../../models/operations/downloadexcelreportresponse.md)>**
+**Promise<[operations.DownloadExcelReportResponse](../../sdk/models/operations/downloadexcelreportresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## generate
 
@@ -79,12 +85,12 @@ In response, the endpoint returns the [status](https://docs.codat.io/lending-api
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GenerateExcelReportRequest } from "openapi/dist/sdk/models/operations";
-import { ExcelReportTypes } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { GenerateExcelReportRequest } from "lending/dist/sdk/models/operations";
+import { ExcelReportTypes } from "lending/dist/sdk/models/shared";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -95,23 +101,29 @@ const reportType: ExcelReportTypes = ExcelReportTypes.EnhancedInvoices;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `reportType`                                                        | [shared.ExcelReportTypes](../../models/shared/excelreporttypes.md)  | :heavy_check_mark:                                                  | The type of report you want to generate and download.               |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
-| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `companyId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a company.                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                   |
+| `reportType`                                                           | [shared.ExcelReportTypes](../../sdk/models/shared/excelreporttypes.md) | :heavy_check_mark:                                                     | The type of report you want to generate and download.                  |                                                                        |
+| `retries`                                                              | [utils.RetryConfig](../../internal/utils/retryconfig.md)               | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |                                                                        |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |                                                                        |
 
 
 ### Response
 
-**Promise<[operations.GenerateExcelReportResponse](../../models/operations/generateexcelreportresponse.md)>**
+**Promise<[operations.GenerateExcelReportResponse](../../sdk/models/operations/generateexcelreportresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getStatus
 
@@ -124,12 +136,12 @@ When the report generation completes successfully, the `inProgress` property wil
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetExcelReportGenerationStatusRequest } from "openapi/dist/sdk/models/operations";
-import { ExcelReportTypes } from "openapi/dist/sdk/models/shared";
+import { Lending } from "lending";
+import { GetExcelReportGenerationStatusRequest } from "lending/dist/sdk/models/operations";
+import { ExcelReportTypes } from "lending/dist/sdk/models/shared";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new Lending({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
@@ -140,20 +152,26 @@ const reportType: ExcelReportTypes = ExcelReportTypes.EnhancedCashFlow;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `reportType`                                                        | [shared.ExcelReportTypes](../../models/shared/excelreporttypes.md)  | :heavy_check_mark:                                                  | The type of report you want to generate and download.               |                                                                     |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
-| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `companyId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Unique identifier for a company.                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                   |
+| `reportType`                                                           | [shared.ExcelReportTypes](../../sdk/models/shared/excelreporttypes.md) | :heavy_check_mark:                                                     | The type of report you want to generate and download.                  |                                                                        |
+| `retries`                                                              | [utils.RetryConfig](../../internal/utils/retryconfig.md)               | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |                                                                        |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |                                                                        |
 
 
 ### Response
 
-**Promise<[operations.GetExcelReportGenerationStatusResponse](../../models/operations/getexcelreportgenerationstatusresponse.md)>**
+**Promise<[operations.GetExcelReportGenerationStatusResponse](../../sdk/models/operations/getexcelreportgenerationstatusresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

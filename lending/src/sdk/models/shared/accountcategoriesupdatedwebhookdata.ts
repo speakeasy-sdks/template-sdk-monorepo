@@ -7,7 +7,7 @@ import { Expose } from "class-transformer";
 
 export class AccountCategoriesUpdatedWebhookData extends SpeakeasyBase {
     /**
-     * The date on which this account categories were last modified in Codat.
+     * The date on which the company's account categories were last modified in Codat.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "modifiedDate" })

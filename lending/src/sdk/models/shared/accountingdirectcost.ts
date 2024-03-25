@@ -4,11 +4,37 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AccountingPaymentAllocation } from "./accountingpaymentallocation";
-import { ContactRef } from "./contactref";
 import { DirectCostLineItem } from "./directcostlineitem";
 import { Metadata } from "./metadata";
 import { SupplementalData } from "./supplementaldata";
 import { Expose, Type } from "class-transformer";
+
+/**
+ * Allowed name of the 'dataType'.
+ */
+export enum AccountingDirectCostDataType {
+    Customers = "customers",
+    Suppliers = "suppliers",
+}
+
+/**
+ * A customer or supplier associated with the direct cost.
+ */
+export class AccountingDirectCostContactReference extends SpeakeasyBase {
+    /**
+     * Allowed name of the 'dataType'.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "dataType" })
+    dataType?: AccountingDirectCostDataType;
+
+    /**
+     * Unique identifier for a customer or supplier.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
+}
 
 /**
  * > **Language tip:** Direct costs may also be referred to as **Spend transactions**, **Spend money transactions**, or **Payments** in various accounting platforms.
@@ -31,12 +57,12 @@ import { Expose, Type } from "class-transformer";
  */
 export class AccountingDirectCost extends SpeakeasyBase {
     /**
-     * The customer or supplier for the transfer, if available.
+     * A customer or supplier associated with the direct cost.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "contactRef" })
-    @Type(() => ContactRef)
-    contactRef?: ContactRef;
+    @Type(() => AccountingDirectCostContactReference)
+    contactRef?: AccountingDirectCostContactReference;
 
     /**
      * The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
@@ -81,6 +107,13 @@ export class AccountingDirectCost extends SpeakeasyBase {
      * | **GBP**          | £20            | 1.277         | $25.54                     |
      * | **EUR**          | €20            | 1.134         | $22.68                     |
      * | **RUB**          | ₽20            | 0.015         | $0.30                      |
+     *
+     *
+     * ### Integration-specific details
+     *
+     * | Integration       | Scenario                                        | System behavior                                                                                                                                                      |
+     * |-------------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+     * | QuickBooks Online | Transaction currency differs from base currency | If currency rate value is left `null`, a rate of 1 will be used by QBO by default. To override this, include the required currency rate in the expense transaction.  |
      */
     @SpeakeasyMetadata()
     @Expose({ name: "currencyRate" })

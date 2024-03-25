@@ -6,9 +6,9 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 /**
- * Available Data types
+ * Available data types
  */
-export enum DataStatusDataTypes {
+export enum DataTypes {
     AccountTransactions = "accountTransactions",
     BalanceSheet = "balanceSheet",
     BankAccounts = "bankAccounts",
@@ -24,6 +24,7 @@ export enum DataStatusDataTypes {
     DirectCosts = "directCosts",
     DirectIncomes = "directIncomes",
     Invoices = "invoices",
+    ItemReceipts = "itemReceipts",
     Items = "items",
     JournalEntries = "journalEntries",
     Journals = "journals",
@@ -65,11 +66,11 @@ export class DataStatus extends SpeakeasyBase {
     currentStatus: string;
 
     /**
-     * Available Data types
+     * Available data types
      */
     @SpeakeasyMetadata()
     @Expose({ name: "dataType" })
-    dataType: DataStatusDataTypes;
+    dataType: DataTypes;
 
     /**
      * In Codat's data model, dates and times are represented using the <a class="external" href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:

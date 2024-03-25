@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AccountRef } from "./accountref";
 import { AccountsReceivableTracking } from "./accountsreceivabletracking";
-import { ItemRef } from "./itemref";
+import { PropertieItemRef } from "./propertieitemref";
 import { TaxRateRef } from "./taxrateref";
 import { TrackingCategoryRef } from "./trackingcategoryref";
 import { Expose, Type } from "class-transformer";
@@ -52,8 +52,8 @@ export class InvoiceLineItem extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "itemRef" })
-    @Type(() => ItemRef)
-    itemRef?: ItemRef;
+    @Type(() => PropertieItemRef)
+    itemRef?: PropertieItemRef;
 
     /**
      * Number of units of goods or services provided.
@@ -112,8 +112,6 @@ export class InvoiceLineItem extends SpeakeasyBase {
 
     /**
      * Reference to the tracking categories to which the line item is linked.
-     *
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @SpeakeasyMetadata({ elemType: TrackingCategoryRef })
     @Expose({ name: "trackingCategoryRefs" })
