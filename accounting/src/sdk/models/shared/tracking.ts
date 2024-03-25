@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { InvoiceTo } from "./invoiceto";
+import { TrackingRecordRef } from "./trackingrecordref";
 import { Expose, Type } from "class-transformer";
 
 /**
@@ -13,7 +13,7 @@ import { Expose, Type } from "class-transformer";
  *
  * For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
  */
-export class TrackingRecordReference extends SpeakeasyBase {
+export class RecordReference extends SpeakeasyBase {
     /**
      * Allowed name of the 'dataType'.
      */
@@ -39,11 +39,11 @@ export class Tracking extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "invoiceTo" })
-    @Type(() => TrackingRecordReference)
-    invoiceTo?: TrackingRecordReference;
+    @Type(() => RecordReference)
+    invoiceTo?: RecordReference;
 
-    @SpeakeasyMetadata({ elemType: InvoiceTo })
+    @SpeakeasyMetadata({ elemType: TrackingRecordRef })
     @Expose({ name: "recordRefs" })
-    @Type(() => InvoiceTo)
-    recordRefs: InvoiceTo[];
+    @Type(() => TrackingRecordRef)
+    recordRefs: TrackingRecordRef[];
 }

@@ -3,7 +3,7 @@
  */
 
 /**
- * Available Data types
+ * Available data types
  */
 export enum DataType {
     AccountTransactions = "accountTransactions",
@@ -21,6 +21,7 @@ export enum DataType {
     DirectCosts = "directCosts",
     DirectIncomes = "directIncomes",
     Invoices = "invoices",
+    ItemReceipts = "itemReceipts",
     Items = "items",
     JournalEntries = "journalEntries",
     Journals = "journals",

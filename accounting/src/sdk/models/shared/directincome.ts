@@ -5,8 +5,8 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { ContactRef } from "./contactref";
 import { DirectIncomeLineItem } from "./directincomelineitem";
-import { Items } from "./items";
 import { Metadata } from "./metadata";
+import { PaymentAllocationItems } from "./paymentallocationitems";
 import { SupplementalData } from "./supplementaldata";
 import { Expose, Type } from "class-transformer";
 
@@ -32,7 +32,7 @@ import { Expose, Type } from "class-transformer";
  */
 export class DirectIncome extends SpeakeasyBase {
     /**
-     * The customer or supplier for the transfer, if available.
+     * A customer or supplier associated with the direct cost.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "contactRef" })
@@ -82,6 +82,13 @@ export class DirectIncome extends SpeakeasyBase {
      * | **GBP**          | £20            | 1.277         | $25.54                     |
      * | **EUR**          | €20            | 1.134         | $22.68                     |
      * | **RUB**          | ₽20            | 0.015         | $0.30                      |
+     *
+     *
+     * ### Integration-specific details
+     *
+     * | Integration       | Scenario                                        | System behavior                                                                                                                                                      |
+     * |-------------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+     * | QuickBooks Online | Transaction currency differs from base currency | If currency rate value is left `null`, a rate of 1 will be used by QBO by default. To override this, include the required currency rate in the expense transaction.  |
      */
     @SpeakeasyMetadata()
     @Expose({ name: "currencyRate" })
@@ -145,10 +152,10 @@ export class DirectIncome extends SpeakeasyBase {
     @Expose({ name: "note" })
     note?: string;
 
-    @SpeakeasyMetadata({ elemType: Items })
+    @SpeakeasyMetadata({ elemType: PaymentAllocationItems })
     @Expose({ name: "paymentAllocations" })
-    @Type(() => Items)
-    paymentAllocations: Items[];
+    @Type(() => PaymentAllocationItems)
+    paymentAllocations: PaymentAllocationItems[];
 
     /**
      * User-friendly reference for the direct income.
