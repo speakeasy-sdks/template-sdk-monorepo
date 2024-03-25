@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 38d21dc9-6771-456d-8305-4621acb2f6e4
 management:
-  docChecksum: e7c8ef6c1f5a6d8e300f97e8fafd1b79
+  docChecksum: f36c872091f52c821333869eeb246c84
   docVersion: 3.0.0
-  speakeasyVersion: 1.209.3
-  generationVersion: 2.281.2
-  releaseVersion: 0.7.2
-  configChecksum: 3ef1d43bc30ba5b29072b2d354ece08f
+  speakeasyVersion: 1.221.0
+  generationVersion: 2.287.0
+  releaseVersion: 0.7.3
+  configChecksum: 148949ef6ff1038042d67202887de0ff
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   repoSubDirectory: lending
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
@@ -18,7 +18,7 @@ features:
     deprecations: 2.81.1
     examples: 2.81.3
     flattening: 2.81.1
-    globalSecurity: 2.82.4
+    globalSecurity: 2.82.5
     globalServerURLs: 2.82.2
     groups: 2.81.2
     inputOutputModels: 2.83.0
