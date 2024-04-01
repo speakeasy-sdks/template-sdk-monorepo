@@ -3,10 +3,10 @@ id: ef897581-6141-4d3b-8020-231752f2daa4
 management:
   docChecksum: d7c0b05a9f19e19d49f623e1fc440507
   docVersion: 3.0.0
-  speakeasyVersion: 1.221.0
-  generationVersion: 2.287.0
-  releaseVersion: 0.3.0
-  configChecksum: 8a0ba165e652aa3e6ec28338e9ae0f58
+  speakeasyVersion: 1.229.0
+  generationVersion: 2.292.0
+  releaseVersion: 0.4.0
+  configChecksum: 4912a75429b559800c9095be757cc477
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   repoSubDirectory: accounting
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/accounting
@@ -15,7 +15,7 @@ features:
   typescript:
     acceptHeaders: 2.81.1
     constsAndDefaults: 0.1.5
-    core: 3.6.3
+    core: 3.7.0
     decimal: 0.1.2
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -25,7 +25,7 @@ features:
     globalServerURLs: 2.82.4
     inputOutputModels: 2.82.0
     nameOverrides: 2.81.1
-    responseFormat: 0.2.2
+    responseFormat: 0.2.3
     retries: 2.83.0
 generatedFiles:
   - src/sdk/accounttransactions.ts

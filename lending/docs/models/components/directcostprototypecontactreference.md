@@ -1,0 +1,11 @@
+# DirectCostPrototypeContactReference
+
+A customer or supplier associated with the direct cost.
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `id`                                                                                             | *string*                                                                                         | :heavy_check_mark:                                                                               | Unique identifier for a customer or supplier.                                                    |
+| `dataType`                                                                                       | [components.DirectCostPrototypeDataType](../../models/components/directcostprototypedatatype.md) | :heavy_minus_sign:                                                                               | Allowed name of the 'dataType'.                                                                  |

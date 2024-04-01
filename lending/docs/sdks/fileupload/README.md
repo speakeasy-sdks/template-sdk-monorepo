@@ -7,49 +7,9 @@ Endpoints to manage uploaded files.
 
 ### Available Operations
 
-* [download](#download) - Download all files for a company
 * [listUploaded](#listuploaded) - List all files uploaded by a company
+* [download](#download) - Download all files for a company
 * [upload](#upload) - Upload files for a company
-
-## download
-
-The *Download files* endpoint downloads all files that have  been uploaded by to SMB to Codat. A `date` may be specified to download any files uploaded on the date provided.
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { DownloadFilesRequest } from "openapi/dist/sdk/models/operations";
-
-(async() => {
-  const sdk = new SDK({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-  });
-const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const date: string = "2022-10-23T00:00:00.000Z";
-
-  const res = await sdk.fileUpload.download(companyId, date);
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
-```
-
-### Parameters
-
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `date`                                                              | *string*                                                            | :heavy_minus_sign:                                                  | Only download files uploaded on this date.                          | 2022-10-23T00:00:00.000Z                                            |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
-| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
-
-
-### Response
-
-**Promise<[operations.DownloadFilesResponse](../../models/operations/downloadfilesresponse.md)>**
-
 
 ## listUploaded
 
@@ -58,36 +18,90 @@ const date: string = "2022-10-23T00:00:00.000Z";
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { ListFilesRequest } from "openapi/dist/sdk/models/operations";
+import { LendingTs } from "@speakeasy-sdks/lending";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new LendingTs({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
-  const res = await sdk.fileUpload.listUploaded(companyId);
+  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
+  
+  const result = await sdk.fileUpload.listUploaded(companyId);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
-| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `companyId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a company.                                                                                                                                               | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 
 ### Response
 
 **Promise<[operations.ListFilesResponse](../../models/operations/listfilesresponse.md)>**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
+## download
+
+The *Download files* endpoint downloads all files that have  been uploaded by to SMB to Codat. A `date` may be specified to download any files uploaded on the date provided.
+
+### Example Usage
+
+```typescript
+import { LendingTs } from "@speakeasy-sdks/lending";
+
+async function run() {
+  const sdk = new LendingTs({
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  });
+
+  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
+  const date = "2022-10-23T00:00:00Z";
+  
+  const result = await sdk.fileUpload.download(companyId, date);
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `companyId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a company.                                                                                                                                               | [object Object]                                                                                                                                                                |
+| `date`                                                                                                                                                                         | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Only download files uploaded on this date.                                                                                                                                     | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+
+### Response
+
+**Promise<[operations.DownloadFilesResponse](../../models/operations/downloadfilesresponse.md)>**
+### Errors
+
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## upload
 
@@ -102,40 +116,47 @@ Uploaded files must meet the following requirements:
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { UploadFilesRequest, UploadFilesRequestBody } from "openapi/dist/sdk/models/operations";
+import { LendingTs } from "@speakeasy-sdks/lending";
+import { openAsBlob } from "node:fs";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new LendingTs({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const requestBody: UploadFilesRequestBody = {
-  content: "F?SRSKG@^n" as bytes <<<>>>,
-  requestBody: "incubate",
-};
 
-  const res = await sdk.fileUpload.upload(companyId, connectionId, requestBody);
+  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
+  const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
+  const fileUpload = {
+    file: await openAsBlob("./sample-file"),
+  };
+  
+  const result = await sdk.fileUpload.upload(companyId, connectionId, fileUpload);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `companyId`                                                                            | *string*                                                                               | :heavy_check_mark:                                                                     | Unique identifier for a company.                                                       | 8a210b68-6988-11ed-a1eb-0242ac120002                                                   |
-| `connectionId`                                                                         | *string*                                                                               | :heavy_check_mark:                                                                     | Unique identifier for a connection.                                                    | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                   |
-| `requestBody`                                                                          | [operations.UploadFilesRequestBody](../../models/operations/uploadfilesrequestbody.md) | :heavy_minus_sign:                                                                     | N/A                                                                                    |                                                                                        |
-| `retries`                                                                              | [utils.RetryConfig](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |                                                                                        |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |                                                                                        |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `companyId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a company.                                                                                                                                               | [object Object]                                                                                                                                                                |
+| `connectionId`                                                                                                                                                                 | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a connection.                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `fileUpload`                                                                                                                                                                   | [components.FileUpload](../../models/components/fileupload.md)                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 
 ### Response
 
 **Promise<[operations.UploadFilesResponse](../../models/operations/uploadfilesresponse.md)>**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

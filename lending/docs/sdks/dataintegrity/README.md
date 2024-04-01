@@ -7,54 +7,9 @@ Match mutable accounting data with immutable banking data to increase confidence
 
 ### Available Operations
 
-* [details](#details) - List data integrity details
 * [status](#status) - Get data integrity status
 * [summaries](#summaries) - Get data integrity summaries
-
-## details
-
-The *List data integrity details* endpoint returns the match result record by record for a given data type, filtered based on a query string in the same way as summary results.
-
-The [details](https://docs.codat.io/lending-api#/schemas/DataIntegrityDetails) are paginated and support ordering, following the same conventions as our other data endpoints.
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { DataIntegrityDataType } from "openapi/dist/sdk/models/shared";
-
-(async() => {
-  const sdk = new SDK({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-  });
-
-  const res = await sdk.dataIntegrity.details({
-    companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
-    dataType: DataIntegrityDataType.BankingAccounts,
-    orderBy: "-modifiedDate",
-    page: 1,
-    pageSize: 100,
-  });
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
-```
-
-### Parameters
-
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                | [operations.ListDataIntegrityDetailsRequest](../../models/operations/listdataintegritydetailsrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
-| `retries`                                                                                                | [utils.RetryConfig](../../models/utils/retryconfig.md)                                                   | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
-| `config`                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                             | :heavy_minus_sign:                                                                                       | Available config options for making requests.                                                            |
-
-
-### Response
-
-**Promise<[operations.ListDataIntegrityDetailsResponse](../../models/operations/listdataintegritydetailsresponse.md)>**
-
+* [details](#details) - List data integrity details
 
 ## status
 
@@ -70,39 +25,46 @@ The response tells you:
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetDataIntegrityStatusRequest } from "openapi/dist/sdk/models/operations";
-import { DataIntegrityDataType } from "openapi/dist/sdk/models/shared";
+import { LendingTs } from "@speakeasy-sdks/lending";
+import { DataIntegrityDataType } from "@speakeasy-sdks/lending/models/components";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new LendingTs({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const dataType: DataIntegrityDataType = DataIntegrityDataType.BankingAccounts;
 
-  const res = await sdk.dataIntegrity.status(companyId, dataType);
+  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
+  const dataType = DataIntegrityDataType.BankingAccounts;
+  
+  const result = await sdk.dataIntegrity.status(companyId, dataType);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `companyId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | Unique identifier for a company.                                             | 8a210b68-6988-11ed-a1eb-0242ac120002                                         |
-| `dataType`                                                                   | [shared.DataIntegrityDataType](../../models/shared/dataintegritydatatype.md) | :heavy_check_mark:                                                           | A key for a Codat data type.                                                 | banking-accounts                                                             |
-| `retries`                                                                    | [utils.RetryConfig](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                           | Configuration to override the default retry behavior of the client.          |                                                                              |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |                                                                              |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `companyId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a company.                                                                                                                                               | [object Object]                                                                                                                                                                |
+| `dataType`                                                                                                                                                                     | [components.DataIntegrityDataType](../../models/components/dataintegritydatatype.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | A key for a Codat data type.                                                                                                                                                   | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 
 ### Response
 
 **Promise<[operations.GetDataIntegrityStatusResponse](../../models/operations/getdataintegritystatusresponse.md)>**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## summaries
 
@@ -115,38 +77,97 @@ The endpoint response includes only the summary results, not transactions. To vi
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { GetDataIntegritySummariesRequest } from "openapi/dist/sdk/models/operations";
-import { DataIntegrityDataType } from "openapi/dist/sdk/models/shared";
+import { LendingTs } from "@speakeasy-sdks/lending";
+import { DataIntegrityDataType } from "@speakeasy-sdks/lending/models/components";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new LendingTs({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const dataType: DataIntegrityDataType = DataIntegrityDataType.BankingAccounts;
-const query: string = "Country";
 
-  const res = await sdk.dataIntegrity.summaries(companyId, dataType, query);
+  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
+  const dataType = DataIntegrityDataType.BankingAccounts;
+  const query = "<value>";
+  
+  const result = await sdk.dataIntegrity.summaries(companyId, dataType, query);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `companyId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | Unique identifier for a company.                                               | 8a210b68-6988-11ed-a1eb-0242ac120002                                           |
-| `dataType`                                                                     | [shared.DataIntegrityDataType](../../models/shared/dataintegritydatatype.md)   | :heavy_check_mark:                                                             | A key for a Codat data type.                                                   | banking-accounts                                                               |
-| `query`                                                                        | *string*                                                                       | :heavy_minus_sign:                                                             | Codat query string. [Read more](https://docs.codat.io/using-the-api/querying). |                                                                                |
-| `retries`                                                                      | [utils.RetryConfig](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                             | Configuration to override the default retry behavior of the client.            |                                                                                |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |                                                                                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `companyId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a company.                                                                                                                                               | [object Object]                                                                                                                                                                |
+| `dataType`                                                                                                                                                                     | [components.DataIntegrityDataType](../../models/components/dataintegritydatatype.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | A key for a Codat data type.                                                                                                                                                   | [object Object]                                                                                                                                                                |
+| `query`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Codat query string. [Read more](https://docs.codat.io/using-the-api/querying).                                                                                                 |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 
 ### Response
 
 **Promise<[operations.GetDataIntegritySummariesResponse](../../models/operations/getdataintegritysummariesresponse.md)>**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
+## details
+
+The *List data integrity details* endpoint returns the match result record by record for a given data type, filtered based on a query string in the same way as summary results.
+
+The [details](https://docs.codat.io/lending-api#/schemas/DataIntegrityDetails) are paginated and support ordering, following the same conventions as our other data endpoints.
+
+### Example Usage
+
+```typescript
+import { LendingTs } from "@speakeasy-sdks/lending";
+import { DataIntegrityDataType } from "@speakeasy-sdks/lending/models/components";
+
+async function run() {
+  const sdk = new LendingTs({
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  });
+
+  const result = await sdk.dataIntegrity.details({
+    companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
+    dataType: DataIntegrityDataType.BankingAccounts,
+    page: 1,
+    pageSize: 100,
+    orderBy: "-modifiedDate",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListDataIntegrityDetailsRequest](../../models/operations/listdataintegritydetailsrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise<[operations.ListDataIntegrityDetailsResponse](../../models/operations/listdataintegritydetailsresponse.md)>**
+### Errors
+
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

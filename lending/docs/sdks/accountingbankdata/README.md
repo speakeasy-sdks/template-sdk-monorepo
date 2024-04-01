@@ -23,38 +23,45 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { LendingTs } from "@speakeasy-sdks/lending";
 
-(async() => {
-  const sdk = new SDK({
+async function run() {
+  const sdk = new LendingTs({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
-  const res = await sdk.accountingBankData.listTransactions({
-    accountId: "back",
+  const result = await sdk.accountingBankData.listTransactions({
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    orderBy: "-modifiedDate",
+    accountId: "<value>",
     page: 1,
     pageSize: 100,
+    orderBy: "-modifiedDate",
   });
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                          | [operations.ListAccountingBankAccountTransactionsRequest](../../models/operations/listaccountingbankaccounttransactionsrequest.md) | :heavy_check_mark:                                                                                                                 | The request object to use for the request.                                                                                         |
-| `retries`                                                                                                                          | [utils.RetryConfig](../../models/utils/retryconfig.md)                                                                             | :heavy_minus_sign:                                                                                                                 | Configuration to override the default retry behavior of the client.                                                                |
-| `config`                                                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                       | :heavy_minus_sign:                                                                                                                 | Available config options for making requests.                                                                                      |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListAccountingBankAccountTransactionsRequest](../../models/operations/listaccountingbankaccounttransactionsrequest.md)                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
 **Promise<[operations.ListAccountingBankAccountTransactionsResponse](../../models/operations/listaccountingbankaccounttransactionsresponse.md)>**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |
