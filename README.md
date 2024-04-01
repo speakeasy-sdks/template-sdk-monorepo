@@ -18,11 +18,9 @@ Each SDK is housed in its own subfolders and have independent github workflows t
 
 ```yaml
 .github/workflows/ #This is standards github notation for storing workflow files on Github
- - accounting_generate.yaml #This file controls generation of the accounting SDK on Github
- - accounting_release.yaml #This file controls release and publishing of the accounting SDK on Github
- - lending_generate.yaml #This file controls generation of the lending SDK on Github
- - lending_release.yaml #This file controls release and publishing of the lending SDK on Github
+ - sdk_generation.yaml # This controls execution of the speakeasy generation workflow file. Automatically created by speakeasy
 .speakeasy/workflows
+ - workflow.yaml # This is the speakeasy workflow file that indicates what sources to use and targets to generate
  accounting # This folder houses the accounting SDK
  - gen.yaml # Generation config for the accounting SDK
  lending # This folder houses the lending SDK
@@ -33,6 +31,11 @@ This structure can be extrapoloated to N number of SDKs.
 
 ### Creating a Monorepo of SDKs
 
+To create this repo for yourself you can either clone and fork the repository or follow the interactive commands with `speakeasy quickstart`, `speakeasy configure sources` and `speaekasy configure targets` to achieve a similar outcome.
+
+Once you have the repo setup you run `speakeasy run` to (re)generate the SDK: 
+
+![CleanShot 2024-04-01 at 09 34 13@2x](https://github.com/speakeasy-sdks/template-sdk-monorepo/assets/68016351/a1c59329-77f7-4fbd-b928-f2ab89d6b37a)
 
 🚀 You should have a working SDK for your API 🙂 . To check out all the features of the SDK please see our docs [site](https://speakeasyapi.dev/docs/create-client-sdks/).
 
