@@ -65,4 +65,4 @@ servers:
     x-speakeasy-server-id: sandbox
 ```
 
-Once you're finished iterating and happy with the output push only the latest version of spec into the repo and regenerate the SDK using step 5 above.
+Once you're finished iterating and happy with the output push only the latest version of spec into the repo and regenerate the SDK using `speakeasy run`.
