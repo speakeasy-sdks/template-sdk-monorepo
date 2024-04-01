@@ -1,32 +1,36 @@
-configVersion: 1.0.0
-management:
-  docChecksum: 2a25d9ffe55557de652267e3ec5f5529
-  docVersion: 3.0.0
-  speakeasyVersion: 1.102.0
-  generationVersion: 2.166.0
+configVersion: 2.0.0
 generation:
-  repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   sdkClassName: accounting
-  singleTagPerOp: false
+  usageSnippets:
+    optionalPropertyRendering: withExample
+  fixes:
+    nameResolutionDec2023: false
+    parameterOrderingFeb2024: false
+    requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
   telemetryEnabled: true
-features:
-  typescript:
-    acceptHeaders: 2.81.1
-    core: 2.92.4
-    deprecations: 2.81.1
-    examples: 2.81.3
-    flattening: 2.81.1
-    globalSecurity: 2.82.0
-    globalServerURLs: 2.82.0
-    nameOverrides: 2.81.1
-    retries: 2.82.1
 typescript:
-  version: 0.2.0
+  version: 0.3.0
+  additionalDependencies:
+    dependencies: {}
+    devDependencies: {}
+    peerDependencies: {}
   author: Accounting
+  clientServerStatusCodesAsErrors: false
   description: Access the Accounting API
   flattenGlobalSecurity: true
-  installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/accounting
+  imports:
+    option: openapi
+    paths:
+      callbacks: sdk/models/callbacks
+      errors: sdk/models/errors
+      operations: sdk/models/operations
+      shared: sdk/models/shared
+      webhooks: sdk/models/webhooks
+  inputModelSuffix: input
   maxMethodParams: 4
+  outputModelSuffix: output
   packageName: '@speakeasy-sdks/accounting'
-  published: true
-  repoSubDirectory: accounting
+  responseFormat: envelope
+  templateVersion: v2

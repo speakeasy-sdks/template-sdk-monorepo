@@ -1,0 +1,13 @@
+workflowVersion: 1.0.0
+sources:
+    my-source:
+        inputs:
+            - location: https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Accounting.yaml
+targets:
+    monorepo-sdks:
+        target: typescript
+        source: my-source
+        output: ./accounting
+        publish:
+            npm:
+                token: $NPM_TOKEN

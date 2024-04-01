@@ -31,138 +31,264 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { CreateBillCreditNoteRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
-import {
-  AccountingCustomerRef,
-  AccountRef,
-  BillCreditNote,
-  BillCreditNoteLineItem,
-  BillCreditNoteLineItemTracking,
-  BillCreditNoteStatus,
-  BilledToType,
-  ItemRef,
-  Items,
-  ItemsAllocation,
-  Metadata,
-  PaymentAllocationPayment,
-  ProjectRef,
-  SupplementalData,
-  SupplierRef,
-  TaxRateRef,
-  TrackingCategoryRef,
-  WithholdingTaxitems,
-} from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
+import { BillCreditNoteStatus, BilledToType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+import { Decimal } from "@speakeasy-sdks/accounting/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const billCreditNote: BillCreditNote = {
-  allocatedOnDate: "2022-10-23T00:00:00.000Z",
-  billCreditNoteNumber: "91fe2a83-e161-4c21-929d-c5c10c4b07e5",
-  currency: "USD",
-  discountPercentage: 0,
-  id: "1509398f-98e2-436d-8a5d-c042e0c74ffc",
-  issueDate: "2022-10-23T00:00:00.000Z",
-  lineItems: [
-    {
-      accountRef: {},
-      itemRef: {
-        id: "<ID>",
+
+  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
+  const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
+  const billCreditNote = {
+    allocatedOnDate: "2022-10-23T00:00:00Z",
+    billCreditNoteNumber: "14763237",
+    createdFromRefs: [
+      {
+        dataType: "invoice",
       },
-      quantity: 8592.13,
-      taxRateRef: {},
-      tracking: {
-        categoryRefs: [
+    ],
+    currency: "USD",
+    discountPercentage: new Decimal("0"),
+    id: "6a0e9dfb-87b0-47d3-aaaf-9753ae9e757d",
+    issueDate: "2019-02-18T16:03:07.268Z",
+    lineItems: [
+      {
+        accountRef: {
+          id: "3f267b10-757d-44c0-bef9-20f70cc8fbe3",
+        },
+        createdFromLineRef: {},
+        description: "AcmeMagnet",
+        discountAmount: new Decimal("0"),
+        itemRef: {
+          id: "3",
+        },
+        quantity: new Decimal("4"),
+        subTotal: new Decimal("100"),
+        taxAmount: new Decimal("10"),
+        taxRateRef: {
+          id: "6c88aff3-7cb9-4980-a3d3-443e72e02498",
+        },
+        totalAmount: new Decimal("110"),
+        tracking: {
+          categoryRefs: [
+            {
+              id: "<id>",
+            },
+          ],
+          customerRef: {
+            id: "<id>",
+          },
+          isBilledTo: BilledToType.Customer,
+          isRebilledTo: BilledToType.Project,
+          projectRef: {
+            id: "<id>",
+          },
+        },
+        trackingCategoryRefs: [
           {
-            id: "<ID>",
+            id: "department_1",
+            name: "ACMERockets",
+          },
+          {
+            id: "costcode_2",
+            name: "ACM2-ACMESigns",
           },
         ],
-        customerRef: {
-          id: "<ID>",
+        unitAmount: new Decimal("25"),
+      },
+      {
+        accountRef: {
+          id: "3f267b10-757d-44c0-bef9-20f70cc8fbe3",
         },
-        isBilledTo: BilledToType.NotApplicable,
-        isRebilledTo: BilledToType.NotApplicable,
-        projectRef: {
-          id: "<ID>",
+        createdFromLineRef: {},
+        description: "ACMEDisintegratingPistol",
+        discountAmount: new Decimal("0"),
+        itemRef: {
+          id: "3abf0883-03f7-44c6-bc15-1372522d25e1",
+        },
+        quantity: new Decimal("3"),
+        subTotal: new Decimal("75"),
+        taxAmount: new Decimal("7.5"),
+        taxRateRef: {
+          id: "6c88aff3-7cb9-4980-a3d3-443e72e02498",
+        },
+        totalAmount: new Decimal("82.5"),
+        tracking: {
+          categoryRefs: [
+            {
+              id: "<id>",
+            },
+          ],
+          customerRef: {
+            id: "<id>",
+          },
+          isBilledTo: BilledToType.NotApplicable,
+          isRebilledTo: BilledToType.NotApplicable,
+          projectRef: {
+            id: "<id>",
+          },
+        },
+        trackingCategoryRefs: [
+          {
+            id: "<id>",
+          },
+        ],
+        unitAmount: new Decimal("25"),
+      },
+      {
+        accountRef: {
+          id: "3f267b10-757d-44c0-bef9-20f70cc8fbe3",
+        },
+        createdFromLineRef: {},
+        description: "ACMEWhippedCreamDispenser",
+        discountAmount: new Decimal("0"),
+        itemRef: {
+          id: "3691f3d9-0ff7-4358-8a93-bed31c1b4b03",
+        },
+        quantity: new Decimal("6"),
+        subTotal: new Decimal("312"),
+        taxAmount: new Decimal("31.2"),
+        taxRateRef: {
+          id: "6c88aff3-7cb9-4980-a3d3-443e72e02498",
+        },
+        totalAmount: new Decimal("343.2"),
+        tracking: {
+          categoryRefs: [
+            {
+              id: "<id>",
+            },
+          ],
+          customerRef: {
+            id: "<id>",
+          },
+          isBilledTo: BilledToType.Unknown,
+          isRebilledTo: BilledToType.Project,
+          projectRef: {
+            id: "<id>",
+          },
+        },
+        trackingCategoryRefs: [
+          {
+            id: "<id>",
+          },
+        ],
+        unitAmount: new Decimal("52"),
+      },
+      {
+        accountRef: {
+          id: "3f267b10-757d-44c0-bef9-20f70cc8fbe3",
+        },
+        createdFromLineRef: {},
+        description: "ACMEJetPropelledPogoStick",
+        discountAmount: new Decimal("0"),
+        itemRef: {
+          id: "075410d4-7edc-4936-ba52-9e1e43cbe300",
+        },
+        quantity: new Decimal("1"),
+        subTotal: new Decimal("130"),
+        taxAmount: new Decimal("27.3"),
+        taxRateRef: {
+          id: "d606732b-db18-44d7-823b-7f15f42c32ea",
+        },
+        totalAmount: new Decimal("157.3"),
+        tracking: {
+          categoryRefs: [
+            {
+              id: "<id>",
+            },
+          ],
+          customerRef: {
+            id: "<id>",
+          },
+          isBilledTo: BilledToType.Unknown,
+          isRebilledTo: BilledToType.Project,
+          projectRef: {
+            id: "<id>",
+          },
+        },
+        trackingCategoryRefs: [
+          {
+            id: "<id>",
+          },
+        ],
+        unitAmount: new Decimal("130"),
+      },
+    ],
+    metadata: {},
+    modifiedDate: "2022-10-23T00:00:00Z",
+    note: "Track separately",
+    paymentAllocations: [
+      {
+        allocation: {
+          allocatedOnDate: "2022-10-23T00:00:00Z",
+          currency: "EUR",
+        },
+        payment: {
+          accountRef: {},
+          currency: "EUR",
+          paidOnDate: "2022-10-23T00:00:00Z",
         },
       },
-      trackingCategoryRefs: [
-        {
-          id: "<ID>",
+    ],
+    remainingCredit: new Decimal("693"),
+    sourceModifiedDate: "2022-10-23T00:00:00Z",
+    status: BillCreditNoteStatus.Submitted,
+    subTotal: new Decimal("805.78"),
+    supplementalData: {
+      content: {
+        "key": {
+          "key": "<value>",
         },
-      ],
-      unitAmount: 1343.65,
-    },
-  ],
-  metadata: {},
-  modifiedDate: "2022-10-23T00:00:00.000Z",
-  note: "Bill Credit Note with 1 line items, totaling 805.78",
-  paymentAllocations: [
-    {
-      allocation: {
-        allocatedOnDate: "2022-10-23T00:00:00.000Z",
-        currency: "EUR",
-      },
-      payment: {
-        accountRef: {},
-        currency: "EUR",
-        paidOnDate: "2022-10-23T00:00:00.000Z",
       },
     },
-  ],
-  remainingCredit: 0,
-  sourceModifiedDate: "2022-10-23T00:00:00.000Z",
-  status: BillCreditNoteStatus.Paid,
-  subTotal: 805.78,
-  supplementalData: {
-    content: {
-      "abnormally": {
-        "deposit": "evolve",
+    supplierRef: {
+      id: "67C6A7A1-5E84-4AC4-B950-24A114E379D0",
+      supplierName: "Chin's Gas and Oil",
+    },
+    totalAmount: new Decimal("693"),
+    totalDiscount: new Decimal("0"),
+    totalTaxAmount: new Decimal("0"),
+    withholdingTax: [
+      {
+        amount: new Decimal("1697.27"),
+        name: "<value>",
       },
-    },
-  },
-  supplierRef: {
-    id: "<ID>",
-  },
-  totalAmount: 805.78,
-  totalDiscount: 0,
-  totalTaxAmount: 0,
-  withholdingTax: [
-    {
-      amount: 7150.4,
-      name: "fuchsia",
-    },
-  ],
-};
-const timeoutInMinutes: number = 816588;
+    ],
+  };
+  const timeoutInMinutes = 301510;
+  
+  const result = await sdk.billCreditNotes.create(companyId, connectionId, billCreditNote, timeoutInMinutes);
 
-  const res = await sdk.billCreditNotes.create(companyId, connectionId, billCreditNote, timeoutInMinutes);
+  // Handle the result
+  console.log(result)
+}
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `companyId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a company.                                      | 8a210b68-6988-11ed-a1eb-0242ac120002                                  |
-| `connectionId`                                                        | *string*                                                              | :heavy_check_mark:                                                    | Unique identifier for a connection.                                   | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                  |
-| `billCreditNote`                                                      | [shared.BillCreditNote](../../models/shared/billcreditnote.md)        | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
-| `timeoutInMinutes`                                                    | *number*                                                              | :heavy_minus_sign:                                                    | Time limit for the push operation to complete before it is timed out. |                                                                       |
-| `retries`                                                             | [utils.RetryConfig](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
-| `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |                                                                       |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `companyId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a company.                                                                                                                                               | [object Object]                                                                                                                                                                |
+| `connectionId`                                                                                                                                                                 | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a connection.                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `billCreditNote`                                                                                                                                                               | [shared.BillCreditNote](../../sdk/models/shared/billcreditnote.md)                                                                                                             | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `timeoutInMinutes`                                                                                                                                                             | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Time limit for the push operation to complete before it is timed out.                                                                                                          |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 
 ### Response
 
-**Promise<[operations.CreateBillCreditNoteResponse](../../models/operations/createbillcreditnoteresponse.md)>**
+**Promise<[operations.CreateBillCreditNoteResponse](../../sdk/models/operations/createbillcreditnoteresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## get
 
@@ -179,37 +305,43 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { GetBillCreditNoteRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const billCreditNoteId: string = "female";
-const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
 
-  const res = await sdk.billCreditNotes.get(billCreditNoteId, companyId);
+  const billCreditNoteId = "<value>";
+  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
+  
+  const result = await sdk.billCreditNotes.get(billCreditNoteId, companyId);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `billCreditNoteId`                                                  | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a bill credit note.                           |                                                                     |
-| `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
-| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `billCreditNoteId`                                                                                                                                                             | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a bill credit note.                                                                                                                                      |                                                                                                                                                                                |
+| `companyId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a company.                                                                                                                                               | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 
 ### Response
 
-**Promise<[operations.GetBillCreditNoteResponse](../../models/operations/getbillcreditnoteresponse.md)>**
+**Promise<[operations.GetBillCreditNoteResponse](../../sdk/models/operations/getbillcreditnoteresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getCreateUpdateModel
 
@@ -228,37 +360,43 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { GetCreateUpdateBillCreditNotesModelRequest } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
 
-  const res = await sdk.billCreditNotes.getCreateUpdateModel(companyId, connectionId);
+  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
+  const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
+  
+  const result = await sdk.billCreditNotes.getCreateUpdateModel(companyId, connectionId);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `companyId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a company.                                    | 8a210b68-6988-11ed-a1eb-0242ac120002                                |
-| `connectionId`                                                      | *string*                                                            | :heavy_check_mark:                                                  | Unique identifier for a connection.                                 | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
-| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |                                                                     |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `companyId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a company.                                                                                                                                               | [object Object]                                                                                                                                                                |
+| `connectionId`                                                                                                                                                                 | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a connection.                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 
 ### Response
 
-**Promise<[operations.GetCreateUpdateBillCreditNotesModelResponse](../../models/operations/getcreateupdatebillcreditnotesmodelresponse.md)>**
+**Promise<[operations.GetCreateUpdateBillCreditNotesModelResponse](../../sdk/models/operations/getcreateupdatebillcreditnotesmodelresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## list
 
@@ -274,37 +412,43 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
-  const res = await sdk.billCreditNotes.list({
+  const result = await sdk.billCreditNotes.list({
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     orderBy: "-modifiedDate",
     page: 1,
     pageSize: 100,
   });
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request`                                                                                      | [operations.ListBillCreditNotesRequest](../../models/operations/listbillcreditnotesrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `retries`                                                                                      | [utils.RetryConfig](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListBillCreditNotesRequest](../../sdk/models/operations/listbillcreditnotesrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise<[operations.ListBillCreditNotesResponse](../../models/operations/listbillcreditnotesresponse.md)>**
+**Promise<[operations.ListBillCreditNotesResponse](../../sdk/models/operations/listbillcreditnotesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update
 
@@ -323,116 +467,261 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { BillCreditNoteStatus, BilledToType } from "@speakeasy-sdks/accounting/dist/sdk/models/shared";
+import { BillCreditNoteStatus, BilledToType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+import { Decimal } from "@speakeasy-sdks/accounting/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
 
-  const res = await sdk.billCreditNotes.update({
+  const result = await sdk.billCreditNotes.update({
     billCreditNote: {
-      allocatedOnDate: "2022-10-23T00:00:00.000Z",
-      billCreditNoteNumber: "91fe2a83-e161-4c21-929d-c5c10c4b07e5",
-      currency: "GBP",
-      discountPercentage: 0,
-      id: "1509398f-98e2-436d-8a5d-c042e0c74ffc",
-      issueDate: "2022-10-23T00:00:00.000Z",
+      allocatedOnDate: "2022-10-23T00:00:00Z",
+      billCreditNoteNumber: "14763237",
+      createdFromRefs: [
+        {
+          dataType: "journalEntry",
+        },
+      ],
+      currency: "USD",
+      discountPercentage: new Decimal("0"),
+      id: "6a0e9dfb-87b0-47d3-aaaf-9753ae9e757d",
+      issueDate: "2019-02-18T16:03:07.268Z",
       lineItems: [
         {
-          accountRef: {},
-          itemRef: {
-            id: "<ID>",
+          accountRef: {
+            id: "3f267b10-757d-44c0-bef9-20f70cc8fbe3",
           },
-          quantity: 156.52,
-          taxRateRef: {},
+          createdFromLineRef: {},
+          description: "AcmeMagnet",
+          discountAmount: new Decimal("0"),
+          itemRef: {
+            id: "3",
+          },
+          quantity: new Decimal("4"),
+          subTotal: new Decimal("100"),
+          taxAmount: new Decimal("10"),
+          taxRateRef: {
+            id: "6c88aff3-7cb9-4980-a3d3-443e72e02498",
+          },
+          totalAmount: new Decimal("110"),
           tracking: {
             categoryRefs: [
               {
-                id: "<ID>",
+                id: "<id>",
               },
             ],
             customerRef: {
-              id: "<ID>",
+              id: "<id>",
             },
-            isBilledTo: BilledToType.NotApplicable,
-            isRebilledTo: BilledToType.Customer,
+            isBilledTo: BilledToType.Customer,
+            isRebilledTo: BilledToType.Unknown,
             projectRef: {
-              id: "<ID>",
+              id: "<id>",
             },
           },
           trackingCategoryRefs: [
             {
-              id: "<ID>",
+              id: "department_1",
+              name: "ACMERockets",
+            },
+            {
+              id: "costcode_2",
+              name: "ACM2-ACMESigns",
             },
           ],
-          unitAmount: 9914.64,
+          unitAmount: new Decimal("25"),
+        },
+        {
+          accountRef: {
+            id: "3f267b10-757d-44c0-bef9-20f70cc8fbe3",
+          },
+          createdFromLineRef: {},
+          description: "ACMEDisintegratingPistol",
+          discountAmount: new Decimal("0"),
+          itemRef: {
+            id: "3abf0883-03f7-44c6-bc15-1372522d25e1",
+          },
+          quantity: new Decimal("3"),
+          subTotal: new Decimal("75"),
+          taxAmount: new Decimal("7.5"),
+          taxRateRef: {
+            id: "6c88aff3-7cb9-4980-a3d3-443e72e02498",
+          },
+          totalAmount: new Decimal("82.5"),
+          tracking: {
+            categoryRefs: [
+              {
+                id: "<id>",
+              },
+            ],
+            customerRef: {
+              id: "<id>",
+            },
+            isBilledTo: BilledToType.NotApplicable,
+            isRebilledTo: BilledToType.Customer,
+            projectRef: {
+              id: "<id>",
+            },
+          },
+          trackingCategoryRefs: [
+            {
+              id: "<id>",
+            },
+          ],
+          unitAmount: new Decimal("25"),
+        },
+        {
+          accountRef: {
+            id: "3f267b10-757d-44c0-bef9-20f70cc8fbe3",
+          },
+          createdFromLineRef: {},
+          description: "ACMEWhippedCreamDispenser",
+          discountAmount: new Decimal("0"),
+          itemRef: {
+            id: "3691f3d9-0ff7-4358-8a93-bed31c1b4b03",
+          },
+          quantity: new Decimal("6"),
+          subTotal: new Decimal("312"),
+          taxAmount: new Decimal("31.2"),
+          taxRateRef: {
+            id: "6c88aff3-7cb9-4980-a3d3-443e72e02498",
+          },
+          totalAmount: new Decimal("343.2"),
+          tracking: {
+            categoryRefs: [
+              {
+                id: "<id>",
+              },
+            ],
+            customerRef: {
+              id: "<id>",
+            },
+            isBilledTo: BilledToType.Project,
+            isRebilledTo: BilledToType.NotApplicable,
+            projectRef: {
+              id: "<id>",
+            },
+          },
+          trackingCategoryRefs: [
+            {
+              id: "<id>",
+            },
+          ],
+          unitAmount: new Decimal("52"),
+        },
+        {
+          accountRef: {
+            id: "3f267b10-757d-44c0-bef9-20f70cc8fbe3",
+          },
+          createdFromLineRef: {},
+          description: "ACMEJetPropelledPogoStick",
+          discountAmount: new Decimal("0"),
+          itemRef: {
+            id: "075410d4-7edc-4936-ba52-9e1e43cbe300",
+          },
+          quantity: new Decimal("1"),
+          subTotal: new Decimal("130"),
+          taxAmount: new Decimal("27.3"),
+          taxRateRef: {
+            id: "d606732b-db18-44d7-823b-7f15f42c32ea",
+          },
+          totalAmount: new Decimal("157.3"),
+          tracking: {
+            categoryRefs: [
+              {
+                id: "<id>",
+              },
+            ],
+            customerRef: {
+              id: "<id>",
+            },
+            isBilledTo: BilledToType.Customer,
+            isRebilledTo: BilledToType.Customer,
+            projectRef: {
+              id: "<id>",
+            },
+          },
+          trackingCategoryRefs: [
+            {
+              id: "<id>",
+            },
+          ],
+          unitAmount: new Decimal("130"),
         },
       ],
       metadata: {},
-      modifiedDate: "2022-10-23T00:00:00.000Z",
-      note: "Bill Credit Note with 1 line items, totaling 805.78",
+      modifiedDate: "2022-10-23T00:00:00Z",
+      note: "Track separately",
       paymentAllocations: [
         {
           allocation: {
-            allocatedOnDate: "2022-10-23T00:00:00.000Z",
+            allocatedOnDate: "2022-10-23T00:00:00Z",
             currency: "EUR",
           },
           payment: {
             accountRef: {},
-            currency: "USD",
-            paidOnDate: "2022-10-23T00:00:00.000Z",
+            currency: "GBP",
+            paidOnDate: "2022-10-23T00:00:00Z",
           },
         },
       ],
-      remainingCredit: 0,
-      sourceModifiedDate: "2022-10-23T00:00:00.000Z",
-      status: BillCreditNoteStatus.Paid,
-      subTotal: 805.78,
+      remainingCredit: new Decimal("693"),
+      sourceModifiedDate: "2022-10-23T00:00:00Z",
+      status: BillCreditNoteStatus.Submitted,
+      subTotal: new Decimal("805.78"),
       supplementalData: {
         content: {
-          "Arizona": {
-            "Cotton": "extend",
+          "key": {
+            "key": "<value>",
           },
         },
       },
       supplierRef: {
-        id: "<ID>",
+        id: "67C6A7A1-5E84-4AC4-B950-24A114E379D0",
+        supplierName: "Chin's Gas and Oil",
       },
-      totalAmount: 805.78,
-      totalDiscount: 0,
-      totalTaxAmount: 0,
+      totalAmount: new Decimal("693"),
+      totalDiscount: new Decimal("0"),
+      totalTaxAmount: new Decimal("0"),
       withholdingTax: [
         {
-          amount: 2494.4,
-          name: "bifurcated",
+          amount: new Decimal("8965.01"),
+          name: "<value>",
         },
       ],
     },
-    billCreditNoteId: "Forward",
+    billCreditNoteId: "<value>",
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   });
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [operations.UpdateBillCreditNoteRequest](../../models/operations/updatebillcreditnoterequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `retries`                                                                                        | [utils.RetryConfig](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdateBillCreditNoteRequest](../../sdk/models/operations/updatebillcreditnoterequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise<[operations.UpdateBillCreditNoteResponse](../../models/operations/updatebillcreditnoteresponse.md)>**
+**Promise<[operations.UpdateBillCreditNoteResponse](../../sdk/models/operations/updatebillcreditnoteresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## uploadAttachment
 
@@ -455,41 +744,47 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { UploadBillCreditNoteAttachmentRequest, UploadBillCreditNoteAttachmentRequestBody } from "@speakeasy-sdks/accounting/dist/sdk/models/operations";
+import { openAsBlob } from "node:fs";
 
-(async() => {
+async function run() {
   const sdk = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
   });
-const billCreditNoteId: string = "huzzah";
-const companyId: string = "8a210b68-6988-11ed-a1eb-0242ac120002";
-const connectionId: string = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-const requestBody: UploadBillCreditNoteAttachmentRequestBody = {
-  content: "ghW&IC$xd6" as bytes <<<>>>,
-  requestBody: "novel",
-};
 
-  const res = await sdk.billCreditNotes.uploadAttachment(billCreditNoteId, companyId, connectionId, requestBody);
+  const billCreditNoteId = "<value>";
+  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
+  const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
+  const attachmentUpload = {
+    file: await openAsBlob("./sample-file"),
+  };
+  
+  const result = await sdk.billCreditNotes.uploadAttachment(billCreditNoteId, companyId, connectionId, attachmentUpload);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  | Example                                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `billCreditNoteId`                                                                                                           | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | Unique identifier for a bill credit note.                                                                                    |                                                                                                                              |
-| `companyId`                                                                                                                  | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | Unique identifier for a company.                                                                                             | 8a210b68-6988-11ed-a1eb-0242ac120002                                                                                         |
-| `connectionId`                                                                                                               | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | Unique identifier for a connection.                                                                                          | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                                                                         |
-| `requestBody`                                                                                                                | [operations.UploadBillCreditNoteAttachmentRequestBody](../../models/operations/uploadbillcreditnoteattachmentrequestbody.md) | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |                                                                                                                              |
-| `retries`                                                                                                                    | [utils.RetryConfig](../../models/utils/retryconfig.md)                                                                       | :heavy_minus_sign:                                                                                                           | Configuration to override the default retry behavior of the client.                                                          |                                                                                                                              |
-| `config`                                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                 | :heavy_minus_sign:                                                                                                           | Available config options for making requests.                                                                                |                                                                                                                              |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `billCreditNoteId`                                                                                                                                                             | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a bill credit note.                                                                                                                                      |                                                                                                                                                                                |
+| `companyId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a company.                                                                                                                                               | [object Object]                                                                                                                                                                |
+| `connectionId`                                                                                                                                                                 | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a connection.                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `attachmentUpload`                                                                                                                                                             | [shared.AttachmentUpload](../../sdk/models/shared/attachmentupload.md)                                                                                                         | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 
 ### Response
 
-**Promise<[operations.UploadBillCreditNoteAttachmentResponse](../../models/operations/uploadbillcreditnoteattachmentresponse.md)>**
+**Promise<[operations.UploadBillCreditNoteAttachmentResponse](../../sdk/models/operations/uploadbillcreditnoteattachmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
