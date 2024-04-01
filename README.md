@@ -17,11 +17,12 @@ A SDK monorepo is a single github repository that houses multiple SDKs. Each SDK
 Each SDK is housed in its own subfolders and have independent github workflows that manage re-generation and release of code. In this example we have two SDKs: Accounting and Lending that can be found in their own sub folders. The general structure is as follows:
 
 ```yaml
-.github/workflows/ #This is standards github notation for storing workflow files
- - accounting_generate.yaml #This file controls generation of the accounting SDK
- - accounting_release.yaml #This file controls release and publishing of the accounting SDK
- - lending_generate.yaml #This file controls generation of the lending SDK
- - lending_release.yaml #This file controls release and publishing of the lending SDK
+.github/workflows/ #This is standards github notation for storing workflow files on Github
+ - accounting_generate.yaml #This file controls generation of the accounting SDK on Github
+ - accounting_release.yaml #This file controls release and publishing of the accounting SDK on Github
+ - lending_generate.yaml #This file controls generation of the lending SDK on Github
+ - lending_release.yaml #This file controls release and publishing of the lending SDK on Github
+.speakeasy/workflows
  accounting # This folder houses the accounting SDK
  - gen.yaml # Generation config for the accounting SDK
  lending # This folder houses the lending SDK
@@ -32,19 +33,6 @@ This structure can be extrapoloated to N number of SDKs.
 
 ### Creating a Monorepo of SDKs
 
-1. To get started, simply clone the repository by clicking on the "Use template" button and give it a name. You may also copy all the files over manually. 
-   
-![Screenshot 2023-10-20 at 07 09 51](https://github.com/speakeasy-sdks/template-sdk-monorepo/assets/68016351/3c35d14b-d8a9-4cbb-a864-0cbd173ea258)
-
-2. Configure the Speakeasy workflows to generate the SDKs. Go to the [generation workflow file](https://github.com/speakeasy-sdks/template-sdk-monorepo/blob/main/.github/workflows) for each of the sub sdks and configure the `language`, `mode` and `location` of your openapi document. For complete documentation on all the available generation configurations, see [here](https://speakeasyapi.dev/docs/create-client-sdks/advanced-setup/github-setup/). You will also need to add a `SPEAKEASY_API_KEY` as a repository secret. If you don't already have a key you can get one by making a workspace on Speakeasy [here](https://app.speakeasyapi.dev/workspaces/cl6augut900003b6b06012z1s) and creating a key in the API keys tab.
-
-3. Configure the Speakeasy workflows to publish the SDKs. Go to the [release and publishing workflow file](https://github.com/speakeasy-sdks/template-sdk-monorepo/blob/main/.github/workflows) for each of the sub sdks and configure any relevant package manager credentials as repository secrets. For complete documentation on all the available publishing configurations, see [here](https://speakeasyapi.dev/docs/package-publishing/).
-
-4. Configure the generation by editing the `gen.yaml` file in the root of each SDK repo. This file controls the generator and determines various attributes of the SDK like `packageName`, `sdkClassName`, inlining of parameters, and other ergonomics. More docs available [here](https://www.speakeasyapi.dev/docs/customize-sdks#the-genyaml-file-configuration)
-
-5. Finally go to the Actions tab, choose the generation workflow and click "Force Generate". This will trigger a new generation of your SDK using the configuration you provided above. Depending on whether you configured `pr` or `direct` mode above your updated SDK will appear in PR or in the main branch.
-
-![Screenshot 2023-09-06 at 10 01 46](https://github.com/speakeasy-sdks/template-sdk/assets/68016351/35828982-c6de-4a5c-84f5-ae2b4224cece)
 
 🚀 You should have a working SDK for your API 🙂 . To check out all the features of the SDK please see our docs [site](https://speakeasyapi.dev/docs/create-client-sdks/).
 
