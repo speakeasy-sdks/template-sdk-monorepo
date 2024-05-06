@@ -30,17 +30,17 @@ yarn add <UNSET>
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
 
-async function run() {
-    const sdk = new LendingTs({
-        authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-    });
+const lendingTs = new LendingTs({
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
     const page = 1;
     const pageSize = 100;
-    const query = "<value>";
+    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
     const orderBy = "-modifiedDate";
 
-    const result = await sdk.companies.list(page, pageSize, query, orderBy);
+    const result = await lendingTs.companies.list(page, pageSize, query, orderBy);
 
     // Handle the result
     console.log(result);
@@ -61,316 +61,6 @@ run();
 * [update](docs/sdks/companies/README.md#update) - Update company
 * [delete](docs/sdks/companies/README.md#delete) - Delete a company
 * [get](docs/sdks/companies/README.md#get) - Get company
-
-### [connections](docs/sdks/connections/README.md)
-
-* [list](docs/sdks/connections/README.md#list) - List connections
-* [create](docs/sdks/connections/README.md#create) - Create connection
-* [get](docs/sdks/connections/README.md#get) - Get connection
-* [delete](docs/sdks/connections/README.md#delete) - Delete connection
-* [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
-
-### [manageData](docs/sdks/managedata/README.md)
-
-* [getStatus](docs/sdks/managedata/README.md#getstatus) - Get data status
-
-### [manageData.refresh](docs/sdks/refresh/README.md)
-
-* [allDataTypes](docs/sdks/refresh/README.md#alldatatypes) - Refresh all data
-* [dataType](docs/sdks/refresh/README.md#datatype) - Refresh data type
-
-### [manageData.pullOperations](docs/sdks/pulloperations/README.md)
-
-* [list](docs/sdks/pulloperations/README.md#list) - List pull operations
-* [get](docs/sdks/pulloperations/README.md#get) - Get pull operation
-
-### [dataIntegrity](docs/sdks/dataintegrity/README.md)
-
-* [status](docs/sdks/dataintegrity/README.md#status) - Get data integrity status
-* [summaries](docs/sdks/dataintegrity/README.md#summaries) - Get data integrity summaries
-* [details](docs/sdks/dataintegrity/README.md#details) - List data integrity details
-
-
-### [financialStatements.profitAndLoss](docs/sdks/profitandloss/README.md)
-
-* [getCategorizedAccounts](docs/sdks/profitandloss/README.md#getcategorizedaccounts) - Get categorized profit and loss statement
-* [get](docs/sdks/profitandloss/README.md#get) - Get profit and loss
-
-### [financialStatements.balanceSheet](docs/sdks/balancesheet/README.md)
-
-* [getCategorizedAccounts](docs/sdks/balancesheet/README.md#getcategorizedaccounts) - Get categorized balance sheet statement
-* [get](docs/sdks/balancesheet/README.md#get) - Get balance sheet
-
-### [financialStatements.accounts](docs/sdks/accounts/README.md)
-
-* [list](docs/sdks/accounts/README.md#list) - List accounts
-* [get](docs/sdks/accounts/README.md#get) - Get account
-
-### [financialStatements.cashFlow](docs/sdks/cashflow/README.md)
-
-* [get](docs/sdks/cashflow/README.md#get) - Get cash flow statement
-
-
-### [banking.categorizedStatement](docs/sdks/categorizedstatement/README.md)
-
-* [get](docs/sdks/categorizedstatement/README.md#get) - Get categorized bank statement
-
-### [banking.accountBalances](docs/sdks/accountbalances/README.md)
-
-* [list](docs/sdks/accountbalances/README.md#list) - List account balances
-
-### [banking.accounts](docs/sdks/lendingtsbankingaccounts/README.md)
-
-* [list](docs/sdks/lendingtsbankingaccounts/README.md#list) - List accounts
-* [get](docs/sdks/lendingtsbankingaccounts/README.md#get) - Get account
-
-### [banking.transactions](docs/sdks/lendingtstransactions/README.md)
-
-* [list](docs/sdks/lendingtstransactions/README.md#list) - List transactions
-* [get](docs/sdks/lendingtstransactions/README.md#get) - Get bank transaction
-
-### [banking.transactionCategories](docs/sdks/transactioncategories/README.md)
-
-* [list](docs/sdks/transactioncategories/README.md#list) - List transaction categories
-* [get](docs/sdks/transactioncategories/README.md#get) - Get transaction category
-
-
-### [accountsReceivable.invoices](docs/sdks/invoices/README.md)
-
-* [listReconciled](docs/sdks/invoices/README.md#listreconciled) - List reconciled invoices
-* [list](docs/sdks/invoices/README.md#list) - List invoices
-* [get](docs/sdks/invoices/README.md#get) - Get invoice
-* [downloadPdf](docs/sdks/invoices/README.md#downloadpdf) - Get invoice as PDF
-* [listAttachments](docs/sdks/invoices/README.md#listattachments) - List invoice attachments
-* [getAttachment](docs/sdks/invoices/README.md#getattachment) - Get invoice attachment
-* [downloadAttachment](docs/sdks/invoices/README.md#downloadattachment) - Download invoice attachment
-
-### [accountsReceivable.creditNotes](docs/sdks/creditnotes/README.md)
-
-* [list](docs/sdks/creditnotes/README.md#list) - List credit notes
-* [get](docs/sdks/creditnotes/README.md#get) - Get credit note
-
-### [accountsReceivable.customers](docs/sdks/customers/README.md)
-
-* [list](docs/sdks/customers/README.md#list) - List customers
-* [get](docs/sdks/customers/README.md#get) - Get customer
-* [listAttachments](docs/sdks/customers/README.md#listattachments) - List customer attachments
-* [getAttachment](docs/sdks/customers/README.md#getattachment) - Get customer attachment
-* [downloadAttachment](docs/sdks/customers/README.md#downloadattachment) - Download customer attachment
-
-### [accountsReceivable.directIncomes](docs/sdks/directincomes/README.md)
-
-* [list](docs/sdks/directincomes/README.md#list) - List direct incomes
-* [get](docs/sdks/directincomes/README.md#get) - Get direct income
-* [getAttachment](docs/sdks/directincomes/README.md#getattachment) - Get direct income attachment
-* [downloadAttachment](docs/sdks/directincomes/README.md#downloadattachment) - Download direct income attachment
-* [listAttachments](docs/sdks/directincomes/README.md#listattachments) - List direct income attachments
-
-### [accountsReceivable.payments](docs/sdks/payments/README.md)
-
-* [list](docs/sdks/payments/README.md#list) - List payments
-* [get](docs/sdks/payments/README.md#get) - Get payment
-
-### [accountsReceivable.reports](docs/sdks/lendingtsreports/README.md)
-
-* [isAgedDebtorsAvailable](docs/sdks/lendingtsreports/README.md#isageddebtorsavailable) - Aged debtors report available
-* [getAgedDebtors](docs/sdks/lendingtsreports/README.md#getageddebtors) - Aged debtors report
-* [isAgedCreditorsAvailable](docs/sdks/lendingtsreports/README.md#isagedcreditorsavailable) - Aged creditors report available
-* [getAgedCreditors](docs/sdks/lendingtsreports/README.md#getagedcreditors) - Aged creditors report
-
-### [liabilities](docs/sdks/liabilities/README.md)
-
-* [generateLoanTransactions](docs/sdks/liabilities/README.md#generateloantransactions) - Generate loan transactions report
-* [listLoanTransactions](docs/sdks/liabilities/README.md#listloantransactions) - List loan transactions
-* [generateLoanSummary](docs/sdks/liabilities/README.md#generateloansummary) - Generate loan summaries report
-* [getLoanSummary](docs/sdks/liabilities/README.md#getloansummary) - Get loan summaries
-
-
-### [sales.metrics](docs/sdks/metrics/README.md)
-
-* [getRevenue](docs/sdks/metrics/README.md#getrevenue) - Get commerce revenue metrics
-* [getCustomerRetention](docs/sdks/metrics/README.md#getcustomerretention) - Get customer retention metrics
-* [getLifetimeValue](docs/sdks/metrics/README.md#getlifetimevalue) - Get lifetime value metrics
-
-### [sales.reports](docs/sdks/reports/README.md)
-
-* [getOrders](docs/sdks/reports/README.md#getorders) - Get orders report
-* [getRefunds](docs/sdks/reports/README.md#getrefunds) - Get refunds report
-
-### [sales.customers](docs/sdks/lendingtscustomers/README.md)
-
-* [list](docs/sdks/lendingtscustomers/README.md#list) - List customers
-* [get](docs/sdks/lendingtscustomers/README.md#get) - Get customer
-
-### [sales.disputes](docs/sdks/disputes/README.md)
-
-* [list](docs/sdks/disputes/README.md#list) - List disputes
-* [get](docs/sdks/disputes/README.md#get) - Get dispute
-
-### [sales.locations](docs/sdks/locations/README.md)
-
-* [list](docs/sdks/locations/README.md#list) - List locations
-* [get](docs/sdks/locations/README.md#get) - Get location
-
-### [sales.orders](docs/sdks/orders/README.md)
-
-* [list](docs/sdks/orders/README.md#list) - List orders
-* [get](docs/sdks/orders/README.md#get) - Get order
-
-### [sales.paymentMethods](docs/sdks/paymentmethods/README.md)
-
-* [list](docs/sdks/paymentmethods/README.md#list) - List payment methods
-* [get](docs/sdks/paymentmethods/README.md#get) - Get payment method
-
-### [sales.payments](docs/sdks/lendingtspayments/README.md)
-
-* [list](docs/sdks/lendingtspayments/README.md#list) - List payments
-* [get](docs/sdks/lendingtspayments/README.md#get) - Get payment
-
-### [sales.productCategories](docs/sdks/productcategories/README.md)
-
-* [list](docs/sdks/productcategories/README.md#list) - List product categories
-* [get](docs/sdks/productcategories/README.md#get) - Get product category
-
-### [sales.products](docs/sdks/products/README.md)
-
-* [list](docs/sdks/products/README.md#list) - List products
-* [get](docs/sdks/products/README.md#get) - Get product
-
-### [sales.transactions](docs/sdks/lendingtssalestransactions/README.md)
-
-* [list](docs/sdks/lendingtssalestransactions/README.md#list) - List transactions
-* [get](docs/sdks/lendingtssalestransactions/README.md#get) - Get transaction
-
-### [excelReports](docs/sdks/excelreports/README.md)
-
-* [generate](docs/sdks/excelreports/README.md#generate) - Generate Excel report
-* [getStatus](docs/sdks/excelreports/README.md#getstatus) - Get Excel report status
-* [download](docs/sdks/excelreports/README.md#download) - Download Excel report
-
-
-### [transactions.accountTransactions](docs/sdks/accounttransactions/README.md)
-
-* [list](docs/sdks/accounttransactions/README.md#list) - List account transactions
-* [get](docs/sdks/accounttransactions/README.md#get) - Get account transaction
-
-### [transactions.directCosts](docs/sdks/directcosts/README.md)
-
-* [list](docs/sdks/directcosts/README.md#list) - List direct costs
-* [get](docs/sdks/directcosts/README.md#get) - Get direct cost
-* [getAttachment](docs/sdks/directcosts/README.md#getattachment) - Get direct cost attachment
-* [downloadAttachment](docs/sdks/directcosts/README.md#downloadattachment) - Download direct cost attachment
-* [listAttachments](docs/sdks/directcosts/README.md#listattachments) - List direct cost attachments
-
-### [transactions.journalEntries](docs/sdks/journalentries/README.md)
-
-* [list](docs/sdks/journalentries/README.md#list) - List journal entries
-* [get](docs/sdks/journalentries/README.md#get) - Get journal entry
-
-### [transactions.journals](docs/sdks/journals/README.md)
-
-* [list](docs/sdks/journals/README.md#list) - List journals
-* [get](docs/sdks/journals/README.md#get) - Get journal
-
-### [transactions.transfers](docs/sdks/transfers/README.md)
-
-* [list](docs/sdks/transfers/README.md#list) - List transfers
-* [get](docs/sdks/transfers/README.md#get) - Get transfer
-
-
-### [accountsPayable.billCreditNotes](docs/sdks/billcreditnotes/README.md)
-
-* [list](docs/sdks/billcreditnotes/README.md#list) - List bill credit notes
-* [get](docs/sdks/billcreditnotes/README.md#get) - Get bill credit note
-
-### [accountsPayable.billPayments](docs/sdks/billpayments/README.md)
-
-* [list](docs/sdks/billpayments/README.md#list) - List bill payments
-* [get](docs/sdks/billpayments/README.md#get) - Get bill payment
-
-### [accountsPayable.bills](docs/sdks/bills/README.md)
-
-* [list](docs/sdks/bills/README.md#list) - List bills
-* [get](docs/sdks/bills/README.md#get) - Get bill
-* [listAttachments](docs/sdks/bills/README.md#listattachments) - List bill attachments
-* [getAttachment](docs/sdks/bills/README.md#getattachment) - Get bill attachment
-* [downloadAttachment](docs/sdks/bills/README.md#downloadattachment) - Download bill attachment
-
-### [accountsPayable.suppliers](docs/sdks/suppliers/README.md)
-
-* [list](docs/sdks/suppliers/README.md#list) - List suppliers
-* [get](docs/sdks/suppliers/README.md#get) - Get supplier
-* [listAttachments](docs/sdks/suppliers/README.md#listattachments) - List supplier attachments
-* [getAttachment](docs/sdks/suppliers/README.md#getattachment) - Get supplier attachment
-* [downloadAttachment](docs/sdks/suppliers/README.md#downloadattachment) - Download supplier attachment
-
-### [companyInfo](docs/sdks/companyinfo/README.md)
-
-* [getAccountingProfile](docs/sdks/companyinfo/README.md#getaccountingprofile) - Get company accounting profile
-* [getCommerceProfile](docs/sdks/companyinfo/README.md#getcommerceprofile) - Get company commerce profile
-
-### [accountingBankData](docs/sdks/accountingbankdata/README.md)
-
-* [listTransactions](docs/sdks/accountingbankdata/README.md#listtransactions) - List bank account transactions
-
-### [accountingBankData.accounts](docs/sdks/lendingtsaccounts/README.md)
-
-* [list](docs/sdks/lendingtsaccounts/README.md#list) - List bank accounts
-* [get](docs/sdks/lendingtsaccounts/README.md#get) - Get bank account
-
-### [fileUpload](docs/sdks/fileupload/README.md)
-
-* [listUploaded](docs/sdks/fileupload/README.md#listuploaded) - List all files uploaded by a company
-* [download](docs/sdks/fileupload/README.md#download) - Download all files for a company
-* [upload](docs/sdks/fileupload/README.md#upload) - Upload files for a company
-
-
-### [loanWriteback.bankAccounts](docs/sdks/bankaccounts/README.md)
-
-* [getCreateUpdateModel](docs/sdks/bankaccounts/README.md#getcreateupdatemodel) - Get create/update bank account model
-* [create](docs/sdks/bankaccounts/README.md#create) - Create bank account
-
-### [loanWriteback.accounts](docs/sdks/lendingtsloanwritebackaccounts/README.md)
-
-* [getCreateModel](docs/sdks/lendingtsloanwritebackaccounts/README.md#getcreatemodel) - Get create account model
-* [create](docs/sdks/lendingtsloanwritebackaccounts/README.md#create) - Create account
-
-### [loanWriteback.suppliers](docs/sdks/lendingtssuppliers/README.md)
-
-* [getCreateUpdateModel](docs/sdks/lendingtssuppliers/README.md#getcreateupdatemodel) - Get create/update supplier model
-* [create](docs/sdks/lendingtssuppliers/README.md#create) - Create supplier
-
-### [loanWriteback.transfers](docs/sdks/lendingtstransfers/README.md)
-
-* [getCreateModel](docs/sdks/lendingtstransfers/README.md#getcreatemodel) - Get create transfer model
-* [create](docs/sdks/lendingtstransfers/README.md#create) - Create transfer
-
-### [loanWriteback.bankTransactions](docs/sdks/banktransactions/README.md)
-
-* [getCreateModel](docs/sdks/banktransactions/README.md#getcreatemodel) - Get create bank account transactions model
-* [create](docs/sdks/banktransactions/README.md#create) - Create bank account transactions
-
-### [loanWriteback.directCosts](docs/sdks/lendingtsdirectcosts/README.md)
-
-* [getCreateModel](docs/sdks/lendingtsdirectcosts/README.md#getcreatemodel) - Get create direct cost model
-* [create](docs/sdks/lendingtsdirectcosts/README.md#create) - Create direct cost
-
-### [loanWriteback.payments](docs/sdks/lendingtsloanwritebackpayments/README.md)
-
-* [getCreateModel](docs/sdks/lendingtsloanwritebackpayments/README.md#getcreatemodel) - Get create payment model
-* [create](docs/sdks/lendingtsloanwritebackpayments/README.md#create) - Create payment
-
-### [loanWriteback.createOperations](docs/sdks/createoperations/README.md)
-
-* [get](docs/sdks/createoperations/README.md#get) - Get create operation
-* [list](docs/sdks/createoperations/README.md#list) - List create operations
-
-### [bankStatements](docs/sdks/bankstatements/README.md)
-
-* [getUploadConfiguration](docs/sdks/bankstatements/README.md#getuploadconfiguration) - Get upload configuration
-* [setUploadConfiguration](docs/sdks/bankstatements/README.md#setuploadconfiguration) - Set upload configuration
-* [startUploadSession](docs/sdks/bankstatements/README.md#startuploadsession) - Start upload session
-* [endUploadSession](docs/sdks/bankstatements/README.md#enduploadsession) - End upload session
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Requirements [requirements] -->
@@ -378,46 +68,6 @@ run();
 
 For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 <!-- End Requirements [requirements] -->
-
-<!-- Start File uploads [file-upload] -->
-## File uploads
-
-Certain SDK methods accept files as part of a multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
-
-> [!TIP]
->
-> Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:
->
-> - **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).
-> - **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.
-> - **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
-> - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
-
-```typescript
-import { LendingTs } from "@speakeasy-sdks/lending";
-import { openAsBlob } from "node:fs";
-
-async function run() {
-    const sdk = new LendingTs({
-        authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-    });
-
-    const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-    const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-    const fileUpload = {
-        file: await openAsBlob("./sample-file"),
-    };
-
-    const result = await sdk.fileUpload.upload(companyId, connectionId, fileUpload);
-
-    // Handle the result
-    console.log(result);
-}
-
-run();
-
-```
-<!-- End File uploads [file-upload] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -428,17 +78,17 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
 
-async function run() {
-    const sdk = new LendingTs({
-        authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-    });
+const lendingTs = new LendingTs({
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
     const page = 1;
     const pageSize = 100;
-    const query = "<value>";
+    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
     const orderBy = "-modifiedDate";
 
-    const result = await sdk.companies.list(page, pageSize, query, orderBy, {
+    const result = await lendingTs.companies.list(page, pageSize, query, orderBy, {
         retries: {
             strategy: "backoff",
             backoff: {
@@ -463,27 +113,27 @@ If you'd like to override the default retry strategy for all operations that sup
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
 
-async function run() {
-    const sdk = new LendingTs({
-        retryConfig: {
-            strategy: "backoff",
-            backoff: {
-                initialInterval: 1,
-                maxInterval: 50,
-                exponent: 1.1,
-                maxElapsedTime: 100,
-            },
-            retryConnectionErrors: false,
+const lendingTs = new LendingTs({
+    retryConfig: {
+        strategy: "backoff",
+        backoff: {
+            initialInterval: 1,
+            maxInterval: 50,
+            exponent: 1.1,
+            maxElapsedTime: 100,
         },
-        authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-    });
+        retryConnectionErrors: false,
+    },
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
     const page = 1;
     const pageSize = 100;
-    const query = "<value>";
+    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
     const orderBy = "-modifiedDate";
 
-    const result = await sdk.companies.list(page, pageSize, query, orderBy);
+    const result = await lendingTs.companies.list(page, pageSize, query, orderBy);
 
     // Handle the result
     console.log(result);
@@ -511,19 +161,19 @@ Validation errors can also occur when either method arguments or data returned f
 import { LendingTs } from "@speakeasy-sdks/lending";
 import * as errors from "@speakeasy-sdks/lending/models/errors";
 
-async function run() {
-    const sdk = new LendingTs({
-        authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-    });
+const lendingTs = new LendingTs({
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
     const page = 1;
     const pageSize = 100;
-    const query = "<value>";
+    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
     const orderBy = "-modifiedDate";
 
     let result;
     try {
-        result = await sdk.companies.list(page, pageSize, query, orderBy);
+        result = await lendingTs.companies.list(page, pageSize, query, orderBy);
     } catch (err) {
         switch (true) {
             case err instanceof errors.SDKValidationError: {
@@ -566,18 +216,18 @@ You can override the default server globally by passing a server index to the `s
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
 
-async function run() {
-    const sdk = new LendingTs({
-        serverIdx: 0,
-        authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-    });
+const lendingTs = new LendingTs({
+    serverIdx: 0,
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
     const page = 1;
     const pageSize = 100;
-    const query = "<value>";
+    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
     const orderBy = "-modifiedDate";
 
-    const result = await sdk.companies.list(page, pageSize, query, orderBy);
+    const result = await lendingTs.companies.list(page, pageSize, query, orderBy);
 
     // Handle the result
     console.log(result);
@@ -595,18 +245,18 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
 
-async function run() {
-    const sdk = new LendingTs({
-        serverURL: "https://api.codat.io",
-        authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-    });
+const lendingTs = new LendingTs({
+    serverURL: "https://api.codat.io",
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
     const page = 1;
     const pageSize = 100;
-    const query = "<value>";
+    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
     const orderBy = "-modifiedDate";
 
-    const result = await sdk.companies.list(page, pageSize, query, orderBy);
+    const result = await lendingTs.companies.list(page, pageSize, query, orderBy);
 
     // Handle the result
     console.log(result);
@@ -681,17 +331,17 @@ To authenticate with the API the `authHeader` parameter must be set when initial
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
 
-async function run() {
-    const sdk = new LendingTs({
-        authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-    });
+const lendingTs = new LendingTs({
+    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
     const page = 1;
     const pageSize = 100;
-    const query = "<value>";
+    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
     const orderBy = "-modifiedDate";
 
-    const result = await sdk.companies.list(page, pageSize, query, orderBy);
+    const result = await lendingTs.companies.list(page, pageSize, query, orderBy);
 
     // Handle the result
     console.log(result);

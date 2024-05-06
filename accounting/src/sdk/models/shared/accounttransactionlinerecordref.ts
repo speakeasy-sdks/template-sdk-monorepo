@@ -36,9 +36,9 @@ export type AccountTransactionLineRecordRef = {
 };
 
 /** @internal */
-export const AccountTransactionLineRecordRefDataType$ = z.nativeEnum(
-    AccountTransactionLineRecordRefDataType
-);
+export const AccountTransactionLineRecordRefDataType$: z.ZodNativeEnum<
+    typeof AccountTransactionLineRecordRefDataType
+> = z.nativeEnum(AccountTransactionLineRecordRefDataType);
 
 /** @internal */
 export namespace AccountTransactionLineRecordRef$ {

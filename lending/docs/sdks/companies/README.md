@@ -3,7 +3,7 @@
 
 ## Overview
 
-Create and manage your Codat companies.
+Create and manage your SMB users' companies.
 
 ### Available Operations
 
@@ -25,17 +25,17 @@ Each company can have multiple [connections](https://docs.codat.io/lending-api#/
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
 
-async function run() {
-  const sdk = new LendingTs({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-  });
+const lendingTs = new LendingTs({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
   const page = 1;
   const pageSize = 100;
-  const query = "<value>";
+  const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
   const orderBy = "-modifiedDate";
   
-  const result = await sdk.companies.list(page, pageSize, query, orderBy);
+  const result = await lendingTs.companies.list(page, pageSize, query, orderBy);
 
   // Handle the result
   console.log(result)
@@ -50,7 +50,7 @@ run();
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `page`                                                                                                                                                                         | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Page number. [Read more](https://docs.codat.io/using-the-api/paging).                                                                                                          | [object Object]                                                                                                                                                                |
 | `pageSize`                                                                                                                                                                     | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging).                                                                                | [object Object]                                                                                                                                                                |
-| `query`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Codat query string. [Read more](https://docs.codat.io/using-the-api/querying).                                                                                                 |                                                                                                                                                                                |
+| `query`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Codat query string. [Read more](https://docs.codat.io/using-the-api/querying).                                                                                                 | [object Object]                                                                                                                                                                |
 | `orderBy`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Field to order results by. [Read more](https://docs.codat.io/using-the-api/ordering-results).                                                                                  | [object Object]                                                                                                                                                                |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
@@ -81,13 +81,13 @@ If forbidden characters (see `name` pattern) are present in the request, a compa
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
 
-async function run() {
-  const sdk = new LendingTs({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-  });
+const lendingTs = new LendingTs({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
-  const result = await sdk.companies.create({
-    name: "Bank of Dave",
+async function run() {
+  const result = await lendingTs.companies.create({
+    name: "Technicalium",
     description: "Requested early access to the new financing scheme.",
     groups: [
       {
@@ -136,11 +136,11 @@ Each company can have multiple [connections](https://docs.codat.io/lending-api#/
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
 
-async function run() {
-  const sdk = new LendingTs({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-  });
+const lendingTs = new LendingTs({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
   const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
   const companyRequestBody = {
     name: "Bank of Dave",
@@ -152,7 +152,7 @@ async function run() {
     ],
   };
   
-  const result = await sdk.companies.update(companyId, companyRequestBody);
+  const result = await lendingTs.companies.update(companyId, companyRequestBody);
 
   // Handle the result
   console.log(result)
@@ -195,14 +195,14 @@ Each company can have multiple [connections](https://docs.codat.io/lending-api#/
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
 
-async function run() {
-  const sdk = new LendingTs({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-  });
+const lendingTs = new LendingTs({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
   const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
   
-  const result = await sdk.companies.delete(companyId);
+  const result = await lendingTs.companies.delete(companyId);
 
   // Handle the result
   console.log(result)
@@ -244,14 +244,14 @@ Each company can have multiple [connections](https://docs.codat.io/lending-api#/
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
 
-async function run() {
-  const sdk = new LendingTs({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-  });
+const lendingTs = new LendingTs({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
   const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
   
-  const result = await sdk.companies.get(companyId);
+  const result = await lendingTs.companies.get(companyId);
 
   // Handle the result
   console.log(result)

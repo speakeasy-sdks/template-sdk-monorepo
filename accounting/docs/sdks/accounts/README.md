@@ -3,7 +3,7 @@
 
 ## Overview
 
-Accounts
+Access standardized Accounts from linked accounting platforms.
 
 ### Available Operations
 
@@ -32,11 +32,11 @@ import { Accounting } from "@speakeasy-sdks/accounting";
 import { AccountStatus, AccountType } from "@speakeasy-sdks/accounting/sdk/models/shared";
 import { Decimal } from "@speakeasy-sdks/accounting/sdk/types";
 
-async function run() {
-  const sdk = new Accounting({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-  });
+const accounting = new Accounting({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
   const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
   const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
   const accountPrototype = {
@@ -48,25 +48,11 @@ async function run() {
     name: "Accounts Receivable",
     nominalCode: "610",
     status: AccountStatus.Active,
-    supplementalData: {
-      content: {
-        "key": {
-          "key": "<value>",
-        },
-      },
-    },
     type: AccountType.Asset,
-    validDatatypeLinks: [
-      {
-        links: [
-          "<value>",
-        ],
-      },
-    ],
   };
   const timeoutInMinutes = 638424;
   
-  const result = await sdk.accounts.create(companyId, connectionId, accountPrototype, timeoutInMinutes);
+  const result = await accounting.accounts.create(companyId, connectionId, accountPrototype, timeoutInMinutes);
 
   // Handle the result
   console.log(result)
@@ -113,15 +99,15 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 
-async function run() {
-  const sdk = new Accounting({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-  });
+const accounting = new Accounting({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
   const accountId = "<value>";
   const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
   
-  const result = await sdk.accounts.get(accountId, companyId);
+  const result = await accounting.accounts.get(accountId, companyId);
 
   // Handle the result
   console.log(result)
@@ -168,15 +154,15 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 
-async function run() {
-  const sdk = new Accounting({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-  });
+const accounting = new Accounting({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
+async function run() {
   const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
   const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
   
-  const result = await sdk.accounts.getCreateModel(companyId, connectionId);
+  const result = await accounting.accounts.getCreateModel(companyId, connectionId);
 
   // Handle the result
   console.log(result)
@@ -218,16 +204,17 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 
-async function run() {
-  const sdk = new Accounting({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-  });
+const accounting = new Accounting({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
 
-  const result = await sdk.accounts.list({
+async function run() {
+  const result = await accounting.accounts.list({
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     orderBy: "-modifiedDate",
     page: 1,
     pageSize: 100,
+    query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
   });
 
   // Handle the result

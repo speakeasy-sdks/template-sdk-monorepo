@@ -15,4 +15,5 @@ export enum PushOperationStatus {
 }
 
 /** @internal */
-export const PushOperationStatus$ = z.nativeEnum(PushOperationStatus);
+export const PushOperationStatus$: z.ZodNativeEnum<typeof PushOperationStatus> =
+    z.nativeEnum(PushOperationStatus);

@@ -112,6 +112,7 @@ export class AccountTransactions extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -147,6 +148,7 @@ export class AccountTransactions extends ClientSDK {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
+            Headers: {},
         };
 
         if (this.matchResponse(response, 200, "application/json")) {
@@ -183,7 +185,11 @@ export class AccountTransactions extends ClientSDK {
             return result;
         } else {
             const responseBody = await response.text();
-            throw new errors.SDKError("Unexpected API response", response, responseBody);
+            throw new errors.SDKError(
+                "Unexpected API response status or content-type",
+                response,
+                responseBody
+            );
         }
     }
 
@@ -259,6 +265,7 @@ export class AccountTransactions extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -294,6 +301,7 @@ export class AccountTransactions extends ClientSDK {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
             RawResponse: response,
+            Headers: {},
         };
 
         if (this.matchResponse(response, 200, "application/json")) {
@@ -330,7 +338,11 @@ export class AccountTransactions extends ClientSDK {
             return result;
         } else {
             const responseBody = await response.text();
-            throw new errors.SDKError("Unexpected API response", response, responseBody);
+            throw new errors.SDKError(
+                "Unexpected API response status or content-type",
+                response,
+                responseBody
+            );
         }
     }
 }

@@ -110,6 +110,7 @@ export class Companies extends ClientSDK {
             errorCodes: ["400", "401", "402", "403", "404", "429", "4XX", "500", "503", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -181,7 +182,10 @@ export class Companies extends ClientSDK {
             );
             throw result;
         } else {
-            throw new errors.SDKError("Unexpected API response", { response, request });
+            throw new errors.SDKError("Unexpected API response status or content-type", {
+                response,
+                request,
+            });
         }
     }
 
@@ -237,6 +241,7 @@ export class Companies extends ClientSDK {
             errorCodes: ["400", "401", "402", "403", "429", "4XX", "500", "503", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -304,7 +309,10 @@ export class Companies extends ClientSDK {
             );
             throw result;
         } else {
-            throw new errors.SDKError("Unexpected API response", { response, request });
+            throw new errors.SDKError("Unexpected API response status or content-type", {
+                response,
+                request,
+            });
         }
     }
 
@@ -369,6 +377,7 @@ export class Companies extends ClientSDK {
             errorCodes: ["401", "402", "403", "404", "429", "4XX", "500", "503", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "PUT",
@@ -436,7 +445,10 @@ export class Companies extends ClientSDK {
             );
             throw result;
         } else {
-            throw new errors.SDKError("Unexpected API response", { response, request });
+            throw new errors.SDKError("Unexpected API response status or content-type", {
+                response,
+                request,
+            });
         }
     }
 
@@ -498,6 +510,7 @@ export class Companies extends ClientSDK {
             errorCodes: ["401", "402", "403", "404", "429", "4XX", "500", "503", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "DELETE",
@@ -554,7 +567,10 @@ export class Companies extends ClientSDK {
             );
             throw result;
         } else {
-            throw new errors.SDKError("Unexpected API response", { response, request });
+            throw new errors.SDKError("Unexpected API response status or content-type", {
+                response,
+                request,
+            });
         }
 
         return schemas$.parse(
@@ -622,6 +638,7 @@ export class Companies extends ClientSDK {
             errorCodes: ["401", "402", "403", "404", "429", "4XX", "500", "503", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -689,7 +706,10 @@ export class Companies extends ClientSDK {
             );
             throw result;
         } else {
-            throw new errors.SDKError("Unexpected API response", { response, request });
+            throw new errors.SDKError("Unexpected API response status or content-type", {
+                response,
+                request,
+            });
         }
     }
 }

@@ -11,7 +11,7 @@ import * as z from "zod";
 /**
  * The status of the account transaction.
  */
-export enum AccountTransactionStatus {
+export enum Status {
     Unknown = "Unknown",
     Unreconciled = "Unreconciled",
     Reconciled = "Reconciled",
@@ -135,7 +135,7 @@ export type AccountTransaction = {
     /**
      * The status of the account transaction.
      */
-    status?: AccountTransactionStatus | undefined;
+    status?: Status | undefined;
     /**
      * Total amount of the account transactions, inclusive of tax.
      */
@@ -147,7 +147,7 @@ export type AccountTransaction = {
 };
 
 /** @internal */
-export const AccountTransactionStatus$ = z.nativeEnum(AccountTransactionStatus);
+export const Status$: z.ZodNativeEnum<typeof Status> = z.nativeEnum(Status);
 
 /** @internal */
 export namespace AccountTransaction$ {
@@ -162,7 +162,7 @@ export namespace AccountTransaction$ {
         modifiedDate?: string | undefined;
         note?: string | null | undefined;
         sourceModifiedDate?: string | undefined;
-        status?: AccountTransactionStatus | undefined;
+        status?: Status | undefined;
         totalAmount?: number | undefined;
         transactionId?: string | null | undefined;
     };
@@ -179,7 +179,7 @@ export namespace AccountTransaction$ {
             modifiedDate: z.string().optional(),
             note: z.nullable(z.string()).optional(),
             sourceModifiedDate: z.string().optional(),
-            status: AccountTransactionStatus$.optional(),
+            status: Status$.optional(),
             totalAmount: z
                 .number()
                 .transform((v) => new Decimal$(v))
@@ -217,7 +217,7 @@ export namespace AccountTransaction$ {
         modifiedDate?: string | undefined;
         note?: string | null | undefined;
         sourceModifiedDate?: string | undefined;
-        status?: AccountTransactionStatus | undefined;
+        status?: Status | undefined;
         totalAmount?: number | undefined;
         transactionId?: string | null | undefined;
     };
@@ -240,7 +240,7 @@ export namespace AccountTransaction$ {
             modifiedDate: z.string().optional(),
             note: z.nullable(z.string()).optional(),
             sourceModifiedDate: z.string().optional(),
-            status: AccountTransactionStatus$.optional(),
+            status: Status$.optional(),
             totalAmount: z
                 .union([z.instanceof(Decimal$), z.number()])
                 .transform((v) => (typeof v === "number" ? v : v.toNumber()))

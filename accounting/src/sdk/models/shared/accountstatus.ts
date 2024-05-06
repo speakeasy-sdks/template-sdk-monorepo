@@ -15,4 +15,4 @@ export enum AccountStatus {
 }
 
 /** @internal */
-export const AccountStatus$ = z.nativeEnum(AccountStatus);
+export const AccountStatus$: z.ZodNativeEnum<typeof AccountStatus> = z.nativeEnum(AccountStatus);

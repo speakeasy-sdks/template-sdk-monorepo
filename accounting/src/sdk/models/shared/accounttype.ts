@@ -17,4 +17,4 @@ export enum AccountType {
 }
 
 /** @internal */
-export const AccountType$ = z.nativeEnum(AccountType);
+export const AccountType$: z.ZodNativeEnum<typeof AccountType> = z.nativeEnum(AccountType);

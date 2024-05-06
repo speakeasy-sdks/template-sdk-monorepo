@@ -6,4 +6,3 @@ export { RFCDate } from "./rfcdate";
 export { blobLikeSchema, isBlobLike } from "./blobs";
 export type { Paginator, PageIterator } from "./operations";
 export { createPageIterator } from "./operations";
-export { Decimal } from "./decimal";

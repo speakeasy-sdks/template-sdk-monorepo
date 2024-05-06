@@ -120,7 +120,7 @@ export type Connection = {
 };
 
 /** @internal */
-export const SourceType$ = z.nativeEnum(SourceType);
+export const SourceType$: z.ZodNativeEnum<typeof SourceType> = z.nativeEnum(SourceType);
 
 /** @internal */
 export namespace Connection$ {

@@ -8,30 +8,6 @@ import { HTTPClient } from "../lib/http";
 import { ClientSDK } from "../lib/sdks";
 import { Accounts } from "./accounts";
 import { AccountTransactions } from "./accounttransactions";
-import { BankAccounts } from "./bankaccounts";
-import { BankAccountTransactions } from "./bankaccounttransactions";
-import { BillCreditNotes } from "./billcreditnotes";
-import { BillPayments } from "./billpayments";
-import { Bills } from "./bills";
-import { CompanyInfo } from "./companyinfo";
-import { CreditNotes } from "./creditnotes";
-import { Customers } from "./customers";
-import { DirectCosts } from "./directcosts";
-import { DirectIncomes } from "./directincomes";
-import { Invoices } from "./invoices";
-import { ItemReceipts } from "./itemreceipts";
-import { Items } from "./items";
-import { JournalEntries } from "./journalentries";
-import { Journals } from "./journals";
-import { PaymentMethods } from "./paymentmethods";
-import { Payments } from "./payments";
-import { PurchaseOrders } from "./purchaseorders";
-import { Reports } from "./reports";
-import { SalesOrders } from "./salesorders";
-import { Suppliers } from "./suppliers";
-import { TaxRates } from "./taxrates";
-import { TrackingCategories } from "./trackingcategories";
-import { Transfers } from "./transfers";
 
 export class Accounting extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -61,132 +37,12 @@ export class Accounting extends ClientSDK {
     }
 
     private _accountTransactions?: AccountTransactions;
-    get accountTransactions() {
+    get accountTransactions(): AccountTransactions {
         return (this._accountTransactions ??= new AccountTransactions(this.options$));
     }
 
-    private _bankAccounts?: BankAccounts;
-    get bankAccounts() {
-        return (this._bankAccounts ??= new BankAccounts(this.options$));
-    }
-
-    private _bankAccountTransactions?: BankAccountTransactions;
-    get bankAccountTransactions() {
-        return (this._bankAccountTransactions ??= new BankAccountTransactions(this.options$));
-    }
-
-    private _bills?: Bills;
-    get bills() {
-        return (this._bills ??= new Bills(this.options$));
-    }
-
-    private _customers?: Customers;
-    get customers() {
-        return (this._customers ??= new Customers(this.options$));
-    }
-
-    private _directCosts?: DirectCosts;
-    get directCosts() {
-        return (this._directCosts ??= new DirectCosts(this.options$));
-    }
-
-    private _directIncomes?: DirectIncomes;
-    get directIncomes() {
-        return (this._directIncomes ??= new DirectIncomes(this.options$));
-    }
-
-    private _invoices?: Invoices;
-    get invoices() {
-        return (this._invoices ??= new Invoices(this.options$));
-    }
-
-    private _itemReceipts?: ItemReceipts;
-    get itemReceipts() {
-        return (this._itemReceipts ??= new ItemReceipts(this.options$));
-    }
-
-    private _purchaseOrders?: PurchaseOrders;
-    get purchaseOrders() {
-        return (this._purchaseOrders ??= new PurchaseOrders(this.options$));
-    }
-
-    private _suppliers?: Suppliers;
-    get suppliers() {
-        return (this._suppliers ??= new Suppliers(this.options$));
-    }
-
-    private _transfers?: Transfers;
-    get transfers() {
-        return (this._transfers ??= new Transfers(this.options$));
-    }
-
-    private _billCreditNotes?: BillCreditNotes;
-    get billCreditNotes() {
-        return (this._billCreditNotes ??= new BillCreditNotes(this.options$));
-    }
-
-    private _billPayments?: BillPayments;
-    get billPayments() {
-        return (this._billPayments ??= new BillPayments(this.options$));
-    }
-
     private _accounts?: Accounts;
-    get accounts() {
+    get accounts(): Accounts {
         return (this._accounts ??= new Accounts(this.options$));
-    }
-
-    private _creditNotes?: CreditNotes;
-    get creditNotes() {
-        return (this._creditNotes ??= new CreditNotes(this.options$));
-    }
-
-    private _items?: Items;
-    get items() {
-        return (this._items ??= new Items(this.options$));
-    }
-
-    private _journalEntries?: JournalEntries;
-    get journalEntries() {
-        return (this._journalEntries ??= new JournalEntries(this.options$));
-    }
-
-    private _journals?: Journals;
-    get journals() {
-        return (this._journals ??= new Journals(this.options$));
-    }
-
-    private _payments?: Payments;
-    get payments() {
-        return (this._payments ??= new Payments(this.options$));
-    }
-
-    private _reports?: Reports;
-    get reports() {
-        return (this._reports ??= new Reports(this.options$));
-    }
-
-    private _companyInfo?: CompanyInfo;
-    get companyInfo() {
-        return (this._companyInfo ??= new CompanyInfo(this.options$));
-    }
-
-    private _paymentMethods?: PaymentMethods;
-    get paymentMethods() {
-        return (this._paymentMethods ??= new PaymentMethods(this.options$));
-    }
-
-    private _salesOrders?: SalesOrders;
-    get salesOrders() {
-        return (this._salesOrders ??= new SalesOrders(this.options$));
-    }
-
-    private _taxRates?: TaxRates;
-    get taxRates() {
-        return (this._taxRates ??= new TaxRates(this.options$));
-    }
-
-    private _trackingCategories?: TrackingCategories;
-    get trackingCategories() {
-        return (this._trackingCategories ??= new TrackingCategories(this.options$));
     }
 }

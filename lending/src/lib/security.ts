@@ -68,7 +68,7 @@ type SecurityInputOAuth2 = {
 type SecurityInputOAuth2ClientCredentials = {
     type: "oauth2:client_credentials";
     value: string | null | undefined;
-    fieldName: "clientID" | "clientSecret";
+    fieldName: string;
 };
 
 export type SecurityInput =
@@ -89,17 +89,16 @@ export function resolveSecurity(...options: SecurityInput[][]): SecurityState | 
 
     const option = options.find((opts) => {
         return opts.every((o) => {
-            switch (true) {
-                case o.value == null:
-                    return false;
-                case o.type === "http:basic":
-                    return o.value.username != null || o.value.password != null;
-                case typeof o.value === "string":
-                    return !!o.value;
-                default:
-                    throw new Error(
-                        `Unrecognized security type: ${o.type} (value type: ${typeof o.value})`
-                    );
+            if (o.value == null) {
+                return false;
+            } else if (o.type === "http:basic") {
+                return o.value.username != null || o.value.password != null;
+            } else if (typeof o.value === "string") {
+                return !!o.value;
+            } else {
+                throw new Error(
+                    `Unrecognized security type: ${o.type} (value type: ${typeof o.value})`
+                );
             }
         });
     });
@@ -170,7 +169,9 @@ function applyBearer(
 
     state.headers[spec.fieldName] = value;
 }
-export function resolveGlobalSecurity(security: Partial<components.Security> | null | undefined) {
+export function resolveGlobalSecurity(
+    security: Partial<components.Security> | null | undefined
+): SecurityState | null {
     return resolveSecurity([
         {
             fieldName: "Authorization",

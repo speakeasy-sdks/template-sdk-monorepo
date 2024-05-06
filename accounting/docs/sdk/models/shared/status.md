@@ -1,12 +1,13 @@
 # Status
 
-Current state of the tracking category.
+The status of the account transaction.
 
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `Unknown`  | Unknown    |
-| `Active`   | Active     |
-| `Archived` | Archived   |
+| Name           | Value          |
+| -------------- | -------------- |
+| `Unknown`      | Unknown        |
+| `Unreconciled` | Unreconciled   |
+| `Reconciled`   | Reconciled     |
+| `Void`         | Void           |

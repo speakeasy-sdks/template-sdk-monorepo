@@ -54,4 +54,4 @@ export enum DataType {
 }
 
 /** @internal */
-export const DataType$ = z.nativeEnum(DataType);
+export const DataType$: z.ZodNativeEnum<typeof DataType> = z.nativeEnum(DataType);

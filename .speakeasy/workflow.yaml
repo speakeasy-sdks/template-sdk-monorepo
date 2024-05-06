@@ -1,11 +1,16 @@
 workflowVersion: 1.0.0
+speakeasyVersion: latest
 sources:
     accounting:
         inputs:
-            - location: https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Accounting.yaml
+            - location: accounting.yaml
+        registry:
+            location: registry.speakeasyapi.dev/sagar-demo/sagar-demo/accounting
     lending:
         inputs:
-            - location: https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Lending.yaml
+            - location: lending.yaml
+        registry:
+            location: registry.speakeasyapi.dev/sagar-demo/sagar-demo/lending
 targets:
     accounting-ts:
         target: typescript

@@ -1,0 +1,50 @@
+speakeasyVersion: 1.279.0
+sources:
+    accounting:
+        sourceNamespace: accounting
+        sourceRevisionDigest: sha256:cf2ac90002d5b1008542b5beb07fa6e32f72e1d71e3661cece140105c3b8f14b
+        sourceBlobDigest: sha256:63ea43ffd3b0b69d3db113ac97209192c32a9ede46382aeb2d99b3f81868d38d
+        tags:
+            - latest
+    lending:
+        sourceNamespace: lending
+        sourceRevisionDigest: sha256:17d1fdc1e7c9eab58f2f8f3df385d3f711732de69f22f98a530326d54b0ae1fc
+        sourceBlobDigest: sha256:112898af15b477acb79ec10dbcb42b2d70ad34151c28022c6c9ef2a1b722afc3
+        tags:
+            - latest
+targets:
+    accounting-ts:
+        source: accounting
+        sourceNamespace: accounting
+        sourceRevisionDigest: sha256:cf2ac90002d5b1008542b5beb07fa6e32f72e1d71e3661cece140105c3b8f14b
+        sourceBlobDigest: sha256:63ea43ffd3b0b69d3db113ac97209192c32a9ede46382aeb2d99b3f81868d38d
+        outLocation: ./accounting
+    lending-ts:
+        source: lending
+        sourceNamespace: lending
+        sourceRevisionDigest: sha256:17d1fdc1e7c9eab58f2f8f3df385d3f711732de69f22f98a530326d54b0ae1fc
+        sourceBlobDigest: sha256:112898af15b477acb79ec10dbcb42b2d70ad34151c28022c6c9ef2a1b722afc3
+        outLocation: ./lending
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        accounting:
+            inputs:
+                - location: accounting.yaml
+            registry:
+                location: registry.speakeasyapi.dev/sagar-demo/sagar-demo/accounting
+        lending:
+            inputs:
+                - location: lending.yaml
+            registry:
+                location: registry.speakeasyapi.dev/sagar-demo/sagar-demo/lending
+    targets:
+        accounting-ts:
+            target: typescript
+            source: accounting
+            output: ./accounting
+        lending-ts:
+            target: typescript
+            source: lending
+            output: ./lending
