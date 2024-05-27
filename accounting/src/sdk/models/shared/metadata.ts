@@ -13,11 +13,7 @@ export type Metadata = {
 
 /** @internal */
 export namespace Metadata$ {
-    export type Inbound = {
-        isDeleted?: boolean | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Metadata, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Metadata, z.ZodTypeDef, unknown> = z
         .object({
             isDeleted: z.nullable(z.boolean()).optional(),
         })

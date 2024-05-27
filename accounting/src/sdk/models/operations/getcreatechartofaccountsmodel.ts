@@ -41,15 +41,10 @@ export type GetCreateChartOfAccountsModelResponse = {
 
 /** @internal */
 export namespace GetCreateChartOfAccountsModelRequest$ {
-    export type Inbound = {
-        companyId: string;
-        connectionId: string;
-    };
-
     export const inboundSchema: z.ZodType<
         GetCreateChartOfAccountsModelRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             companyId: z.string(),
@@ -86,18 +81,10 @@ export namespace GetCreateChartOfAccountsModelRequest$ {
 
 /** @internal */
 export namespace GetCreateChartOfAccountsModelResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        ErrorMessage?: shared.ErrorMessage$.Inbound | undefined;
-        PushOption?: shared.PushOption$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         GetCreateChartOfAccountsModelResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

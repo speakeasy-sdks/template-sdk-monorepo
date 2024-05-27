@@ -15,12 +15,7 @@ export type CreateCompanyResponse = {
 
 /** @internal */
 export namespace CreateCompanyResponse$ {
-    export type Inbound = {
-        HttpMeta: components.HTTPMetadata$.Inbound;
-        Company?: components.Company$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateCompanyResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateCompanyResponse, z.ZodTypeDef, unknown> = z
         .object({
             HttpMeta: components.HTTPMetadata$.inboundSchema,
             Company: components.Company$.inboundSchema.optional(),

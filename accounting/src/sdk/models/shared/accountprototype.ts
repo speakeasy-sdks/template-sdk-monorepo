@@ -83,22 +83,7 @@ export type AccountPrototype = {
 
 /** @internal */
 export namespace AccountPrototype$ {
-    export type Inbound = {
-        currency?: string | undefined;
-        currentBalance?: number | null | undefined;
-        description?: string | null | undefined;
-        fullyQualifiedCategory?: string | null | undefined;
-        fullyQualifiedName?: string | null | undefined;
-        isBankAccount?: boolean | undefined;
-        name?: string | null | undefined;
-        nominalCode?: string | null | undefined;
-        status?: AccountStatus | undefined;
-        supplementalData?: SupplementalData$.Inbound | undefined;
-        type?: AccountType | undefined;
-        validDatatypeLinks?: Array<ValidDataTypeLinks$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AccountPrototype, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AccountPrototype, z.ZodTypeDef, unknown> = z
         .object({
             currency: z.string().optional(),
             currentBalance: z.nullable(z.number().transform((v) => new Decimal$(v))).optional(),
@@ -108,9 +93,9 @@ export namespace AccountPrototype$ {
             isBankAccount: z.boolean().optional(),
             name: z.nullable(z.string()).optional(),
             nominalCode: z.nullable(z.string()).optional(),
-            status: AccountStatus$.optional(),
+            status: AccountStatus$.inboundSchema.optional(),
             supplementalData: SupplementalData$.inboundSchema.optional(),
-            type: AccountType$.optional(),
+            type: AccountType$.inboundSchema.optional(),
             validDatatypeLinks: z.nullable(z.array(ValidDataTypeLinks$.inboundSchema)).optional(),
         })
         .transform((v) => {
@@ -147,9 +132,9 @@ export namespace AccountPrototype$ {
         isBankAccount?: boolean | undefined;
         name?: string | null | undefined;
         nominalCode?: string | null | undefined;
-        status?: AccountStatus | undefined;
+        status?: string | undefined;
         supplementalData?: SupplementalData$.Outbound | undefined;
-        type?: AccountType | undefined;
+        type?: string | undefined;
         validDatatypeLinks?: Array<ValidDataTypeLinks$.Outbound> | null | undefined;
     };
 
@@ -169,9 +154,9 @@ export namespace AccountPrototype$ {
             isBankAccount: z.boolean().optional(),
             name: z.nullable(z.string()).optional(),
             nominalCode: z.nullable(z.string()).optional(),
-            status: AccountStatus$.optional(),
+            status: AccountStatus$.outboundSchema.optional(),
             supplementalData: SupplementalData$.outboundSchema.optional(),
-            type: AccountType$.optional(),
+            type: AccountType$.outboundSchema.optional(),
             validDatatypeLinks: z.nullable(z.array(ValidDataTypeLinks$.outboundSchema)).optional(),
         })
         .transform((v) => {

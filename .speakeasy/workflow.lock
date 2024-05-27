@@ -1,29 +1,31 @@
-speakeasyVersion: 1.279.0
+speakeasyVersion: 1.296.1
 sources:
     accounting:
         sourceNamespace: accounting
-        sourceRevisionDigest: sha256:cf2ac90002d5b1008542b5beb07fa6e32f72e1d71e3661cece140105c3b8f14b
-        sourceBlobDigest: sha256:63ea43ffd3b0b69d3db113ac97209192c32a9ede46382aeb2d99b3f81868d38d
+        sourceRevisionDigest: sha256:5e282bee33d1b8996c9d4d9bd50724a57ba308514bcc7c0b69ee1c39f44cd39f
+        sourceBlobDigest: sha256:5f1cc761dc56e7ca4021510061eebb912db4ba7736e61c5a9ccd633a416c2611
         tags:
             - latest
+            - main
     lending:
         sourceNamespace: lending
-        sourceRevisionDigest: sha256:17d1fdc1e7c9eab58f2f8f3df385d3f711732de69f22f98a530326d54b0ae1fc
-        sourceBlobDigest: sha256:112898af15b477acb79ec10dbcb42b2d70ad34151c28022c6c9ef2a1b722afc3
+        sourceRevisionDigest: sha256:1f09cd1cbff0424a1970a73e4829a80f7ba7a339f3d720a793e9e2b65ad17fe1
+        sourceBlobDigest: sha256:fa9d95b78d45713a72c0e0606cd94aab70c76d28d8edb2c33545d078dc15d36b
         tags:
             - latest
+            - main
 targets:
     accounting-ts:
         source: accounting
         sourceNamespace: accounting
-        sourceRevisionDigest: sha256:cf2ac90002d5b1008542b5beb07fa6e32f72e1d71e3661cece140105c3b8f14b
-        sourceBlobDigest: sha256:63ea43ffd3b0b69d3db113ac97209192c32a9ede46382aeb2d99b3f81868d38d
+        sourceRevisionDigest: sha256:5e282bee33d1b8996c9d4d9bd50724a57ba308514bcc7c0b69ee1c39f44cd39f
+        sourceBlobDigest: sha256:5f1cc761dc56e7ca4021510061eebb912db4ba7736e61c5a9ccd633a416c2611
         outLocation: ./accounting
     lending-ts:
         source: lending
         sourceNamespace: lending
-        sourceRevisionDigest: sha256:17d1fdc1e7c9eab58f2f8f3df385d3f711732de69f22f98a530326d54b0ae1fc
-        sourceBlobDigest: sha256:112898af15b477acb79ec10dbcb42b2d70ad34151c28022c6c9ef2a1b722afc3
+        sourceRevisionDigest: sha256:1f09cd1cbff0424a1970a73e4829a80f7ba7a339f3d720a793e9e2b65ad17fe1
+        sourceBlobDigest: sha256:fa9d95b78d45713a72c0e0606cd94aab70c76d28d8edb2c33545d078dc15d36b
         outLocation: ./lending
 workflow:
     workflowVersion: 1.0.0

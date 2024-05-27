@@ -112,17 +112,7 @@ export class ErrorMessage extends Error {
 
 /** @internal */
 export namespace ErrorMessage$ {
-    export type Inbound = {
-        statusCode?: number | undefined;
-        service?: string | undefined;
-        error?: string | undefined;
-        correlationId?: string | undefined;
-        validation?: components.ErrorValidation$.Inbound | null | undefined;
-        canBeRetried?: string | undefined;
-        detailedErrorCode?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ErrorMessage, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ErrorMessage, z.ZodTypeDef, unknown> = z
         .object({
             statusCode: z.number().int().optional(),
             service: z.string().optional(),

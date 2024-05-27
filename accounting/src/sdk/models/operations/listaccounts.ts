@@ -53,15 +53,7 @@ export type ListAccountsResponse = {
 
 /** @internal */
 export namespace ListAccountsRequest$ {
-    export type Inbound = {
-        companyId: string;
-        orderBy?: string | undefined;
-        page?: number | undefined;
-        pageSize?: number | undefined;
-        query?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ListAccountsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ListAccountsRequest, z.ZodTypeDef, unknown> = z
         .object({
             companyId: z.string(),
             orderBy: z.string().optional(),
@@ -108,15 +100,7 @@ export namespace ListAccountsRequest$ {
 
 /** @internal */
 export namespace ListAccountsResponse$ {
-    export type Inbound = {
-        Accounts?: shared.Accounts$.Inbound | undefined;
-        ContentType: string;
-        ErrorMessage?: shared.ErrorMessage$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<ListAccountsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ListAccountsResponse, z.ZodTypeDef, unknown> = z
         .object({
             Accounts: shared.Accounts$.inboundSchema.optional(),
             ContentType: z.string(),

@@ -13,11 +13,7 @@ export type Items = {
 
 /** @internal */
 export namespace Items$ {
-    export type Inbound = {
-        id?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Items, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Items, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string().optional(),
         })

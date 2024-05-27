@@ -14,14 +14,7 @@ export type Links = {
 
 /** @internal */
 export namespace Links$ {
-    export type Inbound = {
-        current: HalRef$.Inbound;
-        next?: HalRef$.Inbound | undefined;
-        previous?: HalRef$.Inbound | undefined;
-        self: HalRef$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<Links, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z
         .object({
             current: HalRef$.inboundSchema,
             next: HalRef$.inboundSchema.optional(),

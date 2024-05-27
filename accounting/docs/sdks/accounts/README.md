@@ -37,9 +37,7 @@ const accounting = new Accounting({
 });
 
 async function run() {
-  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-  const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-  const accountPrototype = {
+  const result = await accounting.accounts.create("8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171", {
     currency: "USD",
     currentBalance: new Decimal("0"),
     description: "Invoices the business has issued but has not yet collected payment on.",
@@ -49,10 +47,7 @@ async function run() {
     nominalCode: "610",
     status: AccountStatus.Active,
     type: AccountType.Asset,
-  };
-  const timeoutInMinutes = 638424;
-  
-  const result = await accounting.accounts.create(companyId, connectionId, accountPrototype, timeoutInMinutes);
+  }, 638424);
 
   // Handle the result
   console.log(result)
@@ -76,7 +71,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateAccountResponse](../../sdk/models/operations/createaccountresponse.md)>**
+**Promise\<[operations.CreateAccountResponse](../../sdk/models/operations/createaccountresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -104,10 +99,7 @@ const accounting = new Accounting({
 });
 
 async function run() {
-  const accountId = "<value>";
-  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-  
-  const result = await accounting.accounts.get(accountId, companyId);
+  const result = await accounting.accounts.get("<value>", "8a210b68-6988-11ed-a1eb-0242ac120002");
 
   // Handle the result
   console.log(result)
@@ -129,7 +121,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAccountResponse](../../sdk/models/operations/getaccountresponse.md)>**
+**Promise\<[operations.GetAccountResponse](../../sdk/models/operations/getaccountresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -159,10 +151,7 @@ const accounting = new Accounting({
 });
 
 async function run() {
-  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-  const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-  
-  const result = await accounting.accounts.getCreateModel(companyId, connectionId);
+  const result = await accounting.accounts.getCreateModel("8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171");
 
   // Handle the result
   console.log(result)
@@ -184,7 +173,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetCreateChartOfAccountsModelResponse](../../sdk/models/operations/getcreatechartofaccountsmodelresponse.md)>**
+**Promise\<[operations.GetCreateChartOfAccountsModelResponse](../../sdk/models/operations/getcreatechartofaccountsmodelresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -236,7 +225,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ListAccountsResponse](../../sdk/models/operations/listaccountsresponse.md)>**
+**Promise\<[operations.ListAccountsResponse](../../sdk/models/operations/listaccountsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

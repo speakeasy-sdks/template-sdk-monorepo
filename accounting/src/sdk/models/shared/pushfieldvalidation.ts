@@ -21,13 +21,7 @@ export type PushFieldValidation = {
 
 /** @internal */
 export namespace PushFieldValidation$ {
-    export type Inbound = {
-        details: string;
-        field?: string | undefined;
-        ref?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PushFieldValidation, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PushFieldValidation, z.ZodTypeDef, unknown> = z
         .object({
             details: z.string(),
             field: z.string().optional(),

@@ -36,21 +36,17 @@ export type AccountTransactionLineRecordRef = {
 };
 
 /** @internal */
-export const AccountTransactionLineRecordRefDataType$: z.ZodNativeEnum<
-    typeof AccountTransactionLineRecordRefDataType
-> = z.nativeEnum(AccountTransactionLineRecordRefDataType);
+export namespace AccountTransactionLineRecordRefDataType$ {
+    export const inboundSchema = z.nativeEnum(AccountTransactionLineRecordRefDataType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace AccountTransactionLineRecordRef$ {
-    export type Inbound = {
-        dataType?: AccountTransactionLineRecordRefDataType | undefined;
-        id?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AccountTransactionLineRecordRef, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<AccountTransactionLineRecordRef, z.ZodTypeDef, unknown> =
         z
             .object({
-                dataType: AccountTransactionLineRecordRefDataType$.optional(),
+                dataType: AccountTransactionLineRecordRefDataType$.inboundSchema.optional(),
                 id: z.string().optional(),
             })
             .transform((v) => {
@@ -61,7 +57,7 @@ export namespace AccountTransactionLineRecordRef$ {
             });
 
     export type Outbound = {
-        dataType?: AccountTransactionLineRecordRefDataType | undefined;
+        dataType?: string | undefined;
         id?: string | undefined;
     };
 
@@ -71,7 +67,7 @@ export namespace AccountTransactionLineRecordRef$ {
         AccountTransactionLineRecordRef
     > = z
         .object({
-            dataType: AccountTransactionLineRecordRefDataType$.optional(),
+            dataType: AccountTransactionLineRecordRefDataType$.outboundSchema.optional(),
             id: z.string().optional(),
         })
         .transform((v) => {

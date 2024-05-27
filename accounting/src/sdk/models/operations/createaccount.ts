@@ -6,6 +6,7 @@ import * as shared from "../shared";
 import * as z from "zod";
 
 export type CreateAccountRequest = {
+    accountPrototype?: shared.AccountPrototype | undefined;
     /**
      * Unique identifier for a company.
      */
@@ -14,7 +15,6 @@ export type CreateAccountRequest = {
      * Unique identifier for a connection.
      */
     connectionId: string;
-    accountPrototype?: shared.AccountPrototype | undefined;
     /**
      * Time limit for the push operation to complete before it is timed out.
      */
@@ -46,27 +46,20 @@ export type CreateAccountResponse = {
 
 /** @internal */
 export namespace CreateAccountRequest$ {
-    export type Inbound = {
-        companyId: string;
-        connectionId: string;
-        accountPrototype?: shared.AccountPrototype$.Inbound | undefined;
-        timeoutInMinutes?: number | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateAccountRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateAccountRequest, z.ZodTypeDef, unknown> = z
         .object({
+            accountPrototype: shared.AccountPrototype$.inboundSchema.optional(),
             companyId: z.string(),
             connectionId: z.string(),
-            accountPrototype: shared.AccountPrototype$.inboundSchema.optional(),
             timeoutInMinutes: z.number().int().optional(),
         })
         .transform((v) => {
             return {
-                companyId: v.companyId,
-                connectionId: v.connectionId,
                 ...(v.accountPrototype === undefined
                     ? null
                     : { accountPrototype: v.accountPrototype }),
+                companyId: v.companyId,
+                connectionId: v.connectionId,
                 ...(v.timeoutInMinutes === undefined
                     ? null
                     : { timeoutInMinutes: v.timeoutInMinutes }),
@@ -74,26 +67,26 @@ export namespace CreateAccountRequest$ {
         });
 
     export type Outbound = {
+        accountPrototype?: shared.AccountPrototype$.Outbound | undefined;
         companyId: string;
         connectionId: string;
-        accountPrototype?: shared.AccountPrototype$.Outbound | undefined;
         timeoutInMinutes?: number | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateAccountRequest> = z
         .object({
+            accountPrototype: shared.AccountPrototype$.outboundSchema.optional(),
             companyId: z.string(),
             connectionId: z.string(),
-            accountPrototype: shared.AccountPrototype$.outboundSchema.optional(),
             timeoutInMinutes: z.number().int().optional(),
         })
         .transform((v) => {
             return {
-                companyId: v.companyId,
-                connectionId: v.connectionId,
                 ...(v.accountPrototype === undefined
                     ? null
                     : { accountPrototype: v.accountPrototype }),
+                companyId: v.companyId,
+                connectionId: v.connectionId,
                 ...(v.timeoutInMinutes === undefined
                     ? null
                     : { timeoutInMinutes: v.timeoutInMinutes }),
@@ -103,15 +96,7 @@ export namespace CreateAccountRequest$ {
 
 /** @internal */
 export namespace CreateAccountResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        CreateAccountResponse?: shared.CreateAccountResponse$.Inbound | undefined;
-        ErrorMessage?: shared.ErrorMessage$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<CreateAccountResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateAccountResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             CreateAccountResponse: shared.CreateAccountResponse$.inboundSchema.optional(),

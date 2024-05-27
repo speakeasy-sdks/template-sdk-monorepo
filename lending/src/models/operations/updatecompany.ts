@@ -23,12 +23,7 @@ export type UpdateCompanyResponse = {
 
 /** @internal */
 export namespace UpdateCompanyRequest$ {
-    export type Inbound = {
-        companyId: string;
-        CompanyRequestBody?: components.CompanyRequestBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateCompanyRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateCompanyRequest, z.ZodTypeDef, unknown> = z
         .object({
             companyId: z.string(),
             CompanyRequestBody: components.CompanyRequestBody$.inboundSchema.optional(),
@@ -64,12 +59,7 @@ export namespace UpdateCompanyRequest$ {
 
 /** @internal */
 export namespace UpdateCompanyResponse$ {
-    export type Inbound = {
-        HttpMeta: components.HTTPMetadata$.Inbound;
-        Company?: components.Company$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateCompanyResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateCompanyResponse, z.ZodTypeDef, unknown> = z
         .object({
             HttpMeta: components.HTTPMetadata$.inboundSchema,
             Company: components.Company$.inboundSchema.optional(),

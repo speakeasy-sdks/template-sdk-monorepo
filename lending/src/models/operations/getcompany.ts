@@ -22,11 +22,7 @@ export type GetCompanyResponse = {
 
 /** @internal */
 export namespace GetCompanyRequest$ {
-    export type Inbound = {
-        companyId: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetCompanyRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetCompanyRequest, z.ZodTypeDef, unknown> = z
         .object({
             companyId: z.string(),
         })
@@ -53,12 +49,7 @@ export namespace GetCompanyRequest$ {
 
 /** @internal */
 export namespace GetCompanyResponse$ {
-    export type Inbound = {
-        HttpMeta: components.HTTPMetadata$.Inbound;
-        Company?: components.Company$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetCompanyResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetCompanyResponse, z.ZodTypeDef, unknown> = z
         .object({
             HttpMeta: components.HTTPMetadata$.inboundSchema,
             Company: components.Company$.inboundSchema.optional(),

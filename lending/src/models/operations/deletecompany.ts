@@ -18,11 +18,7 @@ export type DeleteCompanyResponse = {
 
 /** @internal */
 export namespace DeleteCompanyRequest$ {
-    export type Inbound = {
-        companyId: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteCompanyRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteCompanyRequest, z.ZodTypeDef, unknown> = z
         .object({
             companyId: z.string(),
         })
@@ -49,11 +45,7 @@ export namespace DeleteCompanyRequest$ {
 
 /** @internal */
 export namespace DeleteCompanyResponse$ {
-    export type Inbound = {
-        HttpMeta: components.HTTPMetadata$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteCompanyResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteCompanyResponse, z.ZodTypeDef, unknown> = z
         .object({
             HttpMeta: components.HTTPMetadata$.inboundSchema,
         })

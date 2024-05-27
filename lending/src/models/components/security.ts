@@ -10,11 +10,7 @@ export type Security = {
 
 /** @internal */
 export namespace Security$ {
-    export type Inbound = {
-        auth_header: string;
-    };
-
-    export const inboundSchema: z.ZodType<Security, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Security, z.ZodTypeDef, unknown> = z
         .object({
             auth_header: z.string(),
         })

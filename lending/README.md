@@ -12,13 +12,13 @@
 ### NPM
 
 ```bash
-npm add <UNSET>
+npm add https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
 ```
 
 ### Yarn
 
 ```bash
-yarn add <UNSET>
+yarn add https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -35,12 +35,12 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-    const page = 1;
-    const pageSize = 100;
-    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
-    const orderBy = "-modifiedDate";
-
-    const result = await lendingTs.companies.list(page, pageSize, query, orderBy);
+    const result = await lendingTs.companies.list(
+        1,
+        100,
+        "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "-modifiedDate"
+    );
 
     // Handle the result
     console.log(result);
@@ -83,23 +83,24 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-    const page = 1;
-    const pageSize = 100;
-    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
-    const orderBy = "-modifiedDate";
-
-    const result = await lendingTs.companies.list(page, pageSize, query, orderBy, {
-        retries: {
-            strategy: "backoff",
-            backoff: {
-                initialInterval: 1,
-                maxInterval: 50,
-                exponent: 1.1,
-                maxElapsedTime: 100,
+    const result = await lendingTs.companies.list(
+        1,
+        100,
+        "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "-modifiedDate",
+        {
+            retries: {
+                strategy: "backoff",
+                backoff: {
+                    initialInterval: 1,
+                    maxInterval: 50,
+                    exponent: 1.1,
+                    maxElapsedTime: 100,
+                },
+                retryConnectionErrors: false,
             },
-            retryConnectionErrors: false,
-        },
-    });
+        }
+    );
 
     // Handle the result
     console.log(result);
@@ -128,12 +129,12 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-    const page = 1;
-    const pageSize = 100;
-    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
-    const orderBy = "-modifiedDate";
-
-    const result = await lendingTs.companies.list(page, pageSize, query, orderBy);
+    const result = await lendingTs.companies.list(
+        1,
+        100,
+        "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "-modifiedDate"
+    );
 
     // Handle the result
     console.log(result);
@@ -166,14 +167,14 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-    const page = 1;
-    const pageSize = 100;
-    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
-    const orderBy = "-modifiedDate";
-
     let result;
     try {
-        result = await lendingTs.companies.list(page, pageSize, query, orderBy);
+        result = await lendingTs.companies.list(
+            1,
+            100,
+            "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+            "-modifiedDate"
+        );
     } catch (err) {
         switch (true) {
             case err instanceof errors.SDKValidationError: {
@@ -222,12 +223,12 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-    const page = 1;
-    const pageSize = 100;
-    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
-    const orderBy = "-modifiedDate";
-
-    const result = await lendingTs.companies.list(page, pageSize, query, orderBy);
+    const result = await lendingTs.companies.list(
+        1,
+        100,
+        "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "-modifiedDate"
+    );
 
     // Handle the result
     console.log(result);
@@ -251,12 +252,12 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-    const page = 1;
-    const pageSize = 100;
-    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
-    const orderBy = "-modifiedDate";
-
-    const result = await lendingTs.companies.list(page, pageSize, query, orderBy);
+    const result = await lendingTs.companies.list(
+        1,
+        100,
+        "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "-modifiedDate"
+    );
 
     // Handle the result
     console.log(result);
@@ -297,7 +298,7 @@ const httpClient = new HTTPClient({
 
 httpClient.addHook("beforeRequest", (request) => {
   const nextRequest = new Request(request, {
-    signal: request.signal || AbortSignal.timeout(5000);
+    signal: request.signal || AbortSignal.timeout(5000)
   });
 
   nextRequest.headers.set("x-custom-header", "custom value");
@@ -336,12 +337,12 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-    const page = 1;
-    const pageSize = 100;
-    const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
-    const orderBy = "-modifiedDate";
-
-    const result = await lendingTs.companies.list(page, pageSize, query, orderBy);
+    const result = await lendingTs.companies.list(
+        1,
+        100,
+        "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "-modifiedDate"
+    );
 
     // Handle the result
     console.log(result);

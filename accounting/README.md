@@ -35,14 +35,10 @@ const accounting = new Accounting({
 });
 
 async function run() {
-    const accountTransactionId = "<value>";
-    const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-    const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-
     const result = await accounting.accountTransactions.get(
-        accountTransactionId,
-        companyId,
-        connectionId
+        "<value>",
+        "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "2e9d2c44-f675-40ba-8049-353bfcb5e171"
     );
 
     // Handle the result
@@ -90,14 +86,10 @@ const accounting = new Accounting({
 });
 
 async function run() {
-    const accountTransactionId = "<value>";
-    const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-    const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-
     const result = await accounting.accountTransactions.get(
-        accountTransactionId,
-        companyId,
-        connectionId,
+        "<value>",
+        "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         {
             retries: {
                 strategy: "backoff",
@@ -139,14 +131,10 @@ const accounting = new Accounting({
 });
 
 async function run() {
-    const accountTransactionId = "<value>";
-    const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-    const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-
     const result = await accounting.accountTransactions.get(
-        accountTransactionId,
-        companyId,
-        connectionId
+        "<value>",
+        "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "2e9d2c44-f675-40ba-8049-353bfcb5e171"
     );
 
     // Handle the result
@@ -179,16 +167,12 @@ const accounting = new Accounting({
 });
 
 async function run() {
-    const accountTransactionId = "<value>";
-    const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-    const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-
     let result;
     try {
         result = await accounting.accountTransactions.get(
-            accountTransactionId,
-            companyId,
-            connectionId
+            "<value>",
+            "8a210b68-6988-11ed-a1eb-0242ac120002",
+            "2e9d2c44-f675-40ba-8049-353bfcb5e171"
         );
     } catch (err) {
         switch (true) {
@@ -234,14 +218,10 @@ const accounting = new Accounting({
 });
 
 async function run() {
-    const accountTransactionId = "<value>";
-    const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-    const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-
     const result = await accounting.accountTransactions.get(
-        accountTransactionId,
-        companyId,
-        connectionId
+        "<value>",
+        "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "2e9d2c44-f675-40ba-8049-353bfcb5e171"
     );
 
     // Handle the result
@@ -266,14 +246,10 @@ const accounting = new Accounting({
 });
 
 async function run() {
-    const accountTransactionId = "<value>";
-    const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-    const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-
     const result = await accounting.accountTransactions.get(
-        accountTransactionId,
-        companyId,
-        connectionId
+        "<value>",
+        "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "2e9d2c44-f675-40ba-8049-353bfcb5e171"
     );
 
     // Handle the result
@@ -315,7 +291,7 @@ const httpClient = new HTTPClient({
 
 httpClient.addHook("beforeRequest", (request) => {
   const nextRequest = new Request(request, {
-    signal: request.signal || AbortSignal.timeout(5000);
+    signal: request.signal || AbortSignal.timeout(5000)
   });
 
   nextRequest.headers.set("x-custom-header", "custom value");
@@ -354,14 +330,10 @@ const accounting = new Accounting({
 });
 
 async function run() {
-    const accountTransactionId = "<value>";
-    const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-    const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-
     const result = await accounting.accountTransactions.get(
-        accountTransactionId,
-        companyId,
-        connectionId
+        "<value>",
+        "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "2e9d2c44-f675-40ba-8049-353bfcb5e171"
     );
 
     // Handle the result

@@ -20,12 +20,7 @@ export type BankAccountRef = {
 
 /** @internal */
 export namespace BankAccountRef$ {
-    export type Inbound = {
-        id?: string | undefined;
-        name?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<BankAccountRef, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<BankAccountRef, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string().optional(),
             name: z.string().optional(),

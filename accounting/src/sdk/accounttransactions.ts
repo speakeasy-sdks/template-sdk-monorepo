@@ -9,7 +9,6 @@ import { HTTPClient } from "../lib/http";
 import * as retries$ from "../lib/retries";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 
 export class AccountTransactions extends ClientSDK {
@@ -111,7 +110,7 @@ export class AccountTransactions extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -138,7 +137,7 @@ export class AccountTransactions extends ClientSDK {
 
         const response = await retries$.retry(
             () => {
-                const cloned = request.clone();
+                const cloned = request$.clone();
                 return this.do$(cloned, doOptions);
             },
             { config: retryConfig, statusCodes: ["408", "429", "5XX"] }
@@ -151,46 +150,16 @@ export class AccountTransactions extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.GetAccountTransactionResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        AccountTransaction: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (
-            this.matchResponse(
-                response,
+        const [result$] = await this.matcher<operations.GetAccountTransactionResponse>()
+            .json(200, operations.GetAccountTransactionResponse$, { key: "AccountTransaction" })
+            .json(
                 [401, 402, 403, 404, 409, 429, 500, 503],
-                "application/json"
+                operations.GetAccountTransactionResponse$,
+                { key: "ErrorMessage" }
             )
-        ) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.GetAccountTransactionResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        ErrorMessage: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -205,15 +174,16 @@ export class AccountTransactions extends ClientSDK {
      *
      */
     async list(
-        input: operations.ListAccountTransactionsRequest,
+        request: operations.ListAccountTransactionsRequest,
         options?: RequestOptions & { retries?: retries$.RetryConfig }
     ): Promise<operations.ListAccountTransactionsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.ListAccountTransactionsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -264,7 +234,7 @@ export class AccountTransactions extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -291,7 +261,7 @@ export class AccountTransactions extends ClientSDK {
 
         const response = await retries$.retry(
             () => {
-                const cloned = request.clone();
+                const cloned = request$.clone();
                 return this.do$(cloned, doOptions);
             },
             { config: retryConfig, statusCodes: ["408", "429", "5XX"] }
@@ -304,45 +274,15 @@ export class AccountTransactions extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.ListAccountTransactionsResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        AccountTransactions: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (
-            this.matchResponse(
-                response,
+        const [result$] = await this.matcher<operations.ListAccountTransactionsResponse>()
+            .json(200, operations.ListAccountTransactionsResponse$, { key: "AccountTransactions" })
+            .json(
                 [400, 401, 402, 403, 404, 409, 429, 500, 503],
-                "application/json"
+                operations.ListAccountTransactionsResponse$,
+                { key: "ErrorMessage" }
             )
-        ) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.ListAccountTransactionsResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        ErrorMessage: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

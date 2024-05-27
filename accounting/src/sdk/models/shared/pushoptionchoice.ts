@@ -30,20 +30,12 @@ export type PushOptionChoice = {
 
 /** @internal */
 export namespace PushOptionChoice$ {
-    export type Inbound = {
-        description?: string | undefined;
-        displayName?: string | undefined;
-        required?: boolean | undefined;
-        type?: PushOptionType | undefined;
-        value?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PushOptionChoice, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PushOptionChoice, z.ZodTypeDef, unknown> = z
         .object({
             description: z.string().optional(),
             displayName: z.string().optional(),
             required: z.boolean().optional(),
-            type: PushOptionType$.optional(),
+            type: PushOptionType$.inboundSchema.optional(),
             value: z.string().optional(),
         })
         .transform((v) => {
@@ -60,7 +52,7 @@ export namespace PushOptionChoice$ {
         description?: string | undefined;
         displayName?: string | undefined;
         required?: boolean | undefined;
-        type?: PushOptionType | undefined;
+        type?: string | undefined;
         value?: string | undefined;
     };
 
@@ -69,7 +61,7 @@ export namespace PushOptionChoice$ {
             description: z.string().optional(),
             displayName: z.string().optional(),
             required: z.boolean().optional(),
-            type: PushOptionType$.optional(),
+            type: PushOptionType$.outboundSchema.optional(),
             value: z.string().optional(),
         })
         .transform((v) => {

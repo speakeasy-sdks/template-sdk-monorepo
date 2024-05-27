@@ -15,4 +15,7 @@ export enum AccountStatus {
 }
 
 /** @internal */
-export const AccountStatus$: z.ZodNativeEnum<typeof AccountStatus> = z.nativeEnum(AccountStatus);
+export namespace AccountStatus$ {
+    export const inboundSchema = z.nativeEnum(AccountStatus);
+    export const outboundSchema = inboundSchema;
+}

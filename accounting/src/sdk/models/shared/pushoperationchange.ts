@@ -20,17 +20,11 @@ export type PushOperationChange = {
 
 /** @internal */
 export namespace PushOperationChange$ {
-    export type Inbound = {
-        attachmentId?: string | null | undefined;
-        recordRef?: PushOperationRef$.Inbound | undefined;
-        type?: PushChangeType | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PushOperationChange, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PushOperationChange, z.ZodTypeDef, unknown> = z
         .object({
             attachmentId: z.nullable(z.string()).optional(),
             recordRef: PushOperationRef$.inboundSchema.optional(),
-            type: PushChangeType$.optional(),
+            type: PushChangeType$.inboundSchema.optional(),
         })
         .transform((v) => {
             return {
@@ -43,14 +37,14 @@ export namespace PushOperationChange$ {
     export type Outbound = {
         attachmentId?: string | null | undefined;
         recordRef?: PushOperationRef$.Outbound | undefined;
-        type?: PushChangeType | undefined;
+        type?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushOperationChange> = z
         .object({
             attachmentId: z.nullable(z.string()).optional(),
             recordRef: PushOperationRef$.outboundSchema.optional(),
-            type: PushChangeType$.optional(),
+            type: PushChangeType$.outboundSchema.optional(),
         })
         .transform((v) => {
             return {

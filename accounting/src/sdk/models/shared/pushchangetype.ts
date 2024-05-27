@@ -16,4 +16,7 @@ export enum PushChangeType {
 }
 
 /** @internal */
-export const PushChangeType$: z.ZodNativeEnum<typeof PushChangeType> = z.nativeEnum(PushChangeType);
+export namespace PushChangeType$ {
+    export const inboundSchema = z.nativeEnum(PushChangeType);
+    export const outboundSchema = inboundSchema;
+}
