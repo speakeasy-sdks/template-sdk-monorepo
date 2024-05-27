@@ -13,11 +13,7 @@ export type HalRef = {
 
 /** @internal */
 export namespace HalRef$ {
-    export type Inbound = {
-        href?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HalRef, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HalRef, z.ZodTypeDef, unknown> = z
         .object({
             href: z.string().optional(),
         })

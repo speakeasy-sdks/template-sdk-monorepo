@@ -22,13 +22,7 @@ export type CompanyRequestBody = {
 
 /** @internal */
 export namespace CompanyRequestBody$ {
-    export type Inbound = {
-        name: string;
-        description?: string | undefined;
-        groups?: Array<Items$.Inbound> | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CompanyRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CompanyRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             name: z.string(),
             description: z.string().optional(),

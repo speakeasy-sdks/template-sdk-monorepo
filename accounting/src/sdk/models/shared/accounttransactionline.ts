@@ -26,13 +26,7 @@ export type AccountTransactionLine = {
 
 /** @internal */
 export namespace AccountTransactionLine$ {
-    export type Inbound = {
-        amount?: number | undefined;
-        description?: string | null | undefined;
-        recordRef?: AccountTransactionLineRecordRef$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AccountTransactionLine, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AccountTransactionLine, z.ZodTypeDef, unknown> = z
         .object({
             amount: z
                 .number()

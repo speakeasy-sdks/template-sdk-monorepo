@@ -34,14 +34,7 @@ export type ListCompaniesResponse = {
 
 /** @internal */
 export namespace ListCompaniesRequest$ {
-    export type Inbound = {
-        page?: number | undefined;
-        pageSize?: number | undefined;
-        query?: string | undefined;
-        orderBy?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ListCompaniesRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ListCompaniesRequest, z.ZodTypeDef, unknown> = z
         .object({
             page: z.number().int().default(1),
             pageSize: z.number().int().default(100),
@@ -83,12 +76,7 @@ export namespace ListCompaniesRequest$ {
 
 /** @internal */
 export namespace ListCompaniesResponse$ {
-    export type Inbound = {
-        HttpMeta: components.HTTPMetadata$.Inbound;
-        Companies?: components.Companies$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ListCompaniesResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ListCompaniesResponse, z.ZodTypeDef, unknown> = z
         .object({
             HttpMeta: components.HTTPMetadata$.inboundSchema,
             Companies: components.Companies$.inboundSchema.optional(),

@@ -115,41 +115,28 @@ export type Connection = {
      */
     created: string;
     dataConnectionErrors?: Array<DataConnectionError> | undefined;
-    connectionInfo?: Record<string, string> | undefined;
+    connectionInfo?: { [k: string]: string } | undefined;
     additionalProperties?: any | undefined;
 };
 
 /** @internal */
-export const SourceType$: z.ZodNativeEnum<typeof SourceType> = z.nativeEnum(SourceType);
+export namespace SourceType$ {
+    export const inboundSchema = z.nativeEnum(SourceType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Connection$ {
-    export type Inbound = {
-        id: string;
-        integrationId: string;
-        integrationKey: string;
-        sourceId: string;
-        sourceType: SourceType;
-        platformName: string;
-        linkUrl: string;
-        status: DataConnectionStatus;
-        lastSync?: string | undefined;
-        created: string;
-        dataConnectionErrors?: Array<DataConnectionError$.Inbound> | undefined;
-        connectionInfo?: Record<string, string> | undefined;
-        additionalProperties?: any | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Connection, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Connection, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
             integrationId: z.string(),
             integrationKey: z.string(),
             sourceId: z.string(),
-            sourceType: SourceType$,
+            sourceType: SourceType$.inboundSchema,
             platformName: z.string(),
             linkUrl: z.string(),
-            status: DataConnectionStatus$,
+            status: DataConnectionStatus$.inboundSchema,
             lastSync: z.string().optional(),
             created: z.string(),
             dataConnectionErrors: z.array(DataConnectionError$.inboundSchema).optional(),
@@ -183,14 +170,14 @@ export namespace Connection$ {
         integrationId: string;
         integrationKey: string;
         sourceId: string;
-        sourceType: SourceType;
+        sourceType: string;
         platformName: string;
         linkUrl: string;
-        status: DataConnectionStatus;
+        status: string;
         lastSync?: string | undefined;
         created: string;
         dataConnectionErrors?: Array<DataConnectionError$.Outbound> | undefined;
-        connectionInfo?: Record<string, string> | undefined;
+        connectionInfo?: { [k: string]: string } | undefined;
         additionalProperties?: any | undefined;
     };
 
@@ -200,10 +187,10 @@ export namespace Connection$ {
             integrationId: z.string(),
             integrationKey: z.string(),
             sourceId: z.string(),
-            sourceType: SourceType$,
+            sourceType: SourceType$.outboundSchema,
             platformName: z.string(),
             linkUrl: z.string(),
-            status: DataConnectionStatus$,
+            status: DataConnectionStatus$.outboundSchema,
             lastSync: z.string().optional(),
             created: z.string(),
             dataConnectionErrors: z.array(DataConnectionError$.outboundSchema).optional(),

@@ -12,16 +12,12 @@ import * as z from "zod";
  * It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
  */
 export type SupplementalData = {
-    content?: Record<string, Record<string, any>> | null | undefined;
+    content?: { [k: string]: { [k: string]: any } } | null | undefined;
 };
 
 /** @internal */
 export namespace SupplementalData$ {
-    export type Inbound = {
-        content?: Record<string, Record<string, any>> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<SupplementalData, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SupplementalData, z.ZodTypeDef, unknown> = z
         .object({
             content: z.nullable(z.record(z.record(z.any()))).optional(),
         })
@@ -32,7 +28,7 @@ export namespace SupplementalData$ {
         });
 
     export type Outbound = {
-        content?: Record<string, Record<string, any>> | null | undefined;
+        content?: { [k: string]: { [k: string]: any } } | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SupplementalData> = z

@@ -12,12 +12,7 @@ export type PushValidationInfo = {
 
 /** @internal */
 export namespace PushValidationInfo$ {
-    export type Inbound = {
-        information?: Array<PushFieldValidation$.Inbound> | null | undefined;
-        warnings?: Array<PushFieldValidation$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PushValidationInfo, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PushValidationInfo, z.ZodTypeDef, unknown> = z
         .object({
             information: z.nullable(z.array(PushFieldValidation$.inboundSchema)).optional(),
             warnings: z.nullable(z.array(PushFieldValidation$.inboundSchema)).optional(),

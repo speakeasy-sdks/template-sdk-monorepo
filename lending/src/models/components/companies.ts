@@ -25,15 +25,7 @@ export type Companies = {
 
 /** @internal */
 export namespace Companies$ {
-    export type Inbound = {
-        results?: Array<Company$.Inbound> | undefined;
-        pageNumber: number;
-        pageSize: number;
-        totalResults: number;
-        _links: Links$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<Companies, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Companies, z.ZodTypeDef, unknown> = z
         .object({
             results: z.array(Company$.inboundSchema).optional(),
             pageNumber: z.number().int(),

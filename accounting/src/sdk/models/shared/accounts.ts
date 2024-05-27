@@ -25,15 +25,7 @@ export type Accounts = {
 
 /** @internal */
 export namespace Accounts$ {
-    export type Inbound = {
-        _links: Links$.Inbound;
-        pageNumber: number;
-        pageSize: number;
-        results?: Array<Account$.Inbound> | undefined;
-        totalResults: number;
-    };
-
-    export const inboundSchema: z.ZodType<Accounts, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Accounts, z.ZodTypeDef, unknown> = z
         .object({
             _links: Links$.inboundSchema,
             pageNumber: z.number().int(),

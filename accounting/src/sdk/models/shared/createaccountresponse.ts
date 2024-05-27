@@ -227,26 +227,7 @@ export type CreateAccountResponse = {
 
 /** @internal */
 export namespace AccountingAccount$ {
-    export type Inbound = {
-        currency?: string | undefined;
-        currentBalance?: number | null | undefined;
-        description?: string | null | undefined;
-        fullyQualifiedCategory?: string | null | undefined;
-        fullyQualifiedName?: string | null | undefined;
-        id?: string | undefined;
-        isBankAccount?: boolean | undefined;
-        metadata?: Metadata$.Inbound | undefined;
-        modifiedDate?: string | undefined;
-        name?: string | null | undefined;
-        nominalCode?: string | null | undefined;
-        sourceModifiedDate?: string | undefined;
-        status?: AccountStatus | undefined;
-        supplementalData?: SupplementalData$.Inbound | undefined;
-        type?: AccountType | undefined;
-        validDatatypeLinks?: Array<ValidDataTypeLinks$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AccountingAccount, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AccountingAccount, z.ZodTypeDef, unknown> = z
         .object({
             currency: z.string().optional(),
             currentBalance: z.nullable(z.number().transform((v) => new Decimal$(v))).optional(),
@@ -260,9 +241,9 @@ export namespace AccountingAccount$ {
             name: z.nullable(z.string()).optional(),
             nominalCode: z.nullable(z.string()).optional(),
             sourceModifiedDate: z.string().optional(),
-            status: AccountStatus$.optional(),
+            status: AccountStatus$.inboundSchema.optional(),
             supplementalData: SupplementalData$.inboundSchema.optional(),
-            type: AccountType$.optional(),
+            type: AccountType$.inboundSchema.optional(),
             validDatatypeLinks: z.nullable(z.array(ValidDataTypeLinks$.inboundSchema)).optional(),
         })
         .transform((v) => {
@@ -309,9 +290,9 @@ export namespace AccountingAccount$ {
         name?: string | null | undefined;
         nominalCode?: string | null | undefined;
         sourceModifiedDate?: string | undefined;
-        status?: AccountStatus | undefined;
+        status?: string | undefined;
         supplementalData?: SupplementalData$.Outbound | undefined;
-        type?: AccountType | undefined;
+        type?: string | undefined;
         validDatatypeLinks?: Array<ValidDataTypeLinks$.Outbound> | null | undefined;
     };
 
@@ -335,9 +316,9 @@ export namespace AccountingAccount$ {
             name: z.nullable(z.string()).optional(),
             nominalCode: z.nullable(z.string()).optional(),
             sourceModifiedDate: z.string().optional(),
-            status: AccountStatus$.optional(),
+            status: AccountStatus$.outboundSchema.optional(),
             supplementalData: SupplementalData$.outboundSchema.optional(),
-            type: AccountType$.optional(),
+            type: AccountType$.outboundSchema.optional(),
             validDatatypeLinks: z.nullable(z.array(ValidDataTypeLinks$.outboundSchema)).optional(),
         })
         .transform((v) => {
@@ -374,35 +355,18 @@ export namespace AccountingAccount$ {
 
 /** @internal */
 export namespace CreateAccountResponse$ {
-    export type Inbound = {
-        changes?: Array<PushOperationChange$.Inbound> | null | undefined;
-        companyId: string;
-        completedOnUtc?: string | undefined;
-        data?: AccountingAccount$.Inbound | null | undefined;
-        dataConnectionKey: string;
-        dataType?: DataType | undefined;
-        errorMessage?: string | null | undefined;
-        pushOperationKey: string;
-        requestedOnUtc: string;
-        status: PushOperationStatus;
-        statusCode: number;
-        timeoutInMinutes?: number | null | undefined;
-        timeoutInSeconds?: number | null | undefined;
-        validation?: Validation$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateAccountResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateAccountResponse, z.ZodTypeDef, unknown> = z
         .object({
             changes: z.nullable(z.array(PushOperationChange$.inboundSchema)).optional(),
             companyId: z.string(),
             completedOnUtc: z.string().optional(),
             data: z.nullable(z.lazy(() => AccountingAccount$.inboundSchema)).optional(),
             dataConnectionKey: z.string(),
-            dataType: DataType$.optional(),
+            dataType: DataType$.inboundSchema.optional(),
             errorMessage: z.nullable(z.string()).optional(),
             pushOperationKey: z.string(),
             requestedOnUtc: z.string(),
-            status: PushOperationStatus$,
+            status: PushOperationStatus$.inboundSchema,
             statusCode: z.number().int(),
             timeoutInMinutes: z.nullable(z.number().int()).optional(),
             timeoutInSeconds: z.nullable(z.number().int()).optional(),
@@ -437,11 +401,11 @@ export namespace CreateAccountResponse$ {
         completedOnUtc?: string | undefined;
         data?: AccountingAccount$.Outbound | null | undefined;
         dataConnectionKey: string;
-        dataType?: DataType | undefined;
+        dataType?: string | undefined;
         errorMessage?: string | null | undefined;
         pushOperationKey: string;
         requestedOnUtc: string;
-        status: PushOperationStatus;
+        status: string;
         statusCode: number;
         timeoutInMinutes?: number | null | undefined;
         timeoutInSeconds?: number | null | undefined;
@@ -455,11 +419,11 @@ export namespace CreateAccountResponse$ {
             completedOnUtc: z.string().optional(),
             data: z.nullable(z.lazy(() => AccountingAccount$.outboundSchema)).optional(),
             dataConnectionKey: z.string(),
-            dataType: DataType$.optional(),
+            dataType: DataType$.outboundSchema.optional(),
             errorMessage: z.nullable(z.string()).optional(),
             pushOperationKey: z.string(),
             requestedOnUtc: z.string(),
-            status: PushOperationStatus$,
+            status: PushOperationStatus$.outboundSchema,
             statusCode: z.number().int(),
             timeoutInMinutes: z.nullable(z.number().int()).optional(),
             timeoutInSeconds: z.nullable(z.number().int()).optional(),

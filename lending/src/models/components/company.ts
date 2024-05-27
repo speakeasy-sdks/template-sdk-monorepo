@@ -105,11 +105,7 @@ export type Company = {
 
 /** @internal */
 export namespace GroupReference$ {
-    export type Inbound = {
-        id?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GroupReference, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GroupReference, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string().optional(),
         })
@@ -136,20 +132,7 @@ export namespace GroupReference$ {
 
 /** @internal */
 export namespace Company$ {
-    export type Inbound = {
-        id: string;
-        name: string;
-        description?: string | undefined;
-        platform?: string | undefined;
-        redirect: string;
-        lastSync?: string | undefined;
-        created?: string | undefined;
-        createdByUserName?: string | undefined;
-        dataConnections?: Array<Connection$.Inbound> | undefined;
-        groups?: Array<GroupReference$.Inbound> | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Company, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Company, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
             name: z.string(),

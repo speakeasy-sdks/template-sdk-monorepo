@@ -57,16 +57,7 @@ export type ListAccountTransactionsResponse = {
 
 /** @internal */
 export namespace ListAccountTransactionsRequest$ {
-    export type Inbound = {
-        companyId: string;
-        connectionId: string;
-        orderBy?: string | undefined;
-        page?: number | undefined;
-        pageSize?: number | undefined;
-        query?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ListAccountTransactionsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ListAccountTransactionsRequest, z.ZodTypeDef, unknown> = z
         .object({
             companyId: z.string(),
             connectionId: z.string(),
@@ -119,15 +110,7 @@ export namespace ListAccountTransactionsRequest$ {
 
 /** @internal */
 export namespace ListAccountTransactionsResponse$ {
-    export type Inbound = {
-        AccountTransactions?: shared.AccountTransactions$.Inbound | undefined;
-        ContentType: string;
-        ErrorMessage?: shared.ErrorMessage$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<ListAccountTransactionsResponse, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<ListAccountTransactionsResponse, z.ZodTypeDef, unknown> =
         z
             .object({
                 AccountTransactions: shared.AccountTransactions$.inboundSchema.optional(),

@@ -45,14 +45,7 @@ export type DataConnectionError = {
 
 /** @internal */
 export namespace DataConnectionError$ {
-    export type Inbound = {
-        statusCode?: string | undefined;
-        statusText?: string | undefined;
-        errorMessage?: string | undefined;
-        erroredOnUtc?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DataConnectionError, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DataConnectionError, z.ZodTypeDef, unknown> = z
         .object({
             statusCode: z.string().optional(),
             statusText: z.string().optional(),

@@ -21,13 +21,7 @@ export type ValidationItem = {
 
 /** @internal */
 export namespace ValidationItem$ {
-    export type Inbound = {
-        itemId?: string | null | undefined;
-        message?: string | null | undefined;
-        validatorName?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ValidationItem, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ValidationItem, z.ZodTypeDef, unknown> = z
         .object({
             itemId: z.nullable(z.string()).optional(),
             message: z.nullable(z.string()).optional(),

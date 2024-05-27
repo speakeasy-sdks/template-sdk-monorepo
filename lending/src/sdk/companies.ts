@@ -109,7 +109,7 @@ export class Companies extends ClientSDK {
             context,
             errorCodes: ["400", "401", "402", "403", "404", "429", "4XX", "500", "503", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -136,57 +136,23 @@ export class Companies extends ClientSDK {
 
         const response = await retries$.retry(
             () => {
-                const cloned = request.clone();
+                const cloned = request$.clone();
                 return this.do$(cloned, doOptions);
             },
             { config: retryConfig, statusCodes: ["408", "429", "5XX"] }
         );
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.ListCompaniesResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        Companies: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (
-            this.matchResponse(
-                response,
-                [400, 401, 402, 403, 404, 429, 500, 503],
-                "application/json"
-            )
-        ) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ErrorMessage$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            throw new errors.SDKError("Unexpected API response status or content-type", {
-                response,
-                request,
-            });
-        }
+        const [result$] = await this.matcher<operations.ListCompaniesResponse>()
+            .json(200, operations.ListCompaniesResponse$, { key: "Companies" })
+            .json([400, 401, 402, 403, 404, 429, 500, 503], errors.ErrorMessage$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, request$, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -201,16 +167,17 @@ export class Companies extends ClientSDK {
      * If forbidden characters (see `name` pattern) are present in the request, a company will be created with the forbidden characters removed. For example, `Company (Codat[1])` with be created as `Company Codat1`.
      */
     async create(
-        input: components.CompanyRequestBody | undefined,
+        request?: components.CompanyRequestBody | undefined,
         options?: RequestOptions & { retries?: retries$.RetryConfig }
     ): Promise<operations.CreateCompanyResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => components.CompanyRequestBody$.outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
@@ -240,7 +207,7 @@ export class Companies extends ClientSDK {
             context,
             errorCodes: ["400", "401", "402", "403", "429", "4XX", "500", "503", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -267,53 +234,23 @@ export class Companies extends ClientSDK {
 
         const response = await retries$.retry(
             () => {
-                const cloned = request.clone();
+                const cloned = request$.clone();
                 return this.do$(cloned, doOptions);
             },
             { config: retryConfig, statusCodes: ["408", "429", "5XX"] }
         );
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.CreateCompanyResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        Company: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (
-            this.matchResponse(response, [400, 401, 402, 403, 429, 500, 503], "application/json")
-        ) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ErrorMessage$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            throw new errors.SDKError("Unexpected API response status or content-type", {
-                response,
-                request,
-            });
-        }
+        const [result$] = await this.matcher<operations.CreateCompanyResponse>()
+            .json(200, operations.CreateCompanyResponse$, { key: "Company" })
+            .json([400, 401, 402, 403, 429, 500, 503], errors.ErrorMessage$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, request$, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -376,7 +313,7 @@ export class Companies extends ClientSDK {
             context,
             errorCodes: ["401", "402", "403", "404", "429", "4XX", "500", "503", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -403,53 +340,23 @@ export class Companies extends ClientSDK {
 
         const response = await retries$.retry(
             () => {
-                const cloned = request.clone();
+                const cloned = request$.clone();
                 return this.do$(cloned, doOptions);
             },
             { config: retryConfig, statusCodes: ["408", "429", "5XX"] }
         );
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.UpdateCompanyResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        Company: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (
-            this.matchResponse(response, [401, 402, 403, 404, 429, 500, 503], "application/json")
-        ) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ErrorMessage$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            throw new errors.SDKError("Unexpected API response status or content-type", {
-                response,
-                request,
-            });
-        }
+        const [result$] = await this.matcher<operations.UpdateCompanyResponse>()
+            .json(200, operations.UpdateCompanyResponse$, { key: "Company" })
+            .json([401, 402, 403, 404, 429, 500, 503], errors.ErrorMessage$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, request$, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -509,7 +416,7 @@ export class Companies extends ClientSDK {
             context,
             errorCodes: ["401", "402", "403", "404", "429", "4XX", "500", "503", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -536,48 +443,23 @@ export class Companies extends ClientSDK {
 
         const response = await retries$.retry(
             () => {
-                const cloned = request.clone();
+                const cloned = request$.clone();
                 return this.do$(cloned, doOptions);
             },
             { config: retryConfig, statusCodes: ["408", "429", "5XX"] }
         );
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchStatusCode(response, 204)) {
-            // fallthrough
-        } else if (
-            this.matchResponse(response, [401, 402, 403, 404, 429, 500, 503], "application/json")
-        ) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ErrorMessage$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            throw new errors.SDKError("Unexpected API response status or content-type", {
-                response,
-                request,
-            });
-        }
+        const [result$] = await this.matcher<operations.DeleteCompanyResponse>()
+            .void(204, operations.DeleteCompanyResponse$)
+            .json([401, 402, 403, 404, 429, 500, 503], errors.ErrorMessage$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, request$, { extraFields: responseFields$ });
 
-        return schemas$.parse(
-            undefined,
-            () => operations.DeleteCompanyResponse$.inboundSchema.parse(responseFields$),
-            "Response validation failed"
-        );
+        return result$;
     }
 
     /**
@@ -637,7 +519,7 @@ export class Companies extends ClientSDK {
             context,
             errorCodes: ["401", "402", "403", "404", "429", "4XX", "500", "503", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -664,52 +546,22 @@ export class Companies extends ClientSDK {
 
         const response = await retries$.retry(
             () => {
-                const cloned = request.clone();
+                const cloned = request$.clone();
                 return this.do$(cloned, doOptions);
             },
             { config: retryConfig, statusCodes: ["408", "429", "5XX"] }
         );
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.GetCompanyResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        Company: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (
-            this.matchResponse(response, [401, 402, 403, 404, 429, 500, 503], "application/json")
-        ) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ErrorMessage$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            throw new errors.SDKError("Unexpected API response status or content-type", {
-                response,
-                request,
-            });
-        }
+        const [result$] = await this.matcher<operations.GetCompanyResponse>()
+            .json(200, operations.GetCompanyResponse$, { key: "Company" })
+            .json([401, 402, 403, 404, 429, 500, 503], errors.ErrorMessage$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, request$, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

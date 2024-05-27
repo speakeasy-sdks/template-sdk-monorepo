@@ -15,12 +15,7 @@ export type ErrorValidation = {
 
 /** @internal */
 export namespace ErrorValidation$ {
-    export type Inbound = {
-        errors?: Array<ErrorValidationItem$.Inbound> | null | undefined;
-        warnings?: Array<ErrorValidationItem$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ErrorValidation, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ErrorValidation, z.ZodTypeDef, unknown> = z
         .object({
             errors: z.nullable(z.array(ErrorValidationItem$.inboundSchema)).optional(),
             warnings: z.nullable(z.array(ErrorValidationItem$.inboundSchema)).optional(),

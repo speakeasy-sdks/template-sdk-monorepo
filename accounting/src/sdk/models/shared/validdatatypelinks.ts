@@ -61,12 +61,7 @@ export type ValidDataTypeLinks = {
 
 /** @internal */
 export namespace ValidDataTypeLinks$ {
-    export type Inbound = {
-        links?: Array<string> | null | undefined;
-        property?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ValidDataTypeLinks, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ValidDataTypeLinks, z.ZodTypeDef, unknown> = z
         .object({
             links: z.nullable(z.array(z.string())).optional(),
             property: z.nullable(z.string()).optional(),

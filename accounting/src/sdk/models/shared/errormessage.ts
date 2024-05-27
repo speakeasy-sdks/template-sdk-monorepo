@@ -38,17 +38,7 @@ export type ErrorMessage = {
 
 /** @internal */
 export namespace ErrorMessage$ {
-    export type Inbound = {
-        canBeRetried?: string | undefined;
-        correlationId?: string | undefined;
-        detailedErrorCode?: number | undefined;
-        error?: string | undefined;
-        service?: string | undefined;
-        statusCode?: number | undefined;
-        validation?: ErrorValidation$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ErrorMessage, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ErrorMessage, z.ZodTypeDef, unknown> = z
         .object({
             canBeRetried: z.string().optional(),
             correlationId: z.string().optional(),

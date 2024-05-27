@@ -17,7 +17,7 @@ export type PushOptionProperty = {
      */
     displayName: string;
     options?: Array<PushOptionChoice> | null | undefined;
-    properties?: Record<string, PushOptionProperty> | null | undefined;
+    properties?: { [k: string]: PushOptionProperty } | null | undefined;
     /**
      * The property is required if `True`.
      */
@@ -31,17 +31,7 @@ export type PushOptionProperty = {
 
 /** @internal */
 export namespace PushOptionProperty$ {
-    export type Inbound = {
-        description: string;
-        displayName: string;
-        options?: Array<PushOptionChoice$.Inbound> | null | undefined;
-        properties?: Record<string, PushOptionProperty$.Inbound> | null | undefined;
-        required: boolean;
-        type: PushOptionType;
-        validation?: PushValidationInfo$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PushOptionProperty, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PushOptionProperty, z.ZodTypeDef, unknown> = z
         .object({
             description: z.string(),
             displayName: z.string(),
@@ -50,7 +40,7 @@ export namespace PushOptionProperty$ {
                 .nullable(z.record(z.lazy(() => PushOptionProperty$.inboundSchema)))
                 .optional(),
             required: z.boolean(),
-            type: PushOptionType$,
+            type: PushOptionType$.inboundSchema,
             validation: PushValidationInfo$.inboundSchema.optional(),
         })
         .transform((v) => {
@@ -69,9 +59,9 @@ export namespace PushOptionProperty$ {
         description: string;
         displayName: string;
         options?: Array<PushOptionChoice$.Outbound> | null | undefined;
-        properties?: Record<string, PushOptionProperty$.Outbound> | null | undefined;
+        properties?: { [k: string]: PushOptionProperty$.Outbound } | null | undefined;
         required: boolean;
-        type: PushOptionType;
+        type: string;
         validation?: PushValidationInfo$.Outbound | undefined;
     };
 
@@ -84,7 +74,7 @@ export namespace PushOptionProperty$ {
                 .nullable(z.record(z.lazy(() => PushOptionProperty$.outboundSchema)))
                 .optional(),
             required: z.boolean(),
-            type: PushOptionType$,
+            type: PushOptionType$.outboundSchema,
             validation: PushValidationInfo$.outboundSchema.optional(),
         })
         .transform((v) => {

@@ -31,11 +31,7 @@ const accounting = new Accounting({
 });
 
 async function run() {
-  const accountTransactionId = "<value>";
-  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-  const connectionId = "2e9d2c44-f675-40ba-8049-353bfcb5e171";
-  
-  const result = await accounting.accountTransactions.get(accountTransactionId, companyId, connectionId);
+  const result = await accounting.accountTransactions.get("<value>", "8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171");
 
   // Handle the result
   console.log(result)
@@ -58,7 +54,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetAccountTransactionResponse](../../sdk/models/operations/getaccounttransactionresponse.md)>**
+**Promise\<[operations.GetAccountTransactionResponse](../../sdk/models/operations/getaccounttransactionresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -112,7 +108,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ListAccountTransactionsResponse](../../sdk/models/operations/listaccounttransactionsresponse.md)>**
+**Promise\<[operations.ListAccountTransactionsResponse](../../sdk/models/operations/listaccounttransactionsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

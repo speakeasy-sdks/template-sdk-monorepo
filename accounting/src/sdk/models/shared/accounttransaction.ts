@@ -147,27 +147,14 @@ export type AccountTransaction = {
 };
 
 /** @internal */
-export const Status$: z.ZodNativeEnum<typeof Status> = z.nativeEnum(Status);
+export namespace Status$ {
+    export const inboundSchema = z.nativeEnum(Status);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace AccountTransaction$ {
-    export type Inbound = {
-        bankAccountRef?: BankAccountRef$.Inbound | undefined;
-        currency?: string | undefined;
-        currencyRate?: number | null | undefined;
-        date?: string | undefined;
-        id?: string | undefined;
-        lines?: Array<AccountTransactionLine$.Inbound> | null | undefined;
-        metadata?: Metadata$.Inbound | undefined;
-        modifiedDate?: string | undefined;
-        note?: string | null | undefined;
-        sourceModifiedDate?: string | undefined;
-        status?: Status | undefined;
-        totalAmount?: number | undefined;
-        transactionId?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AccountTransaction, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AccountTransaction, z.ZodTypeDef, unknown> = z
         .object({
             bankAccountRef: BankAccountRef$.inboundSchema.optional(),
             currency: z.string().optional(),
@@ -179,7 +166,7 @@ export namespace AccountTransaction$ {
             modifiedDate: z.string().optional(),
             note: z.nullable(z.string()).optional(),
             sourceModifiedDate: z.string().optional(),
-            status: Status$.optional(),
+            status: Status$.inboundSchema.optional(),
             totalAmount: z
                 .number()
                 .transform((v) => new Decimal$(v))
@@ -217,7 +204,7 @@ export namespace AccountTransaction$ {
         modifiedDate?: string | undefined;
         note?: string | null | undefined;
         sourceModifiedDate?: string | undefined;
-        status?: Status | undefined;
+        status?: string | undefined;
         totalAmount?: number | undefined;
         transactionId?: string | null | undefined;
     };
@@ -240,7 +227,7 @@ export namespace AccountTransaction$ {
             modifiedDate: z.string().optional(),
             note: z.nullable(z.string()).optional(),
             sourceModifiedDate: z.string().optional(),
-            status: Status$.optional(),
+            status: Status$.outboundSchema.optional(),
             totalAmount: z
                 .union([z.instanceof(Decimal$), z.number()])
                 .transform((v) => (typeof v === "number" ? v : v.toNumber()))

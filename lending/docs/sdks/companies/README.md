@@ -30,12 +30,7 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-  const page = 1;
-  const pageSize = 100;
-  const query = "id=e3334455-1aed-4e71-ab43-6bccf12092ee";
-  const orderBy = "-modifiedDate";
-  
-  const result = await lendingTs.companies.list(page, pageSize, query, orderBy);
+  const result = await lendingTs.companies.list(1, 100, "id=e3334455-1aed-4e71-ab43-6bccf12092ee", "-modifiedDate");
 
   // Handle the result
   console.log(result)
@@ -59,7 +54,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ListCompaniesResponse](../../models/operations/listcompaniesresponse.md)>**
+**Promise\<[operations.ListCompaniesResponse](../../models/operations/listcompaniesresponse.md)\>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -115,7 +110,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateCompanyResponse](../../models/operations/createcompanyresponse.md)>**
+**Promise\<[operations.CreateCompanyResponse](../../models/operations/createcompanyresponse.md)\>**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
@@ -141,18 +136,15 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-  const companyRequestBody = {
-    name: "Bank of Dave",
+  const result = await lendingTs.companies.update("8a210b68-6988-11ed-a1eb-0242ac120002", {
+    name: "New Name",
     description: "Requested early access to the new financing scheme.",
     groups: [
       {
         id: "60d2fa12-8a04-11ee-b9d1-0242ac120002",
       },
     ],
-  };
-  
-  const result = await lendingTs.companies.update(companyId, companyRequestBody);
+  });
 
   // Handle the result
   console.log(result)
@@ -174,7 +166,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UpdateCompanyResponse](../../models/operations/updatecompanyresponse.md)>**
+**Promise\<[operations.UpdateCompanyResponse](../../models/operations/updatecompanyresponse.md)\>**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
@@ -200,9 +192,7 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-  
-  const result = await lendingTs.companies.delete(companyId);
+  const result = await lendingTs.companies.delete("8a210b68-6988-11ed-a1eb-0242ac120002");
 
   // Handle the result
   console.log(result)
@@ -223,7 +213,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteCompanyResponse](../../models/operations/deletecompanyresponse.md)>**
+**Promise\<[operations.DeleteCompanyResponse](../../models/operations/deletecompanyresponse.md)\>**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
@@ -249,9 +239,7 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-  const companyId = "8a210b68-6988-11ed-a1eb-0242ac120002";
-  
-  const result = await lendingTs.companies.get(companyId);
+  const result = await lendingTs.companies.get("8a210b68-6988-11ed-a1eb-0242ac120002");
 
   // Handle the result
   console.log(result)
@@ -272,7 +260,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetCompanyResponse](../../models/operations/getcompanyresponse.md)>**
+**Promise\<[operations.GetCompanyResponse](../../models/operations/getcompanyresponse.md)\>**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
