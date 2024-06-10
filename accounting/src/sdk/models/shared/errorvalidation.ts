@@ -15,32 +15,18 @@ export type ErrorValidation = {
 
 /** @internal */
 export namespace ErrorValidation$ {
-    export const inboundSchema: z.ZodType<ErrorValidation, z.ZodTypeDef, unknown> = z
-        .object({
-            errors: z.nullable(z.array(ErrorValidationItem$.inboundSchema)).optional(),
-            warnings: z.nullable(z.array(ErrorValidationItem$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.errors === undefined ? null : { errors: v.errors }),
-                ...(v.warnings === undefined ? null : { warnings: v.warnings }),
-            };
-        });
+    export const inboundSchema: z.ZodType<ErrorValidation, z.ZodTypeDef, unknown> = z.object({
+        errors: z.nullable(z.array(ErrorValidationItem$.inboundSchema)).optional(),
+        warnings: z.nullable(z.array(ErrorValidationItem$.inboundSchema)).optional(),
+    });
 
     export type Outbound = {
         errors?: Array<ErrorValidationItem$.Outbound> | null | undefined;
         warnings?: Array<ErrorValidationItem$.Outbound> | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ErrorValidation> = z
-        .object({
-            errors: z.nullable(z.array(ErrorValidationItem$.outboundSchema)).optional(),
-            warnings: z.nullable(z.array(ErrorValidationItem$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.errors === undefined ? null : { errors: v.errors }),
-                ...(v.warnings === undefined ? null : { warnings: v.warnings }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ErrorValidation> = z.object({
+        errors: z.nullable(z.array(ErrorValidationItem$.outboundSchema)).optional(),
+        warnings: z.nullable(z.array(ErrorValidationItem$.outboundSchema)).optional(),
+    });
 }

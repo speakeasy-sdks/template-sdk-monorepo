@@ -26,22 +26,16 @@ export type AccountTransactionLine = {
 
 /** @internal */
 export namespace AccountTransactionLine$ {
-    export const inboundSchema: z.ZodType<AccountTransactionLine, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<AccountTransactionLine, z.ZodTypeDef, unknown> = z.object(
+        {
             amount: z
                 .number()
                 .transform((v) => new Decimal$(v))
                 .optional(),
             description: z.nullable(z.string()).optional(),
             recordRef: AccountTransactionLineRecordRef$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.amount === undefined ? null : { amount: v.amount }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.recordRef === undefined ? null : { recordRef: v.recordRef }),
-            };
-        });
+        }
+    );
 
     export type Outbound = {
         amount?: number | undefined;
@@ -49,20 +43,13 @@ export namespace AccountTransactionLine$ {
         recordRef?: AccountTransactionLineRecordRef$.Outbound | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AccountTransactionLine> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AccountTransactionLine> =
+        z.object({
             amount: z
                 .union([z.instanceof(Decimal$), z.number()])
                 .transform((v) => (typeof v === "number" ? v : v.toNumber()))
                 .optional(),
             description: z.nullable(z.string()).optional(),
             recordRef: AccountTransactionLineRecordRef$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.amount === undefined ? null : { amount: v.amount }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.recordRef === undefined ? null : { recordRef: v.recordRef }),
-            };
         });
 }

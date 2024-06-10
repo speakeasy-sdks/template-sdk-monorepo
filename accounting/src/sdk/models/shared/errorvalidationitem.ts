@@ -21,19 +21,11 @@ export type ErrorValidationItem = {
 
 /** @internal */
 export namespace ErrorValidationItem$ {
-    export const inboundSchema: z.ZodType<ErrorValidationItem, z.ZodTypeDef, unknown> = z
-        .object({
-            itemId: z.nullable(z.string()).optional(),
-            message: z.nullable(z.string()).optional(),
-            validatorName: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.itemId === undefined ? null : { itemId: v.itemId }),
-                ...(v.message === undefined ? null : { message: v.message }),
-                ...(v.validatorName === undefined ? null : { validatorName: v.validatorName }),
-            };
-        });
+    export const inboundSchema: z.ZodType<ErrorValidationItem, z.ZodTypeDef, unknown> = z.object({
+        itemId: z.nullable(z.string()).optional(),
+        message: z.nullable(z.string()).optional(),
+        validatorName: z.nullable(z.string()).optional(),
+    });
 
     export type Outbound = {
         itemId?: string | null | undefined;
@@ -41,17 +33,9 @@ export namespace ErrorValidationItem$ {
         validatorName?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ErrorValidationItem> = z
-        .object({
-            itemId: z.nullable(z.string()).optional(),
-            message: z.nullable(z.string()).optional(),
-            validatorName: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.itemId === undefined ? null : { itemId: v.itemId }),
-                ...(v.message === undefined ? null : { message: v.message }),
-                ...(v.validatorName === undefined ? null : { validatorName: v.validatorName }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ErrorValidationItem> = z.object({
+        itemId: z.nullable(z.string()).optional(),
+        message: z.nullable(z.string()).optional(),
+        validatorName: z.nullable(z.string()).optional(),
+    });
 }

@@ -127,43 +127,21 @@ export namespace SourceType$ {
 
 /** @internal */
 export namespace Connection$ {
-    export const inboundSchema: z.ZodType<Connection, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.string(),
-            integrationId: z.string(),
-            integrationKey: z.string(),
-            sourceId: z.string(),
-            sourceType: SourceType$.inboundSchema,
-            platformName: z.string(),
-            linkUrl: z.string(),
-            status: DataConnectionStatus$.inboundSchema,
-            lastSync: z.string().optional(),
-            created: z.string(),
-            dataConnectionErrors: z.array(DataConnectionError$.inboundSchema).optional(),
-            connectionInfo: z.record(z.string()).optional(),
-            additionalProperties: z.any().optional(),
-        })
-        .transform((v) => {
-            return {
-                id: v.id,
-                integrationId: v.integrationId,
-                integrationKey: v.integrationKey,
-                sourceId: v.sourceId,
-                sourceType: v.sourceType,
-                platformName: v.platformName,
-                linkUrl: v.linkUrl,
-                status: v.status,
-                ...(v.lastSync === undefined ? null : { lastSync: v.lastSync }),
-                created: v.created,
-                ...(v.dataConnectionErrors === undefined
-                    ? null
-                    : { dataConnectionErrors: v.dataConnectionErrors }),
-                ...(v.connectionInfo === undefined ? null : { connectionInfo: v.connectionInfo }),
-                ...(v.additionalProperties === undefined
-                    ? null
-                    : { additionalProperties: v.additionalProperties }),
-            };
-        });
+    export const inboundSchema: z.ZodType<Connection, z.ZodTypeDef, unknown> = z.object({
+        id: z.string(),
+        integrationId: z.string(),
+        integrationKey: z.string(),
+        sourceId: z.string(),
+        sourceType: SourceType$.inboundSchema,
+        platformName: z.string(),
+        linkUrl: z.string(),
+        status: DataConnectionStatus$.inboundSchema,
+        lastSync: z.string().optional(),
+        created: z.string(),
+        dataConnectionErrors: z.array(DataConnectionError$.inboundSchema).optional(),
+        connectionInfo: z.record(z.string()).optional(),
+        additionalProperties: z.any().optional(),
+    });
 
     export type Outbound = {
         id: string;
@@ -181,41 +159,19 @@ export namespace Connection$ {
         additionalProperties?: any | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Connection> = z
-        .object({
-            id: z.string(),
-            integrationId: z.string(),
-            integrationKey: z.string(),
-            sourceId: z.string(),
-            sourceType: SourceType$.outboundSchema,
-            platformName: z.string(),
-            linkUrl: z.string(),
-            status: DataConnectionStatus$.outboundSchema,
-            lastSync: z.string().optional(),
-            created: z.string(),
-            dataConnectionErrors: z.array(DataConnectionError$.outboundSchema).optional(),
-            connectionInfo: z.record(z.string()).optional(),
-            additionalProperties: z.any().optional(),
-        })
-        .transform((v) => {
-            return {
-                id: v.id,
-                integrationId: v.integrationId,
-                integrationKey: v.integrationKey,
-                sourceId: v.sourceId,
-                sourceType: v.sourceType,
-                platformName: v.platformName,
-                linkUrl: v.linkUrl,
-                status: v.status,
-                ...(v.lastSync === undefined ? null : { lastSync: v.lastSync }),
-                created: v.created,
-                ...(v.dataConnectionErrors === undefined
-                    ? null
-                    : { dataConnectionErrors: v.dataConnectionErrors }),
-                ...(v.connectionInfo === undefined ? null : { connectionInfo: v.connectionInfo }),
-                ...(v.additionalProperties === undefined
-                    ? null
-                    : { additionalProperties: v.additionalProperties }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Connection> = z.object({
+        id: z.string(),
+        integrationId: z.string(),
+        integrationKey: z.string(),
+        sourceId: z.string(),
+        sourceType: SourceType$.outboundSchema,
+        platformName: z.string(),
+        linkUrl: z.string(),
+        status: DataConnectionStatus$.outboundSchema,
+        lastSync: z.string().optional(),
+        created: z.string(),
+        dataConnectionErrors: z.array(DataConnectionError$.outboundSchema).optional(),
+        connectionInfo: z.record(z.string()).optional(),
+        additionalProperties: z.any().optional(),
+    });
 }

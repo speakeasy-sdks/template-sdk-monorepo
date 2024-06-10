@@ -18,32 +18,18 @@ export type PushOperationRef = {
 
 /** @internal */
 export namespace PushOperationRef$ {
-    export const inboundSchema: z.ZodType<PushOperationRef, z.ZodTypeDef, unknown> = z
-        .object({
-            dataType: DataType$.inboundSchema.optional(),
-            id: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.dataType === undefined ? null : { dataType: v.dataType }),
-                ...(v.id === undefined ? null : { id: v.id }),
-            };
-        });
+    export const inboundSchema: z.ZodType<PushOperationRef, z.ZodTypeDef, unknown> = z.object({
+        dataType: DataType$.inboundSchema.optional(),
+        id: z.string().optional(),
+    });
 
     export type Outbound = {
         dataType?: string | undefined;
         id?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushOperationRef> = z
-        .object({
-            dataType: DataType$.outboundSchema.optional(),
-            id: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.dataType === undefined ? null : { dataType: v.dataType }),
-                ...(v.id === undefined ? null : { id: v.id }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushOperationRef> = z.object({
+        dataType: DataType$.outboundSchema.optional(),
+        id: z.string().optional(),
+    });
 }

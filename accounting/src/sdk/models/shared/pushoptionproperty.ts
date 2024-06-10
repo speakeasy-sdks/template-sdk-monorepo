@@ -31,29 +31,17 @@ export type PushOptionProperty = {
 
 /** @internal */
 export namespace PushOptionProperty$ {
-    export const inboundSchema: z.ZodType<PushOptionProperty, z.ZodTypeDef, unknown> = z
-        .object({
-            description: z.string(),
-            displayName: z.string(),
-            options: z.nullable(z.array(PushOptionChoice$.inboundSchema)).optional(),
-            properties: z
-                .nullable(z.record(z.lazy(() => PushOptionProperty$.inboundSchema)))
-                .optional(),
-            required: z.boolean(),
-            type: PushOptionType$.inboundSchema,
-            validation: PushValidationInfo$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                description: v.description,
-                displayName: v.displayName,
-                ...(v.options === undefined ? null : { options: v.options }),
-                ...(v.properties === undefined ? null : { properties: v.properties }),
-                required: v.required,
-                type: v.type,
-                ...(v.validation === undefined ? null : { validation: v.validation }),
-            };
-        });
+    export const inboundSchema: z.ZodType<PushOptionProperty, z.ZodTypeDef, unknown> = z.object({
+        description: z.string(),
+        displayName: z.string(),
+        options: z.nullable(z.array(PushOptionChoice$.inboundSchema)).optional(),
+        properties: z
+            .nullable(z.record(z.lazy(() => PushOptionProperty$.inboundSchema)))
+            .optional(),
+        required: z.boolean(),
+        type: PushOptionType$.inboundSchema,
+        validation: PushValidationInfo$.inboundSchema.optional(),
+    });
 
     export type Outbound = {
         description: string;
@@ -65,27 +53,15 @@ export namespace PushOptionProperty$ {
         validation?: PushValidationInfo$.Outbound | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushOptionProperty> = z
-        .object({
-            description: z.string(),
-            displayName: z.string(),
-            options: z.nullable(z.array(PushOptionChoice$.outboundSchema)).optional(),
-            properties: z
-                .nullable(z.record(z.lazy(() => PushOptionProperty$.outboundSchema)))
-                .optional(),
-            required: z.boolean(),
-            type: PushOptionType$.outboundSchema,
-            validation: PushValidationInfo$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                description: v.description,
-                displayName: v.displayName,
-                ...(v.options === undefined ? null : { options: v.options }),
-                ...(v.properties === undefined ? null : { properties: v.properties }),
-                required: v.required,
-                type: v.type,
-                ...(v.validation === undefined ? null : { validation: v.validation }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushOptionProperty> = z.object({
+        description: z.string(),
+        displayName: z.string(),
+        options: z.nullable(z.array(PushOptionChoice$.outboundSchema)).optional(),
+        properties: z
+            .nullable(z.record(z.lazy(() => PushOptionProperty$.outboundSchema)))
+            .optional(),
+        required: z.boolean(),
+        type: PushOptionType$.outboundSchema,
+        validation: PushValidationInfo$.outboundSchema.optional(),
+    });
 }

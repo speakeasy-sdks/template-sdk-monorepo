@@ -123,17 +123,7 @@ export namespace ErrorMessage$ {
             detailedErrorCode: z.number().int().optional(),
         })
         .transform((v) => {
-            return new ErrorMessage({
-                ...(v.statusCode === undefined ? null : { statusCode: v.statusCode }),
-                ...(v.service === undefined ? null : { service: v.service }),
-                ...(v.error === undefined ? null : { error: v.error }),
-                ...(v.correlationId === undefined ? null : { correlationId: v.correlationId }),
-                ...(v.validation === undefined ? null : { validation: v.validation }),
-                ...(v.canBeRetried === undefined ? null : { canBeRetried: v.canBeRetried }),
-                ...(v.detailedErrorCode === undefined
-                    ? null
-                    : { detailedErrorCode: v.detailedErrorCode }),
-            });
+            return new ErrorMessage(v);
         });
 
     export type Outbound = {
@@ -150,30 +140,14 @@ export namespace ErrorMessage$ {
         .instanceof(ErrorMessage)
         .transform((v) => v.data$)
         .pipe(
-            z
-                .object({
-                    statusCode: z.number().int().optional(),
-                    service: z.string().optional(),
-                    error: z.string().optional(),
-                    correlationId: z.string().optional(),
-                    validation: z.nullable(components.ErrorValidation$.outboundSchema).optional(),
-                    canBeRetried: z.string().optional(),
-                    detailedErrorCode: z.number().int().optional(),
-                })
-                .transform((v) => {
-                    return {
-                        ...(v.statusCode === undefined ? null : { statusCode: v.statusCode }),
-                        ...(v.service === undefined ? null : { service: v.service }),
-                        ...(v.error === undefined ? null : { error: v.error }),
-                        ...(v.correlationId === undefined
-                            ? null
-                            : { correlationId: v.correlationId }),
-                        ...(v.validation === undefined ? null : { validation: v.validation }),
-                        ...(v.canBeRetried === undefined ? null : { canBeRetried: v.canBeRetried }),
-                        ...(v.detailedErrorCode === undefined
-                            ? null
-                            : { detailedErrorCode: v.detailedErrorCode }),
-                    };
-                })
+            z.object({
+                statusCode: z.number().int().optional(),
+                service: z.string().optional(),
+                error: z.string().optional(),
+                correlationId: z.string().optional(),
+                validation: z.nullable(components.ErrorValidation$.outboundSchema).optional(),
+                canBeRetried: z.string().optional(),
+                detailedErrorCode: z.number().int().optional(),
+            })
         );
 }

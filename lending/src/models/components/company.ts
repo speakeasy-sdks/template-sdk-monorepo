@@ -105,64 +105,33 @@ export type Company = {
 
 /** @internal */
 export namespace GroupReference$ {
-    export const inboundSchema: z.ZodType<GroupReference, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.id === undefined ? null : { id: v.id }),
-            };
-        });
+    export const inboundSchema: z.ZodType<GroupReference, z.ZodTypeDef, unknown> = z.object({
+        id: z.string().optional(),
+    });
 
     export type Outbound = {
         id?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GroupReference> = z
-        .object({
-            id: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.id === undefined ? null : { id: v.id }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GroupReference> = z.object({
+        id: z.string().optional(),
+    });
 }
 
 /** @internal */
 export namespace Company$ {
-    export const inboundSchema: z.ZodType<Company, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.string(),
-            name: z.string(),
-            description: z.string().optional(),
-            platform: z.string().optional(),
-            redirect: z.string(),
-            lastSync: z.string().optional(),
-            created: z.string().optional(),
-            createdByUserName: z.string().optional(),
-            dataConnections: z.array(Connection$.inboundSchema).optional(),
-            groups: z.array(z.lazy(() => GroupReference$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                id: v.id,
-                name: v.name,
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.platform === undefined ? null : { platform: v.platform }),
-                redirect: v.redirect,
-                ...(v.lastSync === undefined ? null : { lastSync: v.lastSync }),
-                ...(v.created === undefined ? null : { created: v.created }),
-                ...(v.createdByUserName === undefined
-                    ? null
-                    : { createdByUserName: v.createdByUserName }),
-                ...(v.dataConnections === undefined
-                    ? null
-                    : { dataConnections: v.dataConnections }),
-                ...(v.groups === undefined ? null : { groups: v.groups }),
-            };
-        });
+    export const inboundSchema: z.ZodType<Company, z.ZodTypeDef, unknown> = z.object({
+        id: z.string(),
+        name: z.string(),
+        description: z.string().optional(),
+        platform: z.string().optional(),
+        redirect: z.string(),
+        lastSync: z.string().optional(),
+        created: z.string().optional(),
+        createdByUserName: z.string().optional(),
+        dataConnections: z.array(Connection$.inboundSchema).optional(),
+        groups: z.array(z.lazy(() => GroupReference$.inboundSchema)).optional(),
+    });
 
     export type Outbound = {
         id: string;
@@ -177,35 +146,16 @@ export namespace Company$ {
         groups?: Array<GroupReference$.Outbound> | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Company> = z
-        .object({
-            id: z.string(),
-            name: z.string(),
-            description: z.string().optional(),
-            platform: z.string().optional(),
-            redirect: z.string(),
-            lastSync: z.string().optional(),
-            created: z.string().optional(),
-            createdByUserName: z.string().optional(),
-            dataConnections: z.array(Connection$.outboundSchema).optional(),
-            groups: z.array(z.lazy(() => GroupReference$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                id: v.id,
-                name: v.name,
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.platform === undefined ? null : { platform: v.platform }),
-                redirect: v.redirect,
-                ...(v.lastSync === undefined ? null : { lastSync: v.lastSync }),
-                ...(v.created === undefined ? null : { created: v.created }),
-                ...(v.createdByUserName === undefined
-                    ? null
-                    : { createdByUserName: v.createdByUserName }),
-                ...(v.dataConnections === undefined
-                    ? null
-                    : { dataConnections: v.dataConnections }),
-                ...(v.groups === undefined ? null : { groups: v.groups }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Company> = z.object({
+        id: z.string(),
+        name: z.string(),
+        description: z.string().optional(),
+        platform: z.string().optional(),
+        redirect: z.string(),
+        lastSync: z.string().optional(),
+        created: z.string().optional(),
+        createdByUserName: z.string().optional(),
+        dataConnections: z.array(Connection$.outboundSchema).optional(),
+        groups: z.array(z.lazy(() => GroupReference$.outboundSchema)).optional(),
+    });
 }

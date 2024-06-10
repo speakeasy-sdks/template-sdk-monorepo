@@ -1,15 +1,15 @@
-speakeasyVersion: 1.296.1
+speakeasyVersion: 1.300.1
 sources:
     accounting:
         sourceNamespace: accounting
-        sourceRevisionDigest: sha256:5e282bee33d1b8996c9d4d9bd50724a57ba308514bcc7c0b69ee1c39f44cd39f
+        sourceRevisionDigest: sha256:430a64de9ff4076a9a5a65bc6528cf4105eb847dc12d69ea0214f4959846771d
         sourceBlobDigest: sha256:5f1cc761dc56e7ca4021510061eebb912db4ba7736e61c5a9ccd633a416c2611
         tags:
             - latest
             - main
     lending:
         sourceNamespace: lending
-        sourceRevisionDigest: sha256:1f09cd1cbff0424a1970a73e4829a80f7ba7a339f3d720a793e9e2b65ad17fe1
+        sourceRevisionDigest: sha256:178885971cf1c04155e742359cad4b10d0eba3a8d7de8e7a64d2e33a0678995d
         sourceBlobDigest: sha256:fa9d95b78d45713a72c0e0606cd94aab70c76d28d8edb2c33545d078dc15d36b
         tags:
             - latest
@@ -18,13 +18,13 @@ targets:
     accounting-ts:
         source: accounting
         sourceNamespace: accounting
-        sourceRevisionDigest: sha256:5e282bee33d1b8996c9d4d9bd50724a57ba308514bcc7c0b69ee1c39f44cd39f
+        sourceRevisionDigest: sha256:430a64de9ff4076a9a5a65bc6528cf4105eb847dc12d69ea0214f4959846771d
         sourceBlobDigest: sha256:5f1cc761dc56e7ca4021510061eebb912db4ba7736e61c5a9ccd633a416c2611
         outLocation: ./accounting
     lending-ts:
         source: lending
         sourceNamespace: lending
-        sourceRevisionDigest: sha256:1f09cd1cbff0424a1970a73e4829a80f7ba7a339f3d720a793e9e2b65ad17fe1
+        sourceRevisionDigest: sha256:178885971cf1c04155e742359cad4b10d0eba3a8d7de8e7a64d2e33a0678995d
         sourceBlobDigest: sha256:fa9d95b78d45713a72c0e0606cd94aab70c76d28d8edb2c33545d078dc15d36b
         outLocation: ./lending
 workflow:

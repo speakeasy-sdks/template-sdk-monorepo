@@ -12,32 +12,18 @@ export type PushValidationInfo = {
 
 /** @internal */
 export namespace PushValidationInfo$ {
-    export const inboundSchema: z.ZodType<PushValidationInfo, z.ZodTypeDef, unknown> = z
-        .object({
-            information: z.nullable(z.array(PushFieldValidation$.inboundSchema)).optional(),
-            warnings: z.nullable(z.array(PushFieldValidation$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.information === undefined ? null : { information: v.information }),
-                ...(v.warnings === undefined ? null : { warnings: v.warnings }),
-            };
-        });
+    export const inboundSchema: z.ZodType<PushValidationInfo, z.ZodTypeDef, unknown> = z.object({
+        information: z.nullable(z.array(PushFieldValidation$.inboundSchema)).optional(),
+        warnings: z.nullable(z.array(PushFieldValidation$.inboundSchema)).optional(),
+    });
 
     export type Outbound = {
         information?: Array<PushFieldValidation$.Outbound> | null | undefined;
         warnings?: Array<PushFieldValidation$.Outbound> | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushValidationInfo> = z
-        .object({
-            information: z.nullable(z.array(PushFieldValidation$.outboundSchema)).optional(),
-            warnings: z.nullable(z.array(PushFieldValidation$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.information === undefined ? null : { information: v.information }),
-                ...(v.warnings === undefined ? null : { warnings: v.warnings }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushValidationInfo> = z.object({
+        information: z.nullable(z.array(PushFieldValidation$.outboundSchema)).optional(),
+        warnings: z.nullable(z.array(PushFieldValidation$.outboundSchema)).optional(),
+    });
 }

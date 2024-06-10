@@ -30,23 +30,13 @@ export type PushOptionChoice = {
 
 /** @internal */
 export namespace PushOptionChoice$ {
-    export const inboundSchema: z.ZodType<PushOptionChoice, z.ZodTypeDef, unknown> = z
-        .object({
-            description: z.string().optional(),
-            displayName: z.string().optional(),
-            required: z.boolean().optional(),
-            type: PushOptionType$.inboundSchema.optional(),
-            value: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.displayName === undefined ? null : { displayName: v.displayName }),
-                ...(v.required === undefined ? null : { required: v.required }),
-                ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.value === undefined ? null : { value: v.value }),
-            };
-        });
+    export const inboundSchema: z.ZodType<PushOptionChoice, z.ZodTypeDef, unknown> = z.object({
+        description: z.string().optional(),
+        displayName: z.string().optional(),
+        required: z.boolean().optional(),
+        type: PushOptionType$.inboundSchema.optional(),
+        value: z.string().optional(),
+    });
 
     export type Outbound = {
         description?: string | undefined;
@@ -56,21 +46,11 @@ export namespace PushOptionChoice$ {
         value?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushOptionChoice> = z
-        .object({
-            description: z.string().optional(),
-            displayName: z.string().optional(),
-            required: z.boolean().optional(),
-            type: PushOptionType$.outboundSchema.optional(),
-            value: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.displayName === undefined ? null : { displayName: v.displayName }),
-                ...(v.required === undefined ? null : { required: v.required }),
-                ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.value === undefined ? null : { value: v.value }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushOptionChoice> = z.object({
+        description: z.string().optional(),
+        displayName: z.string().optional(),
+        required: z.boolean().optional(),
+        type: PushOptionType$.outboundSchema.optional(),
+        value: z.string().optional(),
+    });
 }

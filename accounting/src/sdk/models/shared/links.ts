@@ -14,21 +14,12 @@ export type Links = {
 
 /** @internal */
 export namespace Links$ {
-    export const inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z
-        .object({
-            current: HalRef$.inboundSchema,
-            next: HalRef$.inboundSchema.optional(),
-            previous: HalRef$.inboundSchema.optional(),
-            self: HalRef$.inboundSchema,
-        })
-        .transform((v) => {
-            return {
-                current: v.current,
-                ...(v.next === undefined ? null : { next: v.next }),
-                ...(v.previous === undefined ? null : { previous: v.previous }),
-                self: v.self,
-            };
-        });
+    export const inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z.object({
+        current: HalRef$.inboundSchema,
+        next: HalRef$.inboundSchema.optional(),
+        previous: HalRef$.inboundSchema.optional(),
+        self: HalRef$.inboundSchema,
+    });
 
     export type Outbound = {
         current: HalRef$.Outbound;
@@ -37,19 +28,10 @@ export namespace Links$ {
         self: HalRef$.Outbound;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Links> = z
-        .object({
-            current: HalRef$.outboundSchema,
-            next: HalRef$.outboundSchema.optional(),
-            previous: HalRef$.outboundSchema.optional(),
-            self: HalRef$.outboundSchema,
-        })
-        .transform((v) => {
-            return {
-                current: v.current,
-                ...(v.next === undefined ? null : { next: v.next }),
-                ...(v.previous === undefined ? null : { previous: v.previous }),
-                self: v.self,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Links> = z.object({
+        current: HalRef$.outboundSchema,
+        next: HalRef$.outboundSchema.optional(),
+        previous: HalRef$.outboundSchema.optional(),
+        self: HalRef$.outboundSchema,
+    });
 }

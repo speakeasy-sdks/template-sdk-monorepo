@@ -20,19 +20,11 @@ export type PushOperationChange = {
 
 /** @internal */
 export namespace PushOperationChange$ {
-    export const inboundSchema: z.ZodType<PushOperationChange, z.ZodTypeDef, unknown> = z
-        .object({
-            attachmentId: z.nullable(z.string()).optional(),
-            recordRef: PushOperationRef$.inboundSchema.optional(),
-            type: PushChangeType$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.attachmentId === undefined ? null : { attachmentId: v.attachmentId }),
-                ...(v.recordRef === undefined ? null : { recordRef: v.recordRef }),
-                ...(v.type === undefined ? null : { type: v.type }),
-            };
-        });
+    export const inboundSchema: z.ZodType<PushOperationChange, z.ZodTypeDef, unknown> = z.object({
+        attachmentId: z.nullable(z.string()).optional(),
+        recordRef: PushOperationRef$.inboundSchema.optional(),
+        type: PushChangeType$.inboundSchema.optional(),
+    });
 
     export type Outbound = {
         attachmentId?: string | null | undefined;
@@ -40,17 +32,9 @@ export namespace PushOperationChange$ {
         type?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushOperationChange> = z
-        .object({
-            attachmentId: z.nullable(z.string()).optional(),
-            recordRef: PushOperationRef$.outboundSchema.optional(),
-            type: PushChangeType$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.attachmentId === undefined ? null : { attachmentId: v.attachmentId }),
-                ...(v.recordRef === undefined ? null : { recordRef: v.recordRef }),
-                ...(v.type === undefined ? null : { type: v.type }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushOperationChange> = z.object({
+        attachmentId: z.nullable(z.string()).optional(),
+        recordRef: PushOperationRef$.outboundSchema.optional(),
+        type: PushChangeType$.outboundSchema.optional(),
+    });
 }

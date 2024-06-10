@@ -227,55 +227,24 @@ export type CreateAccountResponse = {
 
 /** @internal */
 export namespace AccountingAccount$ {
-    export const inboundSchema: z.ZodType<AccountingAccount, z.ZodTypeDef, unknown> = z
-        .object({
-            currency: z.string().optional(),
-            currentBalance: z.nullable(z.number().transform((v) => new Decimal$(v))).optional(),
-            description: z.nullable(z.string()).optional(),
-            fullyQualifiedCategory: z.nullable(z.string()).optional(),
-            fullyQualifiedName: z.nullable(z.string()).optional(),
-            id: z.string().optional(),
-            isBankAccount: z.boolean().optional(),
-            metadata: Metadata$.inboundSchema.optional(),
-            modifiedDate: z.string().optional(),
-            name: z.nullable(z.string()).optional(),
-            nominalCode: z.nullable(z.string()).optional(),
-            sourceModifiedDate: z.string().optional(),
-            status: AccountStatus$.inboundSchema.optional(),
-            supplementalData: SupplementalData$.inboundSchema.optional(),
-            type: AccountType$.inboundSchema.optional(),
-            validDatatypeLinks: z.nullable(z.array(ValidDataTypeLinks$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.currency === undefined ? null : { currency: v.currency }),
-                ...(v.currentBalance === undefined ? null : { currentBalance: v.currentBalance }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.fullyQualifiedCategory === undefined
-                    ? null
-                    : { fullyQualifiedCategory: v.fullyQualifiedCategory }),
-                ...(v.fullyQualifiedName === undefined
-                    ? null
-                    : { fullyQualifiedName: v.fullyQualifiedName }),
-                ...(v.id === undefined ? null : { id: v.id }),
-                ...(v.isBankAccount === undefined ? null : { isBankAccount: v.isBankAccount }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.modifiedDate === undefined ? null : { modifiedDate: v.modifiedDate }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.nominalCode === undefined ? null : { nominalCode: v.nominalCode }),
-                ...(v.sourceModifiedDate === undefined
-                    ? null
-                    : { sourceModifiedDate: v.sourceModifiedDate }),
-                ...(v.status === undefined ? null : { status: v.status }),
-                ...(v.supplementalData === undefined
-                    ? null
-                    : { supplementalData: v.supplementalData }),
-                ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.validDatatypeLinks === undefined
-                    ? null
-                    : { validDatatypeLinks: v.validDatatypeLinks }),
-            };
-        });
+    export const inboundSchema: z.ZodType<AccountingAccount, z.ZodTypeDef, unknown> = z.object({
+        currency: z.string().optional(),
+        currentBalance: z.nullable(z.number().transform((v) => new Decimal$(v))).optional(),
+        description: z.nullable(z.string()).optional(),
+        fullyQualifiedCategory: z.nullable(z.string()).optional(),
+        fullyQualifiedName: z.nullable(z.string()).optional(),
+        id: z.string().optional(),
+        isBankAccount: z.boolean().optional(),
+        metadata: Metadata$.inboundSchema.optional(),
+        modifiedDate: z.string().optional(),
+        name: z.nullable(z.string()).optional(),
+        nominalCode: z.nullable(z.string()).optional(),
+        sourceModifiedDate: z.string().optional(),
+        status: AccountStatus$.inboundSchema.optional(),
+        supplementalData: SupplementalData$.inboundSchema.optional(),
+        type: AccountType$.inboundSchema.optional(),
+        validDatatypeLinks: z.nullable(z.array(ValidDataTypeLinks$.inboundSchema)).optional(),
+    });
 
     export type Outbound = {
         currency?: string | undefined;
@@ -296,104 +265,50 @@ export namespace AccountingAccount$ {
         validDatatypeLinks?: Array<ValidDataTypeLinks$.Outbound> | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AccountingAccount> = z
-        .object({
-            currency: z.string().optional(),
-            currentBalance: z
-                .nullable(
-                    z
-                        .union([z.instanceof(Decimal$), z.number()])
-                        .transform((v) => (typeof v === "number" ? v : v.toNumber()))
-                )
-                .optional(),
-            description: z.nullable(z.string()).optional(),
-            fullyQualifiedCategory: z.nullable(z.string()).optional(),
-            fullyQualifiedName: z.nullable(z.string()).optional(),
-            id: z.string().optional(),
-            isBankAccount: z.boolean().optional(),
-            metadata: Metadata$.outboundSchema.optional(),
-            modifiedDate: z.string().optional(),
-            name: z.nullable(z.string()).optional(),
-            nominalCode: z.nullable(z.string()).optional(),
-            sourceModifiedDate: z.string().optional(),
-            status: AccountStatus$.outboundSchema.optional(),
-            supplementalData: SupplementalData$.outboundSchema.optional(),
-            type: AccountType$.outboundSchema.optional(),
-            validDatatypeLinks: z.nullable(z.array(ValidDataTypeLinks$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.currency === undefined ? null : { currency: v.currency }),
-                ...(v.currentBalance === undefined ? null : { currentBalance: v.currentBalance }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.fullyQualifiedCategory === undefined
-                    ? null
-                    : { fullyQualifiedCategory: v.fullyQualifiedCategory }),
-                ...(v.fullyQualifiedName === undefined
-                    ? null
-                    : { fullyQualifiedName: v.fullyQualifiedName }),
-                ...(v.id === undefined ? null : { id: v.id }),
-                ...(v.isBankAccount === undefined ? null : { isBankAccount: v.isBankAccount }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.modifiedDate === undefined ? null : { modifiedDate: v.modifiedDate }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.nominalCode === undefined ? null : { nominalCode: v.nominalCode }),
-                ...(v.sourceModifiedDate === undefined
-                    ? null
-                    : { sourceModifiedDate: v.sourceModifiedDate }),
-                ...(v.status === undefined ? null : { status: v.status }),
-                ...(v.supplementalData === undefined
-                    ? null
-                    : { supplementalData: v.supplementalData }),
-                ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.validDatatypeLinks === undefined
-                    ? null
-                    : { validDatatypeLinks: v.validDatatypeLinks }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AccountingAccount> = z.object({
+        currency: z.string().optional(),
+        currentBalance: z
+            .nullable(
+                z
+                    .union([z.instanceof(Decimal$), z.number()])
+                    .transform((v) => (typeof v === "number" ? v : v.toNumber()))
+            )
+            .optional(),
+        description: z.nullable(z.string()).optional(),
+        fullyQualifiedCategory: z.nullable(z.string()).optional(),
+        fullyQualifiedName: z.nullable(z.string()).optional(),
+        id: z.string().optional(),
+        isBankAccount: z.boolean().optional(),
+        metadata: Metadata$.outboundSchema.optional(),
+        modifiedDate: z.string().optional(),
+        name: z.nullable(z.string()).optional(),
+        nominalCode: z.nullable(z.string()).optional(),
+        sourceModifiedDate: z.string().optional(),
+        status: AccountStatus$.outboundSchema.optional(),
+        supplementalData: SupplementalData$.outboundSchema.optional(),
+        type: AccountType$.outboundSchema.optional(),
+        validDatatypeLinks: z.nullable(z.array(ValidDataTypeLinks$.outboundSchema)).optional(),
+    });
 }
 
 /** @internal */
 export namespace CreateAccountResponse$ {
-    export const inboundSchema: z.ZodType<CreateAccountResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            changes: z.nullable(z.array(PushOperationChange$.inboundSchema)).optional(),
-            companyId: z.string(),
-            completedOnUtc: z.string().optional(),
-            data: z.nullable(z.lazy(() => AccountingAccount$.inboundSchema)).optional(),
-            dataConnectionKey: z.string(),
-            dataType: DataType$.inboundSchema.optional(),
-            errorMessage: z.nullable(z.string()).optional(),
-            pushOperationKey: z.string(),
-            requestedOnUtc: z.string(),
-            status: PushOperationStatus$.inboundSchema,
-            statusCode: z.number().int(),
-            timeoutInMinutes: z.nullable(z.number().int()).optional(),
-            timeoutInSeconds: z.nullable(z.number().int()).optional(),
-            validation: Validation$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.changes === undefined ? null : { changes: v.changes }),
-                companyId: v.companyId,
-                ...(v.completedOnUtc === undefined ? null : { completedOnUtc: v.completedOnUtc }),
-                ...(v.data === undefined ? null : { data: v.data }),
-                dataConnectionKey: v.dataConnectionKey,
-                ...(v.dataType === undefined ? null : { dataType: v.dataType }),
-                ...(v.errorMessage === undefined ? null : { errorMessage: v.errorMessage }),
-                pushOperationKey: v.pushOperationKey,
-                requestedOnUtc: v.requestedOnUtc,
-                status: v.status,
-                statusCode: v.statusCode,
-                ...(v.timeoutInMinutes === undefined
-                    ? null
-                    : { timeoutInMinutes: v.timeoutInMinutes }),
-                ...(v.timeoutInSeconds === undefined
-                    ? null
-                    : { timeoutInSeconds: v.timeoutInSeconds }),
-                ...(v.validation === undefined ? null : { validation: v.validation }),
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateAccountResponse, z.ZodTypeDef, unknown> = z.object({
+        changes: z.nullable(z.array(PushOperationChange$.inboundSchema)).optional(),
+        companyId: z.string(),
+        completedOnUtc: z.string().optional(),
+        data: z.nullable(z.lazy(() => AccountingAccount$.inboundSchema)).optional(),
+        dataConnectionKey: z.string(),
+        dataType: DataType$.inboundSchema.optional(),
+        errorMessage: z.nullable(z.string()).optional(),
+        pushOperationKey: z.string(),
+        requestedOnUtc: z.string(),
+        status: PushOperationStatus$.inboundSchema,
+        statusCode: z.number().int(),
+        timeoutInMinutes: z.nullable(z.number().int()).optional(),
+        timeoutInSeconds: z.nullable(z.number().int()).optional(),
+        validation: Validation$.inboundSchema.optional(),
+    });
 
     export type Outbound = {
         changes?: Array<PushOperationChange$.Outbound> | null | undefined;
@@ -412,8 +327,8 @@ export namespace CreateAccountResponse$ {
         validation?: Validation$.Outbound | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateAccountResponse> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateAccountResponse> =
+        z.object({
             changes: z.nullable(z.array(PushOperationChange$.outboundSchema)).optional(),
             companyId: z.string(),
             completedOnUtc: z.string().optional(),
@@ -428,27 +343,5 @@ export namespace CreateAccountResponse$ {
             timeoutInMinutes: z.nullable(z.number().int()).optional(),
             timeoutInSeconds: z.nullable(z.number().int()).optional(),
             validation: Validation$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.changes === undefined ? null : { changes: v.changes }),
-                companyId: v.companyId,
-                ...(v.completedOnUtc === undefined ? null : { completedOnUtc: v.completedOnUtc }),
-                ...(v.data === undefined ? null : { data: v.data }),
-                dataConnectionKey: v.dataConnectionKey,
-                ...(v.dataType === undefined ? null : { dataType: v.dataType }),
-                ...(v.errorMessage === undefined ? null : { errorMessage: v.errorMessage }),
-                pushOperationKey: v.pushOperationKey,
-                requestedOnUtc: v.requestedOnUtc,
-                status: v.status,
-                statusCode: v.statusCode,
-                ...(v.timeoutInMinutes === undefined
-                    ? null
-                    : { timeoutInMinutes: v.timeoutInMinutes }),
-                ...(v.timeoutInSeconds === undefined
-                    ? null
-                    : { timeoutInSeconds: v.timeoutInSeconds }),
-                ...(v.validation === undefined ? null : { validation: v.validation }),
-            };
         });
 }

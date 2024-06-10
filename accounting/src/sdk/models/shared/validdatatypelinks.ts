@@ -61,32 +61,18 @@ export type ValidDataTypeLinks = {
 
 /** @internal */
 export namespace ValidDataTypeLinks$ {
-    export const inboundSchema: z.ZodType<ValidDataTypeLinks, z.ZodTypeDef, unknown> = z
-        .object({
-            links: z.nullable(z.array(z.string())).optional(),
-            property: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.links === undefined ? null : { links: v.links }),
-                ...(v.property === undefined ? null : { property: v.property }),
-            };
-        });
+    export const inboundSchema: z.ZodType<ValidDataTypeLinks, z.ZodTypeDef, unknown> = z.object({
+        links: z.nullable(z.array(z.string())).optional(),
+        property: z.nullable(z.string()).optional(),
+    });
 
     export type Outbound = {
         links?: Array<string> | null | undefined;
         property?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ValidDataTypeLinks> = z
-        .object({
-            links: z.nullable(z.array(z.string())).optional(),
-            property: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.links === undefined ? null : { links: v.links }),
-                ...(v.property === undefined ? null : { property: v.property }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ValidDataTypeLinks> = z.object({
+        links: z.nullable(z.array(z.string())).optional(),
+        property: z.nullable(z.string()).optional(),
+    });
 }

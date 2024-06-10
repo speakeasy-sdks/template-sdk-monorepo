@@ -44,17 +44,10 @@ export namespace AccountTransactionLineRecordRefDataType$ {
 /** @internal */
 export namespace AccountTransactionLineRecordRef$ {
     export const inboundSchema: z.ZodType<AccountTransactionLineRecordRef, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                dataType: AccountTransactionLineRecordRefDataType$.inboundSchema.optional(),
-                id: z.string().optional(),
-            })
-            .transform((v) => {
-                return {
-                    ...(v.dataType === undefined ? null : { dataType: v.dataType }),
-                    ...(v.id === undefined ? null : { id: v.id }),
-                };
-            });
+        z.object({
+            dataType: AccountTransactionLineRecordRefDataType$.inboundSchema.optional(),
+            id: z.string().optional(),
+        });
 
     export type Outbound = {
         dataType?: string | undefined;
@@ -65,15 +58,8 @@ export namespace AccountTransactionLineRecordRef$ {
         Outbound,
         z.ZodTypeDef,
         AccountTransactionLineRecordRef
-    > = z
-        .object({
-            dataType: AccountTransactionLineRecordRefDataType$.outboundSchema.optional(),
-            id: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.dataType === undefined ? null : { dataType: v.dataType }),
-                ...(v.id === undefined ? null : { id: v.id }),
-            };
-        });
+    > = z.object({
+        dataType: AccountTransactionLineRecordRefDataType$.outboundSchema.optional(),
+        id: z.string().optional(),
+    });
 }
