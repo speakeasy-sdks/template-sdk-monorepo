@@ -3,10 +3,10 @@ id: 29cfdd98-e13b-4623-b529-885b7ad9a604
 management:
   docChecksum: 48b665753822e4a7157d85cc441e7b3f
   docVersion: 3.0.0
-  speakeasyVersion: 1.296.1
-  generationVersion: 2.338.1
-  releaseVersion: 0.2.0
-  configChecksum: 68bd83ae1170bc99e01db1bdbf82c81a
+  speakeasyVersion: 1.310.0
+  generationVersion: 2.347.4
+  releaseVersion: 0.3.0
+  configChecksum: 2385aa7c2d311e7bc265e107fba2e040
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   repoSubDirectory: lending
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.9.9
+    core: 3.10.0
     deprecations: 2.81.1
     examples: 2.81.4
     flattening: 2.81.1
@@ -30,7 +30,7 @@ features:
 generatedFiles:
   - src/sdk/companies.ts
   - src/sdk/sdk.ts
-  - .eslintrc.js
+  - .eslintrc.cjs
   - .npmignore
   - RUNTIMES.md
   - jsr.json
@@ -41,6 +41,7 @@ generatedFiles:
   - src/lib/encodings.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
+  - src/lib/primitives.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
   - src/lib/sdks.ts

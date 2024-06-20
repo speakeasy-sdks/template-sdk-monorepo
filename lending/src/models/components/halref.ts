@@ -13,27 +13,15 @@ export type HalRef = {
 
 /** @internal */
 export namespace HalRef$ {
-    export const inboundSchema: z.ZodType<HalRef, z.ZodTypeDef, unknown> = z
-        .object({
-            href: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.href === undefined ? null : { href: v.href }),
-            };
-        });
+    export const inboundSchema: z.ZodType<HalRef, z.ZodTypeDef, unknown> = z.object({
+        href: z.string().optional(),
+    });
 
     export type Outbound = {
         href?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HalRef> = z
-        .object({
-            href: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.href === undefined ? null : { href: v.href }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HalRef> = z.object({
+        href: z.string().optional(),
+    });
 }

@@ -7,3 +7,11 @@ Based on:
 - Speakeasy CLI 1.296.1 (2.338.1) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [typescript v0.6.0] ./accounting
+
+## 2024-06-20 00:12:46
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.310.0 (2.347.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.3.0] ./lending

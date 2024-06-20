@@ -15,10 +15,25 @@
 npm add https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
 ```
 
+### PNPM
+
+```bash
+pnpm add https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
+```
+
+### Bun
+
+```bash
+bun add https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
+```
+
 ### Yarn
 
 ```bash
-yarn add https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
+yarn add https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending zod
+
+# Note that Yarn does not install peer dependencies automatically. You will need
+# to install zod as shown above.
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -160,7 +175,7 @@ Validation errors can also occur when either method arguments or data returned f
 
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
-import * as errors from "@speakeasy-sdks/lending/models/errors";
+import { SDKValidationError } from "@speakeasy-sdks/lending/models/errors";
 
 const lendingTs = new LendingTs({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
@@ -177,7 +192,7 @@ async function run() {
         );
     } catch (err) {
         switch (true) {
-            case err instanceof errors.SDKValidationError: {
+            case err instanceof SDKValidationError: {
                 // Validation errors can be pretty-printed
                 console.error(err.pretty());
                 // Raw value may also be inspected
