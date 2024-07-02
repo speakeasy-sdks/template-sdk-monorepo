@@ -20,6 +20,7 @@ export enum PushOptionType {
 
 /** @internal */
 export namespace PushOptionType$ {
-    export const inboundSchema = z.nativeEnum(PushOptionType);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof PushOptionType> =
+        z.nativeEnum(PushOptionType);
+    export const outboundSchema: z.ZodNativeEnum<typeof PushOptionType> = inboundSchema;
 }

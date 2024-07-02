@@ -55,6 +55,6 @@ export enum DataType {
 
 /** @internal */
 export namespace DataType$ {
-    export const inboundSchema = z.nativeEnum(DataType);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof DataType> = z.nativeEnum(DataType);
+    export const outboundSchema: z.ZodNativeEnum<typeof DataType> = inboundSchema;
 }

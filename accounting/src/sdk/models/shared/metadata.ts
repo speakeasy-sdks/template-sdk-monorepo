@@ -13,27 +13,15 @@ export type Metadata = {
 
 /** @internal */
 export namespace Metadata$ {
-    export const inboundSchema: z.ZodType<Metadata, z.ZodTypeDef, unknown> = z
-        .object({
-            isDeleted: z.nullable(z.boolean()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.isDeleted === undefined ? null : { isDeleted: v.isDeleted }),
-            };
-        });
+    export const inboundSchema: z.ZodType<Metadata, z.ZodTypeDef, unknown> = z.object({
+        isDeleted: z.nullable(z.boolean()).optional(),
+    });
 
     export type Outbound = {
         isDeleted?: boolean | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Metadata> = z
-        .object({
-            isDeleted: z.nullable(z.boolean()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.isDeleted === undefined ? null : { isDeleted: v.isDeleted }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Metadata> = z.object({
+        isDeleted: z.nullable(z.boolean()).optional(),
+    });
 }
