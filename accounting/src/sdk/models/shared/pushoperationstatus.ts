@@ -16,6 +16,7 @@ export enum PushOperationStatus {
 
 /** @internal */
 export namespace PushOperationStatus$ {
-    export const inboundSchema = z.nativeEnum(PushOperationStatus);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof PushOperationStatus> =
+        z.nativeEnum(PushOperationStatus);
+    export const outboundSchema: z.ZodNativeEnum<typeof PushOperationStatus> = inboundSchema;
 }

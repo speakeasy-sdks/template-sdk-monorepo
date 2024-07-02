@@ -16,6 +16,7 @@ export enum DataConnectionStatus {
 
 /** @internal */
 export namespace DataConnectionStatus$ {
-    export const inboundSchema = z.nativeEnum(DataConnectionStatus);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof DataConnectionStatus> =
+        z.nativeEnum(DataConnectionStatus);
+    export const outboundSchema: z.ZodNativeEnum<typeof DataConnectionStatus> = inboundSchema;
 }

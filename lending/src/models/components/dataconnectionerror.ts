@@ -45,21 +45,12 @@ export type DataConnectionError = {
 
 /** @internal */
 export namespace DataConnectionError$ {
-    export const inboundSchema: z.ZodType<DataConnectionError, z.ZodTypeDef, unknown> = z
-        .object({
-            statusCode: z.string().optional(),
-            statusText: z.string().optional(),
-            errorMessage: z.string().optional(),
-            erroredOnUtc: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.statusCode === undefined ? null : { statusCode: v.statusCode }),
-                ...(v.statusText === undefined ? null : { statusText: v.statusText }),
-                ...(v.errorMessage === undefined ? null : { errorMessage: v.errorMessage }),
-                ...(v.erroredOnUtc === undefined ? null : { erroredOnUtc: v.erroredOnUtc }),
-            };
-        });
+    export const inboundSchema: z.ZodType<DataConnectionError, z.ZodTypeDef, unknown> = z.object({
+        statusCode: z.string().optional(),
+        statusText: z.string().optional(),
+        errorMessage: z.string().optional(),
+        erroredOnUtc: z.string().optional(),
+    });
 
     export type Outbound = {
         statusCode?: string | undefined;
@@ -68,19 +59,10 @@ export namespace DataConnectionError$ {
         erroredOnUtc?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DataConnectionError> = z
-        .object({
-            statusCode: z.string().optional(),
-            statusText: z.string().optional(),
-            errorMessage: z.string().optional(),
-            erroredOnUtc: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.statusCode === undefined ? null : { statusCode: v.statusCode }),
-                ...(v.statusText === undefined ? null : { statusText: v.statusText }),
-                ...(v.errorMessage === undefined ? null : { errorMessage: v.errorMessage }),
-                ...(v.erroredOnUtc === undefined ? null : { erroredOnUtc: v.erroredOnUtc }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DataConnectionError> = z.object({
+        statusCode: z.string().optional(),
+        statusText: z.string().optional(),
+        errorMessage: z.string().optional(),
+        erroredOnUtc: z.string().optional(),
+    });
 }

@@ -15,10 +15,25 @@
 npm add @speakeasy-sdks/accounting
 ```
 
+### PNPM
+
+```bash
+pnpm add @speakeasy-sdks/accounting
+```
+
+### Bun
+
+```bash
+bun add @speakeasy-sdks/accounting
+```
+
 ### Yarn
 
 ```bash
-yarn add @speakeasy-sdks/accounting
+yarn add @speakeasy-sdks/accounting zod
+
+# Note that Yarn does not install peer dependencies automatically. You will need
+# to install zod as shown above.
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -160,7 +175,7 @@ Validation errors can also occur when either method arguments or data returned f
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import * as errors from "@speakeasy-sdks/accounting/sdk/models/errors";
+import { SDKValidationError } from "@speakeasy-sdks/accounting/sdk/models/errors";
 
 const accounting = new Accounting({
     authHeader: "Basic BASE_64_ENCODED(API_KEY)",
@@ -176,7 +191,7 @@ async function run() {
         );
     } catch (err) {
         switch (true) {
-            case err instanceof errors.SDKValidationError: {
+            case err instanceof SDKValidationError: {
                 // Validation errors can be pretty-printed
                 console.error(err.pretty());
                 // Raw value may also be inspected

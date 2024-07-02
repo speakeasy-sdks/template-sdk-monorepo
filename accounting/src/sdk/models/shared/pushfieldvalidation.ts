@@ -21,19 +21,11 @@ export type PushFieldValidation = {
 
 /** @internal */
 export namespace PushFieldValidation$ {
-    export const inboundSchema: z.ZodType<PushFieldValidation, z.ZodTypeDef, unknown> = z
-        .object({
-            details: z.string(),
-            field: z.string().optional(),
-            ref: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                details: v.details,
-                ...(v.field === undefined ? null : { field: v.field }),
-                ...(v.ref === undefined ? null : { ref: v.ref }),
-            };
-        });
+    export const inboundSchema: z.ZodType<PushFieldValidation, z.ZodTypeDef, unknown> = z.object({
+        details: z.string(),
+        field: z.string().optional(),
+        ref: z.nullable(z.string()).optional(),
+    });
 
     export type Outbound = {
         details: string;
@@ -41,17 +33,9 @@ export namespace PushFieldValidation$ {
         ref?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushFieldValidation> = z
-        .object({
-            details: z.string(),
-            field: z.string().optional(),
-            ref: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                details: v.details,
-                ...(v.field === undefined ? null : { field: v.field }),
-                ...(v.ref === undefined ? null : { ref: v.ref }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushFieldValidation> = z.object({
+        details: z.string(),
+        field: z.string().optional(),
+        ref: z.nullable(z.string()).optional(),
+    });
 }

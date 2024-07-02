@@ -17,27 +17,15 @@ export type SupplementalData = {
 
 /** @internal */
 export namespace SupplementalData$ {
-    export const inboundSchema: z.ZodType<SupplementalData, z.ZodTypeDef, unknown> = z
-        .object({
-            content: z.nullable(z.record(z.record(z.any()))).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.content === undefined ? null : { content: v.content }),
-            };
-        });
+    export const inboundSchema: z.ZodType<SupplementalData, z.ZodTypeDef, unknown> = z.object({
+        content: z.nullable(z.record(z.record(z.any()))).optional(),
+    });
 
     export type Outbound = {
         content?: { [k: string]: { [k: string]: any } } | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SupplementalData> = z
-        .object({
-            content: z.nullable(z.record(z.record(z.any()))).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.content === undefined ? null : { content: v.content }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SupplementalData> = z.object({
+        content: z.nullable(z.record(z.record(z.any()))).optional(),
+    });
 }
