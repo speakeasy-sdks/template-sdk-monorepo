@@ -1,5 +1,14 @@
 # PushFieldValidation
 
+## Example Usage
+
+```typescript
+import { PushFieldValidation } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: PushFieldValidation = {
+  details: "<value>",
+};
+```
 
 ## Fields
 

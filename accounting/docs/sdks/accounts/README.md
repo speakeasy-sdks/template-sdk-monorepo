@@ -47,7 +47,49 @@ async function run() {
     nominalCode: "610",
     status: AccountStatus.Active,
     type: AccountType.Asset,
-  }, 638424);
+  });
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AccountingCore } from "@speakeasy-sdks/accounting/core.js";
+import { accountsCreate } from "@speakeasy-sdks/accounting/funcs/accountsCreate.js";
+import { AccountStatus, AccountType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+import { Decimal } from "@speakeasy-sdks/accounting/sdk/types";
+
+// Use `AccountingCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const accounting = new AccountingCore({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
+
+async function run() {
+  const res = await accountsCreate(accounting, "8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171", {
+    currency: "USD",
+    currentBalance: new Decimal("0"),
+    description: "Invoices the business has issued but has not yet collected payment on.",
+    fullyQualifiedCategory: "Asset.Current",
+    fullyQualifiedName: "Cash On Hand",
+    name: "Accounts Receivable",
+    nominalCode: "610",
+    status: AccountStatus.Active,
+    type: AccountType.Asset,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -68,15 +110,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[operations.CreateAccountResponse](../../sdk/models/operations/createaccountresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## get
 
@@ -100,6 +143,36 @@ const accounting = new Accounting({
 
 async function run() {
   const result = await accounting.accounts.get("<value>", "8a210b68-6988-11ed-a1eb-0242ac120002");
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AccountingCore } from "@speakeasy-sdks/accounting/core.js";
+import { accountsGet } from "@speakeasy-sdks/accounting/funcs/accountsGet.js";
+
+// Use `AccountingCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const accounting = new AccountingCore({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
+
+async function run() {
+  const res = await accountsGet(accounting, "<value>", "8a210b68-6988-11ed-a1eb-0242ac120002");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -118,15 +191,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[operations.GetAccountResponse](../../sdk/models/operations/getaccountresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getCreateModel
 
@@ -152,6 +226,36 @@ const accounting = new Accounting({
 
 async function run() {
   const result = await accounting.accounts.getCreateModel("8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171");
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AccountingCore } from "@speakeasy-sdks/accounting/core.js";
+import { accountsGetCreateModel } from "@speakeasy-sdks/accounting/funcs/accountsGetCreateModel.js";
+
+// Use `AccountingCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const accounting = new AccountingCore({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
+
+async function run() {
+  const res = await accountsGetCreateModel(accounting, "8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -170,15 +274,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[operations.GetCreateChartOfAccountsModelResponse](../../sdk/models/operations/getcreatechartofaccountsmodelresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## list
 
@@ -205,6 +310,42 @@ async function run() {
     pageSize: 100,
     query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
   });
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AccountingCore } from "@speakeasy-sdks/accounting/core.js";
+import { accountsList } from "@speakeasy-sdks/accounting/funcs/accountsList.js";
+
+// Use `AccountingCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const accounting = new AccountingCore({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
+
+async function run() {
+  const res = await accountsList(accounting, {
+    companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
+    orderBy: "-modifiedDate",
+    page: 1,
+    pageSize: 100,
+    query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -222,10 +363,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.ListAccountsResponse](../../sdk/models/operations/listaccountsresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

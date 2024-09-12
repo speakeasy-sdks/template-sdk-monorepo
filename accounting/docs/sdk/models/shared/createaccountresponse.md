@@ -1,5 +1,28 @@
 # CreateAccountResponse
 
+## Example Usage
+
+```typescript
+import { CreateAccountResponse, DataType, PushOperationStatus } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: CreateAccountResponse = {
+  changes: [
+    {
+      recordRef: {
+        dataType: DataType.Invoices,
+      },
+    },
+  ],
+  companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
+  completedOnUtc: "2022-10-23T00:00:00Z",
+  dataConnectionKey: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+  dataType: DataType.Invoices,
+  pushOperationKey: "396fea75-96eb-410f-aaa2-352c5955907a",
+  requestedOnUtc: "2022-10-23T00:00:00Z",
+  status: PushOperationStatus.TimedOut,
+  statusCode: 102044,
+};
+```
 
 ## Fields
 

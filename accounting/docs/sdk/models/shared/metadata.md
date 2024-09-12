@@ -1,5 +1,12 @@
 # Metadata
 
+## Example Usage
+
+```typescript
+import { Metadata } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: Metadata = {};
+```
 
 ## Fields
 

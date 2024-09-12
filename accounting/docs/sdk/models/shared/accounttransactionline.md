@@ -1,5 +1,16 @@
 # AccountTransactionLine
 
+## Example Usage
+
+```typescript
+import { AccountTransactionLine, AccountTransactionLineRecordRefDataType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: AccountTransactionLine = {
+  recordRef: {
+    dataType: AccountTransactionLineRecordRefDataType.Transfers,
+  },
+};
+```
 
 ## Fields
 

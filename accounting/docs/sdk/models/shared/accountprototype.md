@@ -1,5 +1,24 @@
 # AccountPrototype
 
+## Example Usage
+
+```typescript
+import { AccountPrototype, AccountStatus, AccountType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+import { Decimal } from "@speakeasy-sdks/accounting/sdk/types";
+
+let value: AccountPrototype = {
+  currency: "USD",
+  currentBalance: new Decimal("0"),
+  description:
+    "Invoices the business has issued but has not yet collected payment on.",
+  fullyQualifiedCategory: "Asset.Current",
+  fullyQualifiedName: "Cash On Hand",
+  name: "Accounts Receivable",
+  nominalCode: "610",
+  status: AccountStatus.Active,
+  type: AccountType.Asset,
+};
+```
 
 ## Fields
 

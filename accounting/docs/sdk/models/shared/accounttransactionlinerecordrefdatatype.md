@@ -2,6 +2,14 @@
 
 Name of underlying data type.
 
+## Example Usage
+
+```typescript
+import { AccountTransactionLineRecordRefDataType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: AccountTransactionLineRecordRefDataType =
+  AccountTransactionLineRecordRefDataType.Transfers;
+```
 
 ## Values
 

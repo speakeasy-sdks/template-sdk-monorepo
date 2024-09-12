@@ -1,5 +1,39 @@
 # AccountTransactions
 
+## Example Usage
+
+```typescript
+import { AccountTransactionLineRecordRefDataType, AccountTransactions } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: AccountTransactions = {
+  links: {
+    current: {
+      href: "/companies/{id}/data/{dataType}?page=1&pageSize=10",
+    },
+    self: {
+      href: "/companies/{id}/data/{dataType}",
+    },
+  },
+  pageNumber: 1,
+  pageSize: 10,
+  results: [
+    {
+      currency: "USD",
+      date: "2022-10-23T00:00:00Z",
+      lines: [
+        {
+          recordRef: {
+            dataType: AccountTransactionLineRecordRefDataType.Transfers,
+          },
+        },
+      ],
+      modifiedDate: "2022-10-23T00:00:00Z",
+      sourceModifiedDate: "2022-10-23T00:00:00Z",
+    },
+  ],
+  totalResults: 1,
+};
+```
 
 ## Fields
 

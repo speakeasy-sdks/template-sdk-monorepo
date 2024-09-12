@@ -1,5 +1,19 @@
 # Links
 
+## Example Usage
+
+```typescript
+import { Links } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: Links = {
+  current: {
+    href: "/companies?page=1&pageSize=10",
+  },
+  self: {
+    href: "/companies",
+  },
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # ErrorMessage
 
+## Example Usage
+
+```typescript
+import { ErrorMessage } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: ErrorMessage = {};
+```
 
 ## Fields
 

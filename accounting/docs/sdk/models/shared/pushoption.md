@@ -1,5 +1,16 @@
 # PushOption
 
+## Example Usage
+
+```typescript
+import { PushOption, PushOptionType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: PushOption = {
+  displayName: "Harvey.Konopelski",
+  required: false,
+  type: PushOptionType.Boolean,
+};
+```
 
 ## Fields
 

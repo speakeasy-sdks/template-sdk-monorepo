@@ -1,5 +1,14 @@
 # DataConnectionError
 
+## Example Usage
+
+```typescript
+import { DataConnectionError } from "@speakeasy-sdks/lending/models/components";
+
+let value: DataConnectionError = {
+  erroredOnUtc: "2022-10-23T00:00:00Z",
+};
+```
 
 ## Fields
 

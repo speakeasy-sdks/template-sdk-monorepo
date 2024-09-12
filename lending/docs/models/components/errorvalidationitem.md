@@ -1,5 +1,12 @@
 # ErrorValidationItem
 
+## Example Usage
+
+```typescript
+import { ErrorValidationItem } from "@speakeasy-sdks/lending/models/components";
+
+let value: ErrorValidationItem = {};
+```
 
 ## Fields
 

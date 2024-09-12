@@ -18,6 +18,25 @@ Account transactions are created as a result of different business activities, f
 
 Account transactions is the parent data type of [payments](https://docs.codat.io/accounting-api#/schemas/Payment), [bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment), [direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost), [direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome), and [transfers](https://docs.codat.io/accounting-api#/schemas/Transfer).
 
+## Example Usage
+
+```typescript
+import { AccountTransaction, AccountTransactionLineRecordRefDataType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: AccountTransaction = {
+  currency: "GBP",
+  date: "2022-10-23T00:00:00Z",
+  lines: [
+    {
+      recordRef: {
+        dataType: AccountTransactionLineRecordRefDataType.Transfers,
+      },
+    },
+  ],
+  modifiedDate: "2022-10-23T00:00:00Z",
+  sourceModifiedDate: "2022-10-23T00:00:00Z",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,14 @@
 # PushOperationRef
 
+## Example Usage
+
+```typescript
+import { DataType, PushOperationRef } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: PushOperationRef = {
+  dataType: DataType.Invoices,
+};
+```
 
 ## Fields
 

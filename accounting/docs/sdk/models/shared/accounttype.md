@@ -2,6 +2,13 @@
 
 Type of account
 
+## Example Usage
+
+```typescript
+import { AccountType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: AccountType = AccountType.Asset;
+```
 
 ## Values
 

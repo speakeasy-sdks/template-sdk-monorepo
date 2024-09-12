@@ -2,6 +2,13 @@
 
 A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here.
 
+## Example Usage
+
+```typescript
+import { ErrorValidation } from "@speakeasy-sdks/lending/models/components";
+
+let value: ErrorValidation = {};
+```
 
 ## Fields
 

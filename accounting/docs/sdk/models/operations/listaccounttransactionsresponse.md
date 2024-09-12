@@ -1,5 +1,47 @@
 # ListAccountTransactionsResponse
 
+## Example Usage
+
+```typescript
+import { ListAccountTransactionsResponse } from "@speakeasy-sdks/accounting/sdk/models/operations";
+import { AccountTransactionLineRecordRefDataType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: ListAccountTransactionsResponse = {
+  accountTransactions: {
+    links: {
+      current: {
+        href: "/companies/{id}/data/{dataType}?page=1&pageSize=10",
+      },
+      self: {
+        href: "/companies/{id}/data/{dataType}",
+      },
+    },
+    pageNumber: 1,
+    pageSize: 10,
+    results: [
+      {
+        currency: "EUR",
+        date: "2022-10-23T00:00:00Z",
+        lines: [
+          {
+            recordRef: {
+              dataType: AccountTransactionLineRecordRefDataType.Transfers,
+            },
+          },
+        ],
+        modifiedDate: "2022-10-23T00:00:00Z",
+        sourceModifiedDate: "2022-10-23T00:00:00Z",
+      },
+    ],
+    totalResults: 1,
+  },
+  contentType: "<value>",
+  statusCode: 623564,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
+};
+```
 
 ## Fields
 

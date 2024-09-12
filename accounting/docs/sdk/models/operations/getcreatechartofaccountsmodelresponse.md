@@ -1,5 +1,18 @@
 # GetCreateChartOfAccountsModelResponse
 
+## Example Usage
+
+```typescript
+import { GetCreateChartOfAccountsModelResponse } from "@speakeasy-sdks/accounting/sdk/models/operations";
+
+let value: GetCreateChartOfAccountsModelResponse = {
+  contentType: "<value>",
+  statusCode: 537373,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
+};
+```
 
 ## Fields
 
