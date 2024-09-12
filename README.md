@@ -8,7 +8,7 @@
 
 > :warning: This is an advanced setup process. For most cases we reccomend using the single sdk per github repository approach. Please see this [repo](https://github.com/speakeasy-sdks/template-sdk) for the corresponding template.
 
-**👀** This template repository is designed to bootstrap a monorepo version of a [Speakeasy managed SDK repository](https://speakeasyapi.dev/docs/create-client-sdks/) using Github's repository clone feature. Once this repository is setup it will automatically keep your SDKs up to date and published to a package manager.
+**👀** This template repository is designed to bootstrap a monorepo of SDKs following this [guide](https://github.com/speakeasy-sdks/template-sdk-monorepo?tab=readme-ov-file) and using Github's repository clone feature. Once this repository is setup it will automatically keep your SDKs up to date and published to a package manager.
 
 ## What is a SDK monorepo ?
 
