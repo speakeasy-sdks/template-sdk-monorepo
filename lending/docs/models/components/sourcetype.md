@@ -2,6 +2,13 @@
 
 The type of platform of the connection.
 
+## Example Usage
+
+```typescript
+import { SourceType } from "@speakeasy-sdks/lending/models/components";
+
+let value: SourceType = SourceType.Accounting;
+```
 
 ## Values
 

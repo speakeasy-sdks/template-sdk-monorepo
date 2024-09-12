@@ -31,6 +31,36 @@ const lendingTs = new LendingTs({
 
 async function run() {
   const result = await lendingTs.companies.list(1, 100, "id=e3334455-1aed-4e71-ab43-6bccf12092ee", "-modifiedDate");
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LendingTsCore } from "@speakeasy-sdks/lending/core.js";
+import { companiesList } from "@speakeasy-sdks/lending/funcs/companiesList.js";
+
+// Use `LendingTsCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const lendingTs = new LendingTsCore({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
+
+async function run() {
+  const res = await companiesList(lendingTs, 1, 100, "id=e3334455-1aed-4e71-ab43-6bccf12092ee", "-modifiedDate");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -51,16 +81,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[operations.ListCompaniesResponse](../../models/operations/listcompaniesresponse.md)\>**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## create
 
@@ -90,6 +121,44 @@ async function run() {
       },
     ],
   });
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LendingTsCore } from "@speakeasy-sdks/lending/core.js";
+import { companiesCreate } from "@speakeasy-sdks/lending/funcs/companiesCreate.js";
+
+// Use `LendingTsCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const lendingTs = new LendingTsCore({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
+
+async function run() {
+  const res = await companiesCreate(lendingTs, {
+    name: "Technicalium",
+    description: "Requested early access to the new financing scheme.",
+    groups: [
+      {
+        id: "60d2fa12-8a04-11ee-b9d1-0242ac120002",
+      },
+    ],
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -107,16 +176,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreateCompanyResponse](../../models/operations/createcompanyresponse.md)\>**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## update
 
@@ -145,6 +215,44 @@ async function run() {
       },
     ],
   });
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LendingTsCore } from "@speakeasy-sdks/lending/core.js";
+import { companiesUpdate } from "@speakeasy-sdks/lending/funcs/companiesUpdate.js";
+
+// Use `LendingTsCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const lendingTs = new LendingTsCore({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
+
+async function run() {
+  const res = await companiesUpdate(lendingTs, "8a210b68-6988-11ed-a1eb-0242ac120002", {
+    name: "New Name",
+    description: "Requested early access to the new financing scheme.",
+    groups: [
+      {
+        id: "60d2fa12-8a04-11ee-b9d1-0242ac120002",
+      },
+    ],
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -163,16 +271,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[operations.UpdateCompanyResponse](../../models/operations/updatecompanyresponse.md)\>**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## delete
 
@@ -193,6 +302,36 @@ const lendingTs = new LendingTs({
 
 async function run() {
   const result = await lendingTs.companies.delete("8a210b68-6988-11ed-a1eb-0242ac120002");
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LendingTsCore } from "@speakeasy-sdks/lending/core.js";
+import { companiesDelete } from "@speakeasy-sdks/lending/funcs/companiesDelete.js";
+
+// Use `LendingTsCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const lendingTs = new LendingTsCore({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
+
+async function run() {
+  const res = await companiesDelete(lendingTs, "8a210b68-6988-11ed-a1eb-0242ac120002");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -210,16 +349,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[operations.DeleteCompanyResponse](../../models/operations/deletecompanyresponse.md)\>**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get
 
@@ -240,6 +380,36 @@ const lendingTs = new LendingTs({
 
 async function run() {
   const result = await lendingTs.companies.get("8a210b68-6988-11ed-a1eb-0242ac120002");
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LendingTsCore } from "@speakeasy-sdks/lending/core.js";
+import { companiesGet } from "@speakeasy-sdks/lending/funcs/companiesGet.js";
+
+// Use `LendingTsCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const lendingTs = new LendingTsCore({
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+});
+
+async function run() {
+  const res = await companiesGet(lendingTs, "8a210b68-6988-11ed-a1eb-0242ac120002");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -257,10 +427,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[operations.GetCompanyResponse](../../models/operations/getcompanyresponse.md)\>**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |

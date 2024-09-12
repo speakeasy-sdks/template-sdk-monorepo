@@ -1,5 +1,12 @@
 # PushValidationInfo
 
+## Example Usage
+
+```typescript
+import { PushValidationInfo } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: PushValidationInfo = {};
+```
 
 ## Fields
 

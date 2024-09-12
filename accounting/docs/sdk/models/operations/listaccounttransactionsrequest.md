@@ -1,5 +1,19 @@
 # ListAccountTransactionsRequest
 
+## Example Usage
+
+```typescript
+import { ListAccountTransactionsRequest } from "@speakeasy-sdks/accounting/sdk/models/operations";
+
+let value: ListAccountTransactionsRequest = {
+  companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
+  connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+  orderBy: "-modifiedDate",
+  page: 1,
+  pageSize: 100,
+  query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+};
+```
 
 ## Fields
 

@@ -3,10 +3,10 @@ id: ef897581-6141-4d3b-8020-231752f2daa4
 management:
   docChecksum: dffee27feb3ffdf16d0b73e130a6aa81
   docVersion: 3.0.0
-  speakeasyVersion: 1.296.1
-  generationVersion: 2.338.1
-  releaseVersion: 0.6.0
-  configChecksum: 570d101049edb659aba0d294fd2011b8
+  speakeasyVersion: 1.396.2
+  generationVersion: 2.415.0
+  releaseVersion: 0.7.0
+  configChecksum: abf289594536ee1928a228fa07f22a78
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   repoSubDirectory: accounting
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/accounting
@@ -14,13 +14,15 @@ management:
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.5
-    core: 3.9.9
+    constsAndDefaults: 0.1.11
+    core: 3.17.0
     decimal: 0.1.2
+    defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
+    envVarSecurityUsage: 0.1.1
     examples: 2.81.4
     flattening: 2.81.1
-    globalSecurity: 2.82.9
+    globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
@@ -30,132 +32,821 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
+    serverEventsSentinels: 0.1.0
 generatedFiles:
-  - src/sdk/accounttransactions.ts
-  - src/sdk/accounts.ts
-  - src/sdk/sdk.ts
-  - .eslintrc.js
+  - .eslintrc.cjs
+  - .gitattributes
   - .npmignore
+  - CONTRIBUTING.md
+  - FUNCTIONS.md
   - RUNTIMES.md
+  - USAGE.md
+  - docs/lib/utils/retryconfig.md
+  - docs/sdk/models/operations/createaccountrequest.md
+  - docs/sdk/models/operations/createaccountresponse.md
+  - docs/sdk/models/operations/getaccountrequest.md
+  - docs/sdk/models/operations/getaccountresponse.md
+  - docs/sdk/models/operations/getaccounttransactionrequest.md
+  - docs/sdk/models/operations/getaccounttransactionresponse.md
+  - docs/sdk/models/operations/getcreatechartofaccountsmodelrequest.md
+  - docs/sdk/models/operations/getcreatechartofaccountsmodelresponse.md
+  - docs/sdk/models/operations/listaccountsrequest.md
+  - docs/sdk/models/operations/listaccountsresponse.md
+  - docs/sdk/models/operations/listaccounttransactionsrequest.md
+  - docs/sdk/models/operations/listaccounttransactionsresponse.md
+  - docs/sdk/models/shared/account.md
+  - docs/sdk/models/shared/accountingaccount.md
+  - docs/sdk/models/shared/accountprototype.md
+  - docs/sdk/models/shared/accounts.md
+  - docs/sdk/models/shared/accountstatus.md
+  - docs/sdk/models/shared/accounttransaction.md
+  - docs/sdk/models/shared/accounttransactionline.md
+  - docs/sdk/models/shared/accounttransactionlinerecordref.md
+  - docs/sdk/models/shared/accounttransactionlinerecordrefdatatype.md
+  - docs/sdk/models/shared/accounttransactions.md
+  - docs/sdk/models/shared/accounttype.md
+  - docs/sdk/models/shared/bankaccountref.md
+  - docs/sdk/models/shared/createaccountresponse.md
+  - docs/sdk/models/shared/datatype.md
+  - docs/sdk/models/shared/errormessage.md
+  - docs/sdk/models/shared/errorvalidation.md
+  - docs/sdk/models/shared/errorvalidationitem.md
+  - docs/sdk/models/shared/halref.md
+  - docs/sdk/models/shared/links.md
+  - docs/sdk/models/shared/metadata.md
+  - docs/sdk/models/shared/pushchangetype.md
+  - docs/sdk/models/shared/pushfieldvalidation.md
+  - docs/sdk/models/shared/pushoperationchange.md
+  - docs/sdk/models/shared/pushoperationref.md
+  - docs/sdk/models/shared/pushoperationstatus.md
+  - docs/sdk/models/shared/pushoption.md
+  - docs/sdk/models/shared/pushoptionchoice.md
+  - docs/sdk/models/shared/pushoptionproperty.md
+  - docs/sdk/models/shared/pushoptiontype.md
+  - docs/sdk/models/shared/pushvalidationinfo.md
+  - docs/sdk/models/shared/security.md
+  - docs/sdk/models/shared/status.md
+  - docs/sdk/models/shared/supplementaldata.md
+  - docs/sdk/models/shared/validation.md
+  - docs/sdk/models/shared/validationitem.md
+  - docs/sdk/models/shared/validdatatypelinks.md
+  - docs/sdks/accounting/README.md
+  - docs/sdks/accounts/README.md
+  - docs/sdks/accounttransactions/README.md
   - jsr.json
   - package.json
+  - src/core.ts
+  - src/funcs/accountTransactionsGet.ts
+  - src/funcs/accountTransactionsList.ts
+  - src/funcs/accountsCreate.ts
+  - src/funcs/accountsGet.ts
+  - src/funcs/accountsGetCreateModel.ts
+  - src/funcs/accountsList.ts
+  - src/hooks/hooks.ts
+  - src/hooks/index.ts
+  - src/hooks/types.ts
   - src/index.ts
   - src/lib/base64.ts
   - src/lib/config.ts
+  - src/lib/dlv.ts
   - src/lib/encodings.ts
+  - src/lib/files.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
+  - src/lib/logger.ts
+  - src/lib/matchers.ts
+  - src/lib/primitives.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
+  - src/sdk/accounts.ts
+  - src/sdk/accounttransactions.ts
   - src/sdk/index.ts
+  - src/sdk/models/errors/httpclienterrors.ts
+  - src/sdk/models/errors/index.ts
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
-  - src/sdk/types/blobs.ts
-  - src/sdk/types/decimal.ts
-  - src/sdk/types/enums.ts
-  - src/sdk/types/index.ts
-  - src/sdk/types/operations.ts
-  - src/sdk/types/rfcdate.ts
-  - tsconfig.json
-  - src/sdk/models/operations/getaccounttransaction.ts
-  - src/sdk/models/operations/listaccounttransactions.ts
   - src/sdk/models/operations/createaccount.ts
   - src/sdk/models/operations/getaccount.ts
+  - src/sdk/models/operations/getaccounttransaction.ts
   - src/sdk/models/operations/getcreatechartofaccountsmodel.ts
+  - src/sdk/models/operations/index.ts
   - src/sdk/models/operations/listaccounts.ts
+  - src/sdk/models/operations/listaccounttransactions.ts
+  - src/sdk/models/shared/account.ts
+  - src/sdk/models/shared/accountprototype.ts
+  - src/sdk/models/shared/accounts.ts
+  - src/sdk/models/shared/accountstatus.ts
+  - src/sdk/models/shared/accounttransaction.ts
+  - src/sdk/models/shared/accounttransactionline.ts
+  - src/sdk/models/shared/accounttransactionlinerecordref.ts
+  - src/sdk/models/shared/accounttransactions.ts
+  - src/sdk/models/shared/accounttype.ts
+  - src/sdk/models/shared/bankaccountref.ts
+  - src/sdk/models/shared/createaccountresponse.ts
+  - src/sdk/models/shared/datatype.ts
   - src/sdk/models/shared/errormessage.ts
   - src/sdk/models/shared/errorvalidation.ts
   - src/sdk/models/shared/errorvalidationitem.ts
-  - src/sdk/models/shared/accounttransaction.ts
-  - src/sdk/models/shared/metadata.ts
-  - src/sdk/models/shared/accounttransactionline.ts
-  - src/sdk/models/shared/accounttransactionlinerecordref.ts
-  - src/sdk/models/shared/bankaccountref.ts
-  - src/sdk/models/shared/accounttransactions.ts
-  - src/sdk/models/shared/links.ts
   - src/sdk/models/shared/halref.ts
-  - src/sdk/models/shared/createaccountresponse.ts
+  - src/sdk/models/shared/index.ts
+  - src/sdk/models/shared/links.ts
+  - src/sdk/models/shared/metadata.ts
+  - src/sdk/models/shared/pushchangetype.ts
+  - src/sdk/models/shared/pushfieldvalidation.ts
+  - src/sdk/models/shared/pushoperationchange.ts
+  - src/sdk/models/shared/pushoperationref.ts
+  - src/sdk/models/shared/pushoperationstatus.ts
+  - src/sdk/models/shared/pushoption.ts
+  - src/sdk/models/shared/pushoptionchoice.ts
+  - src/sdk/models/shared/pushoptionproperty.ts
+  - src/sdk/models/shared/pushoptiontype.ts
+  - src/sdk/models/shared/pushvalidationinfo.ts
+  - src/sdk/models/shared/security.ts
+  - src/sdk/models/shared/supplementaldata.ts
   - src/sdk/models/shared/validation.ts
   - src/sdk/models/shared/validationitem.ts
-  - src/sdk/models/shared/pushoperationstatus.ts
-  - src/sdk/models/shared/datatype.ts
   - src/sdk/models/shared/validdatatypelinks.ts
-  - src/sdk/models/shared/accounttype.ts
-  - src/sdk/models/shared/supplementaldata.ts
-  - src/sdk/models/shared/accountstatus.ts
-  - src/sdk/models/shared/pushoperationchange.ts
-  - src/sdk/models/shared/pushchangetype.ts
-  - src/sdk/models/shared/pushoperationref.ts
-  - src/sdk/models/shared/accountprototype.ts
-  - src/sdk/models/shared/account.ts
-  - src/sdk/models/shared/pushoption.ts
-  - src/sdk/models/shared/pushvalidationinfo.ts
-  - src/sdk/models/shared/pushfieldvalidation.ts
-  - src/sdk/models/shared/pushoptiontype.ts
-  - src/sdk/models/shared/pushoptionproperty.ts
-  - src/sdk/models/shared/pushoptionchoice.ts
-  - src/sdk/models/shared/accounts.ts
-  - src/sdk/models/shared/security.ts
-  - src/sdk/models/errors/index.ts
-  - src/sdk/models/operations/index.ts
-  - src/sdk/models/shared/index.ts
-  - docs/sdk/models/operations/getaccounttransactionrequest.md
-  - docs/sdk/models/operations/getaccounttransactionresponse.md
-  - docs/sdk/models/operations/listaccounttransactionsrequest.md
-  - docs/sdk/models/operations/listaccounttransactionsresponse.md
-  - docs/sdk/models/operations/createaccountrequest.md
-  - docs/sdk/models/operations/createaccountresponse.md
-  - docs/sdk/models/operations/getaccountrequest.md
-  - docs/sdk/models/operations/getaccountresponse.md
-  - docs/sdk/models/operations/getcreatechartofaccountsmodelrequest.md
-  - docs/sdk/models/operations/getcreatechartofaccountsmodelresponse.md
-  - docs/sdk/models/operations/listaccountsrequest.md
-  - docs/sdk/models/operations/listaccountsresponse.md
-  - docs/sdk/models/shared/errormessage.md
-  - docs/sdk/models/shared/errorvalidation.md
-  - docs/sdk/models/shared/errorvalidationitem.md
-  - docs/sdk/models/shared/status.md
-  - docs/sdk/models/shared/accounttransaction.md
-  - docs/sdk/models/shared/metadata.md
-  - docs/sdk/models/shared/accounttransactionline.md
-  - docs/sdk/models/shared/accounttransactionlinerecordrefdatatype.md
-  - docs/sdk/models/shared/accounttransactionlinerecordref.md
-  - docs/sdk/models/shared/bankaccountref.md
-  - docs/sdk/models/shared/accounttransactions.md
-  - docs/sdk/models/shared/links.md
-  - docs/sdk/models/shared/halref.md
-  - docs/sdk/models/shared/accountingaccount.md
-  - docs/sdk/models/shared/createaccountresponse.md
-  - docs/sdk/models/shared/validation.md
-  - docs/sdk/models/shared/validationitem.md
-  - docs/sdk/models/shared/pushoperationstatus.md
-  - docs/sdk/models/shared/datatype.md
-  - docs/sdk/models/shared/validdatatypelinks.md
-  - docs/sdk/models/shared/accounttype.md
-  - docs/sdk/models/shared/supplementaldata.md
-  - docs/sdk/models/shared/accountstatus.md
-  - docs/sdk/models/shared/pushoperationchange.md
-  - docs/sdk/models/shared/pushchangetype.md
-  - docs/sdk/models/shared/pushoperationref.md
-  - docs/sdk/models/shared/accountprototype.md
-  - docs/sdk/models/shared/account.md
-  - docs/sdk/models/shared/pushoption.md
-  - docs/sdk/models/shared/pushvalidationinfo.md
-  - docs/sdk/models/shared/pushfieldvalidation.md
-  - docs/sdk/models/shared/pushoptiontype.md
-  - docs/sdk/models/shared/pushoptionproperty.md
-  - docs/sdk/models/shared/pushoptionchoice.md
-  - docs/sdk/models/shared/accounts.md
-  - docs/sdk/models/shared/security.md
-  - docs/sdks/accounting/README.md
-  - docs/lib/utils/retryconfig.md
-  - docs/sdks/accounttransactions/README.md
-  - docs/sdks/accounts/README.md
-  - USAGE.md
-  - .gitattributes
-  - src/hooks/hooks.ts
-  - src/hooks/types.ts
-  - src/hooks/index.ts
+  - src/sdk/sdk.ts
+  - src/sdk/types/blobs.ts
+  - src/sdk/types/constdatetime.ts
+  - src/sdk/types/decimal.ts
+  - src/sdk/types/enums.ts
+  - src/sdk/types/fp.ts
+  - src/sdk/types/index.ts
+  - src/sdk/types/operations.ts
+  - src/sdk/types/rfcdate.ts
+  - src/sdk/types/streams.ts
+  - tsconfig.json
+examples:
+  get-account-transaction:
+    Clear Books:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          accountTransactionId: "<value>"
+      responses:
+        "200":
+          application/json: {"bankAccountRef": {"id": "ff8fdc4c-2aad-4ec1-9430-6bd201832eb3", "name": "Undeposited Funds"}, "currency": "GBP", "currencyRate": 1, "date": "2022-04-19T00:00:00", "id": "062b3a9b-b04f-4d9c-9ebc-81dcb5bbf285", "lines": [{"amount": 188.33, "description": "Payment for direct income $38e8c917-0afc-4583-8ffe-1b53ad601197", "recordRef": {"dataType": "directIncomes", "id": "38e8c917-0afc-4583-8ffe-1b53ad601197"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T12:38:18", "note": "Direct income 38e8c917-0afc-4583-8ffe-1b53ad601197", "sourceModifiedDate": "2022-05-13T01:06:00", "status": "Unreconciled", "totalAmount": 188.33, "transactionId": "356deb9f-98e6-4d6f-8db3-b378241895a1"}
+    QuickBooks Desktop:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          accountTransactionId: "<value>"
+      responses:
+        "200":
+          application/json: {"bankAccountRef": {"id": "20000-933270541", "name": "Checking"}, "currency": "GBP", "currencyRate": 1, "date": "2022-12-01T00:00:00", "id": "D7B-933784104", "lines": [{"amount": -1200, "recordRef": {"dataType": "directCosts", "id": "D7B-933784104"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:13:23", "sourceModifiedDate": "2023-12-16T05:04:10", "status": "Unknown", "totalAmount": -1200, "transactionId": "D7B-933784104"}
+    QuickBooks Online Sandbox:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          accountTransactionId: "<value>"
+      responses:
+        "200":
+          application/json: {"bankAccountRef": {"id": "57", "name": "Visa Credit Card"}, "currency": "GBP", "currencyRate": 1, "date": "2015-08-12T00:00:00", "id": "85", "lines": [{"amount": -3831.8, "description": "Opening Balance from Bank", "recordRef": {"dataType": "directCosts", "id": "PUR-85"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:37:16", "note": "Opening Balance from Bank", "sourceModifiedDate": "2016-09-12T18:13:07Z", "status": "Unknown", "totalAmount": -3831.8, "transactionId": "85"}
+    QuickBooks Online:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          accountTransactionId: "<value>"
+      responses:
+        "200":
+          application/json: {"bankAccountRef": {"id": "61", "name": "Dave PP Current"}, "currency": "GBP", "currencyRate": 1, "date": "2018-09-21T00:00:00", "id": "1", "lines": [{"amount": 170.23, "recordRef": {"dataType": "directIncomes", "id": "1"}}], "modifiedDate": "2023-01-18T11:03:12", "note": "Opening Balance from Bank", "sourceModifiedDate": "2018-12-17T14:56:20Z", "status": "Unknown", "totalAmount": 170.23, "transactionId": "1"}
+    Xero:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          accountTransactionId: "<value>"
+      responses:
+        "200":
+          application/json: {"bankAccountRef": {"id": "bd9e85e0-0478-433d-ae9f-0b3c4f04bfe4", "name": "Business Bank Account"}, "currency": "GBP", "currencyRate": 1, "date": "2021-12-20T00:00:00", "id": "74004690-82a1-4810-aaca-6ce575af94b4", "lines": [{"amount": -7267.2, "recordRef": {"dataType": "billPayments", "id": "74004690-82a1-4810-aaca-6ce575af94b4"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-15T20:37:10", "sourceModifiedDate": "2021-01-02T22:51:40", "status": "Reconciled", "totalAmount": -7267.2, "transactionId": "74004690-82a1-4810-aaca-6ce575af94b4"}
+    Unauthorized:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          accountTransactionId: "<value>"
+      responses:
+        "401":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "detailedErrorCode": 0, "error": "Unauthorized", "service": "PublicApi", "statusCode": 401}
+  list-account-transactions:
+    "":
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/{id}/data/{dataType}?page=1&pageSize=10"}, "self": {"href": "/companies/{id}/data/{dataType}"}}, "pageNumber": 1, "pageSize": 10, "results": [], "totalResults": 1}
+        "400": {}
+    Clear Books:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/354a121b-855f-4d25-90ad-0905b498c1c0/connections/57b731ba-1d45-4386-ba58-2a1ca0234624/data/accountTransactions?page=1&pageSize=2"}, "next": {"href": "/companies/354a121b-855f-4d25-90ad-0905b498c1c0/connections/57b731ba-1d45-4386-ba58-2a1ca0234624/data/accountTransactions?page=2&pageSize=2"}, "self": {"href": "/companies/354a121b-855f-4d25-90ad-0905b498c1c0/connections/57b731ba-1d45-4386-ba58-2a1ca0234624/data/accountTransactions"}}, "pageNumber": 1, "pageSize": 2, "results": [{"bankAccountRef": {"id": "ff8fdc4c-2aad-4ec1-9430-6bd201832eb3", "name": "Undeposited Funds"}, "currency": "GBP", "currencyRate": 1, "date": "2022-04-19T00:00:00", "id": "062b3a9b-b04f-4d9c-9ebc-81dcb5bbf285", "lines": [{"amount": 188.33, "description": "Payment for direct income $38e8c917-0afc-4583-8ffe-1b53ad601197", "recordRef": {"dataType": "directIncomes", "id": "38e8c917-0afc-4583-8ffe-1b53ad601197"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T12:38:18", "note": "Direct income 38e8c917-0afc-4583-8ffe-1b53ad601197", "sourceModifiedDate": "2022-05-13T01:06:00", "status": "Unreconciled", "totalAmount": 188.33, "transactionId": "356deb9f-98e6-4d6f-8db3-b378241895a1"}, {"bankAccountRef": {"id": "ff8fdc4c-2aad-4ec1-9430-6bd201832eb3", "name": "Undeposited Funds"}, "currency": "GBP", "currencyRate": 1, "date": "2022-04-19T00:00:00", "id": "f2656119-9521-4d51-a24d-003b44c1410b", "lines": [{"amount": 32095.91, "description": "Payment for direct income $c31a3778-e3ea-4d01-9281-dd2f291c8cb8", "recordRef": {"dataType": "directIncomes", "id": "c31a3778-e3ea-4d01-9281-dd2f291c8cb8"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T12:38:18", "note": "Direct income c31a3778-e3ea-4d01-9281-dd2f291c8cb8", "sourceModifiedDate": "2023-02-13T00:34:00", "status": "Void", "totalAmount": 32095.91, "transactionId": "1fde4f8f-68ca-48fc-8fe7-79ac467d2946"}], "totalResults": 1745}
+    QuickBooks Desktop:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/fc72ba08-af13-4474-b28a-01dcfa6cfb51/connections/2c26b4da-97d4-4ba9-baad-1e18b49b96ac/data/accountTransactions?page=1&pageSize=2"}, "next": {"href": "/companies/fc72ba08-af13-4474-b28a-01dcfa6cfb51/connections/2c26b4da-97d4-4ba9-baad-1e18b49b96ac/data/accountTransactions?page=2&pageSize=2"}, "self": {"href": "/companies/fc72ba08-af13-4474-b28a-01dcfa6cfb51/connections/2c26b4da-97d4-4ba9-baad-1e18b49b96ac/data/accountTransactions"}}, "pageNumber": 1, "pageSize": 2, "results": [{"bankAccountRef": {"id": "20000-933270541", "name": "Checking"}, "currency": "GBP", "currencyRate": 1, "date": "2022-12-01T00:00:00", "id": "D7B-933784104", "lines": [{"amount": -1200, "recordRef": {"dataType": "directCosts", "id": "D7B-933784104"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:13:23", "sourceModifiedDate": "2023-12-16T05:04:10", "status": "Unknown", "totalAmount": -1200, "transactionId": "D7B-933784104"}, {"bankAccountRef": {"id": "20000-933270541", "name": "Checking"}, "currency": "GBP", "currencyRate": 1, "date": "2022-12-05T00:00:00", "id": "DFA-933785132", "lines": [{"amount": -35, "recordRef": {"dataType": "directCosts", "id": "DFA-933785132"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:13:23", "sourceModifiedDate": "2023-12-16T05:04:11", "status": "Unknown", "totalAmount": -35, "transactionId": "DFA-933785132"}], "totalResults": 652}
+    QuickBooks Online Sandbox:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/5a7f3597-36e1-4216-86fe-289ad36088a6/connections/1f9f6013-f8a5-4278-8a47-3ab7fdb6c24c/data/accountTransactions?page=1&pageSize=2"}, "next": {"href": "/companies/5a7f3597-36e1-4216-86fe-289ad36088a6/connections/1f9f6013-f8a5-4278-8a47-3ab7fdb6c24c/data/accountTransactions?page=2&pageSize=2"}, "self": {"href": "/companies/5a7f3597-36e1-4216-86fe-289ad36088a6/connections/1f9f6013-f8a5-4278-8a47-3ab7fdb6c24c/data/accountTransactions"}}, "pageNumber": 1, "pageSize": 2, "results": [{"bankAccountRef": {"id": "57", "name": "Visa Credit Card"}, "currency": "GBP", "currencyRate": 1, "date": "2015-08-12T00:00:00", "id": "85", "lines": [{"amount": -3831.8, "description": "Opening Balance from Bank", "recordRef": {"dataType": "directCosts", "id": "PUR-85"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:37:16", "note": "Opening Balance from Bank", "sourceModifiedDate": "2016-09-12T18:13:07Z", "status": "Unknown", "totalAmount": -3831.8, "transactionId": "85"}, {"bankAccountRef": {"id": "81", "name": "Current"}, "currency": "GBP", "currencyRate": 1, "date": "2015-11-24T00:00:00", "id": "5", "lines": [{"amount": 10000, "description": "contribution to start business", "recordRef": {"dataType": "directIncomes", "id": "5-1"}}, {"amount": 25000, "description": "funds borrowed to start business", "recordRef": {"dataType": "directIncomes", "id": "5-2"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:37:17", "sourceModifiedDate": "2016-09-12T15:26:26Z", "status": "Unknown", "totalAmount": 35000, "transactionId": "5"}], "totalResults": 9141}
+    QuickBooks Online:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/10818b5e-6e6a-4ed4-a1c5-3e3efe626e87/connections/9e28a776-f4be-425b-8a3d-ad49956de2c9/data/accountTransactions?page=1&pageSize=2"}, "next": {"href": "/companies/10818b5e-6e6a-4ed4-a1c5-3e3efe626e87/connections/9e28a776-f4be-425b-8a3d-ad49956de2c9/data/accountTransactions?page=2&pageSize=2"}, "self": {"href": "/companies/10818b5e-6e6a-4ed4-a1c5-3e3efe626e87/connections/9e28a776-f4be-425b-8a3d-ad49956de2c9/data/accountTransactions"}}, "pageNumber": 1, "pageSize": 2, "results": [{"bankAccountRef": {"id": "61", "name": "Dave PP Current"}, "currency": "GBP", "currencyRate": 1, "date": "2018-09-21T00:00:00", "id": "1", "lines": [{"amount": 170.23, "recordRef": {"dataType": "directIncomes", "id": "1"}}], "modifiedDate": "2023-01-18T11:03:12", "note": "Opening Balance from Bank", "sourceModifiedDate": "2018-12-17T14:56:20Z", "status": "Unknown", "totalAmount": 170.23, "transactionId": "1"}, {"bankAccountRef": {"id": "61", "name": "Dave PP Current"}, "currency": "GBP", "currencyRate": 1, "date": "2018-09-21T00:00:00", "id": "15", "lines": [{"amount": -1.59, "description": "Payment to Google", "recordRef": {"dataType": "directCosts", "id": "PUR-15"}}], "modifiedDate": "2023-01-18T11:03:11", "note": "Payment to Google", "sourceModifiedDate": "2018-12-17T14:56:44Z", "status": "Unknown", "totalAmount": -1.59, "transactionId": "15"}], "totalResults": 5984}
+    Xero:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/5ced9667-a310-443a-a711-958d36377141/connections/6a4bcf97-e46a-465c-abf6-c42cec8e48c0/data/accountTransactions?page=1&pageSize=2"}, "next": {"href": "/companies/5ced9667-a310-443a-a711-958d36377141/connections/6a4bcf97-e46a-465c-abf6-c42cec8e48c0/data/accountTransactions?page=2&pageSize=2"}, "self": {"href": "/companies/5ced9667-a310-443a-a711-958d36377141/connections/6a4bcf97-e46a-465c-abf6-c42cec8e48c0/data/accountTransactions"}}, "pageNumber": 1, "pageSize": 2, "results": [{"bankAccountRef": {"id": "bd9e85e0-0478-433d-ae9f-0b3c4f04bfe4", "name": "Business Bank Account"}, "currency": "GBP", "currencyRate": 1, "date": "2021-12-20T00:00:00", "id": "74004690-82a1-4810-aaca-6ce575af94b4", "lines": [{"amount": -7267.2, "recordRef": {"dataType": "billPayments", "id": "74004690-82a1-4810-aaca-6ce575af94b4"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-15T20:37:10", "sourceModifiedDate": "2021-01-02T22:51:40", "status": "Reconciled", "totalAmount": -7267.2, "transactionId": "74004690-82a1-4810-aaca-6ce575af94b4"}, {"bankAccountRef": {"id": "bd9e85e0-0478-433d-ae9f-0b3c4f04bfe4", "name": "Business Bank Account"}, "currency": "GBP", "currencyRate": 1, "date": "2022-02-17T00:00:00", "id": "65b746c8-9a5d-4a95-8096-d2316fcff592", "lines": [{"amount": 4200, "recordRef": {"dataType": "payments", "id": "65b746c8-9a5d-4a95-8096-d2316fcff592"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-15T20:37:10", "sourceModifiedDate": "2021-01-02T22:50:58", "status": "Reconciled", "totalAmount": 4200, "transactionId": "65b746c8-9a5d-4a95-8096-d2316fcff592"}], "totalResults": 70}
+    Malformed query:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error parsing query - Malformed query.", "service": "ClientsApi", "statusCode": 400}
+    Unresolved property:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "98457fb9956b7f9b4b2fd4f6e23bb5c8", "detailedErrorCode": 0, "error": "Error parsing query - Could not resolve property isCompleted on Dataset", "service": "PullApi", "statusCode": 400}
+  create-account:
+    Malformed query:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query: {}
+      requestBody:
+        application/json: {"currency": "USD", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Current", "fullyQualifiedName": "Cash On Hand", "name": "Accounts Receivable", "nominalCode": "610", "status": "Active", "type": "Asset"}
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error processing request - not valid.", "service": "PublicApi", "statusCode": 400}
+  get-account:
+    Clear Books:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Current", "fullyQualifiedName": "Asset.Current.Accounts Receivable", "id": "1b6266d1-1e44-46c5-8eb5-a8f98e03124e", "isBankAccount": false, "modifiedDate": "2023-04-26T12:38:15Z", "name": "Accounts Receivable", "nominalCode": "610", "sourceModifiedDate": "2022-12-10T16:39:00", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
+    Dynamics 365 Business Central:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": " .", "fullyQualifiedName": "..", "id": "8eaed16d-c69f-ec11-80f1-0022481b4546", "isBankAccount": false, "modifiedDate": "2023-03-27T14:21:18Z", "name": "", "nominalCode": "45422026-68CA-4EF2-9", "sourceModifiedDate": "2022-03-09T16:31:54Z", "status": "Active", "type": "Unknown", "validDatatypeLinks": [{"links": ["DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}
+    Exact (Netherlands):
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "EUR", "currentBalance": 864435.44, "description": "Debiteuren", "fullyQualifiedCategory": "Asset.Assets.AccountsReceivable", "fullyQualifiedName": "Asset.Assets.AccountsReceivable.Debiteuren.PaymentsEnabled", "id": "ef2fde36-4416-4bc5-b239-315b2929348c", "isBankAccount": false, "modifiedDate": "2022-10-26T13:36:17Z", "name": "Debiteuren", "nominalCode": "1300", "sourceModifiedDate": "2020-01-08T09:42:54Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Transfer.To.AccountRef.Id", "Transfer.From.AccountRef.Id", "Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}
+    Exact (UK):
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Some thing account", "fullyQualifiedCategory": "Asset.Assets.AccountsReceivable", "fullyQualifiedName": "Asset.Assets.AccountsReceivable.Some thing account.PaymentsEnabled", "id": "ca2b96b7-cc45-4e35-9fa3-82a2ba1eec40", "isBankAccount": false, "modifiedDate": "2022-10-26T13:35:15Z", "name": "Some thing account", "nominalCode": "THING", "sourceModifiedDate": "2017-08-01T17:31:12Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Transfer.To.AccountRef.Id", "Transfer.From.AccountRef.Id", "Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}
+    FreeAgent:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Capital", "fullyQualifiedName": "Asset.Capital.Capital Asset Brought Forward", "id": "601", "isBankAccount": false, "modifiedDate": "2023-04-25T14:19:12Z", "name": "Capital Asset Brought Forward", "nominalCode": "601", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
+    FreshBooks:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 51445.53, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset", "fullyQualifiedName": "Asset.Accounts Receivable", "id": "67357", "isBankAccount": false, "modifiedDate": "2023-03-24T16:07:24Z", "name": "Accounts Receivable", "nominalCode": "1200", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
+    KashFlow:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.BankAccount", "fullyQualifiedName": "Asset.BankAccount.16th Account", "id": "27840056", "isBankAccount": true, "modifiedDate": "2022-09-30T10:29:16Z", "name": "16th Account", "nominalCode": "70700", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
+    Oracle NetSuite:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "EUR", "currentBalance": -635.55, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "AcctPay.AcctPay", "fullyQualifiedName": "AcctPay.AcctPay.Accounts Payable", "id": "111", "isBankAccount": false, "modifiedDate": "2023-01-30T14:48:33Z", "name": "Accounts Payable", "nominalCode": "610", "sourceModifiedDate": "2021-08-11T12:51:21", "status": "Active", "type": "Liability", "validDatatypeLinks": []}
+    QuickBooks Desktop:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 93007.93, "description": "Accounts Receivable", "fullyQualifiedCategory": "Asset.CurrentAsset.AccountsReceivable", "fullyQualifiedName": "Asset.CurrentAsset.AccountsReceivable.Accounts Receivable", "id": "40000-933270541", "isBankAccount": false, "modifiedDate": "2023-04-26T09:06:23Z", "name": "Accounts Receivable", "nominalCode": "11000", "sourceModifiedDate": "2023-12-16T05:06:45", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
+    QuickBooks Online:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 41289.37, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors", "id": "62", "isBankAccount": false, "modifiedDate": "2023-01-18T11:02:34Z", "name": "Debtors", "nominalCode": "246", "sourceModifiedDate": "2022-12-08T15:42:59Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
+    QuickBooks Online Sandbox:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 3041173.77, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors", "id": "70", "isBankAccount": false, "modifiedDate": "2023-04-26T09:35:55Z", "name": "Debtors", "nominalCode": "610", "sourceModifiedDate": "2023-04-26T01:18:15Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
+    Sage 200cloud:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "USD", "currentBalance": 0, "description": "Bank Account", "fullyQualifiedCategory": "Asset.Bank Account", "fullyQualifiedName": "Asset.Bank Account.Bank Account", "id": "2864", "isBankAccount": false, "modifiedDate": "2022-10-14T09:35:52Z", "name": "Bank Account", "nominalCode": "1200", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Archived", "type": "Asset", "validDatatypeLinks": []}
+    Sage 50 (UK):
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 90640.61, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.CurrentAssets.Debtors", "fullyQualifiedName": "Asset.CurrentAssets.Debtors.Debtors Control Account", "id": "1100", "isBankAccount": false, "modifiedDate": "2023-03-30T14:42:44Z", "name": "Debtors Control Account", "nominalCode": "1100", "sourceModifiedDate": "2022-11-25T09:43:54", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
+    Sage Business Cloud Accounting:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 49.61, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Abdi Internet Bank", "id": "e5889b459f544926ac5b8e6756df2ad4", "isBankAccount": true, "modifiedDate": "2022-10-24T14:52:53Z", "name": "Abdi Internet Bank", "nominalCode": "1560", "sourceModifiedDate": "2020-01-27T10:53:26Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}
+    Sage Intacct:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable", "fullyQualifiedName": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable.Accounts Receivable", "id": "2", "isBankAccount": false, "modifiedDate": "2023-04-04T16:31:51Z", "name": "Accounts Receivable", "nominalCode": "12100", "sourceModifiedDate": "2020-01-29T01:42:43", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
+    Wave:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Test Balance Sheet", "fullyQualifiedCategory": "Asset.CashAndBank", "fullyQualifiedName": "Asset.CashAndBank.Abdi Bank", "id": "QWNjb3VudDo5MjIzNDE3NjkzMzk3NjA2MzM7QnVzaW5lc3M6ZTI0OGQyZDctMWE5Ni00YTk4LWFkOTEtMDdlMGYyMmNhNmE2", "isBankAccount": true, "modifiedDate": "2022-11-16T18:15:17Z", "name": "Abdi Bank", "nominalCode": "610", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
+    Xero:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": 924.25, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Business Bank Account", "id": "bd9e85e0-0478-433d-ae9f-0b3c4f04bfe4", "isBankAccount": true, "modifiedDate": "2023-03-15T20:35:08Z", "name": "Business Bank Account", "nominalCode": "A090", "sourceModifiedDate": "2023-02-17T11:10:49", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id", "DirectIncome.LineItems.AccountRef.Id", "DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}
+    Zoho Books:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "200":
+          application/json: {"currency": "GBP", "currentBalance": -959.64, "description": "The money that customers owe you becomes the accounts receivable. A good example of this is a payment expected from an invoice sent to your customer.", "fullyQualifiedCategory": "Asset.accounts_receivable", "fullyQualifiedName": "Asset.accounts_receivable.Accounts Receivable", "id": "104957000000000352", "isBankAccount": false, "modifiedDate": "2022-10-03T08:40:43Z", "name": "Accounts Receivable", "nominalCode": "", "sourceModifiedDate": "2020-02-05T14:58:44", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
+    Unauthorized:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          accountId: "<value>"
+      responses:
+        "401":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "detailedErrorCode": 0, "error": "Unauthorized", "service": "PublicApi", "statusCode": 401}
+  get-create-chartOfAccounts-model:
+    Exact (Netherlands):
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+      responses:
+        "200":
+          application/json: {"description": "Nominal Accounts are the categories a business uses to record transactions", "displayName": "Nominal Account", "properties": {"nominalCode": {"description": "The external reference given to each nominal account for a business", "displayName": "Nominal Code", "required": true, "type": "String", "validation": {"information": [{"details": "Must be provided.", "field": "NominalCode"}], "warnings": []}}, "name": {"description": "Name of the account", "displayName": "Name", "required": true, "type": "String", "validation": {"information": [{"details": "Must be provided.", "field": "Name"}], "warnings": []}}, "fullyQualifiedCategory": {"description": "The full category of the account e.g. Liability.Current or Income.Revenue", "displayName": "Fully Qualified Category", "options": [{"displayName": "Asset.Assets.Cash", "required": false, "type": "String", "value": "Asset.Assets.Cash"}, {"displayName": "Asset.Assets.Bank", "required": false, "type": "String", "value": "Asset.Assets.Bank"}, {"displayName": "Asset.Assets.PaymentServices", "required": false, "type": "String", "value": "Asset.Assets.PaymentServices"}, {"displayName": "Asset.Assets.AccountsReceivable", "required": false, "type": "String", "value": "Asset.Assets.AccountsReceivable"}, {"displayName": "Liability.EquityAndLiabilities.AccountsPayable", "required": false, "type": "String", "value": "Liability.EquityAndLiabilities.AccountsPayable"}, {"displayName": "Asset.Assets.VAT", "required": false, "type": "String", "value": "Asset.Assets.VAT"}, {"displayName": "Liability.EquityAndLiabilities.EmployeesPayable", "required": false, "type": "String", "value": "Liability.EquityAndLiabilities.EmployeesPayable"}, {"displayName": "Asset.Assets.PrepaidExpenses", "required": false, "type": "String", "value": "Asset.Assets.PrepaidExpenses"}, {"displayName": "Liability.EquityAndLiabilities.AccruedExpenses", "required": false, "type": "String", "value": "Liability.EquityAndLiabilities.AccruedExpenses"}, {"displayName": "Liability.EquityAndLiabilities.IncomeTaxesPayable", "required": false, "type": "String", "value": "Liability.EquityAndLiabilities.IncomeTaxesPayable"}, {"displayName": "Asset.Assets.FixedAssets", "required": false, "type": "String", "value": "Asset.Assets.FixedAssets"}, {"displayName": "Asset.Assets.OtherAssets", "required": false, "type": "String", "value": "Asset.Assets.OtherAssets"}, {"displayName": "Asset.Assets.AccumulatedDeprecation", "required": false, "type": "String", "value": "Asset.Assets.AccumulatedDeprecation"}, {"displayName": "Asset.Assets.Inventory", "required": false, "type": "String", "value": "Asset.Assets.Inventory"}, {"displayName": "Equity.EquityAndLiabilities.CapitalStock", "required": false, "type": "String", "value": "Equity.EquityAndLiabilities.CapitalStock"}, {"displayName": "Equity.EquityAndLiabilities.RetainedEarnings", "required": false, "type": "String", "value": "Equity.EquityAndLiabilities.RetainedEarnings"}, {"displayName": "Liability.EquityAndLiabilities.LongTermDebt", "required": false, "type": "String", "value": "Liability.EquityAndLiabilities.LongTermDebt"}, {"displayName": "Liability.EquityAndLiabilities.CurrentPortionOfDebt", "required": false, "type": "String", "value": "Liability.EquityAndLiabilities.CurrentPortionOfDebt"}, {"displayName": "Unknown.EquityAndLiabilities.Intercompany", "required": false, "type": "String", "value": "Unknown.EquityAndLiabilities.Intercompany"}, {"displayName": "Unknown.General.General", "required": false, "type": "String", "value": "Unknown.General.General"}, {"displayName": "Income.NetIncome.Revenue", "required": false, "type": "String", "value": "Income.NetIncome.Revenue"}, {"displayName": "Expense.NetIncome.CostOfGoods", "required": false, "type": "String", "value": "Expense.NetIncome.CostOfGoods"}, {"displayName": "Expense.NetIncome.OtherCosts", "required": false, "type": "String", "value": "Expense.NetIncome.OtherCosts"}, {"displayName": "Expense.NetIncome.SalesGeneralAdministrativeExpenses", "required": false, "type": "String", "value": "Expense.NetIncome.SalesGeneralAdministrativeExpenses"}, {"displayName": "Expense.NetIncome.DeprecationCosts", "required": false, "type": "String", "value": "Expense.NetIncome.DeprecationCosts"}, {"displayName": "Expense.NetIncome.ResearchAndDevelopment", "required": false, "type": "String", "value": "Expense.NetIncome.ResearchAndDevelopment"}, {"displayName": "Expense.NetIncome.EmployeeCosts", "required": false, "type": "String", "value": "Expense.NetIncome.EmployeeCosts"}, {"displayName": "Expense.NetIncome.EmploymentCosts", "required": false, "type": "String", "value": "Expense.NetIncome.EmploymentCosts"}, {"displayName": "Expense.ExceptionalIncome.ExceptionalCosts", "required": false, "type": "String", "value": "Expense.ExceptionalIncome.ExceptionalCosts"}, {"displayName": "Income.ExceptionalIncome.ExceptionalIncome", "required": false, "type": "String", "value": "Income.ExceptionalIncome.ExceptionalIncome"}, {"displayName": "Expense.ExceptionalIncome.IncomeTaxes", "required": false, "type": "String", "value": "Expense.ExceptionalIncome.IncomeTaxes"}, {"displayName": "Income.ExceptionalIncome.InterestIncome", "required": false, "type": "String", "value": "Income.ExceptionalIncome.InterestIncome"}], "required": true, "type": "String", "validation": {"information": [{"details": "Must be provided.", "field": "FullyQualifiedCategory"}], "warnings": []}}, "status": {"description": "The status of the account", "displayName": "Account Status", "options": [{"displayName": "Active", "required": false, "type": "String", "value": "Active"}, {"displayName": "Pending", "required": false, "type": "String", "value": "Pending"}, {"displayName": "Unknown", "required": false, "type": "String", "value": "Unknown"}], "required": true, "type": "String", "validation": {"information": [{"details": "Must be provided.", "field": "Status"}], "warnings": []}}}, "required": true, "type": "Object"}
+    Exact (UK):
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+      responses:
+        "200":
+          application/json: {"description": "Nominal Accounts are the categories a business uses to record transactions", "displayName": "Nominal Account", "properties": {"nominalCode": {"description": "The external reference given to each nominal account for a business", "displayName": "Nominal Code", "required": true, "type": "String", "validation": {"information": [{"details": "Must be provided.", "field": "NominalCode"}], "warnings": []}}, "name": {"description": "Name of the account", "displayName": "Name", "required": true, "type": "String", "validation": {"information": [{"details": "Must be provided.", "field": "Name"}], "warnings": []}}, "fullyQualifiedCategory": {"description": "The full category of the account e.g. Liability.Current or Income.Revenue", "displayName": "Fully Qualified Category", "options": [{"displayName": "Asset.Assets.Cash", "required": false, "type": "String", "value": "Asset.Assets.Cash"}, {"displayName": "Asset.Assets.Bank", "required": false, "type": "String", "value": "Asset.Assets.Bank"}, {"displayName": "Asset.Assets.PaymentServices", "required": false, "type": "String", "value": "Asset.Assets.PaymentServices"}, {"displayName": "Asset.Assets.AccountsReceivable", "required": false, "type": "String", "value": "Asset.Assets.AccountsReceivable"}, {"displayName": "Liability.EquityAndLiabilities.AccountsPayable", "required": false, "type": "String", "value": "Liability.EquityAndLiabilities.AccountsPayable"}, {"displayName": "Asset.Assets.VAT", "required": false, "type": "String", "value": "Asset.Assets.VAT"}, {"displayName": "Liability.EquityAndLiabilities.EmployeesPayable", "required": false, "type": "String", "value": "Liability.EquityAndLiabilities.EmployeesPayable"}, {"displayName": "Asset.Assets.PrepaidExpenses", "required": false, "type": "String", "value": "Asset.Assets.PrepaidExpenses"}, {"displayName": "Liability.EquityAndLiabilities.AccruedExpenses", "required": false, "type": "String", "value": "Liability.EquityAndLiabilities.AccruedExpenses"}, {"displayName": "Liability.EquityAndLiabilities.IncomeTaxesPayable", "required": false, "type": "String", "value": "Liability.EquityAndLiabilities.IncomeTaxesPayable"}, {"displayName": "Asset.Assets.FixedAssets", "required": false, "type": "String", "value": "Asset.Assets.FixedAssets"}, {"displayName": "Asset.Assets.OtherAssets", "required": false, "type": "String", "value": "Asset.Assets.OtherAssets"}, {"displayName": "Asset.Assets.AccumulatedDeprecation", "required": false, "type": "String", "value": "Asset.Assets.AccumulatedDeprecation"}, {"displayName": "Asset.Assets.Inventory", "required": false, "type": "String", "value": "Asset.Assets.Inventory"}, {"displayName": "Equity.EquityAndLiabilities.CapitalStock", "required": false, "type": "String", "value": "Equity.EquityAndLiabilities.CapitalStock"}, {"displayName": "Equity.EquityAndLiabilities.RetainedEarnings", "required": false, "type": "String", "value": "Equity.EquityAndLiabilities.RetainedEarnings"}, {"displayName": "Liability.EquityAndLiabilities.LongTermDebt", "required": false, "type": "String", "value": "Liability.EquityAndLiabilities.LongTermDebt"}, {"displayName": "Liability.EquityAndLiabilities.CurrentPortionOfDebt", "required": false, "type": "String", "value": "Liability.EquityAndLiabilities.CurrentPortionOfDebt"}, {"displayName": "Unknown.EquityAndLiabilities.Intercompany", "required": false, "type": "String", "value": "Unknown.EquityAndLiabilities.Intercompany"}, {"displayName": "Unknown.General.General", "required": false, "type": "String", "value": "Unknown.General.General"}, {"displayName": "Income.NetIncome.Revenue", "required": false, "type": "String", "value": "Income.NetIncome.Revenue"}, {"displayName": "Expense.NetIncome.CostOfGoods", "required": false, "type": "String", "value": "Expense.NetIncome.CostOfGoods"}, {"displayName": "Expense.NetIncome.OtherCosts", "required": false, "type": "String", "value": "Expense.NetIncome.OtherCosts"}, {"displayName": "Expense.NetIncome.SalesGeneralAdministrativeExpenses", "required": false, "type": "String", "value": "Expense.NetIncome.SalesGeneralAdministrativeExpenses"}, {"displayName": "Expense.NetIncome.DeprecationCosts", "required": false, "type": "String", "value": "Expense.NetIncome.DeprecationCosts"}, {"displayName": "Expense.NetIncome.ResearchAndDevelopment", "required": false, "type": "String", "value": "Expense.NetIncome.ResearchAndDevelopment"}, {"displayName": "Expense.NetIncome.EmployeeCosts", "required": false, "type": "String", "value": "Expense.NetIncome.EmployeeCosts"}, {"displayName": "Expense.NetIncome.EmploymentCosts", "required": false, "type": "String", "value": "Expense.NetIncome.EmploymentCosts"}, {"displayName": "Expense.ExceptionalIncome.ExceptionalCosts", "required": false, "type": "String", "value": "Expense.ExceptionalIncome.ExceptionalCosts"}, {"displayName": "Income.ExceptionalIncome.ExceptionalIncome", "required": false, "type": "String", "value": "Income.ExceptionalIncome.ExceptionalIncome"}, {"displayName": "Expense.ExceptionalIncome.IncomeTaxes", "required": false, "type": "String", "value": "Expense.ExceptionalIncome.IncomeTaxes"}, {"displayName": "Income.ExceptionalIncome.InterestIncome", "required": false, "type": "String", "value": "Income.ExceptionalIncome.InterestIncome"}], "required": true, "type": "String", "validation": {"information": [{"details": "Must be provided.", "field": "FullyQualifiedCategory"}], "warnings": []}}, "status": {"description": "The status of the account", "displayName": "Account Status", "options": [{"displayName": "Active", "required": false, "type": "String", "value": "Active"}, {"displayName": "Pending", "required": false, "type": "String", "value": "Pending"}, {"displayName": "Unknown", "required": false, "type": "String", "value": "Unknown"}], "required": true, "type": "String", "validation": {"information": [{"details": "Must be provided.", "field": "Status"}], "warnings": []}}}, "required": true, "type": "Object"}
+    MYOB AccountRight and Essentials:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+      responses:
+        "200":
+          application/json: {"description": "Nominal Accounts are the categories a business uses to record transactions", "displayName": "Nominal Account", "properties": {"nominalCode": {"description": "The external reference given to each nominal account for a business", "displayName": "Nominal Code", "required": true, "type": "String", "validation": {"information": [], "warnings": [{"details": "If alphanumeric is supported, must be between 1 and 10 characters. Otherwise format is x-xxxx", "field": "NominalCode"}]}}, "name": {"description": "Name of the account", "displayName": "Name", "required": false, "type": "String", "validation": {"information": [], "warnings": [{"details": "Must have a length between 1 and 60 characters", "field": "Name"}]}}, "description": {"description": "Description of the account", "displayName": "Description", "required": false, "type": "String", "validation": {"information": [], "warnings": [{"details": "Must have a length between 1 and 255 characters", "field": "Description"}]}}, "fullyQualifiedCategory": {"description": "The full category of the account e.g. Liability.Current or Income.Revenue", "displayName": "Fully Qualified Category", "options": [{"displayName": "Bank", "required": false, "type": "String", "value": "Asset.Bank"}, {"displayName": "Accounts Receivable", "required": false, "type": "String", "value": "Asset.AccountReceivable"}, {"displayName": "Other Current Asset", "required": false, "type": "String", "value": "Asset.OtherCurrentAsset"}, {"displayName": "Fixed Asset", "required": false, "type": "String", "value": "Asset.FixedAsset"}, {"displayName": "Other Asset", "required": false, "type": "String", "value": "Asset.OtherAsset"}, {"displayName": "Cash", "required": false, "type": "String", "value": "Asset.CashAndBank"}, {"displayName": "Equipment Machinery", "required": false, "type": "String", "value": "Asset.Property Plant and Equipment"}, {"displayName": "Credit Card", "required": false, "type": "String", "value": "Liability.CreditCard"}, {"displayName": "Accounts Payable", "required": false, "type": "String", "value": "Liability.AccountsPayable"}, {"displayName": "Other Current Liability", "required": false, "type": "String", "value": "Liability.OtherCurrentLiability"}, {"displayName": "Long Term Liability", "required": false, "type": "String", "value": "Liability.LongTermLiability"}, {"displayName": "Other Liability", "required": false, "type": "String", "value": "Liability.OtherLiability"}, {"displayName": "Equity", "required": false, "type": "String", "value": "Equity"}, {"displayName": "Retained Earnings", "required": false, "type": "String", "value": "Equity.Equity"}, {"displayName": "Retained Earnings", "required": false, "type": "String", "value": "Equity.Equity.RetainedEarnings"}, {"displayName": "Retained Earnings", "required": false, "type": "String", "value": "Equity.Owner's Equity"}, {"displayName": "Income", "required": false, "type": "String", "value": "Income"}, {"displayName": "Other Income", "required": false, "type": "String", "value": "OtherIncome"}, {"displayName": "Expense", "required": false, "type": "String", "value": "Expense"}, {"displayName": "Sales Marketing", "required": false, "type": "String", "value": "Expense.Expense"}, {"displayName": "General Administrative", "required": false, "type": "String", "value": "Expense.Expense.Insurance"}, {"displayName": "General Administrative", "required": false, "type": "String", "value": "Expense.Overhead"}, {"displayName": "Repairs Maintenance", "required": false, "type": "String", "value": "Expense.Expense.RepairMaintenance"}, {"displayName": "Other Expense", "required": false, "type": "String", "value": "OtherExpense"}, {"displayName": "Cost of Sales", "required": false, "type": "String", "value": "CostOfSales"}, {"displayName": "Other", "required": false, "type": "String", "value": "Cost Of Goods Sold.Cost of Sales"}], "required": true, "type": "String"}, "status": {"description": "The status of the account", "displayName": "Account Status", "options": [{"displayName": "Active", "required": false, "type": "String", "value": "Active"}, {"displayName": "Archived", "required": false, "type": "String", "value": "Archived"}], "required": true, "type": "String"}}, "required": true, "type": "Object"}
+    QuickBooks Desktop:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+      responses:
+        "200":
+          application/json: {"description": "Nominal Accounts are the categories a business uses to record transactions", "displayName": "Nominal Account", "properties": {"nominalCode": {"description": "The external reference given to each nominal account for a business", "displayName": "Nominal Code", "required": true, "type": "String", "validation": {"information": [], "warnings": [{"details": "Max length of 7 characters.", "field": "NominalCode"}]}}, "name": {"description": "Name of the account", "displayName": "Name", "required": true, "type": "String", "validation": {"information": [], "warnings": [{"details": "Max length of 31 characters.", "field": "Name"}]}}, "description": {"description": "Description of the account", "displayName": "Description", "required": false, "type": "String", "validation": {"information": [], "warnings": [{"details": "Max length of 200 characters.", "field": "Description"}]}}, "currency": {"description": "The currency of the account", "displayName": "Currency", "required": false, "type": "String", "validation": {"information": [{"details": "If not set, will default to the base currency of the QuickBooks Desktop company", "field": "Currency"}], "warnings": [{"details": "The currency must match the base currency of the QuickBooks Desktop company unless the FullyQualifiedCategory is 'Asset.AccountsReceivable','Liability.AccountsPayable' or 'Liability.CreditCard'", "field": "Currency"}, {"details": "Must be a three letter ISO code that matches an existing active currency in the QuickBooks Desktop company", "field": "Currency"}, {"details": "Can only be set if the Quickbooks Desktop company has Multicurrency enabled.", "field": "Currency"}]}}, "fullyQualifiedCategory": {"description": "The full category of the account e.g. Liability.Current or Income.Revenue", "displayName": "Fully Qualified Category", "options": [{"displayName": "Account Receivable", "required": false, "type": "String", "value": "Asset.AccountsReceivable"}, {"displayName": "Fixed Asset", "required": false, "type": "String", "value": "Asset.FixedAsset"}, {"displayName": "Other Current Asset", "required": false, "type": "String", "value": "Asset.OtherCurrentAsset"}, {"displayName": "Other Asset", "required": false, "type": "String", "value": "Asset.OtherAsset"}, {"displayName": "Income", "required": false, "type": "String", "value": "Income.Income"}, {"displayName": "Other Income", "required": false, "type": "String", "value": "Income.OtherIncome"}, {"displayName": "Accounts Payable", "required": false, "type": "String", "value": "Liability.AccountsPayable"}, {"displayName": "Credit Card", "required": false, "type": "String", "value": "Liability.CreditCard"}, {"displayName": "Long Term Liability", "required": false, "type": "String", "value": "Liability.LongTermLiability"}, {"displayName": "Other Current Liability", "required": false, "type": "String", "value": "Liability.OtherCurrentLiability"}, {"displayName": "Cost Of Goods Sold", "required": false, "type": "String", "value": "Liability.CostOfGoodsSold"}, {"displayName": "Equity", "required": false, "type": "String", "value": "Equity.Equity"}, {"displayName": "Expense", "required": false, "type": "String", "value": "Expense.Expense"}, {"displayName": "Other Expense", "required": false, "type": "String", "value": "Expense.OtherExpense"}], "required": true, "type": "String"}, "currentBalance": {"description": "The current balance in the account", "displayName": "Current Balance", "required": false, "type": "Number"}}, "required": true, "type": "Object"}
+    QuickBooks Online Sandbox:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+      responses:
+        "200":
+          application/json: {"description": "Nominal Accounts are the categories a business uses to record transactions", "displayName": "Nominal Account", "properties": {"nominalCode": {"description": "The external reference given to each nominal account for a business", "displayName": "Nominal Code", "required": false, "type": "String", "validation": {"information": [{"details": "If included must have a length between 1 and 7 characters", "field": "NominalCode"}], "warnings": []}}, "name": {"description": "Name of the account", "displayName": "Name", "required": true, "type": "String", "validation": {"information": [], "warnings": [{"details": "Must have a length between 1 and 100 characters", "field": "Name"}]}}, "currency": {"description": "The currency of the account", "displayName": "Currency", "required": false, "type": "String", "validation": {"information": [{"details": "When not specified company base currency will be used", "field": "Currency"}], "warnings": []}}, "fullyQualifiedCategory": {"description": "The full category of the account e.g. Liability.Current or Income.Revenue", "displayName": "Fully Qualified Category", "options": [{"displayName": "Cash On Hand", "required": false, "type": "String", "value": "Asset.Bank.CashOnHand"}, {"displayName": "Checking", "required": false, "type": "String", "value": "Asset.Bank.Checking"}, {"displayName": "Money Market", "required": false, "type": "String", "value": "Asset.Bank.MoneyMarket"}, {"displayName": "Rents Held In Trust", "required": false, "type": "String", "value": "Asset.Bank.RentsHeldInTrust"}, {"displayName": "Savings", "required": false, "type": "String", "value": "Asset.Bank.Savings"}, {"displayName": "Trust Accounts", "required": false, "type": "String", "value": "Asset.Bank.TrustAccounts"}, {"displayName": "Cash And Cash Equivalents", "required": false, "type": "String", "value": "Asset.Bank.CashAndCashEquivalents"}, {"displayName": "Other Earmarked Bank Accounts", "required": false, "type": "String", "value": "Asset.Bank.OtherEarmarkedBankAccounts"}, {"displayName": "Allowance For Bad Debts", "required": false, "type": "String", "value": "Asset.Other Current Asset.AllowanceForBadDebts"}, {"displayName": "Development Costs", "required": false, "type": "String", "value": "Asset.Other Current Asset.DevelopmentCosts"}, {"displayName": "Employee Cash Advances", "required": false, "type": "String", "value": "Asset.Other Current Asset.EmployeeCashAdvances"}, {"displayName": "Other Current Assets", "required": false, "type": "String", "value": "Asset.Other Current Asset.OtherCurrentAssets"}, {"displayName": "Inventory", "required": false, "type": "String", "value": "Asset.Other Current Asset.Inventory"}, {"displayName": "Investment Mortgage Real Estate Loans", "required": false, "type": "String", "value": "Asset.Other Current Asset.Investment_MortgageRealEstateLoans"}, {"displayName": "Investment Other", "required": false, "type": "String", "value": "Asset.Other Current Asset.Investment_Other"}, {"displayName": "Investment Tax Exempt Securities", "required": false, "type": "String", "value": "Asset.Other Current Asset.Investment_TaxExemptSecurities"}, {"displayName": "Investment US Government Obligations", "required": false, "type": "String", "value": "Asset.Other Current Asset.Investment_USGovernmentObligations"}, {"displayName": "Loans To Officers", "required": false, "type": "String", "value": "Asset.Other Current Asset.LoansToOfficers"}, {"displayName": "Loans To Others", "required": false, "type": "String", "value": "Asset.Other Current Asset.LoansToOthers"}, {"displayName": "Loans To Stockholders", "required": false, "type": "String", "value": "Asset.Other Current Asset.LoansToStockholders"}, {"displayName": "Prepaid Expenses", "required": false, "type": "String", "value": "Asset.Other Current Asset.PrepaidExpenses"}, {"displayName": "Retainage", "required": false, "type": "String", "value": "Asset.Other Current Asset.Retainage"}, {"displayName": "Undeposited Funds", "required": false, "type": "String", "value": "Asset.Other Current Asset.UndepositedFunds"}, {"displayName": "Assets Available For Sale", "required": false, "type": "String", "value": "Asset.Other Current Asset.AssetsAvailableForSale"}, {"displayName": "Balance With Govt Authorities", "required": false, "type": "String", "value": "Asset.Other Current Asset.BalWithGovtAuthorities"}, {"displayName": "Called Up Share Capital Not Paid", "required": false, "type": "String", "value": "Asset.Other Current Asset.CalledUpShareCapitalNotPaid"}, {"displayName": "Expenditure Authorisations And Letters Of Credit", "required": false, "type": "String", "value": "Asset.Other Current Asset.ExpenditureAuthorisationsAndLettersOfCredit"}, {"displayName": "Global Tax Deferred", "required": false, "type": "String", "value": "Asset.Other Current Asset.GlobalTaxDeferred"}, {"displayName": "Global Tax Refund", "required": false, "type": "String", "value": "Asset.Other Current Asset.GlobalTaxRefund"}, {"displayName": "Internal Transfers", "required": false, "type": "String", "value": "Asset.Other Current Asset.InternalTransfers"}, {"displayName": "Other Consumables", "required": false, "type": "String", "value": "Asset.Other Current Asset.OtherConsumables"}, {"displayName": "Provisions Current Assets", "required": false, "type": "String", "value": "Asset.Other Current Asset.ProvisionsCurrentAssets"}, {"displayName": "Short Term Investments In Related Parties", "required": false, "type": "String", "value": "Asset.Other Current Asset.ShortTermInvestmentsInRelatedParties"}, {"displayName": "Short Term Loans And Advances To Related Parties", "required": false, "type": "String", "value": "Asset.Other Current Asset.ShortTermLoansAndAdvancesToRelatedParties"}, {"displayName": "Trade And Other Receivables", "required": false, "type": "String", "value": "Asset.Other Current Asset.TradeAndOtherReceivables"}, {"displayName": "Accumulated Depletion", "required": false, "type": "String", "value": "Asset.Fixed Asset.AccumulatedDepletion"}, {"displayName": "Accumulated Depreciation", "required": false, "type": "String", "value": "Asset.Fixed Asset.AccumulatedDepreciation"}, {"displayName": "Depletable Assets", "required": false, "type": "String", "value": "Asset.Fixed Asset.DepletableAssets"}, {"displayName": "Fixed Asset Computers", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetComputers"}, {"displayName": "Fixed Asset Copiers", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetCopiers"}, {"displayName": "Fixed Asset Furniture", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetFurniture"}, {"displayName": "Fixed Asset Phone", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetPhone"}, {"displayName": "Fixed Asset Photo Video", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetPhotoVideo"}, {"displayName": "Fixed Asset Software", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetSoftware"}, {"displayName": "Fixed Asset Other Tools Equipment", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetOtherToolsEquipment"}, {"displayName": "Furniture And Fixtures", "required": false, "type": "String", "value": "Asset.Fixed Asset.FurnitureAndFixtures"}, {"displayName": "Land", "required": false, "type": "String", "value": "Asset.Fixed Asset.Land"}, {"displayName": "Leasehold Improvements", "required": false, "type": "String", "value": "Asset.Fixed Asset.LeaseholdImprovements"}, {"displayName": "Other Fixed Assets", "required": false, "type": "String", "value": "Asset.Fixed Asset.OtherFixedAssets"}, {"displayName": "Accumulated Amortization", "required": false, "type": "String", "value": "Asset.Fixed Asset.AccumulatedAmortization"}, {"displayName": "Buildings", "required": false, "type": "String", "value": "Asset.Fixed Asset.Buildings"}, {"displayName": "Intangible Assets", "required": false, "type": "String", "value": "Asset.Fixed Asset.IntangibleAssets"}, {"displayName": "Machinery And Equipment", "required": false, "type": "String", "value": "Asset.Fixed Asset.MachineryAndEquipment"}, {"displayName": "Vehicles", "required": false, "type": "String", "value": "Asset.Fixed Asset.Vehicles"}, {"displayName": "Assets In Course Of Construction", "required": false, "type": "String", "value": "Asset.Fixed Asset.AssetsInCourseOfConstruction"}, {"displayName": "Capital Wip", "required": false, "type": "String", "value": "Asset.Fixed Asset.CapitalWip"}, {"displayName": "Cumulative Depreciation On Intangible Assets", "required": false, "type": "String", "value": "Asset.Fixed Asset.CumulativeDepreciationOnIntangibleAssets"}, {"displayName": "Intangible Assets Under Development", "required": false, "type": "String", "value": "Asset.Fixed Asset.IntangibleAssetsUnderDevelopment"}, {"displayName": "Land Asset", "required": false, "type": "String", "value": "Asset.Fixed Asset.LandAsset"}, {"displayName": "Non Current Assets", "required": false, "type": "String", "value": "Asset.Fixed Asset.NonCurrentAssets"}, {"displayName": "Participating Interests", "required": false, "type": "String", "value": "Asset.Fixed Asset.ParticipatingInterests"}, {"displayName": "Provisions Fixed Assets", "required": false, "type": "String", "value": "Asset.Fixed Asset.ProvisionsFixedAssets"}, {"displayName": "Lease Buyout", "required": false, "type": "String", "value": "Asset.Other Asset.LeaseBuyout"}, {"displayName": "Other Long Term Assets", "required": false, "type": "String", "value": "Asset.Other Asset.OtherLongTermAssets"}, {"displayName": "Security Deposits", "required": false, "type": "String", "value": "Asset.Other Asset.SecurityDeposits"}, {"displayName": "Accumulated Amortization Of Other Assets", "required": false, "type": "String", "value": "Asset.Other Asset.AccumulatedAmortizationOfOtherAssets"}, {"displayName": "Goodwill", "required": false, "type": "String", "value": "Asset.Other Asset.Goodwill"}, {"displayName": "Licenses", "required": false, "type": "String", "value": "Asset.Other Asset.Licenses"}, {"displayName": "Organizational Costs", "required": false, "type": "String", "value": "Asset.Other Asset.OrganizationalCosts"}, {"displayName": "Assets Held For Sale", "required": false, "type": "String", "value": "Asset.Other Asset.AssetsHeldForSale"}, {"displayName": "Available For Sale Financial Assets", "required": false, "type": "String", "value": "Asset.Other Asset.AvailableForSaleFinancialAssets"}, {"displayName": "Deferred Tax", "required": false, "type": "String", "value": "Asset.Other Asset.DeferredTax"}, {"displayName": "Investments", "required": false, "type": "String", "value": "Asset.Other Asset.Investments"}, {"displayName": "Long Term Investments", "required": false, "type": "String", "value": "Asset.Other Asset.LongTermInvestments"}, {"displayName": "Long Term Loans And Advances To Related Parties", "required": false, "type": "String", "value": "Asset.Other Asset.LongTermLoansAndAdvancesToRelatedParties"}, {"displayName": "Other Intangible Assets", "required": false, "type": "String", "value": "Asset.Other Asset.OtherIntangibleAssets"}, {"displayName": "Other Long Term Investments", "required": false, "type": "String", "value": "Asset.Other Asset.OtherLongTermInvestments"}, {"displayName": "Other Long Term Loans And Advances", "required": false, "type": "String", "value": "Asset.Other Asset.OtherLongTermLoansAndAdvances"}, {"displayName": "Prepayments And Accrued Income", "required": false, "type": "String", "value": "Asset.Other Asset.PrepaymentsAndAccruedIncome"}, {"displayName": "Provisions Non-Current Assets", "required": false, "type": "String", "value": "Asset.Other Asset.ProvisionsNonCurrentAssets"}, {"displayName": "Accounts Receivable", "required": false, "type": "String", "value": "Asset.Accounts Receivable.AccountsReceivable"}, {"displayName": "Advertising/Promotional", "required": false, "type": "String", "value": "Expense.Expense.AdvertisingPromotional"}, {"displayName": "Bad Debts", "required": false, "type": "String", "value": "Expense.Expense.BadDebts"}, {"displayName": "Bank Charges", "required": false, "type": "String", "value": "Expense.Expense.BankCharges"}, {"displayName": "Charitable Contributions", "required": false, "type": "String", "value": "Expense.Expense.CharitableContributions"}, {"displayName": "Commissions And Fees", "required": false, "type": "String", "value": "Expense.Expense.CommissionsAndFees"}, {"displayName": "Entertainment", "required": false, "type": "String", "value": "Expense.Expense.Entertainment"}, {"displayName": "Entertainment Meals", "required": false, "type": "String", "value": "Expense.Expense.EntertainmentMeals"}, {"displayName": "Equipment Rental", "required": false, "type": "String", "value": "Expense.Expense.EquipmentRental"}, {"displayName": "Finance Costs", "required": false, "type": "String", "value": "Expense.Expense.FinanceCosts"}, {"displayName": "Global Tax Expense", "required": false, "type": "String", "value": "Expense.Expense.GlobalTaxExpense"}, {"displayName": "Insurance", "required": false, "type": "String", "value": "Expense.Expense.Insurance"}, {"displayName": "Interest Paid", "required": false, "type": "String", "value": "Expense.Expense.InterestPaid"}, {"displayName": "Legal And Professional Fees", "required": false, "type": "String", "value": "Expense.Expense.LegalProfessionalFees"}, {"displayName": "Office Expenses", "required": false, "type": "String", "value": "Expense.Expense.OfficeExpenses"}, {"displayName": "Office/General Administrative Expenses", "required": false, "type": "String", "value": "Expense.Expense.OfficeGeneralAdministrativeExpenses"}, {"displayName": "Other Business Expenses", "required": false, "type": "String", "value": "Expense.Expense.OtherBusinessExpenses"}, {"displayName": "Other Miscellaneous Service Cost", "required": false, "type": "String", "value": "Expense.Expense.OtherMiscellaneousServiceCost"}, {"displayName": "Promotional Meals", "required": false, "type": "String", "value": "Expense.Expense.PromotionalMeals"}, {"displayName": "Rent Or Lease Of Buildings", "required": false, "type": "String", "value": "Expense.Expense.RentOrLeaseOfBuildings"}, {"displayName": "Repair And Maintenance", "required": false, "type": "String", "value": "Expense.Expense.RepairMaintenance"}, {"displayName": "Shipping, Freight And Delivery", "required": false, "type": "String", "value": "Expense.Expense.ShippingFreightDelivery"}, {"displayName": "Supplies And Materials", "required": false, "type": "String", "value": "Expense.Expense.SuppliesMaterials"}, {"displayName": "Travel", "required": false, "type": "String", "value": "Expense.Expense.Travel"}, {"displayName": "Travel Meals", "required": false, "type": "String", "value": "Expense.Expense.TravelMeals"}, {"displayName": "Utilities", "required": false, "type": "String", "value": "Expense.Expense.Utilities"}, {"displayName": "Auto", "required": false, "type": "String", "value": "Expense.Expense.Auto"}, {"displayName": "Cost Of Labor", "required": false, "type": "String", "value": "Expense.Expense.CostOfLabor"}, {"displayName": "Dues And Subscriptions", "required": false, "type": "String", "value": "Expense.Expense.DuesSubscriptions"}, {"displayName": "Payroll Expenses", "required": false, "type": "String", "value": "Expense.Expense.PayrollExpenses"}, {"displayName": "Taxes Paid", "required": false, "type": "String", "value": "Expense.Expense.TaxesPaid"}, {"displayName": "Unapplied Cash Bill Payment Expense", "required": false, "type": "String", "value": "Expense.Expense.UnappliedCashBillPaymentExpense"}, {"displayName": "Utilities", "required": false, "type": "String", "value": "Expense.Expense.Utilities"}, {"displayName": "Amortization Expense", "required": false, "type": "String", "value": "Expense.Expense.AmortizationExpense"}, {"displayName": "Appropriations To Depreciation", "required": false, "type": "String", "value": "Expense.Expense.AppropriationsToDepreciation"}, {"displayName": "Borrowing Cost", "required": false, "type": "String", "value": "Expense.Expense.BorrowingCost"}, {"displayName": "Commissions And Fees", "required": false, "type": "String", "value": "Expense.Expense.CommissionsAndFees"}, {"displayName": "Distribution Costs", "required": false, "type": "String", "value": "Expense.Expense.DistributionCosts"}, {"displayName": "External Services", "required": false, "type": "String", "value": "Expense.Expense.ExternalServices"}, {"displayName": "Extraordinary Charges", "required": false, "type": "String", "value": "Expense.Expense.ExtraordinaryCharges"}, {"displayName": "Income Tax Expense", "required": false, "type": "String", "value": "Expense.Expense.IncomeTaxExpense"}, {"displayName": "Loss On Discontinued Operations Net Of Tax", "required": false, "type": "String", "value": "Expense.Expense.LossOnDiscontinuedOperationsNetOfTax"}, {"displayName": "Management Compensation", "required": false, "type": "String", "value": "Expense.Expense.ManagementCompensation"}, {"displayName": "Other Current Operating Charges", "required": false, "type": "String", "value": "Expense.Expense.OtherCurrentOperatingCharges"}, {"displayName": "Other External Services", "required": false, "type": "String", "value": "Expense.Expense.OtherExternalServices"}, {"displayName": "Other Rental Costs", "required": false, "type": "String", "value": "Expense.Expense.OtherRentalCosts"}, {"displayName": "Other Selling Expenses", "required": false, "type": "String", "value": "Expense.Expense.OtherSellingExpenses"}, {"displayName": "Project Studies Surveys Assessments", "required": false, "type": "String", "value": "Expense.Expense.ProjectStudiesSurveysAssessments"}, {"displayName": "Purchases Rebates", "required": false, "type": "String", "value": "Expense.Expense.PurchasesRebates"}, {"displayName": "Shipping And Delivery Expense", "required": false, "type": "String", "value": "Expense.Expense.ShippingAndDeliveryExpense"}, {"displayName": "Staff Costs", "required": false, "type": "String", "value": "Expense.Expense.StaffCosts"}, {"displayName": "Sundry", "required": false, "type": "String", "value": "Expense.Expense.Sundry"}, {"displayName": "Travel Expenses General And Admin Expenses", "required": false, "type": "String", "value": "Expense.Expense.TravelExpensesGeneralAndAdminExpenses"}, {"displayName": "Travel Expenses Selling Expense", "required": false, "type": "String", "value": "Expense.Expense.TravelExpensesSellingExpense"}, {"displayName": "Depreciation", "required": false, "type": "String", "value": "Expense.Other Expense.Depreciation"}, {"displayName": "Exchange Gain Or Loss", "required": false, "type": "String", "value": "Expense.Other Expense.ExchangeGainOrLoss"}, {"displayName": "Other Miscellaneous Expense", "required": false, "type": "String", "value": "Expense.Other Expense.OtherMiscellaneousExpense"}, {"displayName": "Penalties And Settlements", "required": false, "type": "String", "value": "Expense.Other Expense.PenaltiesSettlements"}, {"displayName": "Amortization", "required": false, "type": "String", "value": "Expense.Other Expense.Amortization"}, {"displayName": "Gas And Fuel", "required": false, "type": "String", "value": "Expense.Other Expense.GasAndFuel"}, {"displayName": "Home Office", "required": false, "type": "String", "value": "Expense.Other Expense.HomeOffice"}, {"displayName": "Home Owner Rental Insurance", "required": false, "type": "String", "value": "Expense.Other Expense.HomeOwnerRentalInsurance"}, {"displayName": "Other Home Office Expenses", "required": false, "type": "String", "value": "Expense.Other Expense.OtherHomeOfficeExpenses"}, {"displayName": "Mortgage Interest", "required": false, "type": "String", "value": "Expense.Other Expense.MortgageInterest"}, {"displayName": "Rent And Lease", "required": false, "type": "String", "value": "Expense.Other Expense.RentAndLease"}, {"displayName": "Repairs And Maintenance", "required": false, "type": "String", "value": "Expense.Other Expense.RepairsAndMaintenance"}, {"displayName": "Parking And Tolls", "required": false, "type": "String", "value": "Expense.Other Expense.ParkingAndTolls"}, {"displayName": "Vehicle", "required": false, "type": "String", "value": "Expense.Other Expense.Vehicle"}, {"displayName": "Vehicle Insurance", "required": false, "type": "String", "value": "Expense.Other Expense.VehicleInsurance"}, {"displayName": "Vehicle Lease", "required": false, "type": "String", "value": "Expense.Other Expense.VehicleLease"}, {"displayName": "Vehicle Loan Interest", "required": false, "type": "String", "value": "Expense.Other Expense.VehicleLoanInterest"}, {"displayName": "Vehicle Loan", "required": false, "type": "String", "value": "Expense.Other Expense.VehicleLoan"}, {"displayName": "Vehicle Registration", "required": false, "type": "String", "value": "Expense.Other Expense.VehicleRegistration"}, {"displayName": "Vehicle Repairs", "required": false, "type": "String", "value": "Expense.Other Expense.VehicleRepairs"}, {"displayName": "Other Vehicle Expenses", "required": false, "type": "String", "value": "Expense.Other Expense.OtherVehicleExpenses"}, {"displayName": "Utilities", "required": false, "type": "String", "value": "Expense.Other Expense.Utilities"}, {"displayName": "Wash And Road Services", "required": false, "type": "String", "value": "Expense.Other Expense.WashAndRoadServices"}, {"displayName": "Deferred Tax Expense", "required": false, "type": "String", "value": "Expense.Other Expense.DeferredTaxExpense"}, {"displayName": "Depletion", "required": false, "type": "String", "value": "Expense.Other Expense.Depletion"}, {"displayName": "Exceptional Items", "required": false, "type": "String", "value": "Expense.Other Expense.ExceptionalItems"}, {"displayName": "Extraordinary Items", "required": false, "type": "String", "value": "Expense.Other Expense.ExtraordinaryItems"}, {"displayName": "Income Tax Other Expense", "required": false, "type": "String", "value": "Expense.Other Expense.IncomeTaxOtherExpense"}, {"displayName": "Mat Credit", "required": false, "type": "String", "value": "Expense.Other Expense.MatCredit"}, {"displayName": "Prior Period Items", "required": false, "type": "String", "value": "Expense.Other Expense.PriorPeriodItems"}, {"displayName": "Tax Roundoff Gain Or Loss", "required": false, "type": "String", "value": "Expense.Other Expense.TaxRoundoffGainOrLoss"}, {"displayName": "Equipment Rental - COS", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.EquipmentRentalCos"}, {"displayName": "Other Costs Of Sales - COS", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.OtherCostsOfServiceCos"}, {"displayName": "Shipping, Freight And Delivery - COS", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.ShippingFreightDeliveryCos"}, {"displayName": "Supplies And Materials - COS", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.SuppliesMaterialsCogs"}, {"displayName": "Cost Of Labor - COS", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.CostOfLaborCos"}, {"displayName": "Cost Of Sales", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.CostOfSales"}, {"displayName": "Freight And Delivery Cost", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.FreightAndDeliveryCost"}, {"displayName": "Non Profit Income", "required": false, "type": "String", "value": "Income.Income.NonProfitIncome"}, {"displayName": "Other Primary Income", "required": false, "type": "String", "value": "Income.Income.OtherPrimaryIncome"}, {"displayName": "Sales Of ProductIncome", "required": false, "type": "String", "value": "Income.Income.SalesOfProductIncome"}, {"displayName": "Service Fee Income", "required": false, "type": "String", "value": "Income.Income.ServiceFeeIncome"}, {"displayName": "Discounts Refunds Given", "required": false, "type": "String", "value": "Income.Income.DiscountsRefundsGiven"}, {"displayName": "Unapplied Cash Payment Income", "required": false, "type": "String", "value": "Income.Income.UnappliedCashPaymentIncome"}, {"displayName": "Cash Receipt Income", "required": false, "type": "String", "value": "Income.Income.CashReceiptIncome"}, {"displayName": "Operating Grants", "required": false, "type": "String", "value": "Income.Income.OperatingGrants"}, {"displayName": "Other Current Operating Income", "required": false, "type": "String", "value": "Income.Income.OtherCurrentOperatingIncome"}, {"displayName": "Own Work Capitalized", "required": false, "type": "String", "value": "Income.Income.OwnWorkCapitalized"}, {"displayName": "Revenue General", "required": false, "type": "String", "value": "Income.Income.RevenueGeneral"}, {"displayName": "Sales Retail", "required": false, "type": "String", "value": "Income.Income.SalesRetail"}, {"displayName": "Sales Wholesale", "required": false, "type": "String", "value": "Income.Income.SalesWholesale"}, {"displayName": "Savings By Tax Scheme", "required": false, "type": "String", "value": "Income.Income.SavingsByTaxScheme"}, {"displayName": "Dividend Income", "required": false, "type": "String", "value": "Income.Other Income.DividendIncome"}, {"displayName": "Interest Earned", "required": false, "type": "String", "value": "Income.Other Income.InterestEarned"}, {"displayName": "Other Investment Income", "required": false, "type": "String", "value": "Income.Other Income.OtherInvestmentIncome"}, {"displayName": "Other Miscellaneous Income", "required": false, "type": "String", "value": "Income.Other Income.OtherMiscellaneousIncome"}, {"displayName": "Tax Exempt Interest", "required": false, "type": "String", "value": "Income.Other Income.TaxExemptInterest"}, {"displayName": "Gain Loss On Sale Of Fixed Assets", "required": false, "type": "String", "value": "Income.Other Income.GainLossOnSaleOfFixedAssets"}, {"displayName": "Gain Loss On Sale Of Investments", "required": false, "type": "String", "value": "Income.Other Income.GainLossOnSaleOfInvestments"}, {"displayName": "Loss On Disposal Of Assets", "required": false, "type": "String", "value": "Income.Other Income.LossOnDisposalOfAssets"}, {"displayName": "Other Operating Income", "required": false, "type": "String", "value": "Income.Other Income.OtherOperatingIncome"}, {"displayName": "Unrealised Loss On Securities Net Of Tax", "required": false, "type": "String", "value": "Income.Other Income.UnrealisedLossOnSecuritiesNetOfTax"}, {"displayName": "Accounts Payable", "required": false, "type": "String", "value": "Liability.Accounts Payable.AccountsPayable"}, {"displayName": "Outstanding Dues Micro Small Enterprise", "required": false, "type": "String", "value": "Liability.Accounts Payable.OutstandingDuesMicroSmallEnterprise"}, {"displayName": "Outstanding Dues Other Than Micro Small Enterprise", "required": false, "type": "String", "value": "Liability.Accounts Payable.OutstandingDuesOtherThanMicroSmallEnterprise"}, {"displayName": "Credit Card", "required": false, "type": "String", "value": "Liability.Credit Card.CreditCard"}, {"displayName": "Notes Payable", "required": false, "type": "String", "value": "Liability.Long Term Liability.NotesPayable"}, {"displayName": "Other Long Term Liabilities", "required": false, "type": "String", "value": "Liability.Long Term Liability.OtherLongTermLiabilities"}, {"displayName": "Shareholder Notes Payable", "required": false, "type": "String", "value": "Liability.Long Term Liability.ShareholderNotesPayable"}, {"displayName": "Accruals And Deferred Income", "required": false, "type": "String", "value": "Liability.Long Term Liability.AccrualsAndDeferredIncome"}, {"displayName": "Accrued Long Lerm Liabilities", "required": false, "type": "String", "value": "Liability.Long Term Liability.AccruedLongLermLiabilities"}, {"displayName": "Accrued Vacation Payable", "required": false, "type": "String", "value": "Liability.Long Term Liability.AccruedVacationPayable"}, {"displayName": "Bank Loans", "required": false, "type": "String", "value": "Liability.Long Term Liability.BankLoans"}, {"displayName": "Debts Related To Participating Interests", "required": false, "type": "String", "value": "Liability.Long Term Liability.DebtsRelatedToParticipatingInterests"}, {"displayName": "Deferred Tax Liabilities", "required": false, "type": "String", "value": "Liability.Long Term Liability.DeferredTaxLiabilities"}, {"displayName": "Government And Other Public Authorities", "required": false, "type": "String", "value": "Liability.Long Term Liability.GovernmentAndOtherPublicAuthorities"}, {"displayName": "Group And Associates", "required": false, "type": "String", "value": "Liability.Long Term Liability.GroupAndAssociates"}, {"displayName": "Liabilities Related To Assets Held For Sale", "required": false, "type": "String", "value": "Liability.Long Term Liability.LiabilitiesRelatedToAssetsHeldForSale"}, {"displayName": "Long Term Borrowings", "required": false, "type": "String", "value": "Liability.Long Term Liability.LongTermBorrowings"}, {"displayName": "Long Term Debit", "required": false, "type": "String", "value": "Liability.Long Term Liability.LongTermDebit"}, {"displayName": "Long Term Employee Benefit Obligations", "required": false, "type": "String", "value": "Liability.Long Term Liability.LongTermEmployeeBenefitObligations"}, {"displayName": "Obligations Under Finance Leases", "required": false, "type": "String", "value": "Liability.Long Term Liability.ObligationsUnderFinanceLeases"}, {"displayName": "Other Long Term Provisions", "required": false, "type": "String", "value": "Liability.Long Term Liability.OtherLongTermProvisions"}, {"displayName": "Provision For Liabilities", "required": false, "type": "String", "value": "Liability.Long Term Liability.ProvisionForLiabilities"}, {"displayName": "Provisions Non Current Liabilities", "required": false, "type": "String", "value": "Liability.Long Term Liability.ProvisionsNonCurrentLiabilities"}, {"displayName": "Staff And Related Long Term Liability Accounts", "required": false, "type": "String", "value": "Liability.Long Term Liability.StaffAndRelatedLongTermLiabilityAccounts"}, {"displayName": "Direct Deposit Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.DirectDepositPayable"}, {"displayName": "Line Of Credit", "required": false, "type": "String", "value": "Liability.Other Current Liability.LineOfCredit"}, {"displayName": "Loan Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.LoanPayable"}, {"displayName": "Global Tax Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.GlobalTaxPayable"}, {"displayName": "Global Tax Suspense", "required": false, "type": "String", "value": "Liability.Other Current Liability.GlobalTaxSuspense"}, {"displayName": "Other Current Liabilities", "required": false, "type": "String", "value": "Liability.Other Current Liability.OtherCurrentLiabilities"}, {"displayName": "Payroll Clearing", "required": false, "type": "String", "value": "Liability.Other Current Liability.PayrollClearing"}, {"displayName": "Payroll Tax Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.PayrollTaxPayable"}, {"displayName": "Prepaid Expenses Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.PrepaidExpensesPayable"}, {"displayName": "Rents In Trust Liability", "required": false, "type": "String", "value": "Liability.Other Current Liability.RentsInTrustLiability"}, {"displayName": "Trust Accounts Liabilities", "required": false, "type": "String", "value": "Liability.Other Current Liability.TrustAccountsLiabilities"}, {"displayName": "Federal Income Tax Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.FederalIncomeTaxPayable"}, {"displayName": "Insurance Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.InsurancePayable"}, {"displayName": "Sales Tax Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.SalesTaxPayable"}, {"displayName": "State Local Income Tax Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.StateLocalIncomeTaxPayable"}, {"displayName": "Accrued Liabilities", "required": false, "type": "String", "value": "Liability.Other Current Liability.AccruedLiabilities"}, {"displayName": "Current Liabilities", "required": false, "type": "String", "value": "Liability.Other Current Liability.CurrentLiabilities"}, {"displayName": "Current Portion EmployeeBenefits Obligations", "required": false, "type": "String", "value": "Liability.Other Current Liability.CurrentPortionEmployeeBenefitsObligations"}, {"displayName": "Current Portion Of Obligations Under Finance Leases", "required": false, "type": "String", "value": "Liability.Other Current Liability.CurrentPortionOfObligationsUnderFinanceLeases"}, {"displayName": "Current Tax Liability", "required": false, "type": "String", "value": "Liability.Other Current Liability.CurrentTaxLiability"}, {"displayName": "Dividends Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.DividendsPayable"}, {"displayName": "Duties And Taxes", "required": false, "type": "String", "value": "Liability.Other Current Liability.DutiesAndTaxes"}, {"displayName": "Interest Payables", "required": false, "type": "String", "value": "Liability.Other Current Liability.InterestPayables"}, {"displayName": "Provision For Warranty Obligations", "required": false, "type": "String", "value": "Liability.Other Current Liability.ProvisionForWarrantyObligations"}, {"displayName": "Provisions Current Liabilities", "required": false, "type": "String", "value": "Liability.Other Current Liability.ProvisionsCurrentLiabilities"}, {"displayName": "Short Term Borrowings", "required": false, "type": "String", "value": "Liability.Other Current Liability.ShortTermBorrowings"}, {"displayName": "Social Security Agencies", "required": false, "type": "String", "value": "Liability.Other Current Liability.SocialSecurityAgencies"}, {"displayName": "Staff And Related Liability Accounts", "required": false, "type": "String", "value": "Liability.Other Current Liability.StaffAndRelatedLiabilityAccounts"}, {"displayName": "Sundry Debtors And Creditors", "required": false, "type": "String", "value": "Liability.Other Current Liability.SundryDebtorsAndCreditors"}, {"displayName": "Trade And Other Payables", "required": false, "type": "String", "value": "Liability.Other Current Liability.TradeAndOtherPayables"}, {"displayName": "Opening Balance Equity", "required": false, "type": "String", "value": "Equity.Equity.OpeningBalanceEquity"}, {"displayName": "Partners Equity", "required": false, "type": "String", "value": "Equity.Equity.PartnersEquity"}, {"displayName": "Retained Earnings", "required": false, "type": "String", "value": "Equity.Equity.RetainedEarnings"}, {"displayName": "Accumulated Adjustment", "required": false, "type": "String", "value": "Equity.Equity.AccumulatedAdjustment"}, {"displayName": "Owners Equity", "required": false, "type": "String", "value": "Equity.Equity.OwnersEquity"}, {"displayName": "Paid In Capital Or Surplus", "required": false, "type": "String", "value": "Equity.Equity.PaidInCapitalOrSurplus"}, {"displayName": "Partner Contributions", "required": false, "type": "String", "value": "Equity.Equity.PartnerContributions"}, {"displayName": "Partner Distributions", "required": false, "type": "String", "value": "Equity.Equity.PartnerDistributions"}, {"displayName": "Preferred Stock", "required": false, "type": "String", "value": "Equity.Equity.PreferredStock"}, {"displayName": "Common Stock", "required": false, "type": "String", "value": "Equity.Equity.CommonStock"}, {"displayName": "Treasury Stock", "required": false, "type": "String", "value": "Equity.Equity.TreasuryStock"}, {"displayName": "Estimated Taxes", "required": false, "type": "String", "value": "Equity.Equity.EstimatedTaxes"}, {"displayName": "Healthcare", "required": false, "type": "String", "value": "Equity.Equity.Healthcare"}, {"displayName": "Personal Income", "required": false, "type": "String", "value": "Equity.Equity.PersonalIncome"}, {"displayName": "Personal Expense", "required": false, "type": "String", "value": "Equity.Equity.PersonalExpense"}, {"displayName": "Accumulated Other Comprehensive Income", "required": false, "type": "String", "value": "Equity.Equity.AccumulatedOtherComprehensiveIncome"}, {"displayName": "Called Up Share Capital", "required": false, "type": "String", "value": "Equity.Equity.CalledUpShareCapital"}, {"displayName": "Capital Reserves", "required": false, "type": "String", "value": "Equity.Equity.CapitalReserves"}, {"displayName": "Dividend Disbursed", "required": false, "type": "String", "value": "Equity.Equity.DividendDisbursed"}, {"displayName": "Equity In Earnings Of Subsiduaries", "required": false, "type": "String", "value": "Equity.Equity.EquityInEarningsOfSubsiduaries"}, {"displayName": "Investment Grants", "required": false, "type": "String", "value": "Equity.Equity.InvestmentGrants"}, {"displayName": "Money Received Against Share Warrants", "required": false, "type": "String", "value": "Equity.Equity.MoneyReceivedAgainstShareWarrants"}, {"displayName": "Other Free Reserves", "required": false, "type": "String", "value": "Equity.Equity.OtherFreeReserves"}, {"displayName": "Share Application Money Pending Allotment", "required": false, "type": "String", "value": "Equity.Equity.ShareApplicationMoneyPendingAllotment"}, {"displayName": "Share Capital", "required": false, "type": "String", "value": "Equity.Equity.ShareCapital"}, {"displayName": "Funds", "required": false, "type": "String", "value": "Equity.Equity.Funds"}], "required": true, "type": "String"}}, "required": true, "type": "Object"}
+    QuickBooks Online:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+      responses:
+        "200":
+          application/json: {"description": "Nominal Accounts are the categories a business uses to record transactions", "displayName": "Nominal Account", "properties": {"nominalCode": {"description": "The external reference given to each nominal account for a business", "displayName": "Nominal Code", "required": false, "type": "String", "validation": {"information": [{"details": "If included must have a length between 1 and 7 characters", "field": "NominalCode"}], "warnings": []}}, "name": {"description": "Name of the account", "displayName": "Name", "required": true, "type": "String", "validation": {"information": [], "warnings": [{"details": "Must have a length between 1 and 100 characters", "field": "Name"}]}}, "currency": {"description": "The currency of the account", "displayName": "Currency", "required": false, "type": "String", "validation": {"information": [{"details": "When not specified company base currency will be used", "field": "Currency"}], "warnings": []}}, "fullyQualifiedCategory": {"description": "The full category of the account e.g. Liability.Current or Income.Revenue", "displayName": "Fully Qualified Category", "options": [{"displayName": "Cash On Hand", "required": false, "type": "String", "value": "Asset.Bank.CashOnHand"}, {"displayName": "Checking", "required": false, "type": "String", "value": "Asset.Bank.Checking"}, {"displayName": "Money Market", "required": false, "type": "String", "value": "Asset.Bank.MoneyMarket"}, {"displayName": "Rents Held In Trust", "required": false, "type": "String", "value": "Asset.Bank.RentsHeldInTrust"}, {"displayName": "Savings", "required": false, "type": "String", "value": "Asset.Bank.Savings"}, {"displayName": "Trust Accounts", "required": false, "type": "String", "value": "Asset.Bank.TrustAccounts"}, {"displayName": "Cash And Cash Equivalents", "required": false, "type": "String", "value": "Asset.Bank.CashAndCashEquivalents"}, {"displayName": "Other Earmarked Bank Accounts", "required": false, "type": "String", "value": "Asset.Bank.OtherEarmarkedBankAccounts"}, {"displayName": "Allowance For Bad Debts", "required": false, "type": "String", "value": "Asset.Other Current Asset.AllowanceForBadDebts"}, {"displayName": "Development Costs", "required": false, "type": "String", "value": "Asset.Other Current Asset.DevelopmentCosts"}, {"displayName": "Employee Cash Advances", "required": false, "type": "String", "value": "Asset.Other Current Asset.EmployeeCashAdvances"}, {"displayName": "Other Current Assets", "required": false, "type": "String", "value": "Asset.Other Current Asset.OtherCurrentAssets"}, {"displayName": "Inventory", "required": false, "type": "String", "value": "Asset.Other Current Asset.Inventory"}, {"displayName": "Investment Mortgage Real Estate Loans", "required": false, "type": "String", "value": "Asset.Other Current Asset.Investment_MortgageRealEstateLoans"}, {"displayName": "Investment Other", "required": false, "type": "String", "value": "Asset.Other Current Asset.Investment_Other"}, {"displayName": "Investment Tax Exempt Securities", "required": false, "type": "String", "value": "Asset.Other Current Asset.Investment_TaxExemptSecurities"}, {"displayName": "Investment US Government Obligations", "required": false, "type": "String", "value": "Asset.Other Current Asset.Investment_USGovernmentObligations"}, {"displayName": "Loans To Officers", "required": false, "type": "String", "value": "Asset.Other Current Asset.LoansToOfficers"}, {"displayName": "Loans To Others", "required": false, "type": "String", "value": "Asset.Other Current Asset.LoansToOthers"}, {"displayName": "Loans To Stockholders", "required": false, "type": "String", "value": "Asset.Other Current Asset.LoansToStockholders"}, {"displayName": "Prepaid Expenses", "required": false, "type": "String", "value": "Asset.Other Current Asset.PrepaidExpenses"}, {"displayName": "Retainage", "required": false, "type": "String", "value": "Asset.Other Current Asset.Retainage"}, {"displayName": "Undeposited Funds", "required": false, "type": "String", "value": "Asset.Other Current Asset.UndepositedFunds"}, {"displayName": "Assets Available For Sale", "required": false, "type": "String", "value": "Asset.Other Current Asset.AssetsAvailableForSale"}, {"displayName": "Balance With Govt Authorities", "required": false, "type": "String", "value": "Asset.Other Current Asset.BalWithGovtAuthorities"}, {"displayName": "Called Up Share Capital Not Paid", "required": false, "type": "String", "value": "Asset.Other Current Asset.CalledUpShareCapitalNotPaid"}, {"displayName": "Expenditure Authorisations And Letters Of Credit", "required": false, "type": "String", "value": "Asset.Other Current Asset.ExpenditureAuthorisationsAndLettersOfCredit"}, {"displayName": "Global Tax Deferred", "required": false, "type": "String", "value": "Asset.Other Current Asset.GlobalTaxDeferred"}, {"displayName": "Global Tax Refund", "required": false, "type": "String", "value": "Asset.Other Current Asset.GlobalTaxRefund"}, {"displayName": "Internal Transfers", "required": false, "type": "String", "value": "Asset.Other Current Asset.InternalTransfers"}, {"displayName": "Other Consumables", "required": false, "type": "String", "value": "Asset.Other Current Asset.OtherConsumables"}, {"displayName": "Provisions Current Assets", "required": false, "type": "String", "value": "Asset.Other Current Asset.ProvisionsCurrentAssets"}, {"displayName": "Short Term Investments In Related Parties", "required": false, "type": "String", "value": "Asset.Other Current Asset.ShortTermInvestmentsInRelatedParties"}, {"displayName": "Short Term Loans And Advances To Related Parties", "required": false, "type": "String", "value": "Asset.Other Current Asset.ShortTermLoansAndAdvancesToRelatedParties"}, {"displayName": "Trade And Other Receivables", "required": false, "type": "String", "value": "Asset.Other Current Asset.TradeAndOtherReceivables"}, {"displayName": "Accumulated Depletion", "required": false, "type": "String", "value": "Asset.Fixed Asset.AccumulatedDepletion"}, {"displayName": "Accumulated Depreciation", "required": false, "type": "String", "value": "Asset.Fixed Asset.AccumulatedDepreciation"}, {"displayName": "Depletable Assets", "required": false, "type": "String", "value": "Asset.Fixed Asset.DepletableAssets"}, {"displayName": "Fixed Asset Computers", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetComputers"}, {"displayName": "Fixed Asset Copiers", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetCopiers"}, {"displayName": "Fixed Asset Furniture", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetFurniture"}, {"displayName": "Fixed Asset Phone", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetPhone"}, {"displayName": "Fixed Asset Photo Video", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetPhotoVideo"}, {"displayName": "Fixed Asset Software", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetSoftware"}, {"displayName": "Fixed Asset Other Tools Equipment", "required": false, "type": "String", "value": "Asset.Fixed Asset.FixedAssetOtherToolsEquipment"}, {"displayName": "Furniture And Fixtures", "required": false, "type": "String", "value": "Asset.Fixed Asset.FurnitureAndFixtures"}, {"displayName": "Land", "required": false, "type": "String", "value": "Asset.Fixed Asset.Land"}, {"displayName": "Leasehold Improvements", "required": false, "type": "String", "value": "Asset.Fixed Asset.LeaseholdImprovements"}, {"displayName": "Other Fixed Assets", "required": false, "type": "String", "value": "Asset.Fixed Asset.OtherFixedAssets"}, {"displayName": "Accumulated Amortization", "required": false, "type": "String", "value": "Asset.Fixed Asset.AccumulatedAmortization"}, {"displayName": "Buildings", "required": false, "type": "String", "value": "Asset.Fixed Asset.Buildings"}, {"displayName": "Intangible Assets", "required": false, "type": "String", "value": "Asset.Fixed Asset.IntangibleAssets"}, {"displayName": "Machinery And Equipment", "required": false, "type": "String", "value": "Asset.Fixed Asset.MachineryAndEquipment"}, {"displayName": "Vehicles", "required": false, "type": "String", "value": "Asset.Fixed Asset.Vehicles"}, {"displayName": "Assets In Course Of Construction", "required": false, "type": "String", "value": "Asset.Fixed Asset.AssetsInCourseOfConstruction"}, {"displayName": "Capital Wip", "required": false, "type": "String", "value": "Asset.Fixed Asset.CapitalWip"}, {"displayName": "Cumulative Depreciation On Intangible Assets", "required": false, "type": "String", "value": "Asset.Fixed Asset.CumulativeDepreciationOnIntangibleAssets"}, {"displayName": "Intangible Assets Under Development", "required": false, "type": "String", "value": "Asset.Fixed Asset.IntangibleAssetsUnderDevelopment"}, {"displayName": "Land Asset", "required": false, "type": "String", "value": "Asset.Fixed Asset.LandAsset"}, {"displayName": "Non Current Assets", "required": false, "type": "String", "value": "Asset.Fixed Asset.NonCurrentAssets"}, {"displayName": "Participating Interests", "required": false, "type": "String", "value": "Asset.Fixed Asset.ParticipatingInterests"}, {"displayName": "Provisions Fixed Assets", "required": false, "type": "String", "value": "Asset.Fixed Asset.ProvisionsFixedAssets"}, {"displayName": "Lease Buyout", "required": false, "type": "String", "value": "Asset.Other Asset.LeaseBuyout"}, {"displayName": "Other Long Term Assets", "required": false, "type": "String", "value": "Asset.Other Asset.OtherLongTermAssets"}, {"displayName": "Security Deposits", "required": false, "type": "String", "value": "Asset.Other Asset.SecurityDeposits"}, {"displayName": "Accumulated Amortization Of Other Assets", "required": false, "type": "String", "value": "Asset.Other Asset.AccumulatedAmortizationOfOtherAssets"}, {"displayName": "Goodwill", "required": false, "type": "String", "value": "Asset.Other Asset.Goodwill"}, {"displayName": "Licenses", "required": false, "type": "String", "value": "Asset.Other Asset.Licenses"}, {"displayName": "Organizational Costs", "required": false, "type": "String", "value": "Asset.Other Asset.OrganizationalCosts"}, {"displayName": "Assets Held For Sale", "required": false, "type": "String", "value": "Asset.Other Asset.AssetsHeldForSale"}, {"displayName": "Available For Sale Financial Assets", "required": false, "type": "String", "value": "Asset.Other Asset.AvailableForSaleFinancialAssets"}, {"displayName": "Deferred Tax", "required": false, "type": "String", "value": "Asset.Other Asset.DeferredTax"}, {"displayName": "Investments", "required": false, "type": "String", "value": "Asset.Other Asset.Investments"}, {"displayName": "Long Term Investments", "required": false, "type": "String", "value": "Asset.Other Asset.LongTermInvestments"}, {"displayName": "Long Term Loans And Advances To Related Parties", "required": false, "type": "String", "value": "Asset.Other Asset.LongTermLoansAndAdvancesToRelatedParties"}, {"displayName": "Other Intangible Assets", "required": false, "type": "String", "value": "Asset.Other Asset.OtherIntangibleAssets"}, {"displayName": "Other Long Term Investments", "required": false, "type": "String", "value": "Asset.Other Asset.OtherLongTermInvestments"}, {"displayName": "Other Long Term Loans And Advances", "required": false, "type": "String", "value": "Asset.Other Asset.OtherLongTermLoansAndAdvances"}, {"displayName": "Prepayments And Accrued Income", "required": false, "type": "String", "value": "Asset.Other Asset.PrepaymentsAndAccruedIncome"}, {"displayName": "Provisions Non-Current Assets", "required": false, "type": "String", "value": "Asset.Other Asset.ProvisionsNonCurrentAssets"}, {"displayName": "Accounts Receivable", "required": false, "type": "String", "value": "Asset.Accounts Receivable.AccountsReceivable"}, {"displayName": "Advertising/Promotional", "required": false, "type": "String", "value": "Expense.Expense.AdvertisingPromotional"}, {"displayName": "Bad Debts", "required": false, "type": "String", "value": "Expense.Expense.BadDebts"}, {"displayName": "Bank Charges", "required": false, "type": "String", "value": "Expense.Expense.BankCharges"}, {"displayName": "Charitable Contributions", "required": false, "type": "String", "value": "Expense.Expense.CharitableContributions"}, {"displayName": "Commissions And Fees", "required": false, "type": "String", "value": "Expense.Expense.CommissionsAndFees"}, {"displayName": "Entertainment", "required": false, "type": "String", "value": "Expense.Expense.Entertainment"}, {"displayName": "Entertainment Meals", "required": false, "type": "String", "value": "Expense.Expense.EntertainmentMeals"}, {"displayName": "Equipment Rental", "required": false, "type": "String", "value": "Expense.Expense.EquipmentRental"}, {"displayName": "Finance Costs", "required": false, "type": "String", "value": "Expense.Expense.FinanceCosts"}, {"displayName": "Global Tax Expense", "required": false, "type": "String", "value": "Expense.Expense.GlobalTaxExpense"}, {"displayName": "Insurance", "required": false, "type": "String", "value": "Expense.Expense.Insurance"}, {"displayName": "Interest Paid", "required": false, "type": "String", "value": "Expense.Expense.InterestPaid"}, {"displayName": "Legal And Professional Fees", "required": false, "type": "String", "value": "Expense.Expense.LegalProfessionalFees"}, {"displayName": "Office Expenses", "required": false, "type": "String", "value": "Expense.Expense.OfficeExpenses"}, {"displayName": "Office/General Administrative Expenses", "required": false, "type": "String", "value": "Expense.Expense.OfficeGeneralAdministrativeExpenses"}, {"displayName": "Other Business Expenses", "required": false, "type": "String", "value": "Expense.Expense.OtherBusinessExpenses"}, {"displayName": "Other Miscellaneous Service Cost", "required": false, "type": "String", "value": "Expense.Expense.OtherMiscellaneousServiceCost"}, {"displayName": "Promotional Meals", "required": false, "type": "String", "value": "Expense.Expense.PromotionalMeals"}, {"displayName": "Rent Or Lease Of Buildings", "required": false, "type": "String", "value": "Expense.Expense.RentOrLeaseOfBuildings"}, {"displayName": "Repair And Maintenance", "required": false, "type": "String", "value": "Expense.Expense.RepairMaintenance"}, {"displayName": "Shipping, Freight And Delivery", "required": false, "type": "String", "value": "Expense.Expense.ShippingFreightDelivery"}, {"displayName": "Supplies And Materials", "required": false, "type": "String", "value": "Expense.Expense.SuppliesMaterials"}, {"displayName": "Travel", "required": false, "type": "String", "value": "Expense.Expense.Travel"}, {"displayName": "Travel Meals", "required": false, "type": "String", "value": "Expense.Expense.TravelMeals"}, {"displayName": "Utilities", "required": false, "type": "String", "value": "Expense.Expense.Utilities"}, {"displayName": "Auto", "required": false, "type": "String", "value": "Expense.Expense.Auto"}, {"displayName": "Cost Of Labor", "required": false, "type": "String", "value": "Expense.Expense.CostOfLabor"}, {"displayName": "Dues And Subscriptions", "required": false, "type": "String", "value": "Expense.Expense.DuesSubscriptions"}, {"displayName": "Payroll Expenses", "required": false, "type": "String", "value": "Expense.Expense.PayrollExpenses"}, {"displayName": "Taxes Paid", "required": false, "type": "String", "value": "Expense.Expense.TaxesPaid"}, {"displayName": "Unapplied Cash Bill Payment Expense", "required": false, "type": "String", "value": "Expense.Expense.UnappliedCashBillPaymentExpense"}, {"displayName": "Utilities", "required": false, "type": "String", "value": "Expense.Expense.Utilities"}, {"displayName": "Amortization Expense", "required": false, "type": "String", "value": "Expense.Expense.AmortizationExpense"}, {"displayName": "Appropriations To Depreciation", "required": false, "type": "String", "value": "Expense.Expense.AppropriationsToDepreciation"}, {"displayName": "Borrowing Cost", "required": false, "type": "String", "value": "Expense.Expense.BorrowingCost"}, {"displayName": "Commissions And Fees", "required": false, "type": "String", "value": "Expense.Expense.CommissionsAndFees"}, {"displayName": "Distribution Costs", "required": false, "type": "String", "value": "Expense.Expense.DistributionCosts"}, {"displayName": "External Services", "required": false, "type": "String", "value": "Expense.Expense.ExternalServices"}, {"displayName": "Extraordinary Charges", "required": false, "type": "String", "value": "Expense.Expense.ExtraordinaryCharges"}, {"displayName": "Income Tax Expense", "required": false, "type": "String", "value": "Expense.Expense.IncomeTaxExpense"}, {"displayName": "Loss On Discontinued Operations Net Of Tax", "required": false, "type": "String", "value": "Expense.Expense.LossOnDiscontinuedOperationsNetOfTax"}, {"displayName": "Management Compensation", "required": false, "type": "String", "value": "Expense.Expense.ManagementCompensation"}, {"displayName": "Other Current Operating Charges", "required": false, "type": "String", "value": "Expense.Expense.OtherCurrentOperatingCharges"}, {"displayName": "Other External Services", "required": false, "type": "String", "value": "Expense.Expense.OtherExternalServices"}, {"displayName": "Other Rental Costs", "required": false, "type": "String", "value": "Expense.Expense.OtherRentalCosts"}, {"displayName": "Other Selling Expenses", "required": false, "type": "String", "value": "Expense.Expense.OtherSellingExpenses"}, {"displayName": "Project Studies Surveys Assessments", "required": false, "type": "String", "value": "Expense.Expense.ProjectStudiesSurveysAssessments"}, {"displayName": "Purchases Rebates", "required": false, "type": "String", "value": "Expense.Expense.PurchasesRebates"}, {"displayName": "Shipping And Delivery Expense", "required": false, "type": "String", "value": "Expense.Expense.ShippingAndDeliveryExpense"}, {"displayName": "Staff Costs", "required": false, "type": "String", "value": "Expense.Expense.StaffCosts"}, {"displayName": "Sundry", "required": false, "type": "String", "value": "Expense.Expense.Sundry"}, {"displayName": "Travel Expenses General And Admin Expenses", "required": false, "type": "String", "value": "Expense.Expense.TravelExpensesGeneralAndAdminExpenses"}, {"displayName": "Travel Expenses Selling Expense", "required": false, "type": "String", "value": "Expense.Expense.TravelExpensesSellingExpense"}, {"displayName": "Depreciation", "required": false, "type": "String", "value": "Expense.Other Expense.Depreciation"}, {"displayName": "Exchange Gain Or Loss", "required": false, "type": "String", "value": "Expense.Other Expense.ExchangeGainOrLoss"}, {"displayName": "Other Miscellaneous Expense", "required": false, "type": "String", "value": "Expense.Other Expense.OtherMiscellaneousExpense"}, {"displayName": "Penalties And Settlements", "required": false, "type": "String", "value": "Expense.Other Expense.PenaltiesSettlements"}, {"displayName": "Amortization", "required": false, "type": "String", "value": "Expense.Other Expense.Amortization"}, {"displayName": "Gas And Fuel", "required": false, "type": "String", "value": "Expense.Other Expense.GasAndFuel"}, {"displayName": "Home Office", "required": false, "type": "String", "value": "Expense.Other Expense.HomeOffice"}, {"displayName": "Home Owner Rental Insurance", "required": false, "type": "String", "value": "Expense.Other Expense.HomeOwnerRentalInsurance"}, {"displayName": "Other Home Office Expenses", "required": false, "type": "String", "value": "Expense.Other Expense.OtherHomeOfficeExpenses"}, {"displayName": "Mortgage Interest", "required": false, "type": "String", "value": "Expense.Other Expense.MortgageInterest"}, {"displayName": "Rent And Lease", "required": false, "type": "String", "value": "Expense.Other Expense.RentAndLease"}, {"displayName": "Repairs And Maintenance", "required": false, "type": "String", "value": "Expense.Other Expense.RepairsAndMaintenance"}, {"displayName": "Parking And Tolls", "required": false, "type": "String", "value": "Expense.Other Expense.ParkingAndTolls"}, {"displayName": "Vehicle", "required": false, "type": "String", "value": "Expense.Other Expense.Vehicle"}, {"displayName": "Vehicle Insurance", "required": false, "type": "String", "value": "Expense.Other Expense.VehicleInsurance"}, {"displayName": "Vehicle Lease", "required": false, "type": "String", "value": "Expense.Other Expense.VehicleLease"}, {"displayName": "Vehicle Loan Interest", "required": false, "type": "String", "value": "Expense.Other Expense.VehicleLoanInterest"}, {"displayName": "Vehicle Loan", "required": false, "type": "String", "value": "Expense.Other Expense.VehicleLoan"}, {"displayName": "Vehicle Registration", "required": false, "type": "String", "value": "Expense.Other Expense.VehicleRegistration"}, {"displayName": "Vehicle Repairs", "required": false, "type": "String", "value": "Expense.Other Expense.VehicleRepairs"}, {"displayName": "Other Vehicle Expenses", "required": false, "type": "String", "value": "Expense.Other Expense.OtherVehicleExpenses"}, {"displayName": "Utilities", "required": false, "type": "String", "value": "Expense.Other Expense.Utilities"}, {"displayName": "Wash And Road Services", "required": false, "type": "String", "value": "Expense.Other Expense.WashAndRoadServices"}, {"displayName": "Deferred Tax Expense", "required": false, "type": "String", "value": "Expense.Other Expense.DeferredTaxExpense"}, {"displayName": "Depletion", "required": false, "type": "String", "value": "Expense.Other Expense.Depletion"}, {"displayName": "Exceptional Items", "required": false, "type": "String", "value": "Expense.Other Expense.ExceptionalItems"}, {"displayName": "Extraordinary Items", "required": false, "type": "String", "value": "Expense.Other Expense.ExtraordinaryItems"}, {"displayName": "Income Tax Other Expense", "required": false, "type": "String", "value": "Expense.Other Expense.IncomeTaxOtherExpense"}, {"displayName": "Mat Credit", "required": false, "type": "String", "value": "Expense.Other Expense.MatCredit"}, {"displayName": "Prior Period Items", "required": false, "type": "String", "value": "Expense.Other Expense.PriorPeriodItems"}, {"displayName": "Tax Roundoff Gain Or Loss", "required": false, "type": "String", "value": "Expense.Other Expense.TaxRoundoffGainOrLoss"}, {"displayName": "Equipment Rental - COS", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.EquipmentRentalCos"}, {"displayName": "Other Costs Of Sales - COS", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.OtherCostsOfServiceCos"}, {"displayName": "Shipping, Freight And Delivery - COS", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.ShippingFreightDeliveryCos"}, {"displayName": "Supplies And Materials - COS", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.SuppliesMaterialsCogs"}, {"displayName": "Cost Of Labor - COS", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.CostOfLaborCos"}, {"displayName": "Cost Of Sales", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.CostOfSales"}, {"displayName": "Freight And Delivery Cost", "required": false, "type": "String", "value": "Expense.Cost of Goods Sold.FreightAndDeliveryCost"}, {"displayName": "Non Profit Income", "required": false, "type": "String", "value": "Income.Income.NonProfitIncome"}, {"displayName": "Other Primary Income", "required": false, "type": "String", "value": "Income.Income.OtherPrimaryIncome"}, {"displayName": "Sales Of ProductIncome", "required": false, "type": "String", "value": "Income.Income.SalesOfProductIncome"}, {"displayName": "Service Fee Income", "required": false, "type": "String", "value": "Income.Income.ServiceFeeIncome"}, {"displayName": "Discounts Refunds Given", "required": false, "type": "String", "value": "Income.Income.DiscountsRefundsGiven"}, {"displayName": "Unapplied Cash Payment Income", "required": false, "type": "String", "value": "Income.Income.UnappliedCashPaymentIncome"}, {"displayName": "Cash Receipt Income", "required": false, "type": "String", "value": "Income.Income.CashReceiptIncome"}, {"displayName": "Operating Grants", "required": false, "type": "String", "value": "Income.Income.OperatingGrants"}, {"displayName": "Other Current Operating Income", "required": false, "type": "String", "value": "Income.Income.OtherCurrentOperatingIncome"}, {"displayName": "Own Work Capitalized", "required": false, "type": "String", "value": "Income.Income.OwnWorkCapitalized"}, {"displayName": "Revenue General", "required": false, "type": "String", "value": "Income.Income.RevenueGeneral"}, {"displayName": "Sales Retail", "required": false, "type": "String", "value": "Income.Income.SalesRetail"}, {"displayName": "Sales Wholesale", "required": false, "type": "String", "value": "Income.Income.SalesWholesale"}, {"displayName": "Savings By Tax Scheme", "required": false, "type": "String", "value": "Income.Income.SavingsByTaxScheme"}, {"displayName": "Dividend Income", "required": false, "type": "String", "value": "Income.Other Income.DividendIncome"}, {"displayName": "Interest Earned", "required": false, "type": "String", "value": "Income.Other Income.InterestEarned"}, {"displayName": "Other Investment Income", "required": false, "type": "String", "value": "Income.Other Income.OtherInvestmentIncome"}, {"displayName": "Other Miscellaneous Income", "required": false, "type": "String", "value": "Income.Other Income.OtherMiscellaneousIncome"}, {"displayName": "Tax Exempt Interest", "required": false, "type": "String", "value": "Income.Other Income.TaxExemptInterest"}, {"displayName": "Gain Loss On Sale Of Fixed Assets", "required": false, "type": "String", "value": "Income.Other Income.GainLossOnSaleOfFixedAssets"}, {"displayName": "Gain Loss On Sale Of Investments", "required": false, "type": "String", "value": "Income.Other Income.GainLossOnSaleOfInvestments"}, {"displayName": "Loss On Disposal Of Assets", "required": false, "type": "String", "value": "Income.Other Income.LossOnDisposalOfAssets"}, {"displayName": "Other Operating Income", "required": false, "type": "String", "value": "Income.Other Income.OtherOperatingIncome"}, {"displayName": "Unrealised Loss On Securities Net Of Tax", "required": false, "type": "String", "value": "Income.Other Income.UnrealisedLossOnSecuritiesNetOfTax"}, {"displayName": "Accounts Payable", "required": false, "type": "String", "value": "Liability.Accounts Payable.AccountsPayable"}, {"displayName": "Outstanding Dues Micro Small Enterprise", "required": false, "type": "String", "value": "Liability.Accounts Payable.OutstandingDuesMicroSmallEnterprise"}, {"displayName": "Outstanding Dues Other Than Micro Small Enterprise", "required": false, "type": "String", "value": "Liability.Accounts Payable.OutstandingDuesOtherThanMicroSmallEnterprise"}, {"displayName": "Credit Card", "required": false, "type": "String", "value": "Liability.Credit Card.CreditCard"}, {"displayName": "Notes Payable", "required": false, "type": "String", "value": "Liability.Long Term Liability.NotesPayable"}, {"displayName": "Other Long Term Liabilities", "required": false, "type": "String", "value": "Liability.Long Term Liability.OtherLongTermLiabilities"}, {"displayName": "Shareholder Notes Payable", "required": false, "type": "String", "value": "Liability.Long Term Liability.ShareholderNotesPayable"}, {"displayName": "Accruals And Deferred Income", "required": false, "type": "String", "value": "Liability.Long Term Liability.AccrualsAndDeferredIncome"}, {"displayName": "Accrued Long Lerm Liabilities", "required": false, "type": "String", "value": "Liability.Long Term Liability.AccruedLongLermLiabilities"}, {"displayName": "Accrued Vacation Payable", "required": false, "type": "String", "value": "Liability.Long Term Liability.AccruedVacationPayable"}, {"displayName": "Bank Loans", "required": false, "type": "String", "value": "Liability.Long Term Liability.BankLoans"}, {"displayName": "Debts Related To Participating Interests", "required": false, "type": "String", "value": "Liability.Long Term Liability.DebtsRelatedToParticipatingInterests"}, {"displayName": "Deferred Tax Liabilities", "required": false, "type": "String", "value": "Liability.Long Term Liability.DeferredTaxLiabilities"}, {"displayName": "Government And Other Public Authorities", "required": false, "type": "String", "value": "Liability.Long Term Liability.GovernmentAndOtherPublicAuthorities"}, {"displayName": "Group And Associates", "required": false, "type": "String", "value": "Liability.Long Term Liability.GroupAndAssociates"}, {"displayName": "Liabilities Related To Assets Held For Sale", "required": false, "type": "String", "value": "Liability.Long Term Liability.LiabilitiesRelatedToAssetsHeldForSale"}, {"displayName": "Long Term Borrowings", "required": false, "type": "String", "value": "Liability.Long Term Liability.LongTermBorrowings"}, {"displayName": "Long Term Debit", "required": false, "type": "String", "value": "Liability.Long Term Liability.LongTermDebit"}, {"displayName": "Long Term Employee Benefit Obligations", "required": false, "type": "String", "value": "Liability.Long Term Liability.LongTermEmployeeBenefitObligations"}, {"displayName": "Obligations Under Finance Leases", "required": false, "type": "String", "value": "Liability.Long Term Liability.ObligationsUnderFinanceLeases"}, {"displayName": "Other Long Term Provisions", "required": false, "type": "String", "value": "Liability.Long Term Liability.OtherLongTermProvisions"}, {"displayName": "Provision For Liabilities", "required": false, "type": "String", "value": "Liability.Long Term Liability.ProvisionForLiabilities"}, {"displayName": "Provisions Non Current Liabilities", "required": false, "type": "String", "value": "Liability.Long Term Liability.ProvisionsNonCurrentLiabilities"}, {"displayName": "Staff And Related Long Term Liability Accounts", "required": false, "type": "String", "value": "Liability.Long Term Liability.StaffAndRelatedLongTermLiabilityAccounts"}, {"displayName": "Direct Deposit Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.DirectDepositPayable"}, {"displayName": "Line Of Credit", "required": false, "type": "String", "value": "Liability.Other Current Liability.LineOfCredit"}, {"displayName": "Loan Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.LoanPayable"}, {"displayName": "Global Tax Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.GlobalTaxPayable"}, {"displayName": "Global Tax Suspense", "required": false, "type": "String", "value": "Liability.Other Current Liability.GlobalTaxSuspense"}, {"displayName": "Other Current Liabilities", "required": false, "type": "String", "value": "Liability.Other Current Liability.OtherCurrentLiabilities"}, {"displayName": "Payroll Clearing", "required": false, "type": "String", "value": "Liability.Other Current Liability.PayrollClearing"}, {"displayName": "Payroll Tax Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.PayrollTaxPayable"}, {"displayName": "Prepaid Expenses Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.PrepaidExpensesPayable"}, {"displayName": "Rents In Trust Liability", "required": false, "type": "String", "value": "Liability.Other Current Liability.RentsInTrustLiability"}, {"displayName": "Trust Accounts Liabilities", "required": false, "type": "String", "value": "Liability.Other Current Liability.TrustAccountsLiabilities"}, {"displayName": "Federal Income Tax Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.FederalIncomeTaxPayable"}, {"displayName": "Insurance Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.InsurancePayable"}, {"displayName": "Sales Tax Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.SalesTaxPayable"}, {"displayName": "State Local Income Tax Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.StateLocalIncomeTaxPayable"}, {"displayName": "Accrued Liabilities", "required": false, "type": "String", "value": "Liability.Other Current Liability.AccruedLiabilities"}, {"displayName": "Current Liabilities", "required": false, "type": "String", "value": "Liability.Other Current Liability.CurrentLiabilities"}, {"displayName": "Current Portion EmployeeBenefits Obligations", "required": false, "type": "String", "value": "Liability.Other Current Liability.CurrentPortionEmployeeBenefitsObligations"}, {"displayName": "Current Portion Of Obligations Under Finance Leases", "required": false, "type": "String", "value": "Liability.Other Current Liability.CurrentPortionOfObligationsUnderFinanceLeases"}, {"displayName": "Current Tax Liability", "required": false, "type": "String", "value": "Liability.Other Current Liability.CurrentTaxLiability"}, {"displayName": "Dividends Payable", "required": false, "type": "String", "value": "Liability.Other Current Liability.DividendsPayable"}, {"displayName": "Duties And Taxes", "required": false, "type": "String", "value": "Liability.Other Current Liability.DutiesAndTaxes"}, {"displayName": "Interest Payables", "required": false, "type": "String", "value": "Liability.Other Current Liability.InterestPayables"}, {"displayName": "Provision For Warranty Obligations", "required": false, "type": "String", "value": "Liability.Other Current Liability.ProvisionForWarrantyObligations"}, {"displayName": "Provisions Current Liabilities", "required": false, "type": "String", "value": "Liability.Other Current Liability.ProvisionsCurrentLiabilities"}, {"displayName": "Short Term Borrowings", "required": false, "type": "String", "value": "Liability.Other Current Liability.ShortTermBorrowings"}, {"displayName": "Social Security Agencies", "required": false, "type": "String", "value": "Liability.Other Current Liability.SocialSecurityAgencies"}, {"displayName": "Staff And Related Liability Accounts", "required": false, "type": "String", "value": "Liability.Other Current Liability.StaffAndRelatedLiabilityAccounts"}, {"displayName": "Sundry Debtors And Creditors", "required": false, "type": "String", "value": "Liability.Other Current Liability.SundryDebtorsAndCreditors"}, {"displayName": "Trade And Other Payables", "required": false, "type": "String", "value": "Liability.Other Current Liability.TradeAndOtherPayables"}, {"displayName": "Opening Balance Equity", "required": false, "type": "String", "value": "Equity.Equity.OpeningBalanceEquity"}, {"displayName": "Partners Equity", "required": false, "type": "String", "value": "Equity.Equity.PartnersEquity"}, {"displayName": "Retained Earnings", "required": false, "type": "String", "value": "Equity.Equity.RetainedEarnings"}, {"displayName": "Accumulated Adjustment", "required": false, "type": "String", "value": "Equity.Equity.AccumulatedAdjustment"}, {"displayName": "Owners Equity", "required": false, "type": "String", "value": "Equity.Equity.OwnersEquity"}, {"displayName": "Paid In Capital Or Surplus", "required": false, "type": "String", "value": "Equity.Equity.PaidInCapitalOrSurplus"}, {"displayName": "Partner Contributions", "required": false, "type": "String", "value": "Equity.Equity.PartnerContributions"}, {"displayName": "Partner Distributions", "required": false, "type": "String", "value": "Equity.Equity.PartnerDistributions"}, {"displayName": "Preferred Stock", "required": false, "type": "String", "value": "Equity.Equity.PreferredStock"}, {"displayName": "Common Stock", "required": false, "type": "String", "value": "Equity.Equity.CommonStock"}, {"displayName": "Treasury Stock", "required": false, "type": "String", "value": "Equity.Equity.TreasuryStock"}, {"displayName": "Estimated Taxes", "required": false, "type": "String", "value": "Equity.Equity.EstimatedTaxes"}, {"displayName": "Healthcare", "required": false, "type": "String", "value": "Equity.Equity.Healthcare"}, {"displayName": "Personal Income", "required": false, "type": "String", "value": "Equity.Equity.PersonalIncome"}, {"displayName": "Personal Expense", "required": false, "type": "String", "value": "Equity.Equity.PersonalExpense"}, {"displayName": "Accumulated Other Comprehensive Income", "required": false, "type": "String", "value": "Equity.Equity.AccumulatedOtherComprehensiveIncome"}, {"displayName": "Called Up Share Capital", "required": false, "type": "String", "value": "Equity.Equity.CalledUpShareCapital"}, {"displayName": "Capital Reserves", "required": false, "type": "String", "value": "Equity.Equity.CapitalReserves"}, {"displayName": "Dividend Disbursed", "required": false, "type": "String", "value": "Equity.Equity.DividendDisbursed"}, {"displayName": "Equity In Earnings Of Subsiduaries", "required": false, "type": "String", "value": "Equity.Equity.EquityInEarningsOfSubsiduaries"}, {"displayName": "Investment Grants", "required": false, "type": "String", "value": "Equity.Equity.InvestmentGrants"}, {"displayName": "Money Received Against Share Warrants", "required": false, "type": "String", "value": "Equity.Equity.MoneyReceivedAgainstShareWarrants"}, {"displayName": "Other Free Reserves", "required": false, "type": "String", "value": "Equity.Equity.OtherFreeReserves"}, {"displayName": "Share Application Money Pending Allotment", "required": false, "type": "String", "value": "Equity.Equity.ShareApplicationMoneyPendingAllotment"}, {"displayName": "Share Capital", "required": false, "type": "String", "value": "Equity.Equity.ShareCapital"}, {"displayName": "Funds", "required": false, "type": "String", "value": "Equity.Equity.Funds"}], "required": true, "type": "String"}}, "required": true, "type": "Object"}
+    Sage Business Cloud Accounting:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+      responses:
+        "200":
+          application/json: {"description": "Nominal Accounts are the categories a business uses to record transactions", "displayName": "Nominal Account", "properties": {"name": {"description": "Name of the account", "displayName": "Name", "required": true, "type": "String", "validation": {"information": [{"details": "Should not be longer than 200 characters.", "field": "Name"}], "warnings": []}}, "nominalCode": {"description": "The external reference given to each nominal account for a business", "displayName": "Nominal Code", "required": true, "type": "String", "validation": {"information": [{"details": "Should be a number between 1 and 99999999.", "field": "NominalCode"}], "warnings": []}}, "fullyQualifiedCategory": {"description": "The full category of the account e.g. Liability.Current or Income.Revenue", "displayName": "Fully Qualified Category", "options": [{"displayName": "Sales", "required": false, "type": "String", "value": "SALES"}, {"displayName": "Other Income", "required": false, "type": "String", "value": "OTHER_INCOME"}, {"displayName": "Direct Expenses", "required": false, "type": "String", "value": "DIRECT_EXPENSES"}, {"displayName": "Overheads", "required": false, "type": "String", "value": "OVERHEADS"}, {"displayName": "Depreciation", "required": false, "type": "String", "value": "DEPRECIATION"}, {"displayName": "Current Assets", "required": false, "type": "String", "value": "CURRENT_ASSETS"}, {"displayName": "Fixed Assets", "required": false, "type": "String", "value": "FIXED_ASSETS"}, {"displayName": "Future Assets", "required": false, "type": "String", "value": "FUTURE_ASSETS"}, {"displayName": "Bank", "required": false, "type": "String", "value": "BANK"}, {"displayName": "Current Liability", "required": false, "type": "String", "value": "CURRENT_LIABILITY"}, {"displayName": "Future Liability", "required": false, "type": "String", "value": "FUTURE_LIABILITY"}, {"displayName": "Equity", "required": false, "type": "String", "value": "EQUITY"}, {"displayName": "Credit Card / Loan", "required": false, "type": "String", "value": "LINE_OF_CREDIT"}], "required": true, "type": "String"}}, "required": true, "type": "Object"}
+    Sage Intacct:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+      responses:
+        "200":
+          application/json: {"description": "Nominal Accounts are the categories a business uses to record transactions", "displayName": "Nominal Account", "properties": {"nominalCode": {"description": "The external reference given to each nominal account for a business", "displayName": "Nominal Code", "required": true, "type": "String", "validation": {"information": [], "warnings": [{"details": "Must be unique within the entity.", "field": "NominalCode"}, {"details": "Must be at most 24 characters in length, although restrictions may vary between entities.", "field": "NominalCode"}]}}, "name": {"description": "Name of the account", "displayName": "Name", "required": true, "type": "String"}, "status": {"description": "The status of the account", "displayName": "Account Status", "options": [{"displayName": "Active", "required": false, "type": "String", "value": "Active"}, {"displayName": "Archived", "required": false, "type": "String", "value": "Archived"}], "required": true, "type": "String"}, "type": {"description": "The type, or base category, of the account", "displayName": "Account Type", "options": [{"displayName": "Asset", "required": false, "type": "String", "value": "Asset"}, {"displayName": "Equity", "required": false, "type": "String", "value": "Equity"}, {"displayName": "Expense", "required": false, "type": "String", "value": "Expense"}, {"displayName": "Income", "required": false, "type": "String", "value": "Income"}, {"displayName": "Liability", "required": false, "type": "String", "value": "Liability"}], "required": true, "type": "String"}, "fullyQualifiedCategory": {"description": "The full category of the account e.g. Liability.Current or Income.Revenue", "displayName": "Fully Qualified Category", "required": true, "type": "String", "validation": {"information": [{"details": "Any category that is part of the hierarchy of one of: 'Assets', 'Equity', 'Liabilities', 'Total Expenses' and 'Total Income' is permitted.", "field": "FullyQualifiedCategory"}], "warnings": []}}}, "required": true, "type": "Object"}
+    Sandbox:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+      responses:
+        "200":
+          application/json: {"description": "Nominal Accounts are the categories a business uses to record transactions", "displayName": "Nominal Account", "properties": {"nominalCode": {"description": "The external reference given to each nominal account for a business", "displayName": "Nominal Code", "required": true, "type": "String"}, "name": {"description": "Name of the account", "displayName": "Name", "required": true, "type": "String"}, "description": {"description": "Description of the account", "displayName": "Description", "required": true, "type": "String"}, "fullyQualifiedCategory": {"description": "The full category of the account e.g. Liability.Current or Income.Revenue", "displayName": "Fully Qualified Category", "required": true, "type": "String"}, "fullyQualifiedName": {"description": "The full name of the account e.g. Liability.Current.VAT or Income.Revenue.Sales", "displayName": "Fully Qualified Name", "required": true, "type": "String"}, "currency": {"description": "The currency of the account", "displayName": "Currency", "required": true, "type": "String"}, "currentBalance": {"description": "The current balance in the account", "displayName": "Current Balance", "required": true, "type": "Number"}, "type": {"description": "The type, or base category, of the account", "displayName": "Account Type", "required": true, "type": "String"}, "status": {"description": "The status of the account", "displayName": "Account Status", "required": true, "type": "String"}, "isBankAccount": {"description": "Confirms whether the nominal account represents a bank account or not", "displayName": "Is Bank Account?", "required": true, "type": "Boolean"}, "validDatatypeLinks": {"description": "Describes which fields on other data types are valid links to this account in the originating system", "displayName": "Valid Datatype Links", "required": true, "type": "Array"}, "metadata": {"description": "Miscellaneous data about the item", "displayName": "Metadata", "required": true, "type": "Object"}}, "required": true, "type": "Object"}
+    Xero:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+      responses:
+        "200":
+          application/json: {"description": "Nominal Accounts are the categories a business uses to record transactions", "displayName": "Nominal Account", "properties": {"nominalCode": {"description": "Identifier for the nominal account.", "displayName": "Nominal Code", "required": true, "type": "String", "validation": {"information": [], "warnings": [{"details": "Max length of 10 characters.", "field": "NominalCode"}]}}, "name": {"description": "Name of account as it appears in the chart of accounts or general ledger.", "displayName": "Name", "required": true, "type": "String", "validation": {"information": [{"details": "Payments are enabled to this account if the name ends in .PaymentsEnabled.", "field": "Name"}], "warnings": []}}, "description": {"description": "Description for the nominal account.", "displayName": "Description", "required": false, "type": "String"}, "fullyQualifiedCategory": {"description": "Account type and category for nominal account.", "displayName": "Fully Qualified Category", "options": [{"displayName": "Current Asset", "required": false, "type": "String", "value": "Asset.Current"}, {"displayName": "Fixed Asset", "required": false, "type": "String", "value": "Asset.Fixed"}, {"displayName": "Inventory", "required": false, "type": "String", "value": "Asset.Inventory"}, {"displayName": "Non-current Asset", "required": false, "type": "String", "value": "Asset.NonCurrent"}, {"displayName": "Prepayment", "required": false, "type": "String", "value": "Asset.Prepayment"}, {"displayName": "Direct Costs", "required": false, "type": "String", "value": "Expense.DirectCosts"}, {"displayName": "Expense", "required": false, "type": "String", "value": "Expense.Expense"}, {"displayName": "Overhead", "required": false, "type": "String", "value": "Expense.Overhead"}, {"displayName": "Superannuation", "required": false, "type": "String", "value": "Expense.Superannuation"}, {"displayName": "Wages", "required": false, "type": "String", "value": "Expense.Wages"}, {"displayName": "Sales", "required": false, "type": "String", "value": "Income.Sales"}, {"displayName": "Revenue", "required": false, "type": "String", "value": "Income.Revenue"}, {"displayName": "Other Income", "required": false, "type": "String", "value": "Income.Other"}, {"displayName": "Current Liability", "required": false, "type": "String", "value": "Liability.Current"}, {"displayName": "Depreciation", "required": false, "type": "String", "value": "Liability.Depreciation"}, {"displayName": "Liability", "required": false, "type": "String", "value": "Liability.Liability"}, {"displayName": "Non Current Liability", "required": false, "type": "String", "value": "Liability.NonCurrent"}, {"displayName": "Pay As You Go Liability", "required": false, "type": "String", "value": "Liability.PayAsYouGo"}, {"displayName": "Superannuation Liability", "required": false, "type": "String", "value": "Liability.Superannuation"}, {"displayName": "Wages Payable Liability", "required": false, "type": "String", "value": "Liability.WagesPayable"}, {"displayName": "Equity", "required": false, "type": "String", "value": "Equity.Equity"}], "required": true, "type": "String"}}, "required": true, "type": "Object"}
+    Unauthorized:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+      responses:
+        "401":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "detailedErrorCode": 0, "error": "Unauthorized", "service": "PublicApi", "statusCode": 401}
+  list-accounts:
+    "":
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/{id}/data/{dataType}?page=1&pageSize=10"}, "self": {"href": "/companies/{id}/data/{dataType}"}}, "pageNumber": 1, "pageSize": 10, "results": [], "totalResults": 1}
+        "400": {}
+    Clear Books:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/354a121b-855f-4d25-90ad-0905b498c1c0/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/354a121b-855f-4d25-90ad-0905b498c1c0/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/354a121b-855f-4d25-90ad-0905b498c1c0/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Current", "fullyQualifiedName": "Asset.Current.Accounts Receivable", "id": "1b6266d1-1e44-46c5-8eb5-a8f98e03124e", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T12:38:15Z", "name": "Accounts Receivable", "nominalCode": "610", "sourceModifiedDate": "2022-12-10T16:39:00", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "description": "A provision anticipating that a portion of accounts receivable will never be collected.", "fullyQualifiedCategory": "Asset.Current", "fullyQualifiedName": "Asset.Current.Accounts Receivable", "id": "76d5f23b-9623-4e3b-89cd-da57228764d3", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T12:38:15Z", "name": "Accounts Receivable", "nominalCode": "611", "sourceModifiedDate": "2022-10-19T05:49:00", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 98}
+    Dynamics 365 Business Central:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/d6849caf-c146-41be-8335-b73346e3bd84/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/d6849caf-c146-41be-8335-b73346e3bd84/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/d6849caf-c146-41be-8335-b73346e3bd84/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": " .", "fullyQualifiedName": "..", "id": "8eaed16d-c69f-ec11-80f1-0022481b4546", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-27T14:21:18Z", "name": "", "nominalCode": "45422026-68CA-4EF2-9", "sourceModifiedDate": "2022-03-09T16:31:54Z", "status": "Active", "type": "Unknown", "validDatatypeLinks": [{"links": ["DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}, {"currency": "GBP", "currentBalance": 27.34, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": " .", "fullyQualifiedName": "..Account no cat Balance Sheet", "id": "c0861a65-c69f-ec11-80f1-0022481b4546", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-27T14:21:18Z", "name": "Account no cat Balance Sheet", "nominalCode": "10", "sourceModifiedDate": "2022-09-13T14:45:01Z", "status": "Active", "type": "Unknown", "validDatatypeLinks": [{"links": ["DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}], "totalResults": 122}
+    Exact (Netherlands):
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/b83b1923-4db6-45a8-a779-b4e320c15979/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/b83b1923-4db6-45a8-a779-b4e320c15979/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/b83b1923-4db6-45a8-a779-b4e320c15979/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "EUR", "currentBalance": 864435.44, "description": "Debiteuren", "fullyQualifiedCategory": "Asset.Assets.AccountsReceivable", "fullyQualifiedName": "Asset.Assets.AccountsReceivable.Debiteuren.PaymentsEnabled", "id": "ef2fde36-4416-4bc5-b239-315b2929348c", "isBankAccount": false, "modifiedDate": "2022-10-26T13:36:17Z", "name": "Debiteuren", "nominalCode": "1300", "sourceModifiedDate": "2020-01-08T09:42:54Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Transfer.To.AccountRef.Id", "Transfer.From.AccountRef.Id", "Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}, {"currency": "EUR", "currentBalance": 2174.82, "description": "One more AR account", "fullyQualifiedCategory": "Asset.Assets.AccountsReceivable", "fullyQualifiedName": "Asset.Assets.AccountsReceivable.One more AR account.PaymentsEnabled", "id": "2052b65b-20e9-4da1-85d8-fd5ca0ea3d38", "isBankAccount": false, "modifiedDate": "2022-10-26T13:36:17Z", "name": "One more AR account", "nominalCode": "888777888", "sourceModifiedDate": "2021-06-10T11:00:20Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Transfer.To.AccountRef.Id", "Transfer.From.AccountRef.Id", "Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}], "totalResults": 230}
+    Exact (UK):
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/d95030cd-22b2-482b-9c7b-2980dcc2b1ce/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/d95030cd-22b2-482b-9c7b-2980dcc2b1ce/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/d95030cd-22b2-482b-9c7b-2980dcc2b1ce/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Some thing account", "fullyQualifiedCategory": "Asset.Assets.AccountsReceivable", "fullyQualifiedName": "Asset.Assets.AccountsReceivable.Some thing account.PaymentsEnabled", "id": "ca2b96b7-cc45-4e35-9fa3-82a2ba1eec40", "isBankAccount": false, "modifiedDate": "2022-10-26T13:35:15Z", "name": "Some thing account", "nominalCode": "THING", "sourceModifiedDate": "2017-08-01T17:31:12Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Transfer.To.AccountRef.Id", "Transfer.From.AccountRef.Id", "Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}, {"currency": "GBP", "currentBalance": 4484655.39, "description": "Trade Debtors", "fullyQualifiedCategory": "Asset.Assets.AccountsReceivable", "fullyQualifiedName": "Asset.Assets.AccountsReceivable.Trade Debtors.PaymentsEnabled", "id": "cf9572e7-8afa-4339-9113-af32a66d9df9", "isBankAccount": false, "modifiedDate": "2022-10-26T13:35:15Z", "name": "Trade Debtors", "nominalCode": "15400", "sourceModifiedDate": "2020-01-08T13:48:38Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Transfer.To.AccountRef.Id", "Transfer.From.AccountRef.Id", "Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}], "totalResults": 121}
+    FreeAgent:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/071ad738-68f3-4561-afd0-69bab9df0803/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/071ad738-68f3-4561-afd0-69bab9df0803/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/071ad738-68f3-4561-afd0-69bab9df0803/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Capital", "fullyQualifiedName": "Asset.Capital.Capital Asset Brought Forward", "id": "601", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-25T14:19:12Z", "name": "Capital Asset Brought Forward", "nominalCode": "601", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Capital", "fullyQualifiedName": "Asset.Capital.Capital Asset Depreciation Brought Forward", "id": "605", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-25T14:19:12Z", "name": "Capital Asset Depreciation Brought Forward", "nominalCode": "605", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 292}
+    FreshBooks:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/3691c49e-0db4-4172-b3ab-e4084c365013/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/3691c49e-0db4-4172-b3ab-e4084c365013/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/3691c49e-0db4-4172-b3ab-e4084c365013/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 51445.53, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset", "fullyQualifiedName": "Asset.Accounts Receivable", "id": "67357", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-24T16:07:24Z", "name": "Accounts Receivable", "nominalCode": "1200", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 51445.53, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable", "fullyQualifiedName": "Asset.Accounts Receivable.Accounts Receivable", "id": "128611", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-24T16:07:24Z", "name": "Accounts Receivable", "nominalCode": "1200-1", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 96}
+    KashFlow:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/3a707a99-89da-4b16-a5d6-595333a16352/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/3a707a99-89da-4b16-a5d6-595333a16352/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/3a707a99-89da-4b16-a5d6-595333a16352/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.BankAccount", "fullyQualifiedName": "Asset.BankAccount.16th Account", "id": "27840056", "isBankAccount": true, "modifiedDate": "2022-09-30T10:29:16Z", "name": "16th Account", "nominalCode": "70700", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.BankAccount", "fullyQualifiedName": "Asset.BankAccount.1a1a", "id": "27840049", "isBankAccount": true, "modifiedDate": "2022-09-30T10:29:16Z", "name": "1a1a", "nominalCode": "70600", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 157}
+    Oracle NetSuite:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/d5074b08-6a34-4b06-a742-236edf5dc4f1/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/d5074b08-6a34-4b06-a742-236edf5dc4f1/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/d5074b08-6a34-4b06-a742-236edf5dc4f1/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": -635.55, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "AcctPay.AcctPay", "fullyQualifiedName": "AcctPay.AcctPay.Accounts Payable", "id": "111", "isBankAccount": false, "modifiedDate": "2023-01-30T14:48:33Z", "name": "Accounts Payable", "nominalCode": "610", "sourceModifiedDate": "2021-08-11T12:51:21", "status": "Active", "type": "Liability", "validDatatypeLinks": []}, {"currency": "USD", "currentBalance": -565, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "AcctRec.AcctRec", "fullyQualifiedName": "AcctRec.AcctRec.Accounts Receivable", "id": "119", "isBankAccount": false, "modifiedDate": "2023-01-30T14:48:33Z", "name": "Accounts Receivable", "nominalCode": "610", "sourceModifiedDate": "2021-09-08T15:23:31", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 44}
+    QuickBooks Desktop:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/fc72ba08-af13-4474-b28a-01dcfa6cfb51/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/fc72ba08-af13-4474-b28a-01dcfa6cfb51/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/fc72ba08-af13-4474-b28a-01dcfa6cfb51/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 93007.93, "description": "Accounts Receivable", "fullyQualifiedCategory": "Asset.CurrentAsset.AccountsReceivable", "fullyQualifiedName": "Asset.CurrentAsset.AccountsReceivable.Accounts Receivable", "id": "40000-933270541", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:06:23Z", "name": "Accounts Receivable", "nominalCode": "11000", "sourceModifiedDate": "2023-12-16T05:06:45", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 46954.1, "description": "Cash", "fullyQualifiedCategory": "Asset.CurrentAsset.Bank", "fullyQualifiedName": "Asset.CurrentAsset.Bank.Checking", "id": "20000-933270541", "isBankAccount": true, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:06:23Z", "name": "Checking", "nominalCode": "10100", "sourceModifiedDate": "2023-12-16T05:06:45", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["BillLineItem.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}], "totalResults": 116}
+    QuickBooks Online:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/10818b5e-6e6a-4ed4-a1c5-3e3efe626e87/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/10818b5e-6e6a-4ed4-a1c5-3e3efe626e87/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/10818b5e-6e6a-4ed4-a1c5-3e3efe626e87/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 41289.37, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors", "id": "62", "isBankAccount": false, "modifiedDate": "2023-01-18T11:02:34Z", "name": "Debtors", "nominalCode": "246", "sourceModifiedDate": "2022-12-08T15:42:59Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "AED", "currentBalance": -1533.44, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors - AED", "id": "92", "isBankAccount": false, "modifiedDate": "2023-01-18T11:02:34Z", "name": "Debtors - AED", "nominalCode": "247", "sourceModifiedDate": "2021-02-19T14:04:45Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 234}
+    QuickBooks Online Sandbox:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/5a7f3597-36e1-4216-86fe-289ad36088a6/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/5a7f3597-36e1-4216-86fe-289ad36088a6/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/5a7f3597-36e1-4216-86fe-289ad36088a6/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 3041173.77, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors", "id": "70", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:35:55Z", "name": "Debtors", "nominalCode": "610", "sourceModifiedDate": "2023-04-26T01:18:15Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "USD", "currentBalance": 54822.37, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors - USD", "id": "80", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:35:55Z", "name": "Debtors - USD", "nominalCode": "610", "sourceModifiedDate": "2023-04-12T15:10:38Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 186}
+    Sage 200cloud:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/93c21e2d-049c-4d24-b41b-57e61c30b69e/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/93c21e2d-049c-4d24-b41b-57e61c30b69e/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/93c21e2d-049c-4d24-b41b-57e61c30b69e/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Bank Account", "fullyQualifiedCategory": "Asset.Bank Account", "fullyQualifiedName": "Asset.Bank Account.Bank Account", "id": "2864", "isBankAccount": false, "metadata": {"isDeleted": true}, "modifiedDate": "2022-10-14T09:35:52Z", "name": "Bank Account", "nominalCode": "1200", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Archived", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "description": "Bank Current Account", "fullyQualifiedCategory": "Asset.Bank Account", "fullyQualifiedName": "Asset.Bank Account.Bank Current Account", "id": "2368", "isBankAccount": true, "modifiedDate": "2022-10-14T09:35:52Z", "name": "Bank Current Account", "nominalCode": "1200", "sourceModifiedDate": "2020-09-11T13:53:12Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 344}
+    Sage 50 (UK):
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/cf5f2a47-2990-4221-bae6-0c19c86ac304/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/cf5f2a47-2990-4221-bae6-0c19c86ac304/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/cf5f2a47-2990-4221-bae6-0c19c86ac304/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 90640.61, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.CurrentAssets.Debtors", "fullyQualifiedName": "Asset.CurrentAssets.Debtors.Debtors Control Account", "id": "1100", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-30T14:42:44Z", "name": "Debtors Control Account", "nominalCode": "1100", "sourceModifiedDate": "2022-11-25T09:43:54", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.CurrentAssets.Debtors", "fullyQualifiedName": "Asset.CurrentAssets.Debtors.Other Debtors", "id": "1102", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-30T14:42:44Z", "name": "Other Debtors", "nominalCode": "1102", "sourceModifiedDate": "2022-11-25T09:43:54", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 155}
+    Sage Business Cloud Accounting:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/390083e2-351b-407c-a3be-55081c36c182/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/390083e2-351b-407c-a3be-55081c36c182/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/390083e2-351b-407c-a3be-55081c36c182/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 49.61, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Abdi Internet Bank", "id": "e5889b459f544926ac5b8e6756df2ad4", "isBankAccount": true, "modifiedDate": "2022-10-24T14:52:53Z", "name": "Abdi Internet Bank", "nominalCode": "1560", "sourceModifiedDate": "2020-01-27T10:53:26Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}, {"currency": "GBP", "currentBalance": 225830.75, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Abdi Live Test", "id": "b17083bc9b2748b4ab321b024e260eda", "isBankAccount": true, "modifiedDate": "2022-10-24T14:52:53Z", "name": "Abdi Live Test", "nominalCode": "147852", "sourceModifiedDate": "2020-01-28T14:00:20Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}], "totalResults": 283}
+    Sage Intacct:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/df02b289-cb16-4964-ac4d-9fd60b04538e/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/df02b289-cb16-4964-ac4d-9fd60b04538e/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/df02b289-cb16-4964-ac4d-9fd60b04538e/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable", "fullyQualifiedName": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable.Accounts Receivable", "id": "2", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-04T16:31:51Z", "name": "Accounts Receivable", "nominalCode": "12100", "sourceModifiedDate": "2020-01-29T01:42:43", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable", "fullyQualifiedName": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable.AR - Retainage", "id": "155", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-04T16:31:51Z", "name": "AR - Retainage", "nominalCode": "12710", "sourceModifiedDate": "2020-10-15T15:33:15", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 181}
+    Wave:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/0b22b59d-b4e5-4c35-b03f-88bbbcb41256/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/0b22b59d-b4e5-4c35-b03f-88bbbcb41256/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/0b22b59d-b4e5-4c35-b03f-88bbbcb41256/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Test Balance Sheet", "fullyQualifiedCategory": "Asset.CashAndBank", "fullyQualifiedName": "Asset.CashAndBank.Abdi Bank", "id": "QWNjb3VudDo5MjIzNDE3NjkzMzk3NjA2MzM7QnVzaW5lc3M6ZTI0OGQyZDctMWE5Ni00YTk4LWFkOTEtMDdlMGYyMmNhNmE2", "isBankAccount": true, "modifiedDate": "2022-11-16T18:15:17Z", "name": "Abdi Bank", "nominalCode": "610", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "description": "Cash you haven�t deposited in the bank. Add your bank and credit card accounts to accurately categorize transactions that aren't cash.", "fullyQualifiedCategory": "Asset.CashAndBank", "fullyQualifiedName": "Asset.CashAndBank.Cash on Hand", "id": "QWNjb3VudDo3OTE3NTA1OTcwOTQxNzQ3MTU7QnVzaW5lc3M6ZTI0OGQyZDctMWE5Ni00YTk4LWFkOTEtMDdlMGYyMmNhNmE2", "isBankAccount": true, "modifiedDate": "2022-11-16T18:15:17Z", "name": "Cash on Hand", "nominalCode": "610", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 85}
+    Xero:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/5ced9667-a310-443a-a711-958d36377141/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/5ced9667-a310-443a-a711-958d36377141/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/5ced9667-a310-443a-a711-958d36377141/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 924.25, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Business Bank Account", "id": "bd9e85e0-0478-433d-ae9f-0b3c4f04bfe4", "isBankAccount": true, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-15T20:35:08Z", "name": "Business Bank Account", "nominalCode": "A090", "sourceModifiedDate": "2023-02-17T11:10:49", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id", "DirectIncome.LineItems.AccountRef.Id", "DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}, {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Business Savings Account", "id": "a8d6fb1a-8c5d-4683-90ce-bf9d28fc62ba", "isBankAccount": true, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-15T20:35:08Z", "name": "Business Savings Account", "nominalCode": "A091", "sourceModifiedDate": "2023-02-17T11:10:49", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id", "DirectIncome.LineItems.AccountRef.Id", "DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}], "totalResults": 90}
+    Zoho Books:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/d0b68840-db50-4bc3-b88c-96e225333fea/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/d0b68840-db50-4bc3-b88c-96e225333fea/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/d0b68840-db50-4bc3-b88c-96e225333fea/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": -959.64, "description": "The money that customers owe you becomes the accounts receivable. A good example of this is a payment expected from an invoice sent to your customer.", "fullyQualifiedCategory": "Asset.accounts_receivable", "fullyQualifiedName": "Asset.accounts_receivable.Accounts Receivable", "id": "104957000000000352", "isBankAccount": false, "modifiedDate": "2022-10-03T08:40:43Z", "name": "Accounts Receivable", "nominalCode": "", "sourceModifiedDate": "2020-02-05T14:58:44", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 69858.44, "description": "", "fullyQualifiedCategory": "Asset.bank", "fullyQualifiedName": "Asset.bank.Abdi Test", "id": "104957000000060010", "isBankAccount": true, "modifiedDate": "2022-10-03T08:40:43Z", "name": "Abdi Test", "nominalCode": "", "sourceModifiedDate": "2020-02-17T12:19:47", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 68}
+    Malformed query:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error parsing query - Malformed query.", "service": "ClientsApi", "statusCode": 400}
+    Unresolved property:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "98457fb9956b7f9b4b2fd4f6e23bb5c8", "detailedErrorCode": 0, "error": "Error parsing query - Could not resolve property isCompleted on Dataset", "service": "PullApi", "statusCode": 400}

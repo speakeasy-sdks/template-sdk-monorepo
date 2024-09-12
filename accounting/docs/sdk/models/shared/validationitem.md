@@ -1,5 +1,12 @@
 # ValidationItem
 
+## Example Usage
+
+```typescript
+import { ValidationItem } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: ValidationItem = {};
+```
 
 ## Fields
 

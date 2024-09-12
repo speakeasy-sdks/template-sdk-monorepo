@@ -2,6 +2,13 @@
 
 A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here.
 
+## Example Usage
+
+```typescript
+import { Validation } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: Validation = {};
+```
 
 ## Fields
 

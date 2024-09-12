@@ -2,6 +2,15 @@
 
 Links an account transaction line to the underlying record that created it.
 
+## Example Usage
+
+```typescript
+import { AccountTransactionLineRecordRef, AccountTransactionLineRecordRefDataType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: AccountTransactionLineRecordRef = {
+  dataType: AccountTransactionLineRecordRefDataType.Transfers,
+};
+```
 
 ## Fields
 

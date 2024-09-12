@@ -1,5 +1,17 @@
 # PushOptionProperty
 
+## Example Usage
+
+```typescript
+import { PushOptionProperty, PushOptionType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: PushOptionProperty = {
+  description: "Fundamental background neural-net",
+  displayName: "Madison77",
+  required: false,
+  type: PushOptionType.Object,
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # HalRef
 
+## Example Usage
+
+```typescript
+import { HalRef } from "@speakeasy-sdks/lending/models/components";
+
+let value: HalRef = {};
+```
 
 ## Fields
 

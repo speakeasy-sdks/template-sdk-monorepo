@@ -2,6 +2,13 @@
 
 Available data types
 
+## Example Usage
+
+```typescript
+import { DataType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: DataType = DataType.Invoices;
+```
 
 ## Values
 

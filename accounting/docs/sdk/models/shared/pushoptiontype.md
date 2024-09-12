@@ -2,6 +2,13 @@
 
 The option type.
 
+## Example Usage
+
+```typescript
+import { PushOptionType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: PushOptionType = PushOptionType.Object;
+```
 
 ## Values
 

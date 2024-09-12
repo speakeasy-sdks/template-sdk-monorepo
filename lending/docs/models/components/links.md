@@ -1,5 +1,19 @@
 # Links
 
+## Example Usage
+
+```typescript
+import { Links } from "@speakeasy-sdks/lending/models/components";
+
+let value: Links = {
+  self: {
+    href: "/companies",
+  },
+  current: {
+    href: "/companies?page=1&pageSize=10",
+  },
+};
+```
 
 ## Fields
 

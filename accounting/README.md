@@ -6,8 +6,76 @@
     
 </div>
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Accounting API: > ### New to Codat?
+>
+> Our Accounting API reference is relevant only to our existing clients.
+> Please reach out to your Codat contact so that we can find the right product for you.
+
+A flexible API for pulling accounting data, normalized and aggregated from 20 accounting integrations.
+
+Standardize how you connect to your customers’ accounting software. View, create, update, and delete data in the same way for all the leading accounting platforms.
+
+<!-- Start Codat Tags Table -->
+## Endpoints
+
+| Endpoints | Description |
+| :- |:- |
+| Accounts | Access standardized Accounts from linked accounting platforms. |
+| Account transactions | Access standardized Account transactions from linked accounting platforms. |
+| Bank accounts | Access standardized Bank accounts from linked accounting platforms. |
+| Bank account transactions | Access standardized Bank transactions for bank accounts from linked accounting platforms. |
+| Bills | Access standardized Bills from linked accounting platforms. |
+| Bill credit notes | Access standardized Bill credit notes from linked accounting platforms. |
+| Bill payments | Access standardized Bill payments from linked accounting platforms. |
+| Credit notes | Access standardized Credit notes from linked accounting platforms. |
+| Customers | Access standardized Customers from linked accounting platforms. |
+| Direct costs | Access standardized Direct costs from linked accounting platforms. |
+| Direct incomes | Access standardized Direct incomes from linked accounting platforms. |
+| Company info | Access standardized Company info from linked accounting platforms. |
+| Invoices | Access standardized Invoices from linked accounting platforms. |
+| Item receipts | Access standardized Item receipts from linked accounting platforms. |
+| Items | Access standardized Items from linked accounting platforms. |
+| Journals | Access standardized Journals from linked accounting platforms. |
+| Journal entries | Access standardized Journal entries from linked accounting platforms. |
+| Payments | Access standardized Payments from linked accounting platforms. |
+| Payment methods | Access standardized Payment methods from linked accounting platforms. |
+| Purchase orders | Access standardized Purchase orders from linked accounting platforms. |
+| Sales orders | Access standardized Sales orders from linked accounting platforms. |
+| Suppliers | Access standardized Suppliers from linked accounting platforms. |
+| Tax rates | Access standardized Tax rates from linked accounting platforms. |
+| Tracking categories | Access standardized Tracking categories from linked accounting platforms. |
+| Transfers | Access standardized Transfers from linked accounting platforms. |
+| Reports | Access standardized Reports from linked accounting platforms. |
+<!-- End Codat Tags Table -->
+
+[Read more...](https://docs.codat.io/accounting-api/overview)
+
+[See our OpenAPI spec](https://github.com/codatio/oas)
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [Requirements](#requirements)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Standalone functions](#standalone-functions)
+* [Retries](#retries)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Custom HTTP Client](#custom-http-client)
+* [Authentication](#authentication)
+* [Debugging](#debugging)
+<!-- End Table of Contents [toc] -->
+
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
+
+The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
 ### NPM
 
@@ -15,10 +83,25 @@
 npm add @speakeasy-sdks/accounting
 ```
 
+### PNPM
+
+```bash
+pnpm add @speakeasy-sdks/accounting
+```
+
+### Bun
+
+```bash
+bun add @speakeasy-sdks/accounting
+```
+
 ### Yarn
 
 ```bash
-yarn add @speakeasy-sdks/accounting
+yarn add @speakeasy-sdks/accounting zod
+
+# Note that Yarn does not install peer dependencies automatically. You will need
+# to install zod as shown above.
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -31,18 +114,18 @@ yarn add @speakeasy-sdks/accounting
 import { Accounting } from "@speakeasy-sdks/accounting";
 
 const accounting = new Accounting({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
 });
 
 async function run() {
-    const result = await accounting.accountTransactions.get(
-        "<value>",
-        "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-    );
+  const result = await accounting.accountTransactions.get(
+    "<value>",
+    "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+  );
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -72,6 +155,32 @@ run();
 For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 <!-- End Requirements [requirements] -->
 
+<!-- Start Standalone functions [standalone-funcs] -->
+## Standalone functions
+
+All the methods listed above are available as standalone functions. These
+functions are ideal for use in applications running in the browser, serverless
+runtimes or other environments where application bundle size is a primary
+concern. When using a bundler to build your application, all unused
+functionality will be either excluded from the final bundle or tree-shaken away.
+
+To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
+
+<details>
+
+<summary>Available standalone functions</summary>
+
+- [accountTransactionsGet](docs/sdks/accounttransactions/README.md#get)
+- [accountTransactionsList](docs/sdks/accounttransactions/README.md#list)
+- [accountsCreate](docs/sdks/accounts/README.md#create)
+- [accountsGetCreateModel](docs/sdks/accounts/README.md#getcreatemodel)
+- [accountsGet](docs/sdks/accounts/README.md#get)
+- [accountsList](docs/sdks/accounts/README.md#list)
+
+
+</details>
+<!-- End Standalone functions [standalone-funcs] -->
+
 <!-- Start Retries [retries] -->
 ## Retries
 
@@ -82,30 +191,30 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Accounting } from "@speakeasy-sdks/accounting";
 
 const accounting = new Accounting({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
 });
 
 async function run() {
-    const result = await accounting.accountTransactions.get(
-        "<value>",
-        "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        {
-            retries: {
-                strategy: "backoff",
-                backoff: {
-                    initialInterval: 1,
-                    maxInterval: 50,
-                    exponent: 1.1,
-                    maxElapsedTime: 100,
-                },
-                retryConnectionErrors: false,
-            },
-        }
-    );
+  const result = await accounting.accountTransactions.get(
+    "<value>",
+    "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    {
+      retries: {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 1,
+          maxInterval: 50,
+          exponent: 1.1,
+          maxElapsedTime: 100,
+        },
+        retryConnectionErrors: false,
+      },
+    },
+  );
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -117,28 +226,28 @@ If you'd like to override the default retry strategy for all operations that sup
 import { Accounting } from "@speakeasy-sdks/accounting";
 
 const accounting = new Accounting({
-    retryConfig: {
-        strategy: "backoff",
-        backoff: {
-            initialInterval: 1,
-            maxInterval: 50,
-            exponent: 1.1,
-            maxElapsedTime: 100,
-        },
-        retryConnectionErrors: false,
+  retryConfig: {
+    strategy: "backoff",
+    backoff: {
+      initialInterval: 1,
+      maxInterval: 50,
+      exponent: 1.1,
+      maxElapsedTime: 100,
     },
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+    retryConnectionErrors: false,
+  },
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
 });
 
 async function run() {
-    const result = await accounting.accountTransactions.get(
-        "<value>",
-        "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-    );
+  const result = await accounting.accountTransactions.get(
+    "<value>",
+    "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+  );
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -160,37 +269,37 @@ Validation errors can also occur when either method arguments or data returned f
 
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import * as errors from "@speakeasy-sdks/accounting/sdk/models/errors";
+import { SDKValidationError } from "@speakeasy-sdks/accounting/sdk/models/errors";
 
 const accounting = new Accounting({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
 });
 
 async function run() {
-    let result;
-    try {
-        result = await accounting.accountTransactions.get(
-            "<value>",
-            "8a210b68-6988-11ed-a1eb-0242ac120002",
-            "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-        );
-    } catch (err) {
-        switch (true) {
-            case err instanceof errors.SDKValidationError: {
-                // Validation errors can be pretty-printed
-                console.error(err.pretty());
-                // Raw value may also be inspected
-                console.error(err.rawValue);
-                return;
-            }
-            default: {
-                throw err;
-            }
-        }
-    }
+  let result;
+  try {
+    result = await accounting.accountTransactions.get(
+      "<value>",
+      "8a210b68-6988-11ed-a1eb-0242ac120002",
+      "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    );
 
     // Handle the result
     console.log(result);
+  } catch (err) {
+    switch (true) {
+      case (err instanceof SDKValidationError): {
+        // Validation errors can be pretty-printed
+        console.error(err.pretty());
+        // Raw value may also be inspected
+        console.error(err.rawValue);
+        return;
+      }
+      default: {
+        throw err;
+      }
+    }
+  }
 }
 
 run();
@@ -213,19 +322,19 @@ You can override the default server globally by passing a server index to the `s
 import { Accounting } from "@speakeasy-sdks/accounting";
 
 const accounting = new Accounting({
-    serverIdx: 0,
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  serverIdx: 0,
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
 });
 
 async function run() {
-    const result = await accounting.accountTransactions.get(
-        "<value>",
-        "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-    );
+  const result = await accounting.accountTransactions.get(
+    "<value>",
+    "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+  );
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -241,19 +350,19 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { Accounting } from "@speakeasy-sdks/accounting";
 
 const accounting = new Accounting({
-    serverURL: "https://api.codat.io",
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  serverURL: "https://api.codat.io",
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
 });
 
 async function run() {
-    const result = await accounting.accountTransactions.get(
-        "<value>",
-        "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-    );
+  const result = await accounting.accountTransactions.get(
+    "<value>",
+    "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+  );
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -326,24 +435,41 @@ To authenticate with the API the `authHeader` parameter must be set when initial
 import { Accounting } from "@speakeasy-sdks/accounting";
 
 const accounting = new Accounting({
-    authHeader: "Basic BASE_64_ENCODED(API_KEY)",
+  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
 });
 
 async function run() {
-    const result = await accounting.accountTransactions.get(
-        "<value>",
-        "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-    );
+  const result = await accounting.accountTransactions.get(
+    "<value>",
+    "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+  );
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Debugging [debug] -->
+## Debugging
+
+You can setup your SDK to emit debug logs for SDK requests and responses.
+
+You can pass a logger that matches `console`'s interface as an SDK option.
+
+> [!WARNING]
+> Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
+
+```typescript
+import { Accounting } from "@speakeasy-sdks/accounting";
+
+const sdk = new Accounting({ debugLogger: console });
+```
+<!-- End Debugging [debug] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

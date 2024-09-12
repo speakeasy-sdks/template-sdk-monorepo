@@ -1,7 +1,7 @@
 {
   "name": "@speakeasy-sdks/lending",
-  "version": "0.2.0",
-  "author": "Speakeasy",  
+  "version": "0.3.0",
+  "author": "Speakeasy",
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
@@ -18,7 +18,7 @@
     "zod": ">= 3"
   },
   "devDependencies": {
-    "@types/jsonpath": "^0.2.4",
+    "@types/node": "^18.19.3",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
     "eslint": "^8.57.0",

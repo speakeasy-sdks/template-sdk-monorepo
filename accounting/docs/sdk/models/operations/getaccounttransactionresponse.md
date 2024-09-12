@@ -1,5 +1,32 @@
 # GetAccountTransactionResponse
 
+## Example Usage
+
+```typescript
+import { GetAccountTransactionResponse } from "@speakeasy-sdks/accounting/sdk/models/operations";
+import { AccountTransactionLineRecordRefDataType } from "@speakeasy-sdks/accounting/sdk/models/shared";
+
+let value: GetAccountTransactionResponse = {
+  accountTransaction: {
+    currency: "USD",
+    date: "2022-10-23T00:00:00Z",
+    lines: [
+      {
+        recordRef: {
+          dataType: AccountTransactionLineRecordRefDataType.Transfers,
+        },
+      },
+    ],
+    modifiedDate: "2022-10-23T00:00:00Z",
+    sourceModifiedDate: "2022-10-23T00:00:00Z",
+  },
+  contentType: "<value>",
+  statusCode: 602763,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
+};
+```
 
 ## Fields
 

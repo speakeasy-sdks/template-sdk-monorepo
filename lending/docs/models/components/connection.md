@@ -11,6 +11,30 @@ Any combination of accounting, banking, and commerce data connections is allowed
 
 Before you can use a data connection to pull or push data, the company must grant you access to their business data by [linking the connection](https://docs.codat.io/auth-flow/overview).
 
+## Example Usage
+
+```typescript
+import { Connection, DataConnectionStatus, SourceType } from "@speakeasy-sdks/lending/models/components";
+
+let value: Connection = {
+  id: "ee2eb431-c0fa-4dc9-93fa-d29781c12bcd",
+  integrationId: "bf083d72-62c7-493e-aec9-81b4dbba7e2c",
+  integrationKey: "dfxm",
+  sourceId: "bdd831ce-eebd-4896-89a7-20e5ee8989ee",
+  sourceType: SourceType.Banking,
+  platformName: "Basiq",
+  linkUrl:
+    "https://link-api.codat.io/companies/86bd88cb-44ab-4dfb-b32f-87b19b14287f/connections/ee2eb431-c0fa-4dc9-93fa-d29781c12bcd/start",
+  status: DataConnectionStatus.Linked,
+  lastSync: "2022-10-27T10:22:43.6464237Z",
+  created: "2022-10-27T09:53:29Z",
+  dataConnectionErrors: [
+    {
+      erroredOnUtc: "2022-10-23T00:00:00Z",
+    },
+  ],
+};
+```
 
 ## Fields
 
