@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Account,
   Account$inboundSchema,
@@ -27,7 +30,7 @@ export type Accounts = {
    * Number of items to return in results array.
    */
   pageSize: number;
-  results?: Array<Account> | undefined;
+  results?: Array<Account | null> | undefined;
   /**
    * Total number of items.
    */
@@ -43,7 +46,7 @@ export const Accounts$inboundSchema: z.ZodType<
   _links: Links$inboundSchema,
   pageNumber: z.number().int(),
   pageSize: z.number().int(),
-  results: z.array(Account$inboundSchema).optional(),
+  results: z.array(z.nullable(Account$inboundSchema)).optional(),
   totalResults: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export type Accounts$Outbound = {
   _links: Links$Outbound;
   pageNumber: number;
   pageSize: number;
-  results?: Array<Account$Outbound> | undefined;
+  results?: Array<Account$Outbound | null> | undefined;
   totalResults: number;
 };
 
@@ -69,7 +72,7 @@ export const Accounts$outboundSchema: z.ZodType<
   links: Links$outboundSchema,
   pageNumber: z.number().int(),
   pageSize: z.number().int(),
-  results: z.array(Account$outboundSchema).optional(),
+  results: z.array(z.nullable(Account$outboundSchema)).optional(),
   totalResults: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,4 +91,18 @@ export namespace Accounts$ {
   export const outboundSchema = Accounts$outboundSchema;
   /** @deprecated use `Accounts$Outbound` instead. */
   export type Outbound = Accounts$Outbound;
+}
+
+export function accountsToJSON(accounts: Accounts): string {
+  return JSON.stringify(Accounts$outboundSchema.parse(accounts));
+}
+
+export function accountsFromJSON(
+  jsonString: string,
+): SafeParseResult<Accounts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Accounts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Accounts' from JSON`,
+  );
 }

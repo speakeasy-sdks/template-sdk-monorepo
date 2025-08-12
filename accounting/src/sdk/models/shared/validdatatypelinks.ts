@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * When querying Codat's data model, some data types return `validDatatypeLinks` metadata in the JSON response. This indicates where that object can be used as a reference—a _valid link_—when creating or updating other data.
@@ -94,4 +97,22 @@ export namespace ValidDataTypeLinks$ {
   export const outboundSchema = ValidDataTypeLinks$outboundSchema;
   /** @deprecated use `ValidDataTypeLinks$Outbound` instead. */
   export type Outbound = ValidDataTypeLinks$Outbound;
+}
+
+export function validDataTypeLinksToJSON(
+  validDataTypeLinks: ValidDataTypeLinks,
+): string {
+  return JSON.stringify(
+    ValidDataTypeLinks$outboundSchema.parse(validDataTypeLinks),
+  );
+}
+
+export function validDataTypeLinksFromJSON(
+  jsonString: string,
+): SafeParseResult<ValidDataTypeLinks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ValidDataTypeLinks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ValidDataTypeLinks' from JSON`,
+  );
 }

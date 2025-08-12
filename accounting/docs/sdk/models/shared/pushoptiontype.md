@@ -7,7 +7,7 @@ The option type.
 ```typescript
 import { PushOptionType } from "@speakeasy-sdks/accounting/sdk/models/shared";
 
-let value: PushOptionType = PushOptionType.Object;
+let value: PushOptionType = PushOptionType.DateTime;
 ```
 
 ## Values

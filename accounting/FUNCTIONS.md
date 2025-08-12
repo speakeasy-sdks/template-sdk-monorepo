@@ -21,7 +21,6 @@ specific category of applications.
 ```typescript
 import { AccountingCore } from "@speakeasy-sdks/accounting/core.js";
 import { accountTransactionsGet } from "@speakeasy-sdks/accounting/funcs/accountTransactionsGet.js";
-import { SDKValidationError } from "@speakeasy-sdks/accounting/sdk/models/errors/sdkvalidationerror.js";
 
 // Use `AccountingCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -30,29 +29,13 @@ const accounting = new AccountingCore({
 });
 
 async function run() {
-  const res = await accountTransactionsGet(accounting, "<value>", "8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171");
-
-  switch (true) {
-    case res.ok:
-      // The success case will be handled outside of the switch block
-      break;
-    case res.error instanceof SDKValidationError:
-      // Pretty-print validation errors.
-      return console.log(res.error.pretty());
-    case res.error instanceof Error:
-      return console.log(res.error);
-    default:
-      // TypeScript's type checking will fail on the following line if the above
-      // cases were not exhaustive.
-      res.error satisfies never;
-      throw new Error("Assertion failed: expected error checks to be exhaustive: " + res.error);
+  const res = await accountTransactionsGet(accounting, "<id>", "8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountTransactionsGet failed:", res.error);
   }
-
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result)
 }
 
 run();

@@ -16,7 +16,19 @@ targets:
         target: typescript
         source: accounting
         output: ./accounting
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/sagar-demo/sagar-demo/accounting-typescript-code-samples
+            labelOverride:
+                fixedValue: Typescript (SDK)
+            blocking: false
     lending-ts:
         target: typescript
         source: lending
         output: ./lending
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/sagar-demo/sagar-demo/lending-typescript-code-samples
+            labelOverride:
+                fixedValue: Typescript (SDK)
+            blocking: false

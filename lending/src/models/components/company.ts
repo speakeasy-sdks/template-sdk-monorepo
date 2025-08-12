@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Connection,
   Connection$inboundSchema,
@@ -140,6 +143,20 @@ export namespace GroupReference$ {
   export type Outbound = GroupReference$Outbound;
 }
 
+export function groupReferenceToJSON(groupReference: GroupReference): string {
+  return JSON.stringify(GroupReference$outboundSchema.parse(groupReference));
+}
+
+export function groupReferenceFromJSON(
+  jsonString: string,
+): SafeParseResult<GroupReference, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GroupReference$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GroupReference' from JSON`,
+  );
+}
+
 /** @internal */
 export const Company$inboundSchema: z.ZodType<Company, z.ZodTypeDef, unknown> =
   z.object({
@@ -198,4 +215,18 @@ export namespace Company$ {
   export const outboundSchema = Company$outboundSchema;
   /** @deprecated use `Company$Outbound` instead. */
   export type Outbound = Company$Outbound;
+}
+
+export function companyToJSON(company: Company): string {
+  return JSON.stringify(Company$outboundSchema.parse(company));
+}
+
+export function companyFromJSON(
+  jsonString: string,
+): SafeParseResult<Company, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Company$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Company' from JSON`,
+  );
 }

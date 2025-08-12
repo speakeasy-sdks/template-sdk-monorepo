@@ -58,18 +58,24 @@ Standardize how you connect to your customers’ accounting software. View, crea
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [@speakeasy-sdks/accounting](#speakeasy-sdksaccounting)
+  * [Endpoints](#endpoints)
+  * [SDK Installation](#sdk-installation)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Requirements](#requirements)
+  * [Standalone functions](#standalone-functions)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Debugging](#debugging)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
 
-* [SDK Installation](#sdk-installation)
-* [Requirements](#requirements)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Standalone functions](#standalone-functions)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -119,12 +125,11 @@ const accounting = new Accounting({
 
 async function run() {
   const result = await accounting.accountTransactions.get(
-    "<value>",
+    "<id>",
     "8a210b68-6988-11ed-a1eb-0242ac120002",
     "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   );
 
-  // Handle the result
   console.log(result);
 }
 
@@ -136,17 +141,22 @@ run();
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
+<details open>
+<summary>Available methods</summary>
+
+
+### [accounts](docs/sdks/accounts/README.md)
+
+* [create](docs/sdks/accounts/README.md#create) - Create account
+* [getCreateModel](docs/sdks/accounts/README.md#getcreatemodel) - Get create account model
+* [list](docs/sdks/accounts/README.md#list) - List accounts
+
 ### [accountTransactions](docs/sdks/accounttransactions/README.md)
 
 * [get](docs/sdks/accounttransactions/README.md#get) - Get account transaction
 * [list](docs/sdks/accounttransactions/README.md#list) - List account transactions
 
-### [accounts](docs/sdks/accounts/README.md)
-
-* [create](docs/sdks/accounts/README.md#create) - Create account
-* [get](docs/sdks/accounts/README.md#get) - Get account
-* [getCreateModel](docs/sdks/accounts/README.md#getcreatemodel) - Get create account model
-* [list](docs/sdks/accounts/README.md#list) - List accounts
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Requirements [requirements] -->
@@ -170,13 +180,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [accountTransactionsGet](docs/sdks/accounttransactions/README.md#get)
-- [accountTransactionsList](docs/sdks/accounttransactions/README.md#list)
-- [accountsCreate](docs/sdks/accounts/README.md#create)
-- [accountsGetCreateModel](docs/sdks/accounts/README.md#getcreatemodel)
-- [accountsGet](docs/sdks/accounts/README.md#get)
-- [accountsList](docs/sdks/accounts/README.md#list)
-
+- [`accountsCreate`](docs/sdks/accounts/README.md#create) - Create account
+- [`accountsGetCreateModel`](docs/sdks/accounts/README.md#getcreatemodel) - Get create account model
+- [`accountsList`](docs/sdks/accounts/README.md#list) - List accounts
+- [`accountTransactionsGet`](docs/sdks/accounttransactions/README.md#get) - Get account transaction
+- [`accountTransactionsList`](docs/sdks/accounttransactions/README.md#list) - List account transactions
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -196,7 +204,7 @@ const accounting = new Accounting({
 
 async function run() {
   const result = await accounting.accountTransactions.get(
-    "<value>",
+    "<id>",
     "8a210b68-6988-11ed-a1eb-0242ac120002",
     "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     {
@@ -213,7 +221,6 @@ async function run() {
     },
   );
 
-  // Handle the result
   console.log(result);
 }
 
@@ -241,12 +248,11 @@ const accounting = new Accounting({
 
 async function run() {
   const result = await accounting.accountTransactions.get(
-    "<value>",
+    "<id>",
     "8a210b68-6988-11ed-a1eb-0242ac120002",
     "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   );
 
-  // Handle the result
   console.log(result);
 }
 
@@ -258,46 +264,40 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+[`AccountingError`](./src/sdk/models/errors/accountingerror.ts) is the base class for all HTTP error responses. It has the following properties:
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Property            | Type       | Description                                            |
+| ------------------- | ---------- | ------------------------------------------------------ |
+| `error.message`     | `string`   | Error message                                          |
+| `error.statusCode`  | `number`   | HTTP response status code eg `404`                     |
+| `error.headers`     | `Headers`  | HTTP response headers                                  |
+| `error.body`        | `string`   | HTTP body. Can be empty string if no body is returned. |
+| `error.rawResponse` | `Response` | Raw HTTP response                                      |
 
-Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
-
-
+### Example
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
-import { SDKValidationError } from "@speakeasy-sdks/accounting/sdk/models/errors";
+import * as errors from "@speakeasy-sdks/accounting/sdk/models/errors";
 
 const accounting = new Accounting({
   authHeader: "Basic BASE_64_ENCODED(API_KEY)",
 });
 
 async function run() {
-  let result;
   try {
-    result = await accounting.accountTransactions.get(
-      "<value>",
+    const result = await accounting.accountTransactions.get(
+      "<id>",
       "8a210b68-6988-11ed-a1eb-0242ac120002",
       "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     );
 
-    // Handle the result
     console.log(result);
-  } catch (err) {
-    switch (true) {
-      case (err instanceof SDKValidationError): {
-        // Validation errors can be pretty-printed
-        console.error(err.pretty());
-        // Raw value may also be inspected
-        console.error(err.rawValue);
-        return;
-      }
-      default: {
-        throw err;
-      }
+  } catch (error) {
+    if (error instanceof errors.AccountingError) {
+      console.log(error.message);
+      console.log(error.statusCode);
+      console.log(error.body);
+      console.log(error.headers);
     }
   }
 }
@@ -305,47 +305,35 @@ async function run() {
 run();
 
 ```
+
+### Error Classes
+**Primary error:**
+* [`AccountingError`](./src/sdk/models/errors/accountingerror.ts): The base class for HTTP error responses.
+
+<details><summary>Less common errors (6)</summary>
+
+<br />
+
+**Network errors:**
+* [`ConnectionError`](./src/sdk/models/errors/httpclienterrors.ts): HTTP client was unable to make a request to a server.
+* [`RequestTimeoutError`](./src/sdk/models/errors/httpclienterrors.ts): HTTP request timed out due to an AbortSignal signal.
+* [`RequestAbortedError`](./src/sdk/models/errors/httpclienterrors.ts): HTTP request was aborted by the client.
+* [`InvalidRequestError`](./src/sdk/models/errors/httpclienterrors.ts): Any input used to create a request is invalid.
+* [`UnexpectedClientError`](./src/sdk/models/errors/httpclienterrors.ts): Unrecognised or unexpected error.
+
+
+**Inherit from [`AccountingError`](./src/sdk/models/errors/accountingerror.ts)**:
+* [`ResponseValidationError`](./src/sdk/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
+
+</details>
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `serverIdx` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.codat.io` | None |
-
-```typescript
-import { Accounting } from "@speakeasy-sdks/accounting";
-
-const accounting = new Accounting({
-  serverIdx: 0,
-  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-});
-
-async function run() {
-  const result = await accounting.accountTransactions.get(
-    "<value>",
-    "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-  );
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-
-```
-
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
-
+The default server can be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 
@@ -356,12 +344,11 @@ const accounting = new Accounting({
 
 async function run() {
   const result = await accounting.accountTransactions.get(
-    "<value>",
+    "<id>",
     "8a210b68-6988-11ed-a1eb-0242ac120002",
     "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   );
 
-  // Handle the result
   console.log(result);
 }
 
@@ -426,9 +413,9 @@ const sdk = new Accounting({ httpClient });
 
 This SDK supports the following security scheme globally:
 
-| Name         | Type         | Scheme       |
-| ------------ | ------------ | ------------ |
-| `authHeader` | apiKey       | API key      |
+| Name         | Type   | Scheme  |
+| ------------ | ------ | ------- |
+| `authHeader` | apiKey | API key |
 
 To authenticate with the API the `authHeader` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
@@ -440,12 +427,11 @@ const accounting = new Accounting({
 
 async function run() {
   const result = await accounting.accountTransactions.get(
-    "<value>",
+    "<id>",
     "8a210b68-6988-11ed-a1eb-0242ac120002",
     "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   );
 
-  // Handle the result
   console.log(result);
 }
 

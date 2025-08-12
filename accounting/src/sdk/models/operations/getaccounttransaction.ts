@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetAccountTransactionRequest = {
@@ -86,6 +89,26 @@ export namespace GetAccountTransactionRequest$ {
   export type Outbound = GetAccountTransactionRequest$Outbound;
 }
 
+export function getAccountTransactionRequestToJSON(
+  getAccountTransactionRequest: GetAccountTransactionRequest,
+): string {
+  return JSON.stringify(
+    GetAccountTransactionRequest$outboundSchema.parse(
+      getAccountTransactionRequest,
+    ),
+  );
+}
+
+export function getAccountTransactionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAccountTransactionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAccountTransactionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAccountTransactionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAccountTransactionResponse$inboundSchema: z.ZodType<
   GetAccountTransactionResponse,
@@ -152,4 +175,24 @@ export namespace GetAccountTransactionResponse$ {
   export const outboundSchema = GetAccountTransactionResponse$outboundSchema;
   /** @deprecated use `GetAccountTransactionResponse$Outbound` instead. */
   export type Outbound = GetAccountTransactionResponse$Outbound;
+}
+
+export function getAccountTransactionResponseToJSON(
+  getAccountTransactionResponse: GetAccountTransactionResponse,
+): string {
+  return JSON.stringify(
+    GetAccountTransactionResponse$outboundSchema.parse(
+      getAccountTransactionResponse,
+    ),
+  );
+}
+
+export function getAccountTransactionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAccountTransactionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAccountTransactionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAccountTransactionResponse' from JSON`,
+  );
 }

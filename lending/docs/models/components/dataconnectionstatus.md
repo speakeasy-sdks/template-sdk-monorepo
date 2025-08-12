@@ -7,7 +7,7 @@ The current authorization status of the data connection.
 ```typescript
 import { DataConnectionStatus } from "@speakeasy-sdks/lending/models/components";
 
-let value: DataConnectionStatus = DataConnectionStatus.Linked;
+let value: DataConnectionStatus = DataConnectionStatus.Deauthorized;
 ```
 
 ## Values

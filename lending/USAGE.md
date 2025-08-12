@@ -7,14 +7,13 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-  const result = await lendingTs.companies.list(
-    1,
-    100,
-    "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "-modifiedDate",
+  const result = await lendingTs.companies.update(
+    "8a210b68-6988-11ed-a1eb-0242ac120002",
+    {
+      name: "New Name",
+    },
   );
 
-  // Handle the result
   console.log(result);
 }
 

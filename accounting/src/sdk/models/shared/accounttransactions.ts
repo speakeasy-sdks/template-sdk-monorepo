@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AccountTransaction,
   AccountTransaction$inboundSchema,
@@ -27,7 +30,7 @@ export type AccountTransactions = {
    * Number of items to return in results array.
    */
   pageSize: number;
-  results?: Array<AccountTransaction> | undefined;
+  results?: Array<AccountTransaction | null> | undefined;
   /**
    * Total number of items.
    */
@@ -43,7 +46,7 @@ export const AccountTransactions$inboundSchema: z.ZodType<
   _links: Links$inboundSchema,
   pageNumber: z.number().int(),
   pageSize: z.number().int(),
-  results: z.array(AccountTransaction$inboundSchema).optional(),
+  results: z.array(z.nullable(AccountTransaction$inboundSchema)).optional(),
   totalResults: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export type AccountTransactions$Outbound = {
   _links: Links$Outbound;
   pageNumber: number;
   pageSize: number;
-  results?: Array<AccountTransaction$Outbound> | undefined;
+  results?: Array<AccountTransaction$Outbound | null> | undefined;
   totalResults: number;
 };
 
@@ -69,7 +72,7 @@ export const AccountTransactions$outboundSchema: z.ZodType<
   links: Links$outboundSchema,
   pageNumber: z.number().int(),
   pageSize: z.number().int(),
-  results: z.array(AccountTransaction$outboundSchema).optional(),
+  results: z.array(z.nullable(AccountTransaction$outboundSchema)).optional(),
   totalResults: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,4 +91,22 @@ export namespace AccountTransactions$ {
   export const outboundSchema = AccountTransactions$outboundSchema;
   /** @deprecated use `AccountTransactions$Outbound` instead. */
   export type Outbound = AccountTransactions$Outbound;
+}
+
+export function accountTransactionsToJSON(
+  accountTransactions: AccountTransactions,
+): string {
+  return JSON.stringify(
+    AccountTransactions$outboundSchema.parse(accountTransactions),
+  );
+}
+
+export function accountTransactionsFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountTransactions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountTransactions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountTransactions' from JSON`,
+  );
 }

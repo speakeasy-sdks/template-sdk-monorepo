@@ -3,25 +3,41 @@ generation:
   sdkClassName: accounting
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   fixes:
-    nameResolutionDec2023: false
+    nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+    securityFeb2025: false
+    sharedErrorComponentsApr2025: false
   auth:
     oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
   telemetryEnabled: true
 typescript:
-  version: 0.7.0
+  version: 0.8.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
   author: Accounting
+  baseErrorName: AccountingError
   clientServerStatusCodesAsErrors: false
+  constFieldsAlwaysOptional: true
+  defaultErrorName: SDKError
   description: Access the Accounting API
+  enableCustomCodeRegions: false
+  enableMCPServer: false
+  enableReactQuery: false
   enumFormat: enum
   flattenGlobalSecurity: true
+  flatteningOrder: parameters-first
+  generateExamples: true
   imports:
     option: openapi
     paths:
@@ -31,6 +47,7 @@ typescript:
       shared: sdk/models/shared
       webhooks: sdk/models/webhooks
   inputModelSuffix: input
+  jsonpath: legacy
   maxMethodParams: 4
   methodArguments: require-security-and-request
   moduleFormat: commonjs

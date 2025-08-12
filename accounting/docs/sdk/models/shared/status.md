@@ -7,7 +7,7 @@ The status of the account transaction.
 ```typescript
 import { Status } from "@speakeasy-sdks/accounting/sdk/models/shared";
 
-let value: Status = Status.Unreconciled;
+let value: Status = Status.Reconciled;
 ```
 
 ## Values

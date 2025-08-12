@@ -3,7 +3,8 @@
 ## Example Usage
 
 ```typescript
-import { CreateAccountResponse, DataType, PushOperationStatus } from "@speakeasy-sdks/accounting/sdk/models/shared";
+import { AccountStatus, AccountType, CreateAccountResponse, DataType, PushOperationStatus } from "@speakeasy-sdks/accounting/sdk/models/shared";
+import { Decimal } from "@speakeasy-sdks/accounting/sdk/types";
 
 let value: CreateAccountResponse = {
   changes: [
@@ -15,12 +16,27 @@ let value: CreateAccountResponse = {
   ],
   companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
   completedOnUtc: "2022-10-23T00:00:00Z",
+  data: {
+    currency: "GBP",
+    currentBalance: new Decimal("0"),
+    description:
+      "Invoices the business has issued but has not yet collected payment on.",
+    fullyQualifiedCategory: "Asset.Current",
+    fullyQualifiedName: "Cash On Hand",
+    id: "1b6266d1-1e44-46c5-8eb5-a8f98e03124e",
+    modifiedDate: "2022-10-23T00:00:00Z",
+    name: "Accounts Receivable",
+    nominalCode: "610",
+    sourceModifiedDate: "2022-10-23T00:00:00Z",
+    status: AccountStatus.Active,
+    type: AccountType.Asset,
+  },
   dataConnectionKey: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
   dataType: DataType.Invoices,
-  pushOperationKey: "396fea75-96eb-410f-aaa2-352c5955907a",
+  pushOperationKey: "288aa3e0-a66e-4df2-8ee4-f8a9f9cc1670",
   requestedOnUtc: "2022-10-23T00:00:00Z",
-  status: PushOperationStatus.TimedOut,
-  statusCode: 102044,
+  status: PushOperationStatus.Pending,
+  statusCode: 95026,
 };
 ```
 

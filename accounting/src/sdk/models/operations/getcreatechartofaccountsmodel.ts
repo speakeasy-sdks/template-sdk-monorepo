@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetCreateChartOfAccountsModelRequest = {
@@ -81,6 +84,27 @@ export namespace GetCreateChartOfAccountsModelRequest$ {
   export type Outbound = GetCreateChartOfAccountsModelRequest$Outbound;
 }
 
+export function getCreateChartOfAccountsModelRequestToJSON(
+  getCreateChartOfAccountsModelRequest: GetCreateChartOfAccountsModelRequest,
+): string {
+  return JSON.stringify(
+    GetCreateChartOfAccountsModelRequest$outboundSchema.parse(
+      getCreateChartOfAccountsModelRequest,
+    ),
+  );
+}
+
+export function getCreateChartOfAccountsModelRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetCreateChartOfAccountsModelRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetCreateChartOfAccountsModelRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetCreateChartOfAccountsModelRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetCreateChartOfAccountsModelResponse$inboundSchema: z.ZodType<
   GetCreateChartOfAccountsModelResponse,
@@ -147,4 +171,25 @@ export namespace GetCreateChartOfAccountsModelResponse$ {
     GetCreateChartOfAccountsModelResponse$outboundSchema;
   /** @deprecated use `GetCreateChartOfAccountsModelResponse$Outbound` instead. */
   export type Outbound = GetCreateChartOfAccountsModelResponse$Outbound;
+}
+
+export function getCreateChartOfAccountsModelResponseToJSON(
+  getCreateChartOfAccountsModelResponse: GetCreateChartOfAccountsModelResponse,
+): string {
+  return JSON.stringify(
+    GetCreateChartOfAccountsModelResponse$outboundSchema.parse(
+      getCreateChartOfAccountsModelResponse,
+    ),
+  );
+}
+
+export function getCreateChartOfAccountsModelResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetCreateChartOfAccountsModelResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetCreateChartOfAccountsModelResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetCreateChartOfAccountsModelResponse' from JSON`,
+  );
 }

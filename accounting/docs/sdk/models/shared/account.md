@@ -36,12 +36,12 @@ import { Account, AccountStatus, AccountType } from "@speakeasy-sdks/accounting/
 import { Decimal } from "@speakeasy-sdks/accounting/sdk/types";
 
 let value: Account = {
-  currency: "EUR",
+  currency: "GBP",
   currentBalance: new Decimal("0"),
   description:
     "Invoices the business has issued but has not yet collected payment on.",
   fullyQualifiedCategory: "Asset.Current",
-  fullyQualifiedName: "Fixed Asset",
+  fullyQualifiedName: "Cash On Hand",
   id: "1b6266d1-1e44-46c5-8eb5-a8f98e03124e",
   modifiedDate: "2022-10-23T00:00:00Z",
   name: "Accounts Receivable",

@@ -47,3 +47,5 @@ Standardize how you connect to your customers’ accounting software. View, crea
 [Read more...](https://docs.codat.io/accounting-api/overview)
 
 [See our OpenAPI spec](https://github.com/codatio/oas)
+
+### Available Operations

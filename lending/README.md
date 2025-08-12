@@ -40,22 +40,32 @@ The Lending API is built on top of the latest accounting, commerce, and banking 
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [openapi](#openapi)
+  * [Endpoints](#endpoints)
+  * [SDK Installation](#sdk-installation)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Requirements](#requirements)
+  * [Standalone functions](#standalone-functions)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Debugging](#debugging)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
 
-* [SDK Installation](#sdk-installation)
-* [Requirements](#requirements)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Standalone functions](#standalone-functions)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
+
+> [!TIP]
+> To finish publishing your SDK to npm and others you must [run your first generation action](https://www.speakeasy.com/docs/github-setup#step-by-step-guide).
+
 
 The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
@@ -100,14 +110,13 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-  const result = await lendingTs.companies.list(
-    1,
-    100,
-    "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "-modifiedDate",
+  const result = await lendingTs.companies.update(
+    "8a210b68-6988-11ed-a1eb-0242ac120002",
+    {
+      name: "New Name",
+    },
   );
 
-  // Handle the result
   console.log(result);
 }
 
@@ -119,13 +128,17 @@ run();
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
+<details open>
+<summary>Available methods</summary>
+
 ### [companies](docs/sdks/companies/README.md)
 
-* [list](docs/sdks/companies/README.md#list) - List companies
-* [create](docs/sdks/companies/README.md#create) - Create company
 * [update](docs/sdks/companies/README.md#update) - Update company
 * [delete](docs/sdks/companies/README.md#delete) - Delete a company
 * [get](docs/sdks/companies/README.md#get) - Get company
+
+
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Requirements [requirements] -->
@@ -149,12 +162,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [companiesCreate](docs/sdks/companies/README.md#create)
-- [companiesDelete](docs/sdks/companies/README.md#delete)
-- [companiesGet](docs/sdks/companies/README.md#get)
-- [companiesList](docs/sdks/companies/README.md#list)
-- [companiesUpdate](docs/sdks/companies/README.md#update)
-
+- [`companiesDelete`](docs/sdks/companies/README.md#delete) - Delete a company
+- [`companiesGet`](docs/sdks/companies/README.md#get) - Get company
+- [`companiesUpdate`](docs/sdks/companies/README.md#update) - Update company
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -173,11 +183,11 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-  const result = await lendingTs.companies.list(
-    1,
-    100,
-    "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "-modifiedDate",
+  const result = await lendingTs.companies.update(
+    "8a210b68-6988-11ed-a1eb-0242ac120002",
+    {
+      name: "New Name",
+    },
     {
       retries: {
         strategy: "backoff",
@@ -192,7 +202,6 @@ async function run() {
     },
   );
 
-  // Handle the result
   console.log(result);
 }
 
@@ -219,14 +228,13 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-  const result = await lendingTs.companies.list(
-    1,
-    100,
-    "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "-modifiedDate",
+  const result = await lendingTs.companies.update(
+    "8a210b68-6988-11ed-a1eb-0242ac120002",
+    {
+      name: "New Name",
+    },
   );
 
-  // Handle the result
   console.log(result);
 }
 
@@ -238,55 +246,49 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+[`LendingTsError`](./src/models/errors/lendingtserror.ts) is the base class for all HTTP error responses. It has the following properties:
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Property                  | Type       | Description                                                                             |
+| ------------------------- | ---------- | --------------------------------------------------------------------------------------- |
+| `error.message`           | `string`   | Error message                                                                           |
+| `error.httpMeta.response` | `Response` | HTTP response. Access to headers and more.                                              |
+| `error.httpMeta.request`  | `Request`  | HTTP request. Access to headers and more.                                               |
+| `error.data$`             |            | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
 
-Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
-
-
+### Example
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
-import {
-  ErrorMessage,
-  SDKValidationError,
-} from "@speakeasy-sdks/lending/models/errors";
+import * as errors from "@speakeasy-sdks/lending/models/errors";
 
 const lendingTs = new LendingTs({
   authHeader: "Basic BASE_64_ENCODED(API_KEY)",
 });
 
 async function run() {
-  let result;
   try {
-    result = await lendingTs.companies.list(
-      1,
-      100,
-      "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-      "-modifiedDate",
+    const result = await lendingTs.companies.update(
+      "8a210b68-6988-11ed-a1eb-0242ac120002",
+      {
+        name: "New Name",
+      },
     );
 
-    // Handle the result
     console.log(result);
-  } catch (err) {
-    switch (true) {
-      case (err instanceof SDKValidationError): {
-        // Validation errors can be pretty-printed
-        console.error(err.pretty());
-        // Raw value may also be inspected
-        console.error(err.rawValue);
-        return;
-      }
-      case (err instanceof ErrorMessage): {
-        // Handle err.data$: ErrorMessageData
-        console.error(err);
-        return;
-      }
-      default: {
-        throw err;
+  } catch (error) {
+    // The base class for HTTP error responses
+    if (error instanceof errors.LendingTsError) {
+      console.log(error.message);
+      console.log(error.httpMeta.response.status);
+      console.log(error.httpMeta.response.headers);
+      console.log(error.httpMeta.request);
+
+      // Depending on the method different errors may be thrown
+      if (error instanceof errors.ErrorMessage) {
+        console.log(error.data$.statusCode); // number
+        console.log(error.data$.service); // string
+        console.log(error.data$.error); // string
+        console.log(error.data$.correlationId); // string
+        console.log(error.data$.validation); // components.ErrorValidation
       }
     }
   }
@@ -295,48 +297,36 @@ async function run() {
 run();
 
 ```
+
+### Error Classes
+**Primary errors:**
+* [`LendingTsError`](./src/models/errors/lendingtserror.ts): The base class for HTTP error responses.
+  * [`ErrorMessage`](./src/models/errors/errormessage.ts): Your API request was not properly authorized.
+
+<details><summary>Less common errors (6)</summary>
+
+<br />
+
+**Network errors:**
+* [`ConnectionError`](./src/models/errors/httpclienterrors.ts): HTTP client was unable to make a request to a server.
+* [`RequestTimeoutError`](./src/models/errors/httpclienterrors.ts): HTTP request timed out due to an AbortSignal signal.
+* [`RequestAbortedError`](./src/models/errors/httpclienterrors.ts): HTTP request was aborted by the client.
+* [`InvalidRequestError`](./src/models/errors/httpclienterrors.ts): Any input used to create a request is invalid.
+* [`UnexpectedClientError`](./src/models/errors/httpclienterrors.ts): Unrecognised or unexpected error.
+
+
+**Inherit from [`LendingTsError`](./src/models/errors/lendingtserror.ts)**:
+* [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
+
+</details>
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `serverIdx` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.codat.io` | None |
-
-```typescript
-import { LendingTs } from "@speakeasy-sdks/lending";
-
-const lendingTs = new LendingTs({
-  serverIdx: 0,
-  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-});
-
-async function run() {
-  const result = await lendingTs.companies.list(
-    1,
-    100,
-    "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "-modifiedDate",
-  );
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-
-```
-
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
-
+The default server can be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { LendingTs } from "@speakeasy-sdks/lending";
 
@@ -346,14 +336,13 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-  const result = await lendingTs.companies.list(
-    1,
-    100,
-    "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "-modifiedDate",
+  const result = await lendingTs.companies.update(
+    "8a210b68-6988-11ed-a1eb-0242ac120002",
+    {
+      name: "New Name",
+    },
   );
 
-  // Handle the result
   console.log(result);
 }
 
@@ -418,9 +407,9 @@ const sdk = new LendingTs({ httpClient });
 
 This SDK supports the following security scheme globally:
 
-| Name         | Type         | Scheme       |
-| ------------ | ------------ | ------------ |
-| `authHeader` | apiKey       | API key      |
+| Name         | Type   | Scheme  |
+| ------------ | ------ | ------- |
+| `authHeader` | apiKey | API key |
 
 To authenticate with the API the `authHeader` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
@@ -431,14 +420,13 @@ const lendingTs = new LendingTs({
 });
 
 async function run() {
-  const result = await lendingTs.companies.list(
-    1,
-    100,
-    "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "-modifiedDate",
+  const result = await lendingTs.companies.update(
+    "8a210b68-6988-11ed-a1eb-0242ac120002",
+    {
+      name: "New Name",
+    },
   );
 
-  // Handle the result
   console.log(result);
 }
 
