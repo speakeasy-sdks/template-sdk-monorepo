@@ -8,7 +8,6 @@ Access standardized Accounts from linked accounting platforms.
 ### Available Operations
 
 * [create](#create) - Create account
-* [get](#get) - Get account
 * [getCreateModel](#getcreatemodel) - Get create account model
 * [list](#list) - List accounts
 
@@ -27,6 +26,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="create-account" method="post" path="/companies/{companyId}/connections/{connectionId}/push/accounts" -->
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 import { AccountStatus, AccountType } from "@speakeasy-sdks/accounting/sdk/models/shared";
@@ -38,7 +38,7 @@ const accounting = new Accounting({
 
 async function run() {
   const result = await accounting.accounts.create("8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171", {
-    currency: "USD",
+    currency: "GBP",
     currentBalance: new Decimal("0"),
     description: "Invoices the business has issued but has not yet collected payment on.",
     fullyQualifiedCategory: "Asset.Current",
@@ -48,9 +48,8 @@ async function run() {
     status: AccountStatus.Active,
     type: AccountType.Asset,
   });
-  
-  // Handle the result
-  console.log(result)
+
+  console.log(result);
 }
 
 run();
@@ -74,7 +73,7 @@ const accounting = new AccountingCore({
 
 async function run() {
   const res = await accountsCreate(accounting, "8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171", {
-    currency: "USD",
+    currency: "GBP",
     currentBalance: new Decimal("0"),
     description: "Invoices the business has issued but has not yet collected payment on.",
     fullyQualifiedCategory: "Asset.Current",
@@ -84,15 +83,12 @@ async function run() {
     status: AccountStatus.Active,
     type: AccountType.Asset,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result)
 }
 
 run();
@@ -116,91 +112,9 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
-
-## get
-
-The *Get account* endpoint returns a single account for a given accountId.
-
-[Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
-
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support getting a specific account.
-
-Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
-
-
-### Example Usage
-
-```typescript
-import { Accounting } from "@speakeasy-sdks/accounting";
-
-const accounting = new Accounting({
-  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-});
-
-async function run() {
-  const result = await accounting.accounts.get("<value>", "8a210b68-6988-11ed-a1eb-0242ac120002");
-  
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { AccountingCore } from "@speakeasy-sdks/accounting/core.js";
-import { accountsGet } from "@speakeasy-sdks/accounting/funcs/accountsGet.js";
-
-// Use `AccountingCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const accounting = new AccountingCore({
-  authHeader: "Basic BASE_64_ENCODED(API_KEY)",
-});
-
-async function run() {
-  const res = await accountsGet(accounting, "<value>", "8a210b68-6988-11ed-a1eb-0242ac120002");
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `accountId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for an account.                                                                                                                                              |                                                                                                                                                                                |
-| `companyId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier for a company.                                                                                                                                               | [object Object]                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
-
-### Response
-
-**Promise\<[operations.GetAccountResponse](../../sdk/models/operations/getaccountresponse.md)\>**
-
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getCreateModel
 
@@ -217,6 +131,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get-create-chartOfAccounts-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/chartOfAccounts" -->
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 
@@ -226,9 +141,8 @@ const accounting = new Accounting({
 
 async function run() {
   const result = await accounting.accounts.getCreateModel("8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171");
-  
-  // Handle the result
-  console.log(result)
+
+  console.log(result);
 }
 
 run();
@@ -250,15 +164,12 @@ const accounting = new AccountingCore({
 
 async function run() {
   const res = await accountsGetCreateModel(accounting, "8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsGetCreateModel failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result)
 }
 
 run();
@@ -280,10 +191,9 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## list
 
@@ -295,6 +205,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="list-accounts" method="get" path="/companies/{companyId}/data/accounts" -->
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 
@@ -306,13 +217,10 @@ async function run() {
   const result = await accounting.accounts.list({
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     orderBy: "-modifiedDate",
-    page: 1,
-    pageSize: 100,
     query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
   });
-  
-  // Handle the result
-  console.log(result)
+
+  console.log(result);
 }
 
 run();
@@ -336,19 +244,14 @@ async function run() {
   const res = await accountsList(accounting, {
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     orderBy: "-modifiedDate",
-    page: 1,
-    pageSize: 100,
     query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result)
 }
 
 run();
@@ -369,6 +272,6 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

@@ -20,8 +20,7 @@ specific category of applications.
 
 ```typescript
 import { LendingTsCore } from "@speakeasy-sdks/lending/core.js";
-import { companiesList } from "@speakeasy-sdks/lending/funcs/companiesList.js";
-import { SDKValidationError } from "@speakeasy-sdks/lending/models/errors/sdkvalidationerror.js";
+import { companiesUpdate } from "@speakeasy-sdks/lending/funcs/companiesUpdate.js";
 
 // Use `LendingTsCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -30,29 +29,15 @@ const lendingTs = new LendingTsCore({
 });
 
 async function run() {
-  const res = await companiesList(lendingTs, 1, 100, "id=e3334455-1aed-4e71-ab43-6bccf12092ee", "-modifiedDate");
-
-  switch (true) {
-    case res.ok:
-      // The success case will be handled outside of the switch block
-      break;
-    case res.error instanceof SDKValidationError:
-      // Pretty-print validation errors.
-      return console.log(res.error.pretty());
-    case res.error instanceof Error:
-      return console.log(res.error);
-    default:
-      // TypeScript's type checking will fail on the following line if the above
-      // cases were not exhaustive.
-      res.error satisfies never;
-      throw new Error("Assertion failed: expected error checks to be exhaustive: " + res.error);
+  const res = await companiesUpdate(lendingTs, "8a210b68-6988-11ed-a1eb-0242ac120002", {
+    name: "New Name",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("companiesUpdate failed:", res.error);
   }
-
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result)
 }
 
 run();

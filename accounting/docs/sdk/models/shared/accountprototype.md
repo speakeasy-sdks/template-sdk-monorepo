@@ -7,7 +7,7 @@ import { AccountPrototype, AccountStatus, AccountType } from "@speakeasy-sdks/ac
 import { Decimal } from "@speakeasy-sdks/accounting/sdk/types";
 
 let value: AccountPrototype = {
-  currency: "USD",
+  currency: "GBP",
   currentBalance: new Decimal("0"),
   description:
     "Invoices the business has issued but has not yet collected payment on.",

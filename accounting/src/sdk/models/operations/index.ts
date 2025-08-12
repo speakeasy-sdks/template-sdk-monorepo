@@ -3,7 +3,6 @@
  */
 
 export * from "./createaccount.js";
-export * from "./getaccount.js";
 export * from "./getaccounttransaction.js";
 export * from "./getcreatechartofaccountsmodel.js";
 export * from "./listaccounts.js";

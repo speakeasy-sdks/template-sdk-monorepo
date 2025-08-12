@@ -3,12 +3,14 @@
  */
 
 import { AccountingCore } from "../core.js";
-import { encodeSimple as encodeSimple$ } from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
+import { AccountingError } from "../sdk/models/errors/accountingerror.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -16,9 +18,10 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../sdk/models/errors/httpclienterrors.js";
-import { SDKError } from "../sdk/models/errors/sdkerror.js";
+import { ResponseValidationError } from "../sdk/models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
+import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
@@ -35,88 +38,106 @@ import { Result } from "../sdk/types/fp.js";
  *
  * Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
  */
-export async function accountsGetCreateModel(
-  client$: AccountingCore,
+export function accountsGetCreateModel(
+  client: AccountingCore,
+  companyId: string,
+  connectionId: string,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetCreateChartOfAccountsModelResponse,
+    | AccountingError
+    | ResponseValidationError
+    | ConnectionError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
+  >
+> {
+  return new APIPromise($do(
+    client,
+    companyId,
+    connectionId,
+    options,
+  ));
+}
+
+async function $do(
+  client: AccountingCore,
   companyId: string,
   connectionId: string,
   options?: RequestOptions,
 ): Promise<
-  Result<
-    operations.GetCreateChartOfAccountsModelResponse,
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | ConnectionError
-  >
+  [
+    Result<
+      operations.GetCreateChartOfAccountsModelResponse,
+      | AccountingError
+      | ResponseValidationError
+      | ConnectionError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
+    >,
+    APICall,
+  ]
 > {
-  const input$: operations.GetCreateChartOfAccountsModelRequest = {
+  const input: operations.GetCreateChartOfAccountsModelRequest = {
     companyId: companyId,
     connectionId: connectionId,
   };
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
+  const parsed = safeParse(
+    input,
+    (value) =>
       operations.GetCreateChartOfAccountsModelRequest$outboundSchema.parse(
-        value$,
+        value,
       ),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return [parsed, { status: "invalid" }];
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const pathParams$ = {
-    companyId: encodeSimple$("companyId", payload$.companyId, {
+  const pathParams = {
+    companyId: encodeSimple("companyId", payload.companyId, {
       explode: false,
       charEncoding: "percent",
     }),
-    connectionId: encodeSimple$("connectionId", payload$.connectionId, {
+    connectionId: encodeSimple("connectionId", payload.connectionId, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc(
+  const path = pathToFunc(
     "/companies/{companyId}/connections/{connectionId}/options/chartOfAccounts",
-  )(pathParams$);
+  )(pathParams);
 
-  const headers$ = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
-  const authHeader$ = await extractSecurity(client$.options$.authHeader);
-  const security$ = authHeader$ == null ? {} : { authHeader: authHeader$ };
+  const secConfig = await extractSecurity(client._options.authHeader);
+  const securityInput = secConfig == null ? {} : { authHeader: secConfig };
+  const requestSecurity = resolveGlobalSecurity(securityInput);
+
   const context = {
+    options: client._options,
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "get-create-chartOfAccounts-model",
     oAuth2Scopes: [],
-    securitySource: client$.options$.authHeader,
-  };
-  const securitySettings$ = resolveGlobalSecurity(security$);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
-    method: "GET",
-    path: path$,
-    headers: headers$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
-  }, options);
-  if (!requestRes.ok) {
-    return requestRes;
-  }
-  const request$ = requestRes.value;
+    resolvedSecurity: requestSecurity,
 
-  const doResult = await client$.do$(request$, {
-    context,
-    errorCodes: [],
+    securitySource: client._options.authHeader,
     retryConfig: options?.retries
-      || client$.options$.retryConfig
+      || client._options.retryConfig
       || {
         strategy: "backoff",
         backoff: {
@@ -126,15 +147,38 @@ export async function accountsGetCreateModel(
           maxElapsedTime: 3600000,
         },
         retryConnectionErrors: true,
-      },
+      }
+      || { strategy: "none" },
     retryCodes: options?.retryCodes || ["408", "429", "5XX"],
+  };
+
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
+    method: "GET",
+    baseURL: options?.serverURL,
+    path: path,
+    headers: headers,
+    body: body,
+    userAgent: client._options.userAgent,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
+  }, options);
+  if (!requestRes.ok) {
+    return [requestRes, { status: "invalid" }];
+  }
+  const req = requestRes.value;
+
+  const doResult = await client._do(req, {
+    context,
+    errorCodes: [],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -142,30 +186,36 @@ export async function accountsGetCreateModel(
     Headers: {},
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     operations.GetCreateChartOfAccountsModelResponse,
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | AccountingError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
-    m$.json(
+    M.json(
       200,
       operations.GetCreateChartOfAccountsModelResponse$inboundSchema,
       { key: "PushOption" },
     ),
-    m$.json(
-      [401, 402, 403, 404, 429, 500, 503],
+    M.json(
+      [401, 402, 403, 404, 429],
       operations.GetCreateChartOfAccountsModelResponse$inboundSchema,
       { key: "ErrorMessage" },
     ),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.json(
+      [500, 503],
+      operations.GetCreateChartOfAccountsModelResponse$inboundSchema,
+      { key: "ErrorMessage" },
+    ),
+  )(response, req, { extraFields: responseFields });
+  if (!result.ok) {
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result$;
+  return [result, { status: "complete", request: req, response }];
 }

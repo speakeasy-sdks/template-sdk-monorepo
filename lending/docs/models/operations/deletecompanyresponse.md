@@ -5,14 +5,7 @@
 ```typescript
 import { DeleteCompanyResponse } from "@speakeasy-sdks/lending/models/operations";
 
-let value: DeleteCompanyResponse = {
-  httpMeta: {
-    response: new Response("{\"message\": \"hello world\"}", {
-      headers: { "Content-Type": "application/json" },
-    }),
-    request: new Request("https://example.com"),
-  },
-};
+let value: DeleteCompanyResponse = {};
 ```
 
 ## Fields

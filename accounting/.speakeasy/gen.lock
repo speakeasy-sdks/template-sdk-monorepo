@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: ef897581-6141-4d3b-8020-231752f2daa4
 management:
-  docChecksum: dffee27feb3ffdf16d0b73e130a6aa81
+  docChecksum: 35b85a8b3dd6e28919a75b6010b50c58
   docVersion: 3.0.0
-  speakeasyVersion: 1.396.2
-  generationVersion: 2.415.0
-  releaseVersion: 0.7.0
-  configChecksum: abf289594536ee1928a228fa07f22a78
+  speakeasyVersion: 1.601.0
+  generationVersion: 2.680.0
+  releaseVersion: 0.8.0
+  configChecksum: 8b11053de5540a7d317e215b3b913d50
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   repoSubDirectory: accounting
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/accounting
@@ -14,38 +14,35 @@ management:
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.11
-    core: 3.17.0
+    constsAndDefaults: 0.1.12
+    core: 3.21.20
     decimal: 0.1.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
-    envVarSecurityUsage: 0.1.1
-    examples: 2.81.4
-    flattening: 2.81.1
-    globalSecurity: 2.82.11
+    enumUnions: 0.1.0
+    envVarSecurityUsage: 0.1.2
+    examples: 2.82.2
+    flattening: 2.82.1
+    globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
-    globalServerURLs: 2.82.4
+    globalServerURLs: 2.82.5
     inputOutputModels: 2.82.0
     nameOverrides: 2.81.2
-    nullables: 0.1.0
+    nullables: 0.1.1
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.1.0
+    sdkHooks: 0.3.0
     serverEventsSentinels: 0.1.0
 generatedFiles:
-  - .eslintrc.cjs
   - .gitattributes
   - .npmignore
-  - CONTRIBUTING.md
   - FUNCTIONS.md
   - RUNTIMES.md
   - USAGE.md
   - docs/lib/utils/retryconfig.md
   - docs/sdk/models/operations/createaccountrequest.md
   - docs/sdk/models/operations/createaccountresponse.md
-  - docs/sdk/models/operations/getaccountrequest.md
-  - docs/sdk/models/operations/getaccountresponse.md
   - docs/sdk/models/operations/getaccounttransactionrequest.md
   - docs/sdk/models/operations/getaccounttransactionresponse.md
   - docs/sdk/models/operations/getcreatechartofaccountsmodelrequest.md
@@ -93,13 +90,17 @@ generatedFiles:
   - docs/sdks/accounting/README.md
   - docs/sdks/accounts/README.md
   - docs/sdks/accounttransactions/README.md
+  - eslint.config.mjs
+  - examples/.env.template
+  - examples/README.md
+  - examples/accountTransactionsGet.example.ts
+  - examples/package.json
   - jsr.json
   - package.json
   - src/core.ts
   - src/funcs/accountTransactionsGet.ts
   - src/funcs/accountTransactionsList.ts
   - src/funcs/accountsCreate.ts
-  - src/funcs/accountsGet.ts
   - src/funcs/accountsGetCreateModel.ts
   - src/funcs/accountsList.ts
   - src/hooks/hooks.ts
@@ -124,12 +125,13 @@ generatedFiles:
   - src/sdk/accounts.ts
   - src/sdk/accounttransactions.ts
   - src/sdk/index.ts
+  - src/sdk/models/errors/accountingerror.ts
   - src/sdk/models/errors/httpclienterrors.ts
   - src/sdk/models/errors/index.ts
+  - src/sdk/models/errors/responsevalidationerror.ts
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/models/operations/createaccount.ts
-  - src/sdk/models/operations/getaccount.ts
   - src/sdk/models/operations/getaccounttransaction.ts
   - src/sdk/models/operations/getcreatechartofaccountsmodel.ts
   - src/sdk/models/operations/index.ts
@@ -170,6 +172,7 @@ generatedFiles:
   - src/sdk/models/shared/validationitem.ts
   - src/sdk/models/shared/validdatatypelinks.ts
   - src/sdk/sdk.ts
+  - src/sdk/types/async.ts
   - src/sdk/types/blobs.ts
   - src/sdk/types/constdatetime.ts
   - src/sdk/types/decimal.ts
@@ -187,7 +190,7 @@ examples:
         path:
           companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
           connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-          accountTransactionId: "<value>"
+          accountTransactionId: "<id>"
       responses:
         "200":
           application/json: {"bankAccountRef": {"id": "ff8fdc4c-2aad-4ec1-9430-6bd201832eb3", "name": "Undeposited Funds"}, "currency": "GBP", "currencyRate": 1, "date": "2022-04-19T00:00:00", "id": "062b3a9b-b04f-4d9c-9ebc-81dcb5bbf285", "lines": [{"amount": 188.33, "description": "Payment for direct income $38e8c917-0afc-4583-8ffe-1b53ad601197", "recordRef": {"dataType": "directIncomes", "id": "38e8c917-0afc-4583-8ffe-1b53ad601197"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T12:38:18", "note": "Direct income 38e8c917-0afc-4583-8ffe-1b53ad601197", "sourceModifiedDate": "2022-05-13T01:06:00", "status": "Unreconciled", "totalAmount": 188.33, "transactionId": "356deb9f-98e6-4d6f-8db3-b378241895a1"}
@@ -196,7 +199,7 @@ examples:
         path:
           companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
           connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-          accountTransactionId: "<value>"
+          accountTransactionId: "<id>"
       responses:
         "200":
           application/json: {"bankAccountRef": {"id": "20000-933270541", "name": "Checking"}, "currency": "GBP", "currencyRate": 1, "date": "2022-12-01T00:00:00", "id": "D7B-933784104", "lines": [{"amount": -1200, "recordRef": {"dataType": "directCosts", "id": "D7B-933784104"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:13:23", "sourceModifiedDate": "2023-12-16T05:04:10", "status": "Unknown", "totalAmount": -1200, "transactionId": "D7B-933784104"}
@@ -205,7 +208,7 @@ examples:
         path:
           companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
           connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-          accountTransactionId: "<value>"
+          accountTransactionId: "<id>"
       responses:
         "200":
           application/json: {"bankAccountRef": {"id": "57", "name": "Visa Credit Card"}, "currency": "GBP", "currencyRate": 1, "date": "2015-08-12T00:00:00", "id": "85", "lines": [{"amount": -3831.8, "description": "Opening Balance from Bank", "recordRef": {"dataType": "directCosts", "id": "PUR-85"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:37:16", "note": "Opening Balance from Bank", "sourceModifiedDate": "2016-09-12T18:13:07Z", "status": "Unknown", "totalAmount": -3831.8, "transactionId": "85"}
@@ -214,7 +217,7 @@ examples:
         path:
           companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
           connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-          accountTransactionId: "<value>"
+          accountTransactionId: "<id>"
       responses:
         "200":
           application/json: {"bankAccountRef": {"id": "61", "name": "Dave PP Current"}, "currency": "GBP", "currencyRate": 1, "date": "2018-09-21T00:00:00", "id": "1", "lines": [{"amount": 170.23, "recordRef": {"dataType": "directIncomes", "id": "1"}}], "modifiedDate": "2023-01-18T11:03:12", "note": "Opening Balance from Bank", "sourceModifiedDate": "2018-12-17T14:56:20Z", "status": "Unknown", "totalAmount": 170.23, "transactionId": "1"}
@@ -223,7 +226,7 @@ examples:
         path:
           companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
           connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-          accountTransactionId: "<value>"
+          accountTransactionId: "<id>"
       responses:
         "200":
           application/json: {"bankAccountRef": {"id": "bd9e85e0-0478-433d-ae9f-0b3c4f04bfe4", "name": "Business Bank Account"}, "currency": "GBP", "currencyRate": 1, "date": "2021-12-20T00:00:00", "id": "74004690-82a1-4810-aaca-6ce575af94b4", "lines": [{"amount": -7267.2, "recordRef": {"dataType": "billPayments", "id": "74004690-82a1-4810-aaca-6ce575af94b4"}}], "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-15T20:37:10", "sourceModifiedDate": "2021-01-02T22:51:40", "status": "Reconciled", "totalAmount": -7267.2, "transactionId": "74004690-82a1-4810-aaca-6ce575af94b4"}
@@ -232,12 +235,14 @@ examples:
         path:
           companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
           connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-          accountTransactionId: "<value>"
+          accountTransactionId: "<id>"
       responses:
         "401":
           application/json: {"canBeRetried": "Unknown", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "detailedErrorCode": 0, "error": "Unauthorized", "service": "PublicApi", "statusCode": 401}
+        "500":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "detailedErrorCode": 0, "error": "Unauthorized", "service": "PublicApi", "statusCode": 401}
   list-account-transactions:
-    "":
+    speakeasy-default-list-account-transactions:
       parameters:
         path:
           companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
@@ -249,8 +254,11 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/{id}/data/{dataType}?page=1&pageSize=10"}, "self": {"href": "/companies/{id}/data/{dataType}"}}, "pageNumber": 1, "pageSize": 10, "results": [], "totalResults": 1}
-        "400": {}
+          application/json: {"_links": {"current": {"href": "/companies/{id}/data/{dataType}?page=1&pageSize=10"}, "self": {"href": "/companies/{id}/data/{dataType}"}}, "pageNumber": 1, "pageSize": 10, "totalResults": 1}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
     Clear Books:
       parameters:
         path:
@@ -329,6 +337,8 @@ examples:
       responses:
         "400":
           application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error parsing query - Malformed query.", "service": "ClientsApi", "statusCode": 400}
+        "500":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error parsing query - Malformed query.", "service": "ClientsApi", "statusCode": 400}
     Unresolved property:
       parameters:
         path:
@@ -342,171 +352,21 @@ examples:
       responses:
         "400":
           application/json: {"canBeRetried": "Unknown", "correlationId": "98457fb9956b7f9b4b2fd4f6e23bb5c8", "detailedErrorCode": 0, "error": "Error parsing query - Could not resolve property isCompleted on Dataset", "service": "PullApi", "statusCode": 400}
+        "500":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "98457fb9956b7f9b4b2fd4f6e23bb5c8", "detailedErrorCode": 0, "error": "Error parsing query - Could not resolve property isCompleted on Dataset", "service": "PullApi", "statusCode": 400}
   create-account:
     Malformed query:
       parameters:
         path:
           companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
           connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-        query: {}
       requestBody:
-        application/json: {"currency": "USD", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Current", "fullyQualifiedName": "Cash On Hand", "name": "Accounts Receivable", "nominalCode": "610", "status": "Active", "type": "Asset"}
+        application/json: {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Current", "fullyQualifiedName": "Cash On Hand", "name": "Accounts Receivable", "nominalCode": "610", "status": "Active", "type": "Asset"}
       responses:
         "400":
           application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error processing request - not valid.", "service": "PublicApi", "statusCode": 400}
-  get-account:
-    Clear Books:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Current", "fullyQualifiedName": "Asset.Current.Accounts Receivable", "id": "1b6266d1-1e44-46c5-8eb5-a8f98e03124e", "isBankAccount": false, "modifiedDate": "2023-04-26T12:38:15Z", "name": "Accounts Receivable", "nominalCode": "610", "sourceModifiedDate": "2022-12-10T16:39:00", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
-    Dynamics 365 Business Central:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": " .", "fullyQualifiedName": "..", "id": "8eaed16d-c69f-ec11-80f1-0022481b4546", "isBankAccount": false, "modifiedDate": "2023-03-27T14:21:18Z", "name": "", "nominalCode": "45422026-68CA-4EF2-9", "sourceModifiedDate": "2022-03-09T16:31:54Z", "status": "Active", "type": "Unknown", "validDatatypeLinks": [{"links": ["DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}
-    Exact (Netherlands):
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "EUR", "currentBalance": 864435.44, "description": "Debiteuren", "fullyQualifiedCategory": "Asset.Assets.AccountsReceivable", "fullyQualifiedName": "Asset.Assets.AccountsReceivable.Debiteuren.PaymentsEnabled", "id": "ef2fde36-4416-4bc5-b239-315b2929348c", "isBankAccount": false, "modifiedDate": "2022-10-26T13:36:17Z", "name": "Debiteuren", "nominalCode": "1300", "sourceModifiedDate": "2020-01-08T09:42:54Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Transfer.To.AccountRef.Id", "Transfer.From.AccountRef.Id", "Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}
-    Exact (UK):
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Some thing account", "fullyQualifiedCategory": "Asset.Assets.AccountsReceivable", "fullyQualifiedName": "Asset.Assets.AccountsReceivable.Some thing account.PaymentsEnabled", "id": "ca2b96b7-cc45-4e35-9fa3-82a2ba1eec40", "isBankAccount": false, "modifiedDate": "2022-10-26T13:35:15Z", "name": "Some thing account", "nominalCode": "THING", "sourceModifiedDate": "2017-08-01T17:31:12Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Transfer.To.AccountRef.Id", "Transfer.From.AccountRef.Id", "Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}
-    FreeAgent:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Capital", "fullyQualifiedName": "Asset.Capital.Capital Asset Brought Forward", "id": "601", "isBankAccount": false, "modifiedDate": "2023-04-25T14:19:12Z", "name": "Capital Asset Brought Forward", "nominalCode": "601", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
-    FreshBooks:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 51445.53, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset", "fullyQualifiedName": "Asset.Accounts Receivable", "id": "67357", "isBankAccount": false, "modifiedDate": "2023-03-24T16:07:24Z", "name": "Accounts Receivable", "nominalCode": "1200", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
-    KashFlow:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.BankAccount", "fullyQualifiedName": "Asset.BankAccount.16th Account", "id": "27840056", "isBankAccount": true, "modifiedDate": "2022-09-30T10:29:16Z", "name": "16th Account", "nominalCode": "70700", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
-    Oracle NetSuite:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "EUR", "currentBalance": -635.55, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "AcctPay.AcctPay", "fullyQualifiedName": "AcctPay.AcctPay.Accounts Payable", "id": "111", "isBankAccount": false, "modifiedDate": "2023-01-30T14:48:33Z", "name": "Accounts Payable", "nominalCode": "610", "sourceModifiedDate": "2021-08-11T12:51:21", "status": "Active", "type": "Liability", "validDatatypeLinks": []}
-    QuickBooks Desktop:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 93007.93, "description": "Accounts Receivable", "fullyQualifiedCategory": "Asset.CurrentAsset.AccountsReceivable", "fullyQualifiedName": "Asset.CurrentAsset.AccountsReceivable.Accounts Receivable", "id": "40000-933270541", "isBankAccount": false, "modifiedDate": "2023-04-26T09:06:23Z", "name": "Accounts Receivable", "nominalCode": "11000", "sourceModifiedDate": "2023-12-16T05:06:45", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
-    QuickBooks Online:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 41289.37, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors", "id": "62", "isBankAccount": false, "modifiedDate": "2023-01-18T11:02:34Z", "name": "Debtors", "nominalCode": "246", "sourceModifiedDate": "2022-12-08T15:42:59Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
-    QuickBooks Online Sandbox:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 3041173.77, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors", "id": "70", "isBankAccount": false, "modifiedDate": "2023-04-26T09:35:55Z", "name": "Debtors", "nominalCode": "610", "sourceModifiedDate": "2023-04-26T01:18:15Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
-    Sage 200cloud:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "USD", "currentBalance": 0, "description": "Bank Account", "fullyQualifiedCategory": "Asset.Bank Account", "fullyQualifiedName": "Asset.Bank Account.Bank Account", "id": "2864", "isBankAccount": false, "modifiedDate": "2022-10-14T09:35:52Z", "name": "Bank Account", "nominalCode": "1200", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Archived", "type": "Asset", "validDatatypeLinks": []}
-    Sage 50 (UK):
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 90640.61, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.CurrentAssets.Debtors", "fullyQualifiedName": "Asset.CurrentAssets.Debtors.Debtors Control Account", "id": "1100", "isBankAccount": false, "modifiedDate": "2023-03-30T14:42:44Z", "name": "Debtors Control Account", "nominalCode": "1100", "sourceModifiedDate": "2022-11-25T09:43:54", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
-    Sage Business Cloud Accounting:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 49.61, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Abdi Internet Bank", "id": "e5889b459f544926ac5b8e6756df2ad4", "isBankAccount": true, "modifiedDate": "2022-10-24T14:52:53Z", "name": "Abdi Internet Bank", "nominalCode": "1560", "sourceModifiedDate": "2020-01-27T10:53:26Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}
-    Sage Intacct:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable", "fullyQualifiedName": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable.Accounts Receivable", "id": "2", "isBankAccount": false, "modifiedDate": "2023-04-04T16:31:51Z", "name": "Accounts Receivable", "nominalCode": "12100", "sourceModifiedDate": "2020-01-29T01:42:43", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
-    Wave:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 0, "description": "Test Balance Sheet", "fullyQualifiedCategory": "Asset.CashAndBank", "fullyQualifiedName": "Asset.CashAndBank.Abdi Bank", "id": "QWNjb3VudDo5MjIzNDE3NjkzMzk3NjA2MzM7QnVzaW5lc3M6ZTI0OGQyZDctMWE5Ni00YTk4LWFkOTEtMDdlMGYyMmNhNmE2", "isBankAccount": true, "modifiedDate": "2022-11-16T18:15:17Z", "name": "Abdi Bank", "nominalCode": "610", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
-    Xero:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": 924.25, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Business Bank Account", "id": "bd9e85e0-0478-433d-ae9f-0b3c4f04bfe4", "isBankAccount": true, "modifiedDate": "2023-03-15T20:35:08Z", "name": "Business Bank Account", "nominalCode": "A090", "sourceModifiedDate": "2023-02-17T11:10:49", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id", "DirectIncome.LineItems.AccountRef.Id", "DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}
-    Zoho Books:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "200":
-          application/json: {"currency": "GBP", "currentBalance": -959.64, "description": "The money that customers owe you becomes the accounts receivable. A good example of this is a payment expected from an invoice sent to your customer.", "fullyQualifiedCategory": "Asset.accounts_receivable", "fullyQualifiedName": "Asset.accounts_receivable.Accounts Receivable", "id": "104957000000000352", "isBankAccount": false, "modifiedDate": "2022-10-03T08:40:43Z", "name": "Accounts Receivable", "nominalCode": "", "sourceModifiedDate": "2020-02-05T14:58:44", "status": "Active", "type": "Asset", "validDatatypeLinks": []}
-    Unauthorized:
-      parameters:
-        path:
-          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
-          accountId: "<value>"
-      responses:
-        "401":
-          application/json: {"canBeRetried": "Unknown", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "detailedErrorCode": 0, "error": "Unauthorized", "service": "PublicApi", "statusCode": 401}
+        "500":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error processing request - not valid.", "service": "PublicApi", "statusCode": 400}
   get-create-chartOfAccounts-model:
     Exact (Netherlands):
       parameters:
@@ -579,7 +439,7 @@ examples:
           connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
       responses:
         "200":
-          application/json: {"description": "Nominal Accounts are the categories a business uses to record transactions", "displayName": "Nominal Account", "properties": {"nominalCode": {"description": "The external reference given to each nominal account for a business", "displayName": "Nominal Code", "required": true, "type": "String"}, "name": {"description": "Name of the account", "displayName": "Name", "required": true, "type": "String"}, "description": {"description": "Description of the account", "displayName": "Description", "required": true, "type": "String"}, "fullyQualifiedCategory": {"description": "The full category of the account e.g. Liability.Current or Income.Revenue", "displayName": "Fully Qualified Category", "required": true, "type": "String"}, "fullyQualifiedName": {"description": "The full name of the account e.g. Liability.Current.VAT or Income.Revenue.Sales", "displayName": "Fully Qualified Name", "required": true, "type": "String"}, "currency": {"description": "The currency of the account", "displayName": "Currency", "required": true, "type": "String"}, "currentBalance": {"description": "The current balance in the account", "displayName": "Current Balance", "required": true, "type": "Number"}, "type": {"description": "The type, or base category, of the account", "displayName": "Account Type", "required": true, "type": "String"}, "status": {"description": "The status of the account", "displayName": "Account Status", "required": true, "type": "String"}, "isBankAccount": {"description": "Confirms whether the nominal account represents a bank account or not", "displayName": "Is Bank Account?", "required": true, "type": "Boolean"}, "validDatatypeLinks": {"description": "Describes which fields on other data types are valid links to this account in the originating system", "displayName": "Valid Datatype Links", "required": true, "type": "Array"}, "metadata": {"description": "Miscellaneous data about the item", "displayName": "Metadata", "required": true, "type": "Object"}}, "required": true, "type": "Object"}
+          application/json: {"description": "Nominal Accounts are the categories a business uses to record transactions", "displayName": "Nominal Account", "properties": {"nominalCode": {"description": "The external reference given to each nominal account for a business", "displayName": "Nominal Code", "required": true, "type": "String"}, "name": {"description": "Name of the account", "displayName": "Name", "required": true, "type": "String"}, "description": {"description": "Description of the account", "displayName": "Description", "required": true, "type": "String"}, "fullyQualifiedCategory": {"description": "The full category of the account e.g. Liability.Current or Income.Revenue", "displayName": "Fully Qualified Category", "required": true, "type": "String"}, "fullyQualifiedName": {"description": "The full name of the account e.g. Liability.Current.VAT or Income.Revenue.Sales", "displayName": "Fully Qualified Name", "required": true, "type": "String"}, "currency": {"description": "The currency of the account", "displayName": "Currency", "required": true, "type": "String"}, "currentBalance": {"description": "The current balance in the account", "displayName": "Current Balance", "required": true, "type": "Number"}, "type": {"description": "The type, or base category, of the account", "displayName": "Account Type", "required": true, "type": "String"}, "status": {"description": "The status of the account", "displayName": "Account Status", "required": true, "type": "String"}, "isBankAccount": {"description": "Confirms whether the nominal account represents a bank account or not", "displayName": "Is Bank Account?", "required": true, "type": "Boolean"}, "validDatatypeLinks": {"description": "Describes which fields on other data types are valid links to this account in the originating system", "displayName": "Valid Datatype Links", "properties": {"property": {"description": "The field on the source data type that other data types can link to", "displayName": "Property", "required": true, "type": "String"}, "links": {"description": "A collection of absolute names of fields from other data types, e.g. Invoice.LineItems.AccountRef.Id", "displayName": "Links", "required": true, "type": "Array"}}, "required": true, "type": "Array"}, "metadata": {"description": "Miscellaneous data about the item", "displayName": "Metadata", "properties": {"isDeleted": {"description": "A boolean to indicate whether the object has been deleted", "displayName": "IsDeleted", "required": true, "type": "Boolean"}}, "required": true, "type": "Object"}}, "required": true, "type": "Object"}
     Xero:
       parameters:
         path:
@@ -596,8 +456,10 @@ examples:
       responses:
         "401":
           application/json: {"canBeRetried": "Unknown", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "detailedErrorCode": 0, "error": "Unauthorized", "service": "PublicApi", "statusCode": 401}
+        "500":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "detailedErrorCode": 0, "error": "Unauthorized", "service": "PublicApi", "statusCode": 401}
   list-accounts:
-    "":
+    speakeasy-default-list-accounts:
       parameters:
         path:
           companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
@@ -608,8 +470,11 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/{id}/data/{dataType}?page=1&pageSize=10"}, "self": {"href": "/companies/{id}/data/{dataType}"}}, "pageNumber": 1, "pageSize": 10, "results": [], "totalResults": 1}
-        "400": {}
+          application/json: {"_links": {"current": {"href": "/companies/{id}/data/{dataType}?page=1&pageSize=10"}, "self": {"href": "/companies/{id}/data/{dataType}"}}, "pageNumber": 1, "pageSize": 10, "totalResults": 1}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
     Clear Books:
       parameters:
         path:
@@ -633,7 +498,7 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/d6849caf-c146-41be-8335-b73346e3bd84/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/d6849caf-c146-41be-8335-b73346e3bd84/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/d6849caf-c146-41be-8335-b73346e3bd84/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": " .", "fullyQualifiedName": "..", "id": "8eaed16d-c69f-ec11-80f1-0022481b4546", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-27T14:21:18Z", "name": "", "nominalCode": "45422026-68CA-4EF2-9", "sourceModifiedDate": "2022-03-09T16:31:54Z", "status": "Active", "type": "Unknown", "validDatatypeLinks": [{"links": ["DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}, {"currency": "GBP", "currentBalance": 27.34, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": " .", "fullyQualifiedName": "..Account no cat Balance Sheet", "id": "c0861a65-c69f-ec11-80f1-0022481b4546", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-27T14:21:18Z", "name": "Account no cat Balance Sheet", "nominalCode": "10", "sourceModifiedDate": "2022-09-13T14:45:01Z", "status": "Active", "type": "Unknown", "validDatatypeLinks": [{"links": ["DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}], "totalResults": 122}
+          application/json: {"_links": {"current": {"href": "/companies/d6849caf-c146-41be-8335-b73346e3bd84/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/d6849caf-c146-41be-8335-b73346e3bd84/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/d6849caf-c146-41be-8335-b73346e3bd84/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "fullyQualifiedCategory": " .", "fullyQualifiedName": "..", "id": "8eaed16d-c69f-ec11-80f1-0022481b4546", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-27T14:21:18Z", "name": "", "nominalCode": "45422026-68CA-4EF2-9", "sourceModifiedDate": "2022-03-09T16:31:54Z", "status": "Active", "type": "Unknown", "validDatatypeLinks": [{"links": ["DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}, {"currency": "GBP", "currentBalance": 27.34, "fullyQualifiedCategory": " .", "fullyQualifiedName": "..Account no cat Balance Sheet", "id": "c0861a65-c69f-ec11-80f1-0022481b4546", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-27T14:21:18Z", "name": "Account no cat Balance Sheet", "nominalCode": "10", "sourceModifiedDate": "2022-09-13T14:45:01Z", "status": "Active", "type": "Unknown", "validDatatypeLinks": [{"links": ["DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}], "totalResults": 122}
     Exact (Netherlands):
       parameters:
         path:
@@ -669,7 +534,7 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/071ad738-68f3-4561-afd0-69bab9df0803/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/071ad738-68f3-4561-afd0-69bab9df0803/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/071ad738-68f3-4561-afd0-69bab9df0803/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Capital", "fullyQualifiedName": "Asset.Capital.Capital Asset Brought Forward", "id": "601", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-25T14:19:12Z", "name": "Capital Asset Brought Forward", "nominalCode": "601", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Capital", "fullyQualifiedName": "Asset.Capital.Capital Asset Depreciation Brought Forward", "id": "605", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-25T14:19:12Z", "name": "Capital Asset Depreciation Brought Forward", "nominalCode": "605", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 292}
+          application/json: {"_links": {"current": {"href": "/companies/071ad738-68f3-4561-afd0-69bab9df0803/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/071ad738-68f3-4561-afd0-69bab9df0803/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/071ad738-68f3-4561-afd0-69bab9df0803/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "fullyQualifiedCategory": "Asset.Capital", "fullyQualifiedName": "Asset.Capital.Capital Asset Brought Forward", "id": "601", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-25T14:19:12Z", "name": "Capital Asset Brought Forward", "nominalCode": "601", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "fullyQualifiedCategory": "Asset.Capital", "fullyQualifiedName": "Asset.Capital.Capital Asset Depreciation Brought Forward", "id": "605", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-25T14:19:12Z", "name": "Capital Asset Depreciation Brought Forward", "nominalCode": "605", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 292}
     FreshBooks:
       parameters:
         path:
@@ -681,7 +546,7 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/3691c49e-0db4-4172-b3ab-e4084c365013/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/3691c49e-0db4-4172-b3ab-e4084c365013/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/3691c49e-0db4-4172-b3ab-e4084c365013/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 51445.53, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset", "fullyQualifiedName": "Asset.Accounts Receivable", "id": "67357", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-24T16:07:24Z", "name": "Accounts Receivable", "nominalCode": "1200", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 51445.53, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable", "fullyQualifiedName": "Asset.Accounts Receivable.Accounts Receivable", "id": "128611", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-24T16:07:24Z", "name": "Accounts Receivable", "nominalCode": "1200-1", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 96}
+          application/json: {"_links": {"current": {"href": "/companies/3691c49e-0db4-4172-b3ab-e4084c365013/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/3691c49e-0db4-4172-b3ab-e4084c365013/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/3691c49e-0db4-4172-b3ab-e4084c365013/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 51445.53, "fullyQualifiedCategory": "Asset", "fullyQualifiedName": "Asset.Accounts Receivable", "id": "67357", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-24T16:07:24Z", "name": "Accounts Receivable", "nominalCode": "1200", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 51445.53, "fullyQualifiedCategory": "Asset.Accounts Receivable", "fullyQualifiedName": "Asset.Accounts Receivable.Accounts Receivable", "id": "128611", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-24T16:07:24Z", "name": "Accounts Receivable", "nominalCode": "1200-1", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 96}
     KashFlow:
       parameters:
         path:
@@ -693,7 +558,7 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/3a707a99-89da-4b16-a5d6-595333a16352/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/3a707a99-89da-4b16-a5d6-595333a16352/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/3a707a99-89da-4b16-a5d6-595333a16352/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.BankAccount", "fullyQualifiedName": "Asset.BankAccount.16th Account", "id": "27840056", "isBankAccount": true, "modifiedDate": "2022-09-30T10:29:16Z", "name": "16th Account", "nominalCode": "70700", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.BankAccount", "fullyQualifiedName": "Asset.BankAccount.1a1a", "id": "27840049", "isBankAccount": true, "modifiedDate": "2022-09-30T10:29:16Z", "name": "1a1a", "nominalCode": "70600", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 157}
+          application/json: {"_links": {"current": {"href": "/companies/3a707a99-89da-4b16-a5d6-595333a16352/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/3a707a99-89da-4b16-a5d6-595333a16352/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/3a707a99-89da-4b16-a5d6-595333a16352/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "fullyQualifiedCategory": "Asset.BankAccount", "fullyQualifiedName": "Asset.BankAccount.16th Account", "id": "27840056", "isBankAccount": true, "modifiedDate": "2022-09-30T10:29:16Z", "name": "16th Account", "nominalCode": "70700", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "fullyQualifiedCategory": "Asset.BankAccount", "fullyQualifiedName": "Asset.BankAccount.1a1a", "id": "27840049", "isBankAccount": true, "modifiedDate": "2022-09-30T10:29:16Z", "name": "1a1a", "nominalCode": "70600", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 157}
     Oracle NetSuite:
       parameters:
         path:
@@ -705,7 +570,7 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/d5074b08-6a34-4b06-a742-236edf5dc4f1/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/d5074b08-6a34-4b06-a742-236edf5dc4f1/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/d5074b08-6a34-4b06-a742-236edf5dc4f1/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": -635.55, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "AcctPay.AcctPay", "fullyQualifiedName": "AcctPay.AcctPay.Accounts Payable", "id": "111", "isBankAccount": false, "modifiedDate": "2023-01-30T14:48:33Z", "name": "Accounts Payable", "nominalCode": "610", "sourceModifiedDate": "2021-08-11T12:51:21", "status": "Active", "type": "Liability", "validDatatypeLinks": []}, {"currency": "USD", "currentBalance": -565, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "AcctRec.AcctRec", "fullyQualifiedName": "AcctRec.AcctRec.Accounts Receivable", "id": "119", "isBankAccount": false, "modifiedDate": "2023-01-30T14:48:33Z", "name": "Accounts Receivable", "nominalCode": "610", "sourceModifiedDate": "2021-09-08T15:23:31", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 44}
+          application/json: {"_links": {"current": {"href": "/companies/d5074b08-6a34-4b06-a742-236edf5dc4f1/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/d5074b08-6a34-4b06-a742-236edf5dc4f1/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/d5074b08-6a34-4b06-a742-236edf5dc4f1/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currentBalance": -635.55, "fullyQualifiedCategory": "AcctPay.AcctPay", "fullyQualifiedName": "AcctPay.AcctPay.Accounts Payable", "id": "111", "isBankAccount": false, "modifiedDate": "2023-01-30T14:48:33Z", "name": "Accounts Payable", "sourceModifiedDate": "2021-08-11T12:51:21", "status": "Active", "type": "Liability", "validDatatypeLinks": []}, {"currentBalance": -565, "fullyQualifiedCategory": "AcctRec.AcctRec", "fullyQualifiedName": "AcctRec.AcctRec.Accounts Receivable", "id": "119", "isBankAccount": false, "modifiedDate": "2023-01-30T14:48:33Z", "name": "Accounts Receivable", "sourceModifiedDate": "2021-09-08T15:23:31", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 44}
     QuickBooks Desktop:
       parameters:
         path:
@@ -729,7 +594,7 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/10818b5e-6e6a-4ed4-a1c5-3e3efe626e87/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/10818b5e-6e6a-4ed4-a1c5-3e3efe626e87/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/10818b5e-6e6a-4ed4-a1c5-3e3efe626e87/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 41289.37, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors", "id": "62", "isBankAccount": false, "modifiedDate": "2023-01-18T11:02:34Z", "name": "Debtors", "nominalCode": "246", "sourceModifiedDate": "2022-12-08T15:42:59Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "AED", "currentBalance": -1533.44, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors - AED", "id": "92", "isBankAccount": false, "modifiedDate": "2023-01-18T11:02:34Z", "name": "Debtors - AED", "nominalCode": "247", "sourceModifiedDate": "2021-02-19T14:04:45Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 234}
+          application/json: {"_links": {"current": {"href": "/companies/10818b5e-6e6a-4ed4-a1c5-3e3efe626e87/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/10818b5e-6e6a-4ed4-a1c5-3e3efe626e87/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/10818b5e-6e6a-4ed4-a1c5-3e3efe626e87/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 41289.37, "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors", "id": "62", "isBankAccount": false, "modifiedDate": "2023-01-18T11:02:34Z", "name": "Debtors", "nominalCode": "246", "sourceModifiedDate": "2022-12-08T15:42:59Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "AED", "currentBalance": -1533.44, "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors - AED", "id": "92", "isBankAccount": false, "modifiedDate": "2023-01-18T11:02:34Z", "name": "Debtors - AED", "nominalCode": "247", "sourceModifiedDate": "2021-02-19T14:04:45Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 234}
     QuickBooks Online Sandbox:
       parameters:
         path:
@@ -741,7 +606,7 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/5a7f3597-36e1-4216-86fe-289ad36088a6/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/5a7f3597-36e1-4216-86fe-289ad36088a6/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/5a7f3597-36e1-4216-86fe-289ad36088a6/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 3041173.77, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors", "id": "70", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:35:55Z", "name": "Debtors", "nominalCode": "610", "sourceModifiedDate": "2023-04-26T01:18:15Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "USD", "currentBalance": 54822.37, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors - USD", "id": "80", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:35:55Z", "name": "Debtors - USD", "nominalCode": "610", "sourceModifiedDate": "2023-04-12T15:10:38Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 186}
+          application/json: {"_links": {"current": {"href": "/companies/5a7f3597-36e1-4216-86fe-289ad36088a6/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/5a7f3597-36e1-4216-86fe-289ad36088a6/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/5a7f3597-36e1-4216-86fe-289ad36088a6/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 3041173.77, "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors", "id": "70", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:35:55Z", "name": "Debtors", "sourceModifiedDate": "2023-04-26T01:18:15Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "USD", "currentBalance": 54822.37, "fullyQualifiedCategory": "Asset.Accounts Receivable.AccountsReceivable", "fullyQualifiedName": "Asset.Accounts Receivable.AccountsReceivable.Debtors - USD", "id": "80", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-26T09:35:55Z", "name": "Debtors - USD", "sourceModifiedDate": "2023-04-12T15:10:38Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 186}
     Sage 200cloud:
       parameters:
         path:
@@ -753,7 +618,7 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/93c21e2d-049c-4d24-b41b-57e61c30b69e/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/93c21e2d-049c-4d24-b41b-57e61c30b69e/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/93c21e2d-049c-4d24-b41b-57e61c30b69e/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Bank Account", "fullyQualifiedCategory": "Asset.Bank Account", "fullyQualifiedName": "Asset.Bank Account.Bank Account", "id": "2864", "isBankAccount": false, "metadata": {"isDeleted": true}, "modifiedDate": "2022-10-14T09:35:52Z", "name": "Bank Account", "nominalCode": "1200", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Archived", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "description": "Bank Current Account", "fullyQualifiedCategory": "Asset.Bank Account", "fullyQualifiedName": "Asset.Bank Account.Bank Current Account", "id": "2368", "isBankAccount": true, "modifiedDate": "2022-10-14T09:35:52Z", "name": "Bank Current Account", "nominalCode": "1200", "sourceModifiedDate": "2020-09-11T13:53:12Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 344}
+          application/json: {"_links": {"current": {"href": "/companies/93c21e2d-049c-4d24-b41b-57e61c30b69e/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/93c21e2d-049c-4d24-b41b-57e61c30b69e/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/93c21e2d-049c-4d24-b41b-57e61c30b69e/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"description": "Bank Account", "fullyQualifiedCategory": "Asset.Bank Account", "fullyQualifiedName": "Asset.Bank Account.Bank Account", "id": "2864", "isBankAccount": false, "metadata": {"isDeleted": true}, "modifiedDate": "2022-10-14T09:35:52Z", "name": "Bank Account", "nominalCode": "1200", "status": "Archived", "type": "Asset", "validDatatypeLinks": []}, {"description": "Bank Current Account", "fullyQualifiedCategory": "Asset.Bank Account", "fullyQualifiedName": "Asset.Bank Account.Bank Current Account", "id": "2368", "isBankAccount": true, "modifiedDate": "2022-10-14T09:35:52Z", "name": "Bank Current Account", "nominalCode": "1200", "sourceModifiedDate": "2020-09-11T13:53:12Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 344}
     Sage 50 (UK):
       parameters:
         path:
@@ -765,7 +630,7 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/cf5f2a47-2990-4221-bae6-0c19c86ac304/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/cf5f2a47-2990-4221-bae6-0c19c86ac304/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/cf5f2a47-2990-4221-bae6-0c19c86ac304/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 90640.61, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.CurrentAssets.Debtors", "fullyQualifiedName": "Asset.CurrentAssets.Debtors.Debtors Control Account", "id": "1100", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-30T14:42:44Z", "name": "Debtors Control Account", "nominalCode": "1100", "sourceModifiedDate": "2022-11-25T09:43:54", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.CurrentAssets.Debtors", "fullyQualifiedName": "Asset.CurrentAssets.Debtors.Other Debtors", "id": "1102", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-30T14:42:44Z", "name": "Other Debtors", "nominalCode": "1102", "sourceModifiedDate": "2022-11-25T09:43:54", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 155}
+          application/json: {"_links": {"current": {"href": "/companies/cf5f2a47-2990-4221-bae6-0c19c86ac304/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/cf5f2a47-2990-4221-bae6-0c19c86ac304/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/cf5f2a47-2990-4221-bae6-0c19c86ac304/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 90640.61, "fullyQualifiedCategory": "Asset.CurrentAssets.Debtors", "fullyQualifiedName": "Asset.CurrentAssets.Debtors.Debtors Control Account", "id": "1100", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-30T14:42:44Z", "name": "Debtors Control Account", "nominalCode": "1100", "sourceModifiedDate": "2022-11-25T09:43:54", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "fullyQualifiedCategory": "Asset.CurrentAssets.Debtors", "fullyQualifiedName": "Asset.CurrentAssets.Debtors.Other Debtors", "id": "1102", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-30T14:42:44Z", "name": "Other Debtors", "nominalCode": "1102", "sourceModifiedDate": "2022-11-25T09:43:54", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 155}
     Sage Business Cloud Accounting:
       parameters:
         path:
@@ -777,7 +642,7 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/390083e2-351b-407c-a3be-55081c36c182/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/390083e2-351b-407c-a3be-55081c36c182/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/390083e2-351b-407c-a3be-55081c36c182/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 49.61, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Abdi Internet Bank", "id": "e5889b459f544926ac5b8e6756df2ad4", "isBankAccount": true, "modifiedDate": "2022-10-24T14:52:53Z", "name": "Abdi Internet Bank", "nominalCode": "1560", "sourceModifiedDate": "2020-01-27T10:53:26Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}, {"currency": "GBP", "currentBalance": 225830.75, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Abdi Live Test", "id": "b17083bc9b2748b4ab321b024e260eda", "isBankAccount": true, "modifiedDate": "2022-10-24T14:52:53Z", "name": "Abdi Live Test", "nominalCode": "147852", "sourceModifiedDate": "2020-01-28T14:00:20Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}], "totalResults": 283}
+          application/json: {"_links": {"current": {"href": "/companies/390083e2-351b-407c-a3be-55081c36c182/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/390083e2-351b-407c-a3be-55081c36c182/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/390083e2-351b-407c-a3be-55081c36c182/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 49.61, "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Abdi Internet Bank", "id": "e5889b459f544926ac5b8e6756df2ad4", "isBankAccount": true, "modifiedDate": "2022-10-24T14:52:53Z", "name": "Abdi Internet Bank", "nominalCode": "1560", "sourceModifiedDate": "2020-01-27T10:53:26Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}, {"currency": "GBP", "currentBalance": 225830.75, "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Abdi Live Test", "id": "b17083bc9b2748b4ab321b024e260eda", "isBankAccount": true, "modifiedDate": "2022-10-24T14:52:53Z", "name": "Abdi Live Test", "nominalCode": "147852", "sourceModifiedDate": "2020-01-28T14:00:20Z", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id"], "property": "Id"}]}], "totalResults": 283}
     Sage Intacct:
       parameters:
         path:
@@ -789,7 +654,7 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/df02b289-cb16-4964-ac4d-9fd60b04538e/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/df02b289-cb16-4964-ac4d-9fd60b04538e/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/df02b289-cb16-4964-ac4d-9fd60b04538e/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable", "fullyQualifiedName": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable.Accounts Receivable", "id": "2", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-04T16:31:51Z", "name": "Accounts Receivable", "nominalCode": "12100", "sourceModifiedDate": "2020-01-29T01:42:43", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable", "fullyQualifiedName": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable.AR - Retainage", "id": "155", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-04T16:31:51Z", "name": "AR - Retainage", "nominalCode": "12710", "sourceModifiedDate": "2020-10-15T15:33:15", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 181}
+          application/json: {"_links": {"current": {"href": "/companies/df02b289-cb16-4964-ac4d-9fd60b04538e/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/df02b289-cb16-4964-ac4d-9fd60b04538e/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/df02b289-cb16-4964-ac4d-9fd60b04538e/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "fullyQualifiedCategory": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable", "fullyQualifiedName": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable.Accounts Receivable", "id": "2", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-04T16:31:51Z", "name": "Accounts Receivable", "nominalCode": "12100", "sourceModifiedDate": "2020-01-29T01:42:43", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "fullyQualifiedCategory": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable", "fullyQualifiedName": "Assets.Current Assets.Account Receivable, Net of Allowance.Accounts Receivable.Accounts Receivable.AR - Retainage", "id": "155", "isBankAccount": false, "metadata": {"isDeleted": false}, "modifiedDate": "2023-04-04T16:31:51Z", "name": "AR - Retainage", "nominalCode": "12710", "sourceModifiedDate": "2020-10-15T15:33:15", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 181}
     Wave:
       parameters:
         path:
@@ -801,7 +666,7 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/0b22b59d-b4e5-4c35-b03f-88bbbcb41256/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/0b22b59d-b4e5-4c35-b03f-88bbbcb41256/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/0b22b59d-b4e5-4c35-b03f-88bbbcb41256/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 0, "description": "Test Balance Sheet", "fullyQualifiedCategory": "Asset.CashAndBank", "fullyQualifiedName": "Asset.CashAndBank.Abdi Bank", "id": "QWNjb3VudDo5MjIzNDE3NjkzMzk3NjA2MzM7QnVzaW5lc3M6ZTI0OGQyZDctMWE5Ni00YTk4LWFkOTEtMDdlMGYyMmNhNmE2", "isBankAccount": true, "modifiedDate": "2022-11-16T18:15:17Z", "name": "Abdi Bank", "nominalCode": "610", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "currentBalance": 0, "description": "Cash you haven�t deposited in the bank. Add your bank and credit card accounts to accurately categorize transactions that aren't cash.", "fullyQualifiedCategory": "Asset.CashAndBank", "fullyQualifiedName": "Asset.CashAndBank.Cash on Hand", "id": "QWNjb3VudDo3OTE3NTA1OTcwOTQxNzQ3MTU7QnVzaW5lc3M6ZTI0OGQyZDctMWE5Ni00YTk4LWFkOTEtMDdlMGYyMmNhNmE2", "isBankAccount": true, "modifiedDate": "2022-11-16T18:15:17Z", "name": "Cash on Hand", "nominalCode": "610", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 85}
+          application/json: {"_links": {"current": {"href": "/companies/0b22b59d-b4e5-4c35-b03f-88bbbcb41256/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/0b22b59d-b4e5-4c35-b03f-88bbbcb41256/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/0b22b59d-b4e5-4c35-b03f-88bbbcb41256/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "description": "Test Balance Sheet", "fullyQualifiedCategory": "Asset.CashAndBank", "fullyQualifiedName": "Asset.CashAndBank.Abdi Bank", "id": "QWNjb3VudDo5MjIzNDE3NjkzMzk3NjA2MzM7QnVzaW5lc3M6ZTI0OGQyZDctMWE5Ni00YTk4LWFkOTEtMDdlMGYyMmNhNmE2", "isBankAccount": true, "modifiedDate": "2022-11-16T18:15:17Z", "name": "Abdi Bank", "status": "Active", "type": "Asset", "validDatatypeLinks": []}, {"currency": "GBP", "description": "Cash you haven�t deposited in the bank. Add your bank and credit card accounts to accurately categorize transactions that aren't cash.", "fullyQualifiedCategory": "Asset.CashAndBank", "fullyQualifiedName": "Asset.CashAndBank.Cash on Hand", "id": "QWNjb3VudDo3OTE3NTA1OTcwOTQxNzQ3MTU7QnVzaW5lc3M6ZTI0OGQyZDctMWE5Ni00YTk4LWFkOTEtMDdlMGYyMmNhNmE2", "isBankAccount": true, "modifiedDate": "2022-11-16T18:15:17Z", "name": "Cash on Hand", "status": "Active", "type": "Asset", "validDatatypeLinks": []}], "totalResults": 85}
     Xero:
       parameters:
         path:
@@ -813,7 +678,7 @@ examples:
           orderBy: "-modifiedDate"
       responses:
         "200":
-          application/json: {"_links": {"current": {"href": "/companies/5ced9667-a310-443a-a711-958d36377141/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/5ced9667-a310-443a-a711-958d36377141/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/5ced9667-a310-443a-a711-958d36377141/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 924.25, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Business Bank Account", "id": "bd9e85e0-0478-433d-ae9f-0b3c4f04bfe4", "isBankAccount": true, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-15T20:35:08Z", "name": "Business Bank Account", "nominalCode": "A090", "sourceModifiedDate": "2023-02-17T11:10:49", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id", "DirectIncome.LineItems.AccountRef.Id", "DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}, {"currency": "GBP", "currentBalance": 0, "description": "Invoices the business has issued but has not yet collected payment on.", "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Business Savings Account", "id": "a8d6fb1a-8c5d-4683-90ce-bf9d28fc62ba", "isBankAccount": true, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-15T20:35:08Z", "name": "Business Savings Account", "nominalCode": "A091", "sourceModifiedDate": "2023-02-17T11:10:49", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id", "DirectIncome.LineItems.AccountRef.Id", "DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}], "totalResults": 90}
+          application/json: {"_links": {"current": {"href": "/companies/5ced9667-a310-443a-a711-958d36377141/data/accounts?page=1&pageSize=2"}, "next": {"href": "/companies/5ced9667-a310-443a-a711-958d36377141/data/accounts?page=2&pageSize=2"}, "self": {"href": "/companies/5ced9667-a310-443a-a711-958d36377141/data/accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"currency": "GBP", "currentBalance": 924.25, "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Business Bank Account", "id": "bd9e85e0-0478-433d-ae9f-0b3c4f04bfe4", "isBankAccount": true, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-15T20:35:08Z", "name": "Business Bank Account", "nominalCode": "A090", "sourceModifiedDate": "2023-02-17T11:10:49", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id", "DirectIncome.LineItems.AccountRef.Id", "DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}, {"currency": "GBP", "currentBalance": 0, "fullyQualifiedCategory": "Asset.Bank", "fullyQualifiedName": "Asset.Bank.Business Savings Account", "id": "a8d6fb1a-8c5d-4683-90ce-bf9d28fc62ba", "isBankAccount": true, "metadata": {"isDeleted": false}, "modifiedDate": "2023-03-15T20:35:08Z", "name": "Business Savings Account", "nominalCode": "A091", "sourceModifiedDate": "2023-02-17T11:10:49", "status": "Active", "type": "Asset", "validDatatypeLinks": [{"links": ["Payment.AccountRef.Id", "BillPayment.AccountRef.Id", "DirectIncome.LineItems.AccountRef.Id", "DirectCost.LineItems.AccountRef.Id"], "property": "Id"}]}], "totalResults": 90}
     Zoho Books:
       parameters:
         path:
@@ -838,6 +703,8 @@ examples:
       responses:
         "400":
           application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error parsing query - Malformed query.", "service": "ClientsApi", "statusCode": 400}
+        "500":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error parsing query - Malformed query.", "service": "ClientsApi", "statusCode": 400}
     Unresolved property:
       parameters:
         path:
@@ -850,3 +717,10 @@ examples:
       responses:
         "400":
           application/json: {"canBeRetried": "Unknown", "correlationId": "98457fb9956b7f9b4b2fd4f6e23bb5c8", "detailedErrorCode": 0, "error": "Error parsing query - Could not resolve property isCompleted on Dataset", "service": "PullApi", "statusCode": 400}
+        "500":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "98457fb9956b7f9b4b2fd4f6e23bb5c8", "detailedErrorCode": 0, "error": "Error parsing query - Could not resolve property isCompleted on Dataset", "service": "PullApi", "statusCode": 400}
+examplesVersion: 1.0.2
+generatedTests: {}
+releaseNotes: |
+  ## SDK Changes Detected:
+  * accounting.accounts.get(): **Deleted**

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DataConnectionError = {
   /**
@@ -84,4 +87,22 @@ export namespace DataConnectionError$ {
   export const outboundSchema = DataConnectionError$outboundSchema;
   /** @deprecated use `DataConnectionError$Outbound` instead. */
   export type Outbound = DataConnectionError$Outbound;
+}
+
+export function dataConnectionErrorToJSON(
+  dataConnectionError: DataConnectionError,
+): string {
+  return JSON.stringify(
+    DataConnectionError$outboundSchema.parse(dataConnectionError),
+  );
+}
+
+export function dataConnectionErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<DataConnectionError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DataConnectionError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DataConnectionError' from JSON`,
+  );
 }

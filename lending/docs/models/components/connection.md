@@ -28,11 +28,6 @@ let value: Connection = {
   status: DataConnectionStatus.Linked,
   lastSync: "2022-10-27T10:22:43.6464237Z",
   created: "2022-10-27T09:53:29Z",
-  dataConnectionErrors: [
-    {
-      erroredOnUtc: "2022-10-23T00:00:00Z",
-    },
-  ],
 };
 ```
 

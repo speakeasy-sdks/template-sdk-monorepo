@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
 import { Decimal as Decimal$ } from "../../types/decimal.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AccountStatus,
   AccountStatus$inboundSchema,
@@ -350,6 +353,24 @@ export namespace AccountingAccount$ {
   export type Outbound = AccountingAccount$Outbound;
 }
 
+export function accountingAccountToJSON(
+  accountingAccount: AccountingAccount,
+): string {
+  return JSON.stringify(
+    AccountingAccount$outboundSchema.parse(accountingAccount),
+  );
+}
+
+export function accountingAccountFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountingAccount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountingAccount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountingAccount' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateAccountResponse$inboundSchema: z.ZodType<
   CreateAccountResponse,
@@ -423,4 +444,22 @@ export namespace CreateAccountResponse$ {
   export const outboundSchema = CreateAccountResponse$outboundSchema;
   /** @deprecated use `CreateAccountResponse$Outbound` instead. */
   export type Outbound = CreateAccountResponse$Outbound;
+}
+
+export function createAccountResponseToJSON(
+  createAccountResponse: CreateAccountResponse,
+): string {
+  return JSON.stringify(
+    CreateAccountResponse$outboundSchema.parse(createAccountResponse),
+  );
+}
+
+export function createAccountResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateAccountResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateAccountResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateAccountResponse' from JSON`,
+  );
 }

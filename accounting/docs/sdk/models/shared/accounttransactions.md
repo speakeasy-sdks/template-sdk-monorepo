@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AccountTransactionLineRecordRefDataType, AccountTransactions } from "@speakeasy-sdks/accounting/sdk/models/shared";
+import { AccountTransactions } from "@speakeasy-sdks/accounting/sdk/models/shared";
 
 let value: AccountTransactions = {
   links: {
@@ -16,21 +16,6 @@ let value: AccountTransactions = {
   },
   pageNumber: 1,
   pageSize: 10,
-  results: [
-    {
-      currency: "USD",
-      date: "2022-10-23T00:00:00Z",
-      lines: [
-        {
-          recordRef: {
-            dataType: AccountTransactionLineRecordRefDataType.Transfers,
-          },
-        },
-      ],
-      modifiedDate: "2022-10-23T00:00:00Z",
-      sourceModifiedDate: "2022-10-23T00:00:00Z",
-    },
-  ],
   totalResults: 1,
 };
 ```

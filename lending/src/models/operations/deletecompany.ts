@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteCompanyRequest = {
   /**
@@ -53,6 +56,24 @@ export namespace DeleteCompanyRequest$ {
   export type Outbound = DeleteCompanyRequest$Outbound;
 }
 
+export function deleteCompanyRequestToJSON(
+  deleteCompanyRequest: DeleteCompanyRequest,
+): string {
+  return JSON.stringify(
+    DeleteCompanyRequest$outboundSchema.parse(deleteCompanyRequest),
+  );
+}
+
+export function deleteCompanyRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteCompanyRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteCompanyRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteCompanyRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteCompanyResponse$inboundSchema: z.ZodType<
   DeleteCompanyResponse,
@@ -95,4 +116,22 @@ export namespace DeleteCompanyResponse$ {
   export const outboundSchema = DeleteCompanyResponse$outboundSchema;
   /** @deprecated use `DeleteCompanyResponse$Outbound` instead. */
   export type Outbound = DeleteCompanyResponse$Outbound;
+}
+
+export function deleteCompanyResponseToJSON(
+  deleteCompanyResponse: DeleteCompanyResponse,
+): string {
+  return JSON.stringify(
+    DeleteCompanyResponse$outboundSchema.parse(deleteCompanyResponse),
+  );
+}
+
+export function deleteCompanyResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteCompanyResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteCompanyResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteCompanyResponse' from JSON`,
+  );
 }

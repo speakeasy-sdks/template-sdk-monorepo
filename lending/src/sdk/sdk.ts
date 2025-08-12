@@ -8,6 +8,6 @@ import { Companies } from "./companies.js";
 export class LendingTs extends ClientSDK {
   private _companies?: Companies;
   get companies(): Companies {
-    return (this._companies ??= new Companies(this.options$));
+    return (this._companies ??= new Companies(this._options));
   }
 }

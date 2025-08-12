@@ -23,6 +23,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get-account-transaction" method="get" path="/companies/{companyId}/connections/{connectionId}/data/accountTransactions/{accountTransactionId}" -->
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 
@@ -31,10 +32,9 @@ const accounting = new Accounting({
 });
 
 async function run() {
-  const result = await accounting.accountTransactions.get("<value>", "8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171");
-  
-  // Handle the result
-  console.log(result)
+  const result = await accounting.accountTransactions.get("<id>", "8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171");
+
+  console.log(result);
 }
 
 run();
@@ -55,16 +55,13 @@ const accounting = new AccountingCore({
 });
 
 async function run() {
-  const res = await accountTransactionsGet(accounting, "<value>", "8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await accountTransactionsGet(accounting, "<id>", "8a210b68-6988-11ed-a1eb-0242ac120002", "2e9d2c44-f675-40ba-8049-353bfcb5e171");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountTransactionsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result)
 }
 
 run();
@@ -87,10 +84,9 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## list
 
@@ -103,6 +99,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="list-account-transactions" method="get" path="/companies/{companyId}/connections/{connectionId}/data/accountTransactions" -->
 ```typescript
 import { Accounting } from "@speakeasy-sdks/accounting";
 
@@ -115,13 +112,10 @@ async function run() {
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     orderBy: "-modifiedDate",
-    page: 1,
-    pageSize: 100,
     query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
   });
-  
-  // Handle the result
-  console.log(result)
+
+  console.log(result);
 }
 
 run();
@@ -146,19 +140,14 @@ async function run() {
     companyId: "8a210b68-6988-11ed-a1eb-0242ac120002",
     connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     orderBy: "-modifiedDate",
-    page: 1,
-    pageSize: 100,
     query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountTransactionsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result)
 }
 
 run();
@@ -179,6 +168,6 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

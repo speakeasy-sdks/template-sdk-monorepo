@@ -4,9 +4,10 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { LendingTsError } from "./lendingtserror.js";
 
 /**
- * The request made is not valid.
+ * Your API request was not properly authorized.
  */
 export type ErrorMessageData = {
   /**
@@ -40,9 +41,9 @@ export type ErrorMessageData = {
 };
 
 /**
- * The request made is not valid.
+ * Your API request was not properly authorized.
  */
-export class ErrorMessage extends Error {
+export class ErrorMessage extends LendingTsError {
   /**
    * The HTTP status code returned by the error.
    */
@@ -75,13 +76,15 @@ export class ErrorMessage extends Error {
   /** The original data that was passed to this error instance. */
   data$: ErrorMessageData;
 
-  constructor(err: ErrorMessageData) {
+  constructor(
+    err: ErrorMessageData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.statusCode != null) this.statusCode = err.statusCode;
     if (err.service != null) this.service = err.service;
     if (err.error != null) this.error = err.error;
@@ -109,9 +112,16 @@ export const ErrorMessage$inboundSchema: z.ZodType<
   validation: z.nullable(components.ErrorValidation$inboundSchema).optional(),
   canBeRetried: z.string().optional(),
   detailedErrorCode: z.number().int().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new ErrorMessage(v);
+    return new ErrorMessage(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

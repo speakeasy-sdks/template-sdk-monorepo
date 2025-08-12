@@ -3,7 +3,6 @@
  */
 
 import { accountsCreate } from "../funcs/accountsCreate.js";
-import { accountsGet } from "../funcs/accountsGet.js";
 import { accountsGetCreateModel } from "../funcs/accountsGetCreateModel.js";
 import { accountsList } from "../funcs/accountsList.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -29,41 +28,16 @@ export class Accounts extends ClientSDK {
   async create(
     companyId: string,
     connectionId: string,
-    accountPrototype?: shared.AccountPrototype | undefined,
     timeoutInMinutes?: number | undefined,
+    accountPrototype?: shared.AccountPrototype | undefined,
     options?: RequestOptions,
   ): Promise<operations.CreateAccountResponse> {
     return unwrapAsync(accountsCreate(
       this,
       companyId,
       connectionId,
-      accountPrototype,
       timeoutInMinutes,
-      options,
-    ));
-  }
-
-  /**
-   * Get account
-   *
-   * @remarks
-   * The *Get account* endpoint returns a single account for a given accountId.
-   *
-   * [Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
-   *
-   * Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support getting a specific account.
-   *
-   * Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
-   */
-  async get(
-    accountId: string,
-    companyId: string,
-    options?: RequestOptions,
-  ): Promise<operations.GetAccountResponse> {
-    return unwrapAsync(accountsGet(
-      this,
-      accountId,
-      companyId,
+      accountPrototype,
       options,
     ));
   }

@@ -6,10 +6,10 @@
 import { PushOptionProperty, PushOptionType } from "@speakeasy-sdks/accounting/sdk/models/shared";
 
 let value: PushOptionProperty = {
-  description: "Fundamental background neural-net",
-  displayName: "Madison77",
+  description: "mooch sonar very",
+  displayName: "Roberto_Robel",
   required: false,
-  type: PushOptionType.Object,
+  type: PushOptionType.DateTime,
 };
 ```
 

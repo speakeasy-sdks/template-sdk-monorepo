@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateCompanyRequest = {
   /**
@@ -69,6 +72,24 @@ export namespace UpdateCompanyRequest$ {
   export type Outbound = UpdateCompanyRequest$Outbound;
 }
 
+export function updateCompanyRequestToJSON(
+  updateCompanyRequest: UpdateCompanyRequest,
+): string {
+  return JSON.stringify(
+    UpdateCompanyRequest$outboundSchema.parse(updateCompanyRequest),
+  );
+}
+
+export function updateCompanyRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateCompanyRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateCompanyRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateCompanyRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateCompanyResponse$inboundSchema: z.ZodType<
   UpdateCompanyResponse,
@@ -116,4 +137,22 @@ export namespace UpdateCompanyResponse$ {
   export const outboundSchema = UpdateCompanyResponse$outboundSchema;
   /** @deprecated use `UpdateCompanyResponse$Outbound` instead. */
   export type Outbound = UpdateCompanyResponse$Outbound;
+}
+
+export function updateCompanyResponseToJSON(
+  updateCompanyResponse: UpdateCompanyResponse,
+): string {
+  return JSON.stringify(
+    UpdateCompanyResponse$outboundSchema.parse(updateCompanyResponse),
+  );
+}
+
+export function updateCompanyResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateCompanyResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateCompanyResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateCompanyResponse' from JSON`,
+  );
 }

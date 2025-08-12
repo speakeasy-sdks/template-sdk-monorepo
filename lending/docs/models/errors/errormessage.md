@@ -1,6 +1,6 @@
 # ErrorMessage
 
-The request made is not valid.
+Your API request was not properly authorized.
 
 ## Example Usage
 

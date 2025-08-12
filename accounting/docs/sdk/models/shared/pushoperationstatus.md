@@ -7,7 +7,7 @@ The current status of the push operation.
 ```typescript
 import { PushOperationStatus } from "@speakeasy-sdks/accounting/sdk/models/shared";
 
-let value: PushOperationStatus = PushOperationStatus.Success;
+let value: PushOperationStatus = PushOperationStatus.Failed;
 ```
 
 ## Values

@@ -10,12 +10,12 @@ export class Accounting extends ClientSDK {
   private _accountTransactions?: AccountTransactions;
   get accountTransactions(): AccountTransactions {
     return (this._accountTransactions ??= new AccountTransactions(
-      this.options$,
+      this._options,
     ));
   }
 
   private _accounts?: Accounts;
   get accounts(): Accounts {
-    return (this._accounts ??= new Accounts(this.options$));
+    return (this._accounts ??= new Accounts(this._options));
   }
 }

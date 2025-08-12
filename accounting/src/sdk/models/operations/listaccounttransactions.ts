@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type ListAccountTransactionsRequest = {
@@ -107,6 +110,26 @@ export namespace ListAccountTransactionsRequest$ {
   export type Outbound = ListAccountTransactionsRequest$Outbound;
 }
 
+export function listAccountTransactionsRequestToJSON(
+  listAccountTransactionsRequest: ListAccountTransactionsRequest,
+): string {
+  return JSON.stringify(
+    ListAccountTransactionsRequest$outboundSchema.parse(
+      listAccountTransactionsRequest,
+    ),
+  );
+}
+
+export function listAccountTransactionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountTransactionsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountTransactionsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountTransactionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountTransactionsResponse$inboundSchema: z.ZodType<
   ListAccountTransactionsResponse,
@@ -171,4 +194,24 @@ export namespace ListAccountTransactionsResponse$ {
   export const outboundSchema = ListAccountTransactionsResponse$outboundSchema;
   /** @deprecated use `ListAccountTransactionsResponse$Outbound` instead. */
   export type Outbound = ListAccountTransactionsResponse$Outbound;
+}
+
+export function listAccountTransactionsResponseToJSON(
+  listAccountTransactionsResponse: ListAccountTransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListAccountTransactionsResponse$outboundSchema.parse(
+      listAccountTransactionsResponse,
+    ),
+  );
+}
+
+export function listAccountTransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountTransactionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountTransactionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountTransactionsResponse' from JSON`,
+  );
 }
