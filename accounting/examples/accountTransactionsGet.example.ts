@@ -8,7 +8,7 @@ dotenv.config();
  * Example usage of the @speakeasy-sdks/accounting SDK
  *
  * To run this example from the examples directory:
- * npm run build && npx tsx accountTransactionsGet.ts
+ * npm run build && npx tsx accountTransactionsGet.example.ts
  */
 
 import { Accounting } from "@speakeasy-sdks/accounting";
