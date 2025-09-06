@@ -1,4 +1,4 @@
-speakeasyVersion: 1.601.0
+speakeasyVersion: 1.611.0
 sources:
     accounting:
         sourceNamespace: accounting
@@ -6,7 +6,7 @@ sources:
         sourceBlobDigest: sha256:3a0639d76eb4a2962e417b5b615d4c6dcd277d70a1aee98f32366674e115cbd0
         tags:
             - latest
-            - speakeasy-sdk-regen-1754920838
+            - speakeasy-sdk-regen-1754920830
             - 3.0.0
     lending:
         sourceNamespace: lending
@@ -14,7 +14,7 @@ sources:
         sourceBlobDigest: sha256:7382fd0e92189069ce5db08e0deb380d02d986d4f973cc1768d59ec9b92d67e4
         tags:
             - latest
-            - speakeasy-sdk-regen-1754920838
+            - speakeasy-sdk-regen-1754920830
             - 3.0.0
 targets:
     accounting-ts:
@@ -23,14 +23,14 @@ targets:
         sourceRevisionDigest: sha256:05eb41c0e6d185bae7e09354b69168a37543909558375e04392f68a38f6ac251
         sourceBlobDigest: sha256:3a0639d76eb4a2962e417b5b615d4c6dcd277d70a1aee98f32366674e115cbd0
         codeSamplesNamespace: accounting-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:cc4ff49afd6ef0fdb62c86d1bd5468dfca654fd73a1d2236390867340d3af1f9
+        codeSamplesRevisionDigest: sha256:9d81cb5b991086d2d36ca0485feb0db99e32ba9bb40961f3820cc2b7aa91e557
     lending-ts:
         source: lending
         sourceNamespace: lending
         sourceRevisionDigest: sha256:c1a8d06caeb6b87700bd3650fc86b89041f47f5ec180923e8aee23384e19ad89
         sourceBlobDigest: sha256:7382fd0e92189069ce5db08e0deb380d02d986d4f973cc1768d59ec9b92d67e4
         codeSamplesNamespace: lending-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:09db49e9856719929b344a54c220c527ebecec3f261dbd452fa9bcc024c44915
+        codeSamplesRevisionDigest: sha256:c94f414f03c45011e5360788df9fe19d814b1f9e5417e7ac793fa6028de80346
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

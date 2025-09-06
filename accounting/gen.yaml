@@ -19,7 +19,7 @@ generation:
     skipResponseBodyAssertions: false
   telemetryEnabled: true
 typescript:
-  version: 0.8.0
+  version: 0.8.1
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -55,4 +55,5 @@ typescript:
   packageName: '@speakeasy-sdks/accounting'
   responseFormat: envelope
   templateVersion: v2
+  usageSDKInitImports: []
   useIndexModules: true
