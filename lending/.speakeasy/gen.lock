@@ -5,8 +5,8 @@ management:
   docVersion: 3.0.0
   speakeasyVersion: 1.601.0
   generationVersion: 2.680.0
-  releaseVersion: 0.4.0
-  configChecksum: a10b24930fec17a3aae473d453a44ed7
+  releaseVersion: 0.4.1
+  configChecksum: 5f532044c9506603bd62dda5b25808d8
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   repoSubDirectory: lending
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
@@ -197,7 +197,188 @@ examples:
           application/json: {"statusCode": 401, "service": "PublicApi", "error": "Unauthorized", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "canBeRetried": "Unknown", "detailedErrorCode": 0}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## SDK Changes Detected:
-  * lending-ts.companies.list(): **Deleted**
-  * lending-ts.companies.create(): **Deleted**
+trackedFiles:
+  .gitattributes:
+    last_write_checksum: sha1:26d16d8297b104945139da8c25bd38feeaad3e25
+  .npmignore:
+    last_write_checksum: sha1:3d5eb92f81539175db1ff0280e0aefbdd701f200
+  FUNCTIONS.md:
+    last_write_checksum: sha1:bf5c06a46f3dcfe6ad530081884922166642b726
+  RUNTIMES.md:
+    last_write_checksum: sha1:e45b854f02c357cbcfdb8c3663000e8339e16505
+  USAGE.md:
+    last_write_checksum: sha1:7533c5bb1c36d1aad63ef4f95a683f4747185456
+  docs/lib/utils/retryconfig.md:
+    last_write_checksum: sha1:bc4454e196fcd219f5a78da690375a884f5ed07b
+  docs/models/components/company.md:
+    last_write_checksum: sha1:a1d9774352e2f501b1bfaa9b05026289de34c3b0
+  docs/models/components/companyrequestbody.md:
+    last_write_checksum: sha1:3089e7f8589aa768c853f691830943e9ba989cbe
+  docs/models/components/connection.md:
+    last_write_checksum: sha1:b77a91a5b3695561d69f2b7ec8e4708cdc52fffc
+  docs/models/components/dataconnectionerror.md:
+    last_write_checksum: sha1:d87957cae12128984d5381825710b2d87987479f
+  docs/models/components/dataconnectionstatus.md:
+    last_write_checksum: sha1:2b700bf9355f8ae8500b81ee7d929cbd09c95f50
+  docs/models/components/errorvalidation.md:
+    last_write_checksum: sha1:78cd54094965626c9966c5ecf6e9035608d3878d
+  docs/models/components/errorvalidationitem.md:
+    last_write_checksum: sha1:b433394f26da5a6c41cfab218815b34d524bac0e
+  docs/models/components/groupreference.md:
+    last_write_checksum: sha1:7e26a9068b8feeafee9238c670f0c9967a6c84e3
+  docs/models/components/httpmetadata.md:
+    last_write_checksum: sha1:fbc23071081c993888ae6c7de2ebec2aab88b318
+  docs/models/components/items.md:
+    last_write_checksum: sha1:ad450bf613b7697ae767ccb55e4a8f7316e235bf
+  docs/models/components/security.md:
+    last_write_checksum: sha1:2b1b99bbc5241017643df04543602ab629c5b094
+  docs/models/components/sourcetype.md:
+    last_write_checksum: sha1:d62b5556bbcb51509700f610b80c6debfba2befc
+  docs/models/errors/errormessage.md:
+    last_write_checksum: sha1:275ff25bbe7c0e318f86a1973ad36ff9196d0b1b
+  docs/models/operations/deletecompanyrequest.md:
+    last_write_checksum: sha1:cfa663d9a166c410e24854e542f1873b62b5f002
+  docs/models/operations/deletecompanyresponse.md:
+    last_write_checksum: sha1:2bbdc7d030223b0dfc0acb48352a615b473bc05e
+  docs/models/operations/getcompanyrequest.md:
+    last_write_checksum: sha1:fa01031fbbb90a5850ae0ba0c7b1535f33f6cf0c
+  docs/models/operations/getcompanyresponse.md:
+    last_write_checksum: sha1:dd5b637f3f44f0898cea3e8d95f832fd46f83b8c
+  docs/models/operations/updatecompanyrequest.md:
+    last_write_checksum: sha1:279982e1cb5548f4c685e34d9e117d5165b351ee
+  docs/models/operations/updatecompanyresponse.md:
+    last_write_checksum: sha1:108e23a6185135cbdace32ce167efc6b0c48e306
+  docs/sdks/companies/README.md:
+    last_write_checksum: sha1:adc274b5d2ff2c31ebfae96b2c8782e504a457df
+  eslint.config.mjs:
+    last_write_checksum: sha1:9398f326377fe47f67af2df6eb6370750c0790b4
+  examples/.env.template:
+    last_write_checksum: sha1:197e6af78d418e732b923e381140f59f34d61bca
+  examples/README.md:
+    last_write_checksum: sha1:def7d8ca4738ef929645c90ee9bc39f4fc47854b
+  examples/companiesUpdate.example.ts:
+    last_write_checksum: sha1:8a4a1449e8e8bff965acec8338fe159e0b33a2a5
+  examples/package.json:
+    last_write_checksum: sha1:dcbeacead1f594a6b183babf24aa60d6f9ea0b9c
+  jsr.json:
+    last_write_checksum: sha1:ebad806aaf4896558bb1dd416e15e843d37fa705
+  package.json:
+    last_write_checksum: sha1:11b6e21b1bac1d5fbe6b6e91824ef17364e7f106
+  src/core.ts:
+    last_write_checksum: sha1:87f3c828c01cfb77295a42cfef342e472f06ee23
+  src/funcs/companiesDelete.ts:
+    last_write_checksum: sha1:9117cc9a96288b4d540f731ef86e1a1110370c10
+  src/funcs/companiesGet.ts:
+    last_write_checksum: sha1:2644057dccd4ba77e87b1aa7a22128e90a9b5df2
+  src/funcs/companiesUpdate.ts:
+    last_write_checksum: sha1:c5ef37a436fcf5420c6c31e8f3252c2213610ee1
+  src/hooks/hooks.ts:
+    last_write_checksum: sha1:9a569ea8f3177ddcdfe6cd903feaf5c2d2c36a9a
+  src/hooks/index.ts:
+    last_write_checksum: sha1:1a11c073a6cd792932218e1d4ed36b8567bad8ef
+  src/hooks/types.ts:
+    last_write_checksum: sha1:29372122898cc523fa47576f3f6608a28ec6080e
+  src/index.ts:
+    last_write_checksum: sha1:35c9cde3ae14b18b3f893a1afe8b6c44f8760f24
+  src/lib/base64.ts:
+    last_write_checksum: sha1:b0b12ddbd8625efb47c0e955a18641aeb10c6532
+  src/lib/config.ts:
+    last_write_checksum: sha1:1ccef9c0448e3fc564a9d4395e5f85b5f99f2c01
+  src/lib/dlv.ts:
+    last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
+  src/lib/encodings.ts:
+    last_write_checksum: sha1:d20c131976ab8ac68b22bdde2b7ed84b5b873922
+  src/lib/files.ts:
+    last_write_checksum: sha1:d0f325f445b8d22e7d73baf052c585ec2dd24841
+  src/lib/http.ts:
+    last_write_checksum: sha1:797cbf16d3c7c4d62d3ba0eedb08617524938457
+  src/lib/is-plain-object.ts:
+    last_write_checksum: sha1:df687f25a9590b6fd95d39df41a652ae3fd4e517
+  src/lib/logger.ts:
+    last_write_checksum: sha1:0ec9d3a2a34c362746b767e4f9a746c055d57a7b
+  src/lib/matchers.ts:
+    last_write_checksum: sha1:1f258b993d9d9f5aff6a212b775e35904ada04e0
+  src/lib/primitives.ts:
+    last_write_checksum: sha1:987869fc54790b9c22e9182099103d6aa7c67016
+  src/lib/retries.ts:
+    last_write_checksum: sha1:f3da74dffcbe2756c69393f8600205aa1dc06e68
+  src/lib/schemas.ts:
+    last_write_checksum: sha1:209cfaabfa7fc1c1310f97453215cb0755619c6e
+  src/lib/sdks.ts:
+    last_write_checksum: sha1:d7fb3ee14478f8121f389fa7b8827edd6f19e94a
+  src/lib/security.ts:
+    last_write_checksum: sha1:0d887cd82996eaa54d58cdf7c8c03dc52c624cf5
+  src/lib/url.ts:
+    last_write_checksum: sha1:d124050c7e755c0cce233b9e029afb584ff65201
+  src/models/components/company.ts:
+    last_write_checksum: sha1:a0024f147dcd8248da6b62c6848b47ed8067a366
+  src/models/components/companyrequestbody.ts:
+    last_write_checksum: sha1:f8ff0f7e339286cee3766a9498496fbe1077eb42
+  src/models/components/connection.ts:
+    last_write_checksum: sha1:a16ea139734ee72ef722c95cf700ccc7fd38785a
+  src/models/components/dataconnectionerror.ts:
+    last_write_checksum: sha1:ab88bc5d9173ce5b4f44f4ed7dc5e07136f7605e
+  src/models/components/dataconnectionstatus.ts:
+    last_write_checksum: sha1:f4c244bc017db470201c45d3c229815680a2b493
+  src/models/components/errorvalidation.ts:
+    last_write_checksum: sha1:f83f449a0185c5b45bf3e4c0596c8775e5877c7f
+  src/models/components/errorvalidationitem.ts:
+    last_write_checksum: sha1:2bc62c14dd924dbd41bf9a2fdac2e1b7ff1f0c59
+  src/models/components/httpmetadata.ts:
+    last_write_checksum: sha1:18a805f07dfb2def44fff59645f5546847454e77
+  src/models/components/index.ts:
+    last_write_checksum: sha1:12dd6b7240dcbf25b2eec9f923f13f65663d5795
+  src/models/components/items.ts:
+    last_write_checksum: sha1:d9785352d0b7cbeb0a588251b694a57e9056ad89
+  src/models/components/security.ts:
+    last_write_checksum: sha1:30878619018b851fc6ac955bb3aeb5356344ec24
+  src/models/errors/errormessage.ts:
+    last_write_checksum: sha1:e01f693140bc53f6ba8b599a39c3cbdc08e818fd
+  src/models/errors/httpclienterrors.ts:
+    last_write_checksum: sha1:994ced121c54fecd0af038ccfb7855fbfd3868ec
+  src/models/errors/index.ts:
+    last_write_checksum: sha1:dfea7b4136e7db83216ca8f0670342311fdcc8b2
+  src/models/errors/lendingtserror.ts:
+    last_write_checksum: sha1:5608a528fd83ad24bb9c019211b14f75976fb881
+  src/models/errors/responsevalidationerror.ts:
+    last_write_checksum: sha1:e99d0a9abef9a5fb495b42f8dc8b6253b57aafeb
+  src/models/errors/sdkerror.ts:
+    last_write_checksum: sha1:338e0448a2aa7e31e0a4e967df6e62dfaa3611ee
+  src/models/errors/sdkvalidationerror.ts:
+    last_write_checksum: sha1:a69da17627bcc32b820544608f3400423ea53f26
+  src/models/operations/deletecompany.ts:
+    last_write_checksum: sha1:bbf59e7866e2d5bb0c8462f9767cfe403358b0b7
+  src/models/operations/getcompany.ts:
+    last_write_checksum: sha1:a6eea766fd44732c7d4ade6962dc702a86117bea
+  src/models/operations/index.ts:
+    last_write_checksum: sha1:086d1c11dad4e42ebb88591e48826c3a4ac66036
+  src/models/operations/updatecompany.ts:
+    last_write_checksum: sha1:6f88acbf949e149a50d6015b718e4375800f75bf
+  src/sdk/companies.ts:
+    last_write_checksum: sha1:866c0f098a67d219bc91f072f370d08d503ba4ab
+  src/sdk/index.ts:
+    last_write_checksum: sha1:ed6d64f2a6135349aa8498b8d8cff9ba85c7fb8f
+  src/sdk/sdk.ts:
+    last_write_checksum: sha1:f978e4413c1752b92ae9ac39a0f47b93a9c2626d
+  src/types/async.ts:
+    last_write_checksum: sha1:3ff07b3feaf390ec1aeb18ff938e139c6c4a9585
+  src/types/blobs.ts:
+    last_write_checksum: sha1:cf45d78916671cb6345a11c97c633c64402bc27c
+  src/types/constdatetime.ts:
+    last_write_checksum: sha1:dfaaf9adfaf49808bd4c9dea0039f21b7088d9c0
+  src/types/enums.ts:
+    last_write_checksum: sha1:ee590453d2c87e33e89c633d37ee46907eca0e58
+  src/types/fp.ts:
+    last_write_checksum: sha1:d24994d58f37a1ca106847fcc6d2e976c6f1c093
+  src/types/index.ts:
+    last_write_checksum: sha1:bf43b3dccb960ca9ae9c5ab940da4786255881cd
+  src/types/operations.ts:
+    last_write_checksum: sha1:c49e724cfb1259296381cb57bc0fcdd2eae45865
+  src/types/rfcdate.ts:
+    last_write_checksum: sha1:8e5f382e02fe21c2f2e24deb1b7bbf8cddd3dd16
+  src/types/streams.ts:
+    last_write_checksum: sha1:cc9ced2dd34a76c3a1bd7784ccda1cc3b37ab9a9
+  src/types/unrecognized.ts:
+    last_write_checksum: sha1:d33ac686528492f4cdc0dbf81ed343b4afe020fe
+  tsconfig.json:
+    last_write_checksum: sha1:c3ec7996536cdb9a54319e7d1eb3b199b733d34c
