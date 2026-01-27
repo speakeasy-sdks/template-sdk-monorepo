@@ -4,7 +4,7 @@ servers:
     url: 'https://api.codat.io'
 info:
   title: Accounting API
-  version: 3.0.0
+  version: 3.0.1
   contact:
     email: support@codat.io
     name: Codat

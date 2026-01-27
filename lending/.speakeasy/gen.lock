@@ -5,8 +5,8 @@ management:
   docVersion: 3.0.0
   speakeasyVersion: 1.601.0
   generationVersion: 2.680.0
-  releaseVersion: 0.4.0
-  configChecksum: a10b24930fec17a3aae473d453a44ed7
+  releaseVersion: 0.4.1
+  configChecksum: 5577f2ade8af59a56043c6033fe3315f
   repoURL: https://github.com/speakeasy-sdks/template-sdk-monorepo.git
   repoSubDirectory: lending
   installationURL: https://gitpkg.now.sh/speakeasy-sdks/template-sdk-monorepo/lending
@@ -197,7 +197,3 @@ examples:
           application/json: {"statusCode": 401, "service": "PublicApi", "error": "Unauthorized", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "canBeRetried": "Unknown", "detailedErrorCode": 0}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## SDK Changes Detected:
-  * lending-ts.companies.list(): **Deleted**
-  * lending-ts.companies.create(): **Deleted**
